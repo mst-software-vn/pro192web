@@ -10,7 +10,7 @@ An I/O Stream represents an input source or an output destination. A stream can 
 
 Streams support many different kinds of data, including simple bytes, primitive data types, localized characters, and objects. Some streams simply pass on data; others manipulate and transform the data in useful ways.
 
-[for detail]
+[Read more](https://docs.oracle.com/javase/tutorial/essential/io/streams.html)
 
 ### I/O from the Command Line
 
@@ -18,9 +18,9 @@ A program is often run from the command line and interacts with the user in the 
 
 The Java platform supports three Standard Streams: Standard Input, accessed through `System.in`; Standard Output, accessed through `System.out`; and Standard Error, accessed through `System.err`.
 
-These objects are defined automatically and do not need to be opened. Standard Output and Standard Error are both for output; having error output separately allows the user to divert regular output to a file and still be able to read error messages. For more information, refer to the documentation for your command line interpreter.
+These objects are defined automatically and do not need to be opened. Standard Output and Standard Error are both for output; having error output separately allows the user to divert regular output to a file and still be able to read error messages. For more information, refer to the [documentation](https://docs.oracle.com/javase/tutorial/essential/io/cl.html) for your command line interpreter.
 
-To get user input, we can also use the Scanner class [for detail]. This class supports some methods to get various types from the user
+To get user input, we can also use the Scanner class [(Scanning)](https://docs.oracle.com/javase/tutorial/essential/io/scanning.html). This class supports some methods to get various types from the user
 
 | Method | Description |
 | --- | --- |
