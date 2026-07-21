@@ -1,0 +1,10 @@
+@import 'tailwindcss';
+
+/* Nền tảng kiểu chữ cơ bản — accent color và design token sẽ chốt ở bước thiết kế */
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+}
