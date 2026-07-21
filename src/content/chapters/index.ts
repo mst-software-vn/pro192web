@@ -84,7 +84,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Bộ sưu tập',
     description: 'Các kiểu dữ liệu trừu tượng trong Java Collections: List, Set, Map.',
     group: 'Cấu trúc dữ liệu',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'bo-nho-dong',
