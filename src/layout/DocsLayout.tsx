@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 import { getChapter } from '../content/chapters'
 import { useActiveHeading } from '../hooks/use-active-heading'
 import { useLanguage } from '../hooks/use-language'
@@ -14,7 +14,14 @@ import { TableOfContents } from './TableOfContents'
 // Sidebar cố định + TOC chỉ hiện ở desktop; mobile dùng drawer từ DocsHeader.
 export function DocsLayout() {
   const { slug } = useParams()
+  const { pathname } = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+
+  // Chuyển trang (sang chương khác hoặc syllabus) thì cuộn lên đầu ngay lập tức —
+  // React Router không tự reset scroll khi điều hướng phía client như trình duyệt vẫn làm.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname])
 
   const { language } = useLanguage()
   const chapter = slug ? getChapter(slug) : undefined
