@@ -140,11 +140,15 @@ const components: Components = {
   },
   strong: ({ children }) => <strong className="text-ink-secondary font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
-  blockquote: ({ children }) => (
-    <blockquote className="bg-blue-600 dark:bg-blue-950/40 border-l-4 border-blue-400 dark:border-blue-500 text-white dark:text-blue-100 my-5 rounded-r-md px-4 py-3 text-[15px] leading-7 [&_p]:text-white dark:[&_p]:text-blue-100 [&_strong]:text-white dark:[&_strong]:text-blue-200 [&_a]:text-blue-200 dark:[&_a]:text-blue-300 [&_code]:text-white [&_code]:bg-blue-500/40 [&>p:last-child]:mb-0 [&>p]:mb-2">
-      {children}
-    </blockquote>
-  ),
+  blockquote: ({ children }) => {
+    // Ghi chú "super() phải là dòng đầu constructor" (ke-thua.md) dùng tông vàng nhạt
+    // (notice/warning) thay vì xanh mặc định — chỉ riêng đoạn này theo yêu cầu.
+    const isNoticeStyle = flattenToText(children).includes('most distant super class first')
+    const className = isNoticeStyle
+      ? 'bg-amber-100 dark:bg-amber-950/40 border-l-4 border-amber-400 dark:border-amber-500 text-amber-950 dark:text-amber-100 my-5 rounded-r-md px-4 py-3 text-[15px] leading-7 [&_p]:text-amber-950 dark:[&_p]:text-amber-100 [&_strong]:text-amber-950 dark:[&_strong]:text-amber-200 [&_code]:text-amber-950 [&_code]:bg-amber-500/20 [&>p:last-child]:mb-0 [&>p]:mb-2'
+      : 'bg-blue-600 dark:bg-blue-950/40 border-l-4 border-blue-400 dark:border-blue-500 text-white dark:text-blue-100 my-5 rounded-r-md px-4 py-3 text-[15px] leading-7 [&_p]:text-white dark:[&_p]:text-blue-100 [&_strong]:text-white dark:[&_strong]:text-blue-200 [&_a]:text-blue-200 dark:[&_a]:text-blue-300 [&_code]:text-white [&_code]:bg-blue-500/40 [&>p:last-child]:mb-0 [&>p]:mb-2'
+    return <blockquote className={className}>{children}</blockquote>
+  },
   hr: () => <hr className="border-hairline my-10" />,
   table: ({ children }) => (
     <div className="border-hairline my-6 overflow-x-auto rounded-lg border">
