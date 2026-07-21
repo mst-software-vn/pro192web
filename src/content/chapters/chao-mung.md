@@ -1,5 +1,7 @@
 ## Welcome to Object-Oriented
 
+[A Language for Complex Applications](#) | [Object Terminology](#)
+
 Modern software applications are intricate, dynamic and complex. The number of lines of code can exceed the hundreds of thousands or millions. These applications evolve over time. Some take years of programming effort to mature. Creating such applications involves many developers with different levels of expertise. Their work consists of smaller stand alone and testable sub-projects; sub-projects that are transferrable, practical, upgradeable and possibly even usable within other future applications. The principles of software engineering suggest that each component should be highly cohesive and that the collection of components should be loosely coupled. Object-oriented languages provide the tools for implementing these principles.
 
 ## Subject title
@@ -42,4 +44,4 @@ If you photocopy a textbook without the copyright holder's permission, you viola
 
 PRF192
 
-For further information, see the syllabus.
+For further information, see the [syllabus](/syllabus-pro192-spring2021).
