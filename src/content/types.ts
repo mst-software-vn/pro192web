@@ -17,3 +17,9 @@ export interface Chapter {
   /** Nội dung Markdown thô (chỉ có ở chương published) */
   body?: string
 }
+
+/** Một nhóm chương cùng chủ đề, hiển thị dưới 1 tiêu đề nhóm trong sidebar */
+export interface ChapterGroup {
+  name: string
+  items: Chapter[]
+}

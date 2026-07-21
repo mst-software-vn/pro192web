@@ -1,5 +1,7 @@
 import type { Chapter } from '../types'
 
+export type { ChapterGroup } from '../types'
+
 // Nạp toàn bộ nội dung Markdown tại build-time — không cần fetch runtime.
 const rawBodies = import.meta.glob('./*.md', {
   query: '?raw',

@@ -1,10 +1,26 @@
 @import 'tailwindcss';
 
-/* Nền tảng kiểu chữ cơ bản — accent color và design token sẽ chốt ở bước thiết kế */
+/* Accent xanh chuyên nghiệp — dùng xuyên suốt landing (nền sáng) và docs (nền tối) */
+@theme {
+  --color-accent: #2563eb;
+  --color-accent-emphasis: #1d4ed8;
+  --color-accent-soft: #eff6ff;
+  --color-accent-dark: #60a5fa;
+
+  /* Chỉ dùng font hệ thống hỗ trợ đầy đủ dấu tiếng Việt — Georgia/Times New Roman
+     làm vỡ tổ hợp dấu (ướ, ẳ...) nên không dùng làm serif hiển thị. */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:
+    ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', Consolas, monospace;
+}
+
 @layer base {
   html {
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
   }
 }
