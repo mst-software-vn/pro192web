@@ -24,7 +24,7 @@ export function DocsLayout() {
       <DocsHeader onOpenMenu={() => setMobileNavOpen(true)} />
       <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-1 gap-10 px-4 lg:px-8">
+      <div className="mx-auto flex w-full max-w-360 flex-1 gap-10 px-4 lg:px-8">
         <aside className="hidden w-64 shrink-0 py-10 lg:block">
           <div className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <Sidebar />

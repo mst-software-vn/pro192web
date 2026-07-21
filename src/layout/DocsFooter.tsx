@@ -15,7 +15,7 @@ const COURSE_LINKS = [
 export function DocsFooter() {
   return (
     <footer className="border-hairline border-t">
-      <div className="mx-auto max-w-[1440px] px-4 py-14 lg:px-8">
+      <div className="mx-auto max-w-360 px-4 py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
           <div>
             <span className="text-ink text-[15px] font-semibold tracking-tight">PRO192 · Java Edition</span>
