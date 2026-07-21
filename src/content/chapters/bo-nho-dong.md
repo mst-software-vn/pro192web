@@ -4,8 +4,8 @@
 
 In Java, memory management is the process of allocation and de-allocation of objects. Java does memory management automatically using a garbage collector, so you do not need to implement memory management logic in your application.
 
-- Read more: Oracle Docs
-- Read more: JavaTpoint
+- Read more: [Oracle Docs](https://docs.oracle.com/cd/E13150_01/jrockit_jvm/jrockit/geninfo/diagnos/garbage_collect.html)
+- Read more: [JavaTpoint](https://www.javatpoint.com.cach3.com/index.html#google_vignette)
 
 Allocation happens directly when you create an object with new and indirectly when you call a method with local variables or arguments. Local data of a method (return data, parameters, variables) is allocated on the stack and discarded when the method exits, but objects are allocated on the heap and have a longer lifetime.
 
@@ -25,15 +25,16 @@ public class Tester {
 }
 ```
 
-When the program runs, the class definition Tester is loaded to static heap.
+1. When the program runs, the class definition Tester is loaded to static heap.
 
-Running main creates stack space for variables age and sc. age is stored directly in stack; sc points to a Scanner object in heap.
+2. Running main creates stack space for variables age and sc. age is stored directly in stack; sc points to a Scanner object in heap.
+
+3. When main finishes, its stack space is discarded. age and sc are killed.
+
+4. The Scanner object in heap still exists and becomes garbage.
 
 ![Java memory layout](/images/bo-nho-dong/2.png "Sơ đồ bộ nhớ: static heap, stack và dynamic heap khi chạy Tester")
 
-When main finishes, its stack space is discarded. age and sc are killed.
-
-The Scanner object in heap still exists and becomes garbage.
 
 ### Dynamic Allocation
 
@@ -46,53 +47,56 @@ public static void main(String[] args) {
 }
 ```
 
-When main runs, a and s are allocated in stack memory as references.
+- When main runs, a and s are allocated in stack memory as references.
 
-At [1], new allocates memory in heap for an array of 5 elements and returns its address to a.
+- At [1], new allocates memory in heap for an array of 5 elements and returns its address to a.
 
-At [2], new allocates memory in heap for the string "hello" and returns its address to s.
+- At [2], new allocates memory in heap for the string "hello" and returns its address to s.
 
 ![Dynamic allocation](/images/bo-nho-dong/3.png "Sơ đồ minh hoạ cấp phát động cho mảng a và chuỗi s trên heap")
 
 To make a reference point to nothing, use null:
 
 ```java
-int a[]=null;
-String s=null;
+int a[] = null;
+String s = null;
 ```
 
 ### Dynamic Deallocation
 
 In Java, you never explicitly free memory. Java provides automatic garbage collection. Local variables in a method are allocated when the method runs and deallocated automatically when it terminates. Unused objects in heap memory are deallocated by the Java system.
 
-#### Scope and garbage collection
-
-When the program runs to a certain line, variables may go out of scope and objects become garbage. Setting a reference to null also makes the object eligible for garbage collection.
-
 ```java
 public class test {
+
     public static void main(String[] args) {
-        String s1=new String("hello");
-        int x=5;
-        if(x<10){
-            String s2=new String("students");
-            int y=3;
-            //other statements
+
+        String s1 = new String("hello");
+        int x = 5;
+
+        if (x < 10) {
+            String s2 = new String("students");
+            int y = 3;
+            // other statements
         }
-        int t=7;
-        s1=null;
-        t=t+1;
-        //other statements
+
+        int t = 7;
+        s1 = null;
+        t = t + 1;
+        // other statements
     }
+
 }
 ```
+
+When the program runs to a certain line, variables may go out of scope and objects become garbage. Setting a reference to null also makes the object eligible for garbage collection.
 
 ### Garbage Collection
 
 The JVM supports a garbage collector to free Java programmers from explicitly managing heap memory. It is called by the JVM only and cannot be activated manually. The Java heap is managed by two lists: free block list and allocated block list. After many allocations and de-allocations, memory may become fragmented.
 
-- Read more: Java Memory Management Whitepaper
-- Read more: Garbage Collection in Java
+- Read more: [Java Memory Management Whitepaper](https://www.oracle.com/technetwork/java/javase/memorymanagement-whitepaper-150215.pdf)
+- Read more: [Garbage Collection in Java](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 
 The runtime system keeps track of allocated memory and determines whether it is still usable. The garbage collector runs only when the system heap becomes exhausted and has the lowest priority. If objects are garbage, they are deallocated automatically.
 
