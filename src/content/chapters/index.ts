@@ -94,7 +94,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Nhập xuất tệp',
     description: 'Đọc và ghi dữ liệu từ/đến tệp bằng Java I/O streams.',
     group: 'Nâng cao',
-    status: 'draft',
+    status: 'published',
   },
 ]
 

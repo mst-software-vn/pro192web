@@ -146,6 +146,17 @@ const components: Components = {
     </blockquote>
   ),
   hr: () => <hr className="border-hairline my-10" />,
+  table: ({ children }) => (
+    <div className="border-hairline my-6 overflow-x-auto rounded-lg border">
+      <table className="w-full min-w-[420px] border-collapse text-left text-[14px]">{children}</table>
+    </div>
+  ),
+  thead: ({ children }) => <thead className="bg-panel">{children}</thead>,
+  tr: ({ children }) => <tr className="border-hairline border-b last:border-b-0">{children}</tr>,
+  th: ({ children }) => (
+    <th className="text-ink-secondary px-4 py-2.5 font-semibold whitespace-nowrap">{children}</th>
+  ),
+  td: ({ children }) => <td className="text-ink-body px-4 py-2.5">{children}</td>,
   img: ImageRenderer,
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children }) => {
