@@ -267,9 +267,9 @@ The `super` keyword refers to the super class
 
 > **Note:** Where a sub class is to call a constructor in its parent class using the `super()` method call, it must be so as the first line of its own constructor. This is to ensure that objects are constructed from their most distant super class first.
 >
-> **Note:** A derived class does not inherit a superclass constructor by default
+> A derived class does not inherit a superclass constructor by default
 >
-> **Note:** If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically inserts a call to the no-argument constructor of the superclass. If the super class does not have a no-argument constructor, you will get a compile-time error. Object does have such a constructor, so if Object is the only superclass, there is no problem.
+> If a constructor does not explicitly invoke a superclass constructor, the Java compiler automatically inserts a call to the no-argument constructor of the superclass. If the super class does not have a no-argument constructor, you will get a compile-time error. Object does have such a constructor, so if Object is the only superclass, there is no problem.
 
 Similarly, we add constructors to other sub classes
 
