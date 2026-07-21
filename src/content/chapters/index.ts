@@ -52,7 +52,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Kế thừa',
     description: 'Kế thừa lớp, từ khóa extends, super và tái sử dụng mã nguồn trong Java.',
     group: 'Lập trình hướng đối tượng',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'da-hinh',
