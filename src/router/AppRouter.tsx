@@ -11,9 +11,12 @@ const DocsLayout = lazy(() =>
   import('../layout/DocsLayout').then((m) => ({ default: m.DocsLayout })),
 )
 const DocsPage = lazy(() => import('../pages/DocsPage').then((m) => ({ default: m.DocsPage })))
+const SyllabusPage = lazy(() =>
+  import('../pages/SyllabusPage').then((m) => ({ default: m.SyllabusPage })),
+)
 
 function RouteFallback() {
-  return <div className="min-h-svh bg-neutral-950" />
+  return <div className="bg-canvas min-h-svh" />
 }
 
 export function AppRouter() {
@@ -25,6 +28,9 @@ export function AppRouter() {
           <Route path="/docs" element={<DocsLayout />}>
             <Route index element={<Navigate to={firstChapterSlug} replace />} />
             <Route path=":slug" element={<DocsPage />} />
+          </Route>
+          <Route path="/syllabus-pro192-spring2021" element={<DocsLayout />}>
+            <Route index element={<SyllabusPage />} />
           </Route>
         </Routes>
       </Suspense>
