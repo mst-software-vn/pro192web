@@ -268,6 +268,7 @@ To create a package, you choose a name for the package and put a package stateme
 The package statement (for example, `package mypkg;`) must be the first line in the source file. There can be only one package statement in each source file, and it applies to all types in the file.
 
 ![Package Example](/images/dong-goi/14.jpg "Ví dụ package mypkg với lớp PkgDemo trong NetBeans")
+
 [Read more](https://docs.oracle.com/javase/tutorial/java/package/createpkgs.html)
 
 ## Access Modifier

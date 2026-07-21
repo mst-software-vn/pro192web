@@ -80,7 +80,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Bộ nhớ động',
     description: 'Cấp phát bộ nhớ động và quản lý vòng đời đối tượng trong Java.',
     group: 'Cấu trúc dữ liệu',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'xu-ly-ngoai-le',
