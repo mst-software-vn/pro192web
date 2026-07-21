@@ -44,7 +44,7 @@ export function LandingHeader() {
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-2">
-            <GithubStarButton />
+            {/* <GithubStarButton /> */}
             <ThemeToggle />
             <Link
               to={`/docs/${firstChapterSlug}`}
