@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { BlurText } from '../components/BlurText'
 import { CodeBlock } from '../components/CodeBlock'
 import { RevealOnScroll } from '../components/RevealOnScroll'
-import { firstChapterSlug } from '../content/chapters'
+import { contentStats, firstChapterSlug } from '../content/chapters'
 import { LandingHeader } from '../layout/LandingHeader'
 
 const HERO_CODE = `public class Employee extends Person {
@@ -77,7 +77,28 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Stats bar, Features, chapter grid, Footer — added in later tasks */}
+      <section className="border-hairline border-t px-6 py-10">
+        <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 text-center sm:grid-cols-4">
+          {[
+            { label: 'chương', value: String(contentStats.chapterCount) },
+            { label: 'ví dụ code Java', value: String(contentStats.codeBlockCount) },
+            {
+              label: 'hình minh hoạ',
+              value: `${Math.floor(contentStats.imageCount / 50) * 50}+`,
+            },
+            { label: '', value: 'Song ngữ Việt / English' },
+          ].map((stat) => (
+            <div key={stat.label || stat.value}>
+              <p className="text-accent-on-surface text-2xl font-semibold tracking-tight sm:text-3xl">
+                {stat.value}
+              </p>
+              {stat.label ? <p className="text-ink-muted mt-1 text-sm">{stat.label}</p> : null}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Features, chapter grid, Footer — added in later tasks */}
     </div>
   )
 }
