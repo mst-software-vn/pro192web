@@ -141,7 +141,7 @@ const components: Components = {
   strong: ({ children }) => <strong className="text-ink-secondary font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
   blockquote: ({ children }) => (
-    <blockquote className="border-accent-on-surface/60 bg-panel/60 text-ink-body my-5 rounded-r-md border-l-2 px-4 py-3 text-[15px] leading-7 [&>p:last-child]:mb-0 [&>p]:mb-2">
+    <blockquote className="bg-blue-600 dark:bg-blue-950/40 border-l-4 border-blue-400 dark:border-blue-500 text-white dark:text-blue-100 my-5 rounded-r-md px-4 py-3 text-[15px] leading-7 [&_p]:text-white dark:[&_p]:text-blue-100 [&_strong]:text-white dark:[&_strong]:text-blue-200 [&_a]:text-blue-200 dark:[&_a]:text-blue-300 [&_code]:text-white [&_code]:bg-blue-500/40 [&>p:last-child]:mb-0 [&>p]:mb-2">
       {children}
     </blockquote>
   ),
