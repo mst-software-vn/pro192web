@@ -7,13 +7,10 @@ interface DocsHeaderProps {
   onOpenMenu: () => void
 }
 
-// 3 cột của header khớp chính xác với 3 cột bên dưới (sidebar w-64 · nội dung · TOC w-56)
-// bằng cách dùng chung container mx-auto max-w-360 gap-10 px-4 lg:px-8 — để Logo,
-// Search và cụm nút bên phải thẳng hàng với sidebar/main/TOC, giống cách Laravel Docs làm.
 export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
   return (
     <header className="border-hairline bg-canvas/95 sticky top-0 z-30 border-b backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-360 items-center gap-10 px-4 lg:px-8">
+      <div className="mx-auto flex h-16 w-full max-w-360 items-center gap-10 px-4 lg:px-12">
         <div className="flex shrink-0 items-center gap-3 lg:w-64">
           <button
             type="button"
@@ -32,7 +29,7 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           </Link>
         </div>
 
-        <div className="hidden min-w-0 flex-1 md:block">
+        <div className="hidden min-w-0 flex-1 md:block lg:px-3">
           <SearchField />
         </div>
 

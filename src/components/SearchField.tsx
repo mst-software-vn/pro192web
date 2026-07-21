@@ -3,7 +3,7 @@ export function SearchField() {
   return (
     <button
       type="button"
-      className="border-hairline bg-panel/60 text-ink-faint hover:border-hairline-strong flex w-full items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors"
+      className="max-w-xl border-hairline bg-panel/60 text-ink-faint hover:border-hairline-strong flex w-full items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors"
     >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4 shrink-0">
         <circle cx="11" cy="11" r="7" />
