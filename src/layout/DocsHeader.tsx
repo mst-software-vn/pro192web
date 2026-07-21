@@ -10,7 +10,7 @@ interface DocsHeaderProps {
 export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
   return (
     <header className="border-hairline bg-canvas/95 sticky top-0 z-30 border-b backdrop-blur">
-      <div className="mx-auto flex h-16 w-full max-w-360 items-center gap-10 px-4 lg:px-12">
+      <div className="mx-auto flex h-20 w-full max-w-360 items-center gap-10 px-4 lg:px-12">
         <div className="flex shrink-0 items-center gap-3 lg:w-64">
           <button
             type="button"
@@ -23,9 +23,9 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
             </svg>
           </button>
 
-          <Link to="/" className="flex items-baseline gap-2">
-            <span className="text-ink text-[15px] font-semibold tracking-tight">PRO192</span>
-            <span className="text-ink-faint text-xs">Docs</span>
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img src="/images/logo.jpg" alt="PRO192 Docs" className="h-10" />
           </Link>
         </div>
 
