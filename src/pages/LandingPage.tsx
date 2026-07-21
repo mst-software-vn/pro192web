@@ -9,9 +9,12 @@ export function LandingPage() {
     <div className="min-h-svh bg-white">
       <header className="border-b border-neutral-200">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
-          <span className="text-[15px] font-semibold tracking-tight text-neutral-900">
-            PRO192 <span className="text-accent">·</span> Java Edition
-          </span>
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-10" />
+          </Link>
+
+          {/* Docs button */}
           <Link
             to={`/docs/${firstChapterSlug}`}
             className="rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-700 active:scale-[0.98]"
