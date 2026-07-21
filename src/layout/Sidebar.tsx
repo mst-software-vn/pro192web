@@ -1,22 +1,9 @@
 import { NavLink } from 'react-router-dom'
-import { chapters, type ChapterGroup } from '../content/chapters'
+import { groupChapters } from '../content/chapters'
 
 interface SidebarProps {
   /** Gọi sau khi bấm 1 mục — dùng để đóng drawer trên mobile */
   onNavigate?: () => void
-}
-
-function groupChapters(): ChapterGroup[] {
-  const groups: ChapterGroup[] = []
-  for (const chapter of chapters) {
-    const current = groups[groups.length - 1]
-    if (current && current.name === chapter.group) {
-      current.items.push(chapter)
-    } else {
-      groups.push({ name: chapter.group, items: [chapter] })
-    }
-  }
-  return groups
 }
 
 export function Sidebar({ onNavigate }: SidebarProps) {

@@ -1,6 +1,6 @@
-import type { Chapter } from '../types'
+import type { Chapter, ChapterGroup } from '../types'
 
-export type { ChapterGroup } from '../types'
+export type { Chapter, ChapterGroup }
 
 // Nạp toàn bộ nội dung Markdown tại build-time — không cần fetch runtime.
 const rawBodies = import.meta.glob('./*.md', {
@@ -120,3 +120,42 @@ export function getChapter(slug: string): Chapter | undefined {
 }
 
 export const firstChapterSlug = chapters[0].slug
+
+// Gom chương liền kề cùng `group` thành 1 nhóm, giữ nguyên thứ tự khai báo —
+// dùng chung cho Sidebar (Docs) và DocsNavDropdown (Landing) để tránh 2 nguồn sự thật.
+export function groupChapters(): ChapterGroup[] {
+  const groups: ChapterGroup[] = []
+  for (const chapter of chapters) {
+    const current = groups[groups.length - 1]
+    if (current && current.name === chapter.group) {
+      current.items.push(chapter)
+    } else {
+      groups.push({ name: chapter.group, items: [chapter] })
+    }
+  }
+  return groups
+}
+
+function countMatches(text: string, pattern: RegExp): number {
+  return (text.match(pattern) ?? []).length
+}
+
+// Số liệu thật cho stats bar ở Landing — tính từ chính nội dung .md đã publish,
+// không hard-code để không lệch khi thêm chương/ảnh mới.
+export const contentStats = (() => {
+  const publishedBodies = chapters
+    .filter((chapter): chapter is Chapter & { body: string } => chapter.status === 'published' && !!chapter.body)
+    .map((chapter) => chapter.body)
+
+  const codeBlockCount = publishedBodies.reduce(
+    (sum, body) => sum + countMatches(body, /```java/g),
+    0,
+  )
+  const imageCount = publishedBodies.reduce((sum, body) => sum + countMatches(body, /^!\[/gm), 0)
+
+  return {
+    chapterCount: chapters.length,
+    codeBlockCount,
+    imageCount,
+  }
+})()
