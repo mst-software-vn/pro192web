@@ -87,7 +87,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Xử lý ngoại lệ',
     description: 'Cơ chế xử lý ngoại lệ (Exception handling) trong Java: try, catch, finally, throw.',
     group: 'Nâng cao',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'nhap-xuat-tep',
