@@ -1,3 +1,4 @@
+import { useLanguage } from '../hooks/use-language'
 import { Sidebar } from './Sidebar'
 
 interface MobileNavProps {
@@ -7,6 +8,8 @@ interface MobileNavProps {
 
 // Drawer trượt từ trái — chỉ hiển thị dưới breakpoint lg (thay thế sidebar cố định).
 export function MobileNav({ open, onClose }: MobileNavProps) {
+  const { language } = useLanguage()
+
   return (
     <div className={`fixed inset-0 z-40 lg:hidden ${open ? '' : 'pointer-events-none'}`} aria-hidden={!open}>
       <div
@@ -25,7 +28,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
           <button
             type="button"
             onClick={onClose}
-            aria-label="Đóng menu"
+            aria-label={language === 'en' ? 'Close menu' : 'Đóng menu'}
             className="text-ink-muted hover:bg-panel hover:text-ink flex h-8 w-8 items-center justify-center rounded-md"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4">

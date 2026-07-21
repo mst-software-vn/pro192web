@@ -31,6 +31,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'chao-mung',
     title: 'Chào mừng',
     description: 'Giới thiệu về khóa học PRO192, mục tiêu và kết quả học tập.',
+    titleEn: 'Welcome',
+    descriptionEn: 'Introduction to the PRO192 course, objectives and learning outcomes.',
     group: 'Nhập môn',
     status: 'published',
   },
@@ -39,6 +41,9 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Introduction Course',
     description:
       'Giới thiệu về cấu trúc khóa học, mục tiêu và các khái niệm nền tảng của lập trình hướng đối tượng với Java.',
+    titleEn: 'Introduction Course',
+    descriptionEn:
+      'Introduction to the course structure, objectives and foundational concepts of object-oriented programming with Java.',
     group: 'Nhập môn',
     status: 'published',
   },
@@ -47,6 +52,9 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Nền tảng',
     description:
       'Kiến thức cơ bản về Java: JVM, nền tảng, kiểu dữ liệu, biến, mảng, toán tử và cấu trúc logic.',
+    titleEn: 'Foundations',
+    descriptionEn:
+      'Java fundamentals: JVM, platform, data types, variables, arrays, operators and control structures.',
     group: 'Nền tảng ngôn ngữ',
     status: 'published',
   },
@@ -55,6 +63,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Đóng gói',
     description:
       'Đóng gói, lớp, đối tượng, hàm tạo, hàm thành viên và các bộ điều khiển truy cập trong Java.',
+    titleEn: 'Encapsulation',
+    descriptionEn: 'Encapsulation, classes, objects, constructors, methods and access modifiers in Java.',
     group: 'Lập trình hướng đối tượng',
     status: 'published',
   },
@@ -62,6 +72,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'ke-thua',
     title: 'Kế thừa',
     description: 'Kế thừa lớp, từ khóa extends, super và tái sử dụng mã nguồn trong Java.',
+    titleEn: 'Inheritance',
+    descriptionEn: 'Class inheritance, the extends and super keywords, and code reuse in Java.',
     group: 'Lập trình hướng đối tượng',
     status: 'published',
   },
@@ -69,6 +81,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'da-hinh',
     title: 'Đa hình',
     description: 'Đa hình, nạp chồng, ghi đè phương thức và liên kết động trong Java.',
+    titleEn: 'Polymorphism',
+    descriptionEn: 'Polymorphism, overloading, method overriding and dynamic binding in Java.',
     group: 'Lập trình hướng đối tượng',
     status: 'published',
   },
@@ -76,6 +90,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'mang-doi-tuong',
     title: 'Mảng đối tượng',
     description: 'Khai báo, khởi tạo và thao tác trên mảng đối tượng trong Java.',
+    titleEn: 'Array of Objects',
+    descriptionEn: 'Declaring, initializing and manipulating arrays of objects in Java.',
     group: 'Cấu trúc dữ liệu',
     status: 'published',
   },
@@ -83,6 +99,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'bo-suu-tap',
     title: 'Bộ sưu tập',
     description: 'Các kiểu dữ liệu trừu tượng trong Java Collections: List, Set, Map.',
+    titleEn: 'Collections',
+    descriptionEn: 'Abstract data types in the Java Collections Framework: List, Set, Map.',
     group: 'Cấu trúc dữ liệu',
     status: 'published',
   },
@@ -90,6 +108,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'bo-nho-dong',
     title: 'Bộ nhớ động',
     description: 'Cấp phát bộ nhớ động và quản lý vòng đời đối tượng trong Java.',
+    titleEn: 'Dynamic Memory',
+    descriptionEn: 'Dynamic memory allocation and object lifecycle management in Java.',
     group: 'Cấu trúc dữ liệu',
     status: 'published',
   },
@@ -97,6 +117,8 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'xu-ly-ngoai-le',
     title: 'Xử lý ngoại lệ',
     description: 'Cơ chế xử lý ngoại lệ (Exception handling) trong Java: try, catch, finally, throw.',
+    titleEn: 'Exception Handling',
+    descriptionEn: 'Exception handling mechanism in Java: try, catch, finally, throw.',
     group: 'Nâng cao',
     status: 'published',
   },
@@ -104,10 +126,26 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     slug: 'nhap-xuat-tep',
     title: 'Nhập xuất tệp',
     description: 'Đọc và ghi dữ liệu từ/đến tệp bằng Java I/O streams.',
+    titleEn: 'Input & Output',
+    descriptionEn: 'Reading and writing data to/from files using Java I/O streams.',
     group: 'Nâng cao',
     status: 'published',
   },
 ]
+
+// Tên nhóm hiển thị tiếng Anh — `group` vẫn dùng tiếng Việt làm key duy nhất
+// (khớp docs/content/sidebar/sidebar.txt), tránh phải thêm field lặp lại trên mỗi chương.
+const GROUP_LABELS_EN: Record<string, string> = {
+  'Nhập môn': 'Getting Started',
+  'Nền tảng ngôn ngữ': 'Language Fundamentals',
+  'Lập trình hướng đối tượng': 'Object-Oriented Programming',
+  'Cấu trúc dữ liệu': 'Data Structures',
+  'Nâng cao': 'Advanced Topics',
+}
+
+export function groupLabel(name: string, language: 'vi' | 'en'): string {
+  return language === 'en' ? (GROUP_LABELS_EN[name] ?? name) : name
+}
 
 export const chapters: Chapter[] = chapterMeta.map((meta) => ({
   ...meta,

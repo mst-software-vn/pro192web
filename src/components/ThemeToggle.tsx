@@ -1,4 +1,5 @@
 import { useState, type ReactElement } from 'react'
+import { useLanguage } from '../hooks/use-language'
 import { useTheme, type ThemePreference } from '../hooks/use-theme'
 
 function SunIcon() {
@@ -30,15 +31,23 @@ function MonitorIcon() {
   )
 }
 
-const OPTIONS: { value: ThemePreference; label: string; icon: () => ReactElement }[] = [
+const OPTIONS_VI: { value: ThemePreference; label: string; icon: () => ReactElement }[] = [
   { value: 'light', label: 'Sáng', icon: SunIcon },
   { value: 'dark', label: 'Tối', icon: MoonIcon },
   { value: 'system', label: 'Hệ thống', icon: MonitorIcon },
 ]
 
+const OPTIONS_EN: { value: ThemePreference; label: string; icon: () => ReactElement }[] = [
+  { value: 'light', label: 'Light', icon: SunIcon },
+  { value: 'dark', label: 'Dark', icon: MoonIcon },
+  { value: 'system', label: 'System', icon: MonitorIcon },
+]
+
 export function ThemeToggle() {
   const { preference, setPreference } = useTheme()
+  const { language } = useLanguage()
   const [open, setOpen] = useState(false)
+  const OPTIONS = language === 'en' ? OPTIONS_EN : OPTIONS_VI
 
   const Current = OPTIONS.find((option) => option.value === preference)?.icon ?? MonitorIcon
 
@@ -47,7 +56,7 @@ export function ThemeToggle() {
       <button
         type="button"
         onClick={() => setOpen((value) => !value)}
-        aria-label="Đổi giao diện sáng/tối"
+        aria-label={language === 'en' ? 'Toggle light/dark theme' : 'Đổi giao diện sáng/tối'}
         aria-expanded={open}
         className="text-ink-muted hover:bg-panel hover:text-ink flex h-9 w-9 items-center justify-center rounded-md transition-colors"
       >

@@ -1,4 +1,5 @@
 import type { HeadingItem } from '../lib/markdown'
+import { useLanguage } from '../hooks/use-language'
 
 interface TableOfContentsProps {
   headings: HeadingItem[]
@@ -6,11 +7,14 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
+  const { language } = useLanguage()
   if (headings.length === 0) return null
 
   return (
     <nav className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
-      <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">Trên trang này</p>
+      <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">
+        {language === 'en' ? 'On this page' : 'Trên trang này'}
+      </p>
       <ul className="border-hairline space-y-2.5 border-l pl-4">
         {headings.map((heading) => {
           const isActive = heading.id === activeId

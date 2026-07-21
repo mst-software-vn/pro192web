@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import { groupChapters } from '../content/chapters'
+import { groupChapters, groupLabel } from '../content/chapters'
+import { useLanguage } from '../hooks/use-language'
 
 interface SidebarProps {
   /** Gọi sau khi bấm 1 mục — dùng để đóng drawer trên mobile */
@@ -8,13 +9,14 @@ interface SidebarProps {
 
 export function Sidebar({ onNavigate }: SidebarProps) {
   const groups = groupChapters()
+  const { language } = useLanguage()
 
   return (
     <nav className="space-y-7">
       {groups.map((group) => (
         <div key={group.name}>
           <p className="text-ink-faint mb-2 px-3 text-xs font-semibold tracking-wider uppercase">
-            {group.name}
+            {groupLabel(group.name, language)}
           </p>
           <ul className="space-y-0.5">
             {group.items.map((chapter) => (
@@ -29,10 +31,10 @@ export function Sidebar({ onNavigate }: SidebarProps) {
                     }`
                   }
                 >
-                  <span>{chapter.title}</span>
+                  <span>{language === 'en' ? chapter.titleEn : chapter.title}</span>
                   {chapter.status === 'draft' ? (
                     <span className="bg-well text-ink-faint shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase">
-                      Sắp ra mắt
+                      {language === 'en' ? 'Coming soon' : 'Sắp ra mắt'}
                     </span>
                   ) : null}
                 </NavLink>

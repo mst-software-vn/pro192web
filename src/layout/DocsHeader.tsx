@@ -2,12 +2,15 @@ import { Link } from 'react-router-dom'
 import { LanguageSelector } from '../components/LanguageSelector'
 import { SearchField } from '../components/SearchField'
 import { ThemeToggle } from '../components/ThemeToggle'
+import { useLanguage } from '../hooks/use-language'
 
 interface DocsHeaderProps {
   onOpenMenu: () => void
 }
 
 export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
+  const { language } = useLanguage()
+
   return (
     <header className="border-hairline bg-canvas/95 sticky top-0 z-30 border-b backdrop-blur">
       <div className="mx-auto flex h-20 w-full max-w-360 items-center gap-10 px-4 lg:px-12">
@@ -15,7 +18,7 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           <button
             type="button"
             onClick={onOpenMenu}
-            aria-label="Mở menu điều hướng"
+            aria-label={language === 'en' ? 'Open navigation menu' : 'Mở menu điều hướng'}
             className="text-ink-muted hover:bg-panel hover:text-ink -ml-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-md lg:hidden"
           >
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5">
@@ -24,8 +27,9 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img src="/images/logo.jpg" alt="PRO192 Docs" className="h-10" />
+          <Link to="/" className="flex shrink-0 items-center">
+            <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
+            <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-9 dark:block" />
           </Link>
         </div>
 

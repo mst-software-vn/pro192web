@@ -10,7 +10,11 @@ export interface Chapter {
   title: string
   /** Mô tả ngắn (tiếng Việt) cho card ở landing và phần mở đầu trang docs */
   description: string
-  /** Nhóm trong sidebar (kiểu Laravel: gom mục theo chủ đề) */
+  /** Bản dịch tiếng Anh của title — hiển thị khi người dùng chọn English trong khu vực Docs */
+  titleEn: string
+  /** Bản dịch tiếng Anh của description */
+  descriptionEn: string
+  /** Nhóm trong sidebar (kiểu Laravel: gom mục theo chủ đề) — tên nhóm tiếng Việt, dùng làm key duy nhất */
   group: string
   /** published: đã có nội dung .md · draft: đang cập nhật */
   status: ChapterStatus
