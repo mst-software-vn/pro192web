@@ -6,6 +6,8 @@ An exception is an event, which occurs during the execution of a program, that d
 
 When an error occurs within a method, the method creates an object and hands it off to the runtime system. The object, called an exception object, contains information about the error, including its type and the state of the program when the error occurred. Creating an exception object and handing it to the runtime system is called throwing an exception.
 
+[Read more](https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html)
+
 ### What Is an Exception
 
 For example:
@@ -45,7 +47,9 @@ For example:
 
 ![unchecked exception example](/images/xu-ly-ngoai-le/3.jpg "Ví dụ unchecked exception với truy cập mảng ngoài phạm vi")
 
-If you have declared an array of size 5 in your program, and trying to call the 6th element of the array then an error occurs.
+If you have declared an array of size 5 in your program, and trying to call the 6th element of the array then 
+
+[Read more](https://stackify.com/types-of-exceptions-java/)
 
 ### How to fix
 
@@ -73,7 +77,7 @@ When the program runs to the row 14, if the file name "computer.txt" does not ex
 
 The Output will be:
 
-```
+```Block
 something are wrong
 try-catch is finished
 ```
@@ -86,7 +90,7 @@ When you try to get 6th elements, an exception object is created (its type is `A
 
 The output will be:
 
-```
+```Block
 1,2,3,4,5,something are wrong
 try-catch is finished
 ```
@@ -116,15 +120,15 @@ If you input 18 then the statement `throw new Exception()` will create an except
 ### Summary
 
 - A try block is always followed by a catch block, which handles the exception that occurs in associated try block.
-- A single try block can have multiple catch blocks associated with it.
-- A try statement may be nested inside either the try or catch block of another try statement.
+- A single try block can have multiple catch blocks associated with it. [See catching multiple exceptions in java](https://docs.oracle.com/javase/7/docs/technotes/guides/language/catch-multiple.html)
+- A try statement may be nested inside either the try or catch block of another try statement. [See Nesting of try/catch Blocks](https://beginnersbook.com/2013/04/nested-try-catch/#:~:text=When%20a%20try%20catch%20block,that%20that%20catch%20block%20executes.)
 - When you write a method that causes an exception. If you do not want to handle this error you can throw it to another method to handle the error by using throws keyword
-- You can create your own exception Classes.
+- You can create your own exception Classes [See Custom Exception Classes](https://www.javatpoint.com/custom-exception)
 
 ### Course slide
 
-- [Exceptions.pdf](https://pro192web.netlify.app/resource/Exceptions.pdf)
+- [Exceptions.pdf](https://pro192web.netlify.app/resource/Exception%20Handling.pdf)
 
 ### Workshop
 
-Complete the workshop2
+Complete the [workshop2](https://pro192web.netlify.app/workshop/workshop2.pdf)
