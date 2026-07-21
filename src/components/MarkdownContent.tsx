@@ -50,6 +50,14 @@ function Figure({ src, alt, title }: { src?: string; alt?: string; title?: strin
   )
 }
 
+// Đặt tên tường minh (khác biệt "img") để so sánh identity chính xác trong `p` bên dưới —
+// react-markdown truyền element CHƯA render (type = hàm mapping này, chưa phải <Figure>)
+// làm children của <p>, vì React chỉ thực sự gọi hàm này ở bước render sau, không phải
+// lúc `p` nhận children. So type với Figure (thứ hàm này TRẢ VỀ) sẽ luôn sai.
+function ImageRenderer({ src, alt, title }: { src?: unknown; alt?: string; title?: string }) {
+  return <Figure src={typeof src === 'string' ? src : undefined} alt={alt} title={title} />
+}
+
 function makeHeading(depth: 2 | 3 | 4) {
   const styles: Record<2 | 3 | 4, string> = {
     2: 'mt-12 mb-4 text-2xl font-semibold tracking-tight text-white',
@@ -78,7 +86,7 @@ const components: Components = {
     // mà <figure> không hợp lệ bên trong <p>. Bỏ wrapper <p> khi đoạn văn chỉ chứa 1 ảnh.
     const items = Array.isArray(children) ? children : [children]
     const meaningful = items.filter((child) => !(typeof child === 'string' && child.trim() === ''))
-    if (meaningful.length === 1 && isValidElement(meaningful[0]) && meaningful[0].type === Figure) {
+    if (meaningful.length === 1 && isValidElement(meaningful[0]) && meaningful[0].type === ImageRenderer) {
       return <>{children}</>
     }
     return <p className="mb-4 text-[15px] leading-7 text-neutral-300">{children}</p>
@@ -112,9 +120,7 @@ const components: Components = {
     </blockquote>
   ),
   hr: () => <hr className="my-10 border-neutral-800" />,
-  img: ({ src, alt, title }) => (
-    <Figure src={typeof src === 'string' ? src : undefined} alt={alt} title={title} />
-  ),
+  img: ImageRenderer,
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children }) => {
     const text = flattenToText(children).replace(/\n$/, '')

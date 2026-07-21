@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 import { getChapter } from '../content/chapters'
+import { useActiveHeading } from '../hooks/use-active-heading'
 import { extractHeadings } from '../lib/markdown'
 import { DocsHeader } from './DocsHeader'
 import { MobileNav } from './MobileNav'
@@ -15,6 +16,7 @@ export function DocsLayout() {
 
   const chapter = slug ? getChapter(slug) : undefined
   const headings = chapter?.body ? extractHeadings(chapter.body) : []
+  const activeHeadingId = useActiveHeading(headings.map((heading) => heading.id))
 
   return (
     <div className="min-h-svh bg-neutral-950">
@@ -33,7 +35,7 @@ export function DocsLayout() {
         </main>
 
         <aside className="hidden w-56 shrink-0 py-10 xl:block">
-          <TableOfContents headings={headings} />
+          <TableOfContents headings={headings} activeId={activeHeadingId} />
         </aside>
       </div>
     </div>
