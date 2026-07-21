@@ -98,7 +98,68 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Features, chapter grid, Footer — added in later tasks */}
+      <section className="border-hairline border-t px-6 py-20">
+        <div className="mx-auto max-w-5xl">
+          <RevealOnScroll>
+            <h2 className="text-ink text-2xl font-semibold tracking-tight">Vì sao học tại đây?</h2>
+          </RevealOnScroll>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: 'Song ngữ Việt – Anh',
+                description: 'Nội dung dịch sang tiếng Việt, giữ nguyên thuật ngữ lập trình chuẩn.',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5">
+                    <circle cx="12" cy="12" r="9" />
+                    <path strokeLinecap="round" d="M3 12h18M12 3c2.5 2.5 3.8 5.7 3.8 9s-1.3 6.5-3.8 9c-2.5-2.5-3.8-5.7-3.8-9s1.3-6.5 3.8-9Z" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Code minh hoạ thực tế',
+                description: 'Mỗi khái niệm đi kèm ví dụ Java và sơ đồ minh hoạ cụ thể.',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Miễn phí & mã nguồn mở',
+                description: 'Toàn bộ nội dung công khai trên GitHub, tự do tham khảo và đóng góp.',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v3m0 12v3m9-9h-3M6 12H3m14.5-6.5-2.1 2.1M8.6 15.4l-2.1 2.1m0-11 2.1 2.1m8.8 8.8 2.1 2.1" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                ),
+              },
+              {
+                title: 'Bám sát syllabus PRO192',
+                description: 'Cấu trúc chương bám theo syllabus chính thức của môn học.',
+                icon: (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-5 w-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4 19.5V6a2 2 0 0 1 2-2h11a1 1 0 0 1 1 1v14.5M6 19.5A1.5 1.5 0 0 1 7.5 18H18M6 19.5A1.5 1.5 0 0 0 7.5 21H18v-3" />
+                  </svg>
+                ),
+              },
+            ].map((feature, index) => (
+              <RevealOnScroll key={feature.title} delay={index * 80}>
+                <div className="border-hairline h-full rounded-lg border p-6">
+                  <div className="bg-accent-soft text-accent-on-surface flex h-10 w-10 items-center justify-center rounded-md dark:bg-white/5">
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-ink mt-4 text-base font-semibold">{feature.title}</h3>
+                  <p className="text-ink-body mt-1.5 text-sm leading-relaxed">{feature.description}</p>
+                </div>
+              </RevealOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Chapter grid, Footer — added in later tasks */}
     </div>
   )
 }
