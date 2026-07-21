@@ -59,7 +59,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Đa hình',
     description: 'Đa hình, nạp chồng, ghi đè phương thức và liên kết động trong Java.',
     group: 'Lập trình hướng đối tượng',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'mang-doi-tuong',
