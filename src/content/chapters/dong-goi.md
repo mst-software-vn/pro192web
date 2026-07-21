@@ -28,7 +28,7 @@ A formal definition of a class includes two key components: Fields (Attributes) 
 3. **Looking for verbs**, methods or behaviors are often described by verbs.
 4. **Find the relationship** among classes. TIPS: *If your problem has two main nouns. They have often the relationship.*
 
-![Encapsulation example 1](/images/dong-goi/encapsulation-example-1.png "Phân tích danh từ chính, danh từ phụ và động từ trong đề bài Car")
+![Encapsulation example 1](/images/dong-goi/1.jpg "Phân tích danh từ chính, danh từ phụ và động từ trong đề bài Car")
 
 We use Unified Modeling Language (UML) to describe the class structure. UML provides mechanisms to represent class members, such as attributes and methods, and additional information.
 
@@ -36,7 +36,7 @@ We use Unified Modeling Language (UML) to describe the class structure. UML prov
 
 A UML class diagram is used to represent the Car class
 
-![Encapsulation example 2](/images/dong-goi/encapsulation-example-2.png "UML class diagram của lớp Car với 3 ngăn: class name, fields, methods")
+![Encapsulation example 2](/images/dong-goi/2.jpg "UML class diagram của lớp Car với 3 ngăn: class name, fields, methods")
 
 #### How to draw the class structure?
 
@@ -100,9 +100,9 @@ public class Car {
 }
 ```
 
-![Demo Car Class](/images/dong-goi/demo-car-class.png "Demo chạy chương trình Car Class")
+![Demo Car Class](/images/dong-goi/3.jpg "Demo chạy chương trình Car Class")
 
-![Output Car Class](/images/dong-goi/output-car-class.png "Kết quả xuất ra console của Car Class")
+![Output Car Class](/images/dong-goi/4.jpg "Kết quả xuất ra console của Car Class")
 
 ### Constructor
 
@@ -118,19 +118,19 @@ The default constructor takes its name from the class itself. The prototype for 
 
 Overloading a class' constructor adds communication options for client code. Client code can select the most appropriate set of arguments at creation time.
 
-![Encapsulation8](/images/dong-goi/encapsulation-8.png "Minh hoạ đối tượng c3 gọi constructor có tham số")
+![Encapsulation8](/images/dong-goi/5.jpg "Minh hoạ đối tượng c3 gọi constructor có tham số")
 
 This method is called the constructor with parameters.
 
-![Encapsulation9](/images/dong-goi/encapsulation-9.png "Đối tượng c3 được khởi tạo với các giá trị {\"red\", 100, true, true}")
+![Encapsulation9](/images/dong-goi/6.jpg "Đối tượng c3 được khởi tạo với các giá trị {\"red\", 100, true, true}")
 
 In the above code, the third object c3 is created and c3 invokes the constructor with parameters. All fields of c3 are assigned as `{"red", 100, true, true}`.
 
-![Encapsulation10](/images/dong-goi/encapsulation-10.png "Trạng thái các trường của đối tượng c3 sau khi khởi tạo")
+![Encapsulation10](/images/dong-goi/7.jpg "Trạng thái các trường của đối tượng c3 sau khi khởi tạo")
 
 Because c3 invokes `pressAcceleratorButton()`, The state of c3 is printed out.
 
-![Encapsulation11](/images/dong-goi/encapsulation-11.png "Kết quả in ra khi c3 gọi pressAcceleratorButton()")
+![Encapsulation11](/images/dong-goi/8.jpg "Kết quả in ra khi c3 gọi pressAcceleratorButton()")
 
 > **Note:** If the class definition includes the prototype for a constructor with some parameters but does not include the prototype for a no-argument default constructor, the compiler DOES NOT insert an empty-body, no-argument default constructor. The compiler only inserts an empty-body, no-argument default constructor if the class definition does not declare ANY constructor.
 
@@ -148,7 +148,7 @@ The keyword `this` returns the address of the current object. That is, this hold
 
 **Scope of this:** This is created and used just when the member method is called. After the member method terminates this will be discarded.
 
-![Encapsulation12](/images/dong-goi/encapsulation-12.png "Con trỏ this trỏ đến địa chỉ 4000 của đối tượng c3")
+![Encapsulation12](/images/dong-goi/9.jpg "Con trỏ this trỏ đến địa chỉ 4000 của đối tượng c3")
 
 Upon entering the constructor with parameters, the pointer this is created by Java and it is storing the address of the object (4000). c3 and this are pointing to the current object. Using this in here to distinguish local variable and instance variable/field. After assigning values of input parameters to instance variables of c3, this will be discarded.
 
@@ -160,23 +160,23 @@ Member functions are the functions, which have their declaration inside the clas
 
 At the time, the Car class contains member functions as:
 
-![Encapsulation13](/images/dong-goi/encapsulation-13.png "Danh sách các member function trong lớp Car")
+![Encapsulation13](/images/dong-goi/10.jpg "Danh sách các member function trong lớp Car")
 
 After an object is created and assigned default values. Now, if you want to set one instance variable to other value. For example, change only one instance variable colour of c3 to `'black'`. What solution for this case?
 
 It's OK, we will add more a method `setColour()` to the Car class design. The code as:
 
-![Encapsulation14](/images/dong-goi/encapsulation-14.png "Thêm phương thức setColour() vào lớp Car")
+![Encapsulation14](/images/dong-goi/11.jpg "Thêm phương thức setColour() vào lớp Car")
 
 The main code:
 
-![Encapsulation15](/images/dong-goi/encapsulation-15.png "Gọi c3.setColour(\"black\") trong hàm main")
+![Encapsulation15](/images/dong-goi/12.jpg "Gọi c3.setColour(\"black\") trong hàm main")
 
 the pointer c3 invokes `setColour("black")`. Therefore, at the time `this.Colour=...` is used to access to instance variable of c3.
 
 The same above idea, if you want to get the value of one instance variable you should add more a method `getColour()`
 
-![Encapsulation16](/images/dong-goi/encapsulation-16.png "Thêm phương thức getColour() vào lớp Car")
+![Encapsulation16](/images/dong-goi/13.jpg "Thêm phương thức getColour() vào lớp Car")
 
 You can also add more other getters/setters. The completed code:
 
@@ -263,6 +263,8 @@ To create a package, you choose a name for the package and put a package stateme
 
 The package statement (for example, `package mypkg;`) must be the first line in the source file. There can be only one package statement in each source file, and it applies to all types in the file.
 
+![Package Example](/images/dong-goi/14.jpg "Ví dụ package mypkg với lớp PkgDemo trong NetBeans")
+
 - Package Example — read more>
 
 ## Access Modifier
@@ -276,11 +278,11 @@ To specify the visibility of a class member (i.e. any attribute or method), we u
 
 these keywords are called access modifier
 
-![Encapsulation20](/images/dong-goi/encapsulation-20.png "Bảng ký hiệu các access modifier trong UML")
+![Encapsulation20](/images/dong-goi/15.jpg "Bảng ký hiệu các access modifier trong UML")
 
 Let's understand the access modifiers in Java by a simple table.
 
-![Encapsulation21](/images/dong-goi/encapsulation-21.png "Bảng so sánh phạm vi truy cập của private, default, protected, public")
+![Encapsulation21](/images/dong-goi/16.jpg "Bảng so sánh phạm vi truy cập của private, default, protected, public")
 
 ### private
 
