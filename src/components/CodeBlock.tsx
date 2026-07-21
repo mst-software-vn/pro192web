@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
+// Side-effect: đăng ký grammar Java vào Prism (prism-react-renderer không bundle sẵn).
+import '../lib/register-prism-java'
 
 interface CodeBlockProps {
   code: string
