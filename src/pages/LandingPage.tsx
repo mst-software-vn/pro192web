@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { BlurText } from '../components/BlurText'
 import { CodeBlock } from '../components/CodeBlock'
 import { RevealOnScroll } from '../components/RevealOnScroll'
-import { contentStats, firstChapterSlug } from '../content/chapters'
+import { chapters, contentStats, firstChapterSlug, groupChapters } from '../content/chapters'
 import { LandingHeader } from '../layout/LandingHeader'
 
 const HERO_CODE = `public class Employee extends Person {
@@ -159,7 +159,101 @@ export function LandingPage() {
         </div>
       </section>
 
-      {/* Chapter grid, Footer — added in later tasks */}
+      <section id="noi-dung" className="border-hairline border-t px-6 py-24">
+        <div className="mx-auto max-w-5xl">
+          <RevealOnScroll>
+            <h2 className="text-ink text-2xl font-semibold tracking-tight">Nội dung khoá học</h2>
+            <p className="text-ink-body mt-2 max-w-2xl">
+              11 chương bám sát chương trình PRO192, đi từ khái niệm nền tảng đến các chủ đề nâng
+              cao của lập trình hướng đối tượng.
+            </p>
+          </RevealOnScroll>
+
+          <ol className="bg-hairline border-hairline mt-10 grid gap-px overflow-hidden rounded-lg border sm:grid-cols-2">
+            {chapters.map((chapter, index) => (
+              <li key={chapter.slug} className="bg-canvas">
+                <RevealOnScroll delay={(index % 2) * 80}>
+                  <Link
+                    to={`/docs/${chapter.slug}`}
+                    className="hover:bg-panel group block p-6 transition-colors"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="text-ink-faint font-mono text-sm">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      {chapter.status === 'draft' ? (
+                        <span className="bg-well text-ink-faint shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium tracking-wide uppercase">
+                          Sắp ra mắt
+                        </span>
+                      ) : null}
+                    </div>
+                    <h3 className="text-ink group-hover:text-accent-on-surface mt-3 text-base font-semibold">
+                      {chapter.title}
+                    </h3>
+                    <p className="text-ink-body mt-1.5 text-sm leading-relaxed">{chapter.description}</p>
+                  </Link>
+                </RevealOnScroll>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <footer className="border-hairline border-t px-6 py-16">
+        <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-3">
+          <div>
+            <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-8 dark:hidden" />
+            <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-8 dark:block" />
+            <p className="text-ink-muted mt-3 max-w-xs text-sm">
+              Tài liệu học Lập trình Hướng đối tượng với Java, thực hiện bởi MST Software.
+            </p>
+          </div>
+
+          <div>
+            <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">Tài liệu</p>
+            <ul className="space-y-2 text-sm">
+              {groupChapters().map((group) => (
+                <li key={group.name}>
+                  <Link
+                    to={`/docs/${group.items[0].slug}`}
+                    className="text-ink-body hover:text-ink transition-colors"
+                  >
+                    {group.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/syllabus-pro192-spring2021"
+                  className="text-ink-body hover:text-ink transition-colors"
+                >
+                  Giáo trình
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">Dự án</p>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://github.com/mst-software-vn/pro192web"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-ink-body hover:text-ink transition-colors"
+                >
+                  GitHub repository
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p className="text-ink-faint mx-auto mt-12 max-w-5xl text-sm">
+          © 2026 MST Software · Tài liệu học Java OOP (PRO192)
+        </p>
+      </footer>
     </div>
   )
 }
