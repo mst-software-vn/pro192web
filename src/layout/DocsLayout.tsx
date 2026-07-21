@@ -3,6 +3,7 @@ import { Outlet, useParams } from 'react-router-dom'
 import { getChapter } from '../content/chapters'
 import { useActiveHeading } from '../hooks/use-active-heading'
 import { extractHeadings } from '../lib/markdown'
+import { DocsFooter } from './DocsFooter'
 import { DocsHeader } from './DocsHeader'
 import { MobileNav } from './MobileNav'
 import { Sidebar } from './Sidebar'
@@ -19,11 +20,11 @@ export function DocsLayout() {
   const activeHeadingId = useActiveHeading(headings.map((heading) => heading.id))
 
   return (
-    <div className="min-h-svh bg-neutral-950">
+    <div className="bg-canvas flex min-h-svh flex-col">
       <DocsHeader onOpenMenu={() => setMobileNavOpen(true)} />
       <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
-      <div className="mx-auto flex max-w-[1440px] gap-10 px-4 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-1 gap-10 px-4 lg:px-8">
         <aside className="hidden w-64 shrink-0 py-10 lg:block">
           <div className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
             <Sidebar />
@@ -38,6 +39,8 @@ export function DocsLayout() {
           <TableOfContents headings={headings} activeId={activeHeadingId} />
         </aside>
       </div>
+
+      <DocsFooter />
     </div>
   )
 }

@@ -10,10 +10,8 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
 
   return (
     <nav className="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto">
-      <p className="mb-3 text-xs font-semibold tracking-wider text-neutral-500 uppercase">
-        Trên trang này
-      </p>
-      <ul className="space-y-2.5 border-l border-neutral-800 pl-4">
+      <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">Trên trang này</p>
+      <ul className="border-hairline space-y-2.5 border-l pl-4">
         {headings.map((heading) => {
           const isActive = heading.id === activeId
           return (
@@ -21,7 +19,7 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
               <a
                 href={`#${heading.id}`}
                 className={`text-[13px] leading-5 transition-colors ${
-                  isActive ? 'font-medium text-accent-dark' : 'text-neutral-500 hover:text-neutral-300'
+                  isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
                 }`}
               >
                 {heading.text}

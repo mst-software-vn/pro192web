@@ -5,6 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PRO192 — Java OOP | MST Software</title>
+    <script>
+      // Đặt class .dark ngay trước khi React mount — tránh nháy sáng/tối (FOUC) khi tải
+      // trang, phải khớp đúng logic với src/hooks/use-theme.ts.
+      (function () {
+        var stored = localStorage.getItem('pro192-theme');
+        var preference = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = preference === 'dark' || (preference === 'system' && systemDark);
+        if (isDark) document.documentElement.classList.add('dark');
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

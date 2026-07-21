@@ -1,6 +1,7 @@
-import { isValidElement, useState, type ReactNode } from 'react'
+import { isValidElement, useState, type MouseEvent, type ReactNode } from 'react'
 import ReactMarkdown, { type Components } from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { Link } from 'react-router-dom'
 import { slugify } from '../lib/slugify'
 import { CodeBlock } from './CodeBlock'
 
@@ -28,8 +29,8 @@ function Figure({ src, alt, title }: { src?: string; alt?: string; title?: strin
   if (!src || failed) {
     return (
       <figure className="my-6">
-        <div className="flex min-h-40 items-center justify-center rounded-lg border border-dashed border-neutral-700 bg-neutral-900 px-6 py-10 text-center">
-          <span className="text-sm text-neutral-500">{caption || 'Hình minh hoạ'}</span>
+        <div className="border-hairline-strong bg-panel flex min-h-40 items-center justify-center rounded-lg border border-dashed px-6 py-10 text-center">
+          <span className="text-ink-faint text-sm">{caption || 'Hình minh hoạ'}</span>
         </div>
       </figure>
     )
@@ -41,11 +42,9 @@ function Figure({ src, alt, title }: { src?: string; alt?: string; title?: strin
         src={src}
         alt={alt ?? ''}
         onError={() => setFailed(true)}
-        className="w-full rounded-lg border border-neutral-800"
+        className="border-hairline w-full rounded-lg border"
       />
-      {caption ? (
-        <figcaption className="mt-2 text-center text-sm text-neutral-500">{caption}</figcaption>
-      ) : null}
+      {caption ? <figcaption className="text-ink-faint mt-2 text-center text-sm">{caption}</figcaption> : null}
     </figure>
   )
 }
@@ -60,9 +59,9 @@ function ImageRenderer({ src, alt, title }: { src?: unknown; alt?: string; title
 
 function makeHeading(depth: 2 | 3 | 4) {
   const styles: Record<2 | 3 | 4, string> = {
-    2: 'mt-12 mb-4 text-2xl font-semibold tracking-tight text-white',
-    3: 'mt-10 mb-3 text-xl font-semibold tracking-tight text-white',
-    4: 'mt-8 mb-2 text-lg font-semibold text-neutral-100',
+    2: 'text-ink mt-12 mb-4 text-2xl font-semibold tracking-tight',
+    3: 'text-ink mt-10 mb-3 text-xl font-semibold tracking-tight',
+    4: 'text-ink-secondary mt-8 mb-2 text-lg font-semibold',
   }
   const Tag = `h${depth}` as 'h2' | 'h3' | 'h4'
 
@@ -74,6 +73,12 @@ function makeHeading(depth: 2 | 3 | 4) {
       </Tag>
     )
   }
+}
+
+// Link "#" thuần (không có id neo) là kiểu tag/chủ đề trang trí từ site gốc — hiển thị
+// giống liên kết (accent xanh) nhưng bấm vào không điều hướng, không cuộn trang.
+function preventBareHashNavigation(event: MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault()
 }
 
 const components: Components = {
@@ -89,37 +94,58 @@ const components: Components = {
     if (meaningful.length === 1 && isValidElement(meaningful[0]) && meaningful[0].type === ImageRenderer) {
       return <>{children}</>
     }
-    return <p className="mb-4 text-[15px] leading-7 text-neutral-300">{children}</p>
+    return <p className="text-ink-body mb-4 text-[15px] leading-7">{children}</p>
   },
   ul: ({ children }) => (
-    <ul className="mb-4 list-outside list-disc space-y-1.5 pl-6 text-[15px] leading-7 text-neutral-300 marker:text-neutral-600">
+    <ul className="text-ink-body marker:text-ink-faint mb-4 list-outside list-disc space-y-1.5 pl-6 text-[15px] leading-7">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-4 list-outside list-decimal space-y-1.5 pl-6 text-[15px] leading-7 text-neutral-300 marker:text-neutral-600">
+    <ol className="text-ink-body marker:text-ink-faint mb-4 list-outside list-decimal space-y-1.5 pl-6 text-[15px] leading-7">
       {children}
     </ol>
   ),
   li: ({ children }) => <li>{children}</li>,
-  a: ({ href, children }) => (
-    <a
-      href={href}
-      target={href?.startsWith('http') ? '_blank' : undefined}
-      rel={href?.startsWith('http') ? 'noreferrer' : undefined}
-      className="text-accent-dark underline decoration-accent-dark/40 underline-offset-4 hover:decoration-accent-dark"
-    >
-      {children}
-    </a>
-  ),
-  strong: ({ children }) => <strong className="font-semibold text-neutral-100">{children}</strong>,
+  a: ({ href, children }) => {
+    const linkClassName =
+      'text-accent-on-surface underline decoration-accent-on-surface/40 underline-offset-4 hover:decoration-accent-on-surface'
+
+    if (href === '#') {
+      return (
+        <a href={href} onClick={preventBareHashNavigation} className={linkClassName}>
+          {children}
+        </a>
+      )
+    }
+
+    if (href?.startsWith('/')) {
+      return (
+        <Link to={href} className={linkClassName}>
+          {children}
+        </Link>
+      )
+    }
+
+    return (
+      <a
+        href={href}
+        target={href?.startsWith('http') ? '_blank' : undefined}
+        rel={href?.startsWith('http') ? 'noreferrer' : undefined}
+        className={linkClassName}
+      >
+        {children}
+      </a>
+    )
+  },
+  strong: ({ children }) => <strong className="text-ink-secondary font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
   blockquote: ({ children }) => (
-    <blockquote className="my-5 rounded-r-md border-l-2 border-accent-dark/60 bg-neutral-900/60 px-4 py-3 text-[15px] leading-7 text-neutral-300 [&>p:last-child]:mb-0 [&>p]:mb-2">
+    <blockquote className="border-accent-on-surface/60 bg-panel/60 text-ink-body my-5 rounded-r-md border-l-2 px-4 py-3 text-[15px] leading-7 [&>p:last-child]:mb-0 [&>p]:mb-2">
       {children}
     </blockquote>
   ),
-  hr: () => <hr className="my-10 border-neutral-800" />,
+  hr: () => <hr className="border-hairline my-10" />,
   img: ImageRenderer,
   pre: ({ children }) => <>{children}</>,
   code: ({ className, children }) => {
@@ -132,9 +158,7 @@ const components: Components = {
     }
 
     return (
-      <code className="rounded bg-neutral-800 px-1.5 py-0.5 font-mono text-[0.85em] text-neutral-200">
-        {children}
-      </code>
+      <code className="bg-well text-ink-secondary rounded px-1.5 py-0.5 font-mono text-[0.85em]">{children}</code>
     )
   },
 }
