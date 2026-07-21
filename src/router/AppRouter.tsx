@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { firstChapterSlug } from '../content/chapters'
+import { LanguageProvider } from '../hooks/use-language'
 
 // Tách bundle theo route: LandingPage nhẹ (marketing), DocsLayout/DocsPage kéo theo
 // react-markdown + prism-react-renderer nên tải riêng, không làm nặng trang chủ.
@@ -22,18 +23,20 @@ function RouteFallback() {
 export function AppRouter() {
   return (
     <BrowserRouter>
-      <Suspense fallback={<RouteFallback />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/docs" element={<DocsLayout />}>
-            <Route index element={<Navigate to={firstChapterSlug} replace />} />
-            <Route path=":slug" element={<DocsPage />} />
-          </Route>
-          <Route path="/syllabus-pro192-spring2021" element={<DocsLayout />}>
-            <Route index element={<SyllabusPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <LanguageProvider>
+        <Suspense fallback={<RouteFallback />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/docs" element={<DocsLayout />}>
+              <Route index element={<Navigate to={firstChapterSlug} replace />} />
+              <Route path=":slug" element={<DocsPage />} />
+            </Route>
+            <Route path="/syllabus-pro192-spring2021" element={<DocsLayout />}>
+              <Route index element={<SyllabusPage />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </LanguageProvider>
     </BrowserRouter>
   )
 }

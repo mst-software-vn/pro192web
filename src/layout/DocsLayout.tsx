@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Outlet, useParams } from 'react-router-dom'
 import { getChapter } from '../content/chapters'
 import { useActiveHeading } from '../hooks/use-active-heading'
+import { useLanguage } from '../hooks/use-language'
 import { extractHeadings } from '../lib/markdown'
 import { DocsFooter } from './DocsFooter'
 import { DocsHeader } from './DocsHeader'
@@ -15,8 +16,10 @@ export function DocsLayout() {
   const { slug } = useParams()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
+  const { language } = useLanguage()
   const chapter = slug ? getChapter(slug) : undefined
-  const headings = chapter?.body ? extractHeadings(chapter.body) : []
+  const activeBody = language === 'vi' ? (chapter?.bodyVi ?? chapter?.body) : chapter?.body
+  const headings = activeBody ? extractHeadings(activeBody) : []
   const activeHeadingId = useActiveHeading(headings.map((heading) => heading.id))
 
   return (

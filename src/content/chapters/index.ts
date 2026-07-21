@@ -9,8 +9,19 @@ const rawBodies = import.meta.glob('./*.md', {
   eager: true,
 }) as Record<string, string>
 
+// Bản dịch tiếng Việt (nếu có) — file `{slug}.vi.md` cạnh file gốc tiếng Anh.
+const rawBodiesVi = import.meta.glob('./*.vi.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+}) as Record<string, string>
+
 function bodyFor(slug: string): string | undefined {
   return rawBodies[`./${slug}.md`]
+}
+
+function bodyViFor(slug: string): string | undefined {
+  return rawBodiesVi[`./${slug}.vi.md`]
 }
 
 // Thứ tự & metadata khớp docs/content/sidebar/sidebar.txt (nguồn gốc từ pro192web).
@@ -101,6 +112,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
 export const chapters: Chapter[] = chapterMeta.map((meta) => ({
   ...meta,
   body: bodyFor(meta.slug),
+  bodyVi: bodyViFor(meta.slug),
 }))
 
 export function getChapter(slug: string): Chapter | undefined {

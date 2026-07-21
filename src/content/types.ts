@@ -14,8 +14,10 @@ export interface Chapter {
   group: string
   /** published: đã có nội dung .md · draft: đang cập nhật */
   status: ChapterStatus
-  /** Nội dung Markdown thô (chỉ có ở chương published) */
+  /** Nội dung Markdown thô, tiếng Anh (chỉ có ở chương published) */
   body?: string
+  /** Bản dịch tiếng Việt của body — chưa dịch hết mọi chương, fallback về `body` khi thiếu */
+  bodyVi?: string
 }
 
 /** Một nhóm chương cùng chủ đề, hiển thị dưới 1 tiêu đề nhóm trong sidebar */
