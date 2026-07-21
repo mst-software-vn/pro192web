@@ -77,7 +77,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     title: 'Mảng đối tượng',
     description: 'Khai báo, khởi tạo và thao tác trên mảng đối tượng trong Java.',
     group: 'Cấu trúc dữ liệu',
-    status: 'draft',
+    status: 'published',
   },
   {
     slug: 'bo-suu-tap',
