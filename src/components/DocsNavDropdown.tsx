@@ -49,9 +49,14 @@ export function DocsNavDropdown() {
                       <Link
                         to={`/docs/${chapter.slug}`}
                         onClick={() => setOpen(false)}
-                        className="text-ink-body hover:bg-panel hover:text-ink block rounded-md px-2 py-1.5 text-sm transition-colors"
+                        className="text-ink-body hover:bg-panel hover:text-ink flex items-center justify-between gap-2 rounded-md px-2 py-1.5 text-sm transition-colors"
                       >
-                        {chapter.title}
+                        <span>{chapter.title}</span>
+                        {chapter.status === 'draft' ? (
+                          <span className="bg-well text-ink-faint shrink-0 rounded-full px-1.5 py-0.5 text-[10px] font-medium tracking-wide uppercase">
+                            Sắp ra mắt
+                          </span>
+                        ) : null}
                       </Link>
                     </li>
                   ))}
