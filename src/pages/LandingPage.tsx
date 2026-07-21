@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { BlurText } from '../components/BlurText'
 import { RevealOnScroll } from '../components/RevealOnScroll'
 import { chapters, firstChapterSlug } from '../content/chapters'
 
@@ -25,32 +26,38 @@ export function LandingPage() {
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,var(--color-accent-soft),transparent_60%)]"
         />
-        <RevealOnScroll className="relative mx-auto max-w-3xl px-6 py-28 text-center sm:py-36">
-          <p className="mb-4 text-sm font-medium tracking-widest text-neutral-500 uppercase">
-            MST Software
-          </p>
-          <h1 className="text-4xl font-semibold tracking-tight text-neutral-900 sm:text-6xl">
-            Tài liệu học Lập trình Hướng đối tượng với Java
-          </h1>
-          <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-600">
-            Giáo trình PRO192 được hệ thống hoá lại: từ nền tảng Java, đóng gói, kế thừa, đa hình
-            đến xử lý ngoại lệ — rõ ràng, dễ tra cứu, đúng chuẩn học thuật.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link
-              to={`/docs/${firstChapterSlug}`}
-              className="rounded-md bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700 active:scale-[0.98]"
-            >
-              Bắt đầu học
-            </Link>
-            <a
-              href="#noi-dung"
-              className="rounded-md border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-700 transition-colors hover:border-neutral-400 hover:bg-neutral-50 active:scale-[0.98]"
-            >
-              Xem nội dung khoá học
-            </a>
-          </div>
-        </RevealOnScroll>
+        <div className="relative mx-auto max-w-3xl px-6 py-28 text-center sm:py-36">
+          <RevealOnScroll>
+            <p className="mb-4 text-sm font-medium tracking-widest text-neutral-500 uppercase">
+              MST Software
+            </p>
+          </RevealOnScroll>
+          <BlurText
+            text="Tài liệu học Lập trình Hướng đối tượng với Java"
+            tag="h1"
+            className="justify-center text-4xl font-semibold tracking-tight text-neutral-900 sm:text-6xl"
+          />
+          <RevealOnScroll delay={150}>
+            <p className="mx-auto mt-6 max-w-xl text-lg text-neutral-600">
+              Giáo trình PRO192 được hệ thống hoá lại: từ nền tảng Java, đóng gói, kế thừa, đa hình
+              đến xử lý ngoại lệ — rõ ràng, dễ tra cứu, đúng chuẩn học thuật.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to={`/docs/${firstChapterSlug}`}
+                className="rounded-md bg-neutral-900 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-neutral-700 active:scale-[0.98]"
+              >
+                Bắt đầu học
+              </Link>
+              <a
+                href="#noi-dung"
+                className="rounded-md border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-700 transition-colors hover:border-neutral-400 hover:bg-neutral-50 active:scale-[0.98]"
+              >
+                Xem nội dung khoá học
+              </a>
+            </div>
+          </RevealOnScroll>
+        </div>
       </section>
 
       <section id="noi-dung" className="border-t border-neutral-200 px-6 py-24">
