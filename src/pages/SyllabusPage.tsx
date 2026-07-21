@@ -3,14 +3,16 @@ import { syllabusTabs } from '../content/syllabus'
 
 function SyllabusTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="border-hairline overflow-x-auto rounded-lg border">
+    <div className="border-hairline overflow-x-auto rounded-lg border shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
       <table className="w-full min-w-[720px] border-collapse text-left text-sm">
         <thead>
-          <tr className="border-hairline border-b">
-            {headers.map((header) => (
+          <tr className="bg-panel">
+            {headers.map((header, index) => (
               <th
                 key={header}
-                className="text-ink-secondary px-4 py-3 font-semibold whitespace-nowrap align-top"
+                className={`text-ink-secondary border-hairline border-b px-4 py-3 text-xs font-semibold tracking-wide uppercase ${
+                  index === 0 ? 'w-16' : ''
+                }`}
               >
                 {header}
               </th>
@@ -19,13 +21,22 @@ function SyllabusTable({ headers, rows }: { headers: string[]; rows: string[][] 
         </thead>
         <tbody>
           {rows.map((row, rowIndex) => (
-            <tr key={rowIndex} className="border-hairline border-b last:border-b-0">
+            <tr
+              key={rowIndex}
+              className={`border-hairline hover:bg-panel/60 border-b transition-colors last:border-b-0 ${
+                rowIndex % 2 === 1 ? 'bg-panel/30' : ''
+              }`}
+            >
               {row.map((cell, cellIndex) => (
                 <td
                   key={cellIndex}
-                  className="text-ink-body min-w-[160px] px-4 py-3 align-top whitespace-pre-line"
+                  className={`min-w-[160px] px-4 py-3.5 align-top whitespace-pre-line ${
+                    cellIndex === 0
+                      ? 'text-ink-faint font-mono text-[13px]'
+                      : 'text-ink-body'
+                  }`}
                 >
-                  {cell}
+                  {cell || <span className="text-ink-faint">—</span>}
                 </td>
               ))}
             </tr>
@@ -41,7 +52,7 @@ export function SyllabusPage() {
   const activeTab = syllabusTabs.find((tab) => tab.id === activeTabId) ?? syllabusTabs[0]
 
   return (
-    <article className="mx-auto max-w-5xl">
+    <article className="w-full">
       <header className="mb-8">
         <h1 className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">Course Syllabus</h1>
         <p className="text-ink-muted mt-3 text-[15px] leading-relaxed">

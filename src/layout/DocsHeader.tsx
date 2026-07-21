@@ -27,11 +27,13 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           <span className="text-ink-faint text-xs">Docs</span>
         </Link>
 
-        <div className="hidden max-w-sm flex-1 md:block">
-          <SearchField />
+        <div className="hidden flex-1 md:flex md:justify-center">
+          <div className="w-full max-w-md">
+            <SearchField />
+          </div>
         </div>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <LanguageSelector />
           <ThemeToggle />
         </div>

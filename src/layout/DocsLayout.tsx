@@ -35,9 +35,11 @@ export function DocsLayout() {
           <Outlet />
         </main>
 
-        <aside className="hidden w-56 shrink-0 py-10 xl:block">
-          <TableOfContents headings={headings} activeId={activeHeadingId} />
-        </aside>
+        {headings.length > 0 ? (
+          <aside className="hidden w-56 shrink-0 py-10 xl:block">
+            <TableOfContents headings={headings} activeId={activeHeadingId} />
+          </aside>
+        ) : null}
       </div>
 
       <DocsFooter />
