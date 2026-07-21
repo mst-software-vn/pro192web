@@ -26,7 +26,7 @@ We say that a Course has a Code and uses a Grading Scheme and that a Hybrid Cour
 
 In switching our attention from the activities in the structure chart to the objects in the relationship diagram we have switched from a procedural description of the problem to an object-oriented description.
 
-These two complementary approaches to mastering complexity date at least as far back as the ancient Greeks. Heraclitus viewed the world in terms of process, while Democritus viewed the world in terms of discrete atoms.
+These two complementary approaches to mastering complexity date at least as far back as the ancient Greeks. Heraclitus viewed the world in terms of process, while Democritus viewed the world in **terms of discrete atoms.**
 
 Learning to divide a complex problem into objects and to identify the relationships amongst the objects is the subject matter of system analysis and design courses. The material covered in this course introduces some of the principal concepts of analysis and design along with the Java syntax for implementing these concepts in code.
 
@@ -129,4 +129,5 @@ Encapsulation, inheritance and polymorphism are the cornerstones of any object-o
 
 ### Course Slide
 
-- Introduction.pdf
+- [Introduction.pdf](https://pro192web.netlify.app/resource/Introduction.pdf)
+
