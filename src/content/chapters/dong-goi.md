@@ -6,8 +6,11 @@ In the previous topic, we saw the term "class" but did not give enough considera
 
 A class is an organisational unit of an Object Oriented design and program.
 
-- see class definitions on the w3schools page
-- see class definitions from other authors
+[See class definitions on the w3schools page](https://www.w3schools.com/java/java_oop.asp)
+
+[See class definitions from other authors](https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving?fbclid=IwAR2_jsAY7ldx2i-178wHimdAkCz0k65ZBVUR7G7OJSNpN3cikA3sPlGQBcQ)
+
+
 
 - **Highly cohesive**: the class represents a single useful entity or organisational unit and does that job well.
 - **Minimally coupled**: the class limits its interactions with other classes to only those that are really necessary for it to do what it is designed to do.
@@ -32,7 +35,7 @@ A formal definition of a class includes two key components: Fields (Attributes) 
 
 We use Unified Modeling Language (UML) to describe the class structure. UML provides mechanisms to represent class members, such as attributes and methods, and additional information.
 
-- Read this article to get more about UML>
+[Read this article to get more about UML](https://en.wikipedia.org/wiki/Class_diagram)
 
 A UML class diagram is used to represent the Car class
 
@@ -43,7 +46,7 @@ A UML class diagram is used to represent the Car class
 - put main noun (Car) to make the class name
 - put auxiliary nouns (nouns describe the detail of Car) to make fields
 - put verbs to make methods
-- To specify the visibility of a class member from other classes (i.e. any attribute or method), these notations (`-`,`+`,`#`,`~`) must be placed before the member's name. (In Java, `~` is replaced by ` `). get more notations>
+- To specify the visibility of a class member from other classes (i.e. any attribute or method), these notations (`-`,`+`,`#`,`~`) must be placed before the member's name. (In Java, `~` is replaced by `''`). [Get more notations](https://en.wikipedia.org/wiki/Class_diagram)
 
 Now, You will implement this class in Java. In your editor, create a new file named `Car.java` (Note: the file named the same as the class name). The code of Car class:
 
@@ -235,7 +238,7 @@ public class Car {
 
 **Output:**
 
-```
+```Block
 You can press the star button
 You can press the accelerator button
 Colour: Engine power:0 Convertible:false parking brake:false
@@ -254,8 +257,9 @@ A *package* is a namespace that organizes a set of related classes and interface
 
 Because software written in the Java programming language can be composed of hundreds or thousands of individual classes, it makes sense to keep things organized by placing related classes and interfaces into packages.
 
-- see more at Oracle
-- see more at other page
+[See more at Oracle](https://docs.oracle.com/javase/tutorial/java/concepts/package.html)
+
+[See more at other page](https://www.geeksforgeeks.org/java/packages-in-java/)
 
 ### Creating a package
 
@@ -264,19 +268,18 @@ To create a package, you choose a name for the package and put a package stateme
 The package statement (for example, `package mypkg;`) must be the first line in the source file. There can be only one package statement in each source file, and it applies to all types in the file.
 
 ![Package Example](/images/dong-goi/14.jpg "Ví dụ package mypkg với lớp PkgDemo trong NetBeans")
-
-- Package Example — read more>
+[Read more](https://docs.oracle.com/javase/tutorial/java/package/createpkgs.html)
 
 ## Access Modifier
 
 To specify the visibility of a class member (i.e. any attribute or method), we use:
 
-- private: `-`
-- public: `+`
-- protected: `#`
-- default: if don't any notation, it is treated as default
+- Private: `-`
+- Public: `+`
+- Protected: `#`
+- Default: if don't any notation, it is treated as default
 
-these keywords are called access modifier
+These keywords are called access modifier
 
 ![Encapsulation20](/images/dong-goi/15.jpg "Bảng ký hiệu các access modifier trong UML")
 
@@ -284,7 +287,7 @@ Let's understand the access modifiers in Java by a simple table.
 
 ![Encapsulation21](/images/dong-goi/16.jpg "Bảng so sánh phạm vi truy cập của private, default, protected, public")
 
-### private
+### Private
 
 The private access modifier is accessible only within the class.
 
@@ -312,13 +315,13 @@ public class Tester {
 
 In the method main, Using `c.Colour="Gray"` will cause an error because it is private data. Also, all private members can not access from other classes
 
-### public
+### Public
 
 The public access modifier is accessible everywhere.
 
 In the above example, the Car class is public to can use it everywhere. In the `Tester.java`, we can also access to public methods.
 
-### default
+### Default
 
 If you don't use any modifier, it is treated as default by default. The default modifier is accessible only within package. It cannot be accessed from outside the package. It provides more accessibility than private. But, it is more restrictive than protected, and public.
 
@@ -377,13 +380,13 @@ public class Tester {
 
 Because the method `pressStartButton()` is default, in the method main we can not invoke this.
 
-### protected
+### Protected
 
 The protected access modifier is accessible within package and outside the package but through inheritance only.
 
 ## Summary
 
-- Encapsulation is a way of packaging data and methods together into one unit. more
+- Encapsulation is a way of packaging data and methods together into one unit.
 - To achieve encapsulation, declare fields as private
 - Provide public get and set methods to access and update the value of a private variable
 - The constructor is a special member function that an object invokes at creation time, the name of the constructor is the name of the class, not have return types
@@ -392,4 +395,4 @@ The protected access modifier is accessible within package and outside the packa
 
 ### Course Slide
 
-- Encapsulation.pdf
+- [Encapsulation.pdf](https://pro192web.netlify.app/resource/Encapsulation.pdf)
