@@ -2,7 +2,7 @@
 
 A systematic technique for accessing objects of different dynamic type within the same hierarchy is through an array of pointers of their static type. The executable code dereferences each pointer at run time based on its object's dynamic type.
 
-In the previous topic, an antique shop sells antique items, namely vases, statues, and paintings. For now, we want to manage the list of objects such as vases, statues, paintings in an array. The objects pointed to by the array elements may be of differing dynamic type, but are of the same static type (type of the superclass).
+In the previous topic, an antique shop sells antique items, namely vases, statues, and paintings. For now, we want to manage the list of objects such as vases, statues, paintings in an array. The objects pointed to by the array elements may be of differing dynamic type, but are of the same static type (type of the superclass). [Read dynamic & static type again](https://pro192web.netlify.app/Org_code/Inheritance.html#instanceof)
 
 For example, we create the file named `ItemList.java`, it contains an array as follows:
 
@@ -295,6 +295,11 @@ If you wish to remove the item at index 1, the method `removeItem(index)` will s
 
 In the `sortItems` method, we implement the bubble sorting algorithm.
 
+[Read bubble sorting algorithm in Wiki](https://en.wikipedia.org/wiki/Bubble_sort#:~:text=Bubble%20sort,%20sometimes%20referred%20to%20as%20sinking%20sort,,list%20is%20repeated%20until%20the%20list%20is%20sorted.)
+
+[Read the Arrays class to sort user-defined objects](https://makeinjava.com/sort-user-defined-objects-pojo-array-java-example-comparator-interface/)
+
+
 ## File I/O
 
 Input and output data sources of a program can be the keyboard, monitor, file in an external disk. In this lesson, basic concepts and tools for handling all kinds of data, from primitive values to advanced objects are introduced.
@@ -307,6 +312,8 @@ A file is a group of related data which are stored in external memory (disk) for
 Text format is more flexible than binary format but a cost must be paid for type conversions. Files in text format can be viewed and updated using any normal editor such as Notepad, MS Word, …
 
 The binary format is efficient because no data type transfer is needed, but data in a file can be accessed by appropriate programs only.
+
+The link to read more: [IO Streams](https://docs.oracle.com/javase/tutorial/essential/io/streams.html)
 
 Steps for accessing a file:
 
@@ -327,6 +334,13 @@ No matter how they work internally, all streams present the same simple model to
 ![Input Stream Diagram](/images/mang-doi-tuong/4.jpg "Luồng dữ liệu đi vào chương trình (Data Source → Stream → Program)")
 
 ![Output Stream Diagram](/images/mang-doi-tuong/5.jpg "Luồng dữ liệu đi ra từ chương trình (Program → Stream → Data Source)")
+
+[Introduction to the java.io package](https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html)
+
+[Introduction to I/O Stream](https://docs.oracle.com/javase/tutorial/essential/io/streams.html)
+
+[Introduction to the File class](https://docs.oracle.com/javase/7/docs/api/java/io/File.html)
+
 
 ### Showing File Information
 
@@ -423,6 +437,8 @@ Meanings of parts:
 
 In the `String` class, we can use the `boolean matches(String regEx)` method to check whether a string matches the specified regular expression or not.
 
+[For more details](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/regex/Pattern.html)
+
 ![Inputter class — getPatternStr method](/images/mang-doi-tuong/17.jpg "Lớp Inputter: phương thức getPatternStr kiểm tra chuỗi theo Regular Expression")
 
 ![Inputter class — getIntGreater method](/images/mang-doi-tuong/18.jpg "Lớp Inputter: phương thức getIntGreater lấy số nguyên lớn hơn giá trị cho trước")
@@ -485,7 +501,7 @@ Not all data of an object are serialized to a stream. `static` and `transient` f
 > **Note:**
 >
 > - The `static` modifier is used when a field is the common field of a class.
-> - The `transient` modifier is used when a field has value as a result of computation from other fields.
+> - The `transient` modifier is used when a field has value as a result of computation from other fields. [Read more](https://www.geeksforgeeks.org/java/transient-keyword-java/)
 
 Model for reading objects from and writing objects to an object stream.
 
