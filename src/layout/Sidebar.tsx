@@ -25,7 +25,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
                   to={`/docs/${chapter.slug}`}
                   onClick={onNavigate}
                   className={({ isActive }) =>
-                    `flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-[15px] transition-colors ${isActive
+                    `flex items-center justify-between gap-2 rounded-md px-3 py-1.5 text-[16px] transition-colors ${isActive
                       ? 'bg-accent/10 text-accent-on-surface font-medium'
                       : 'text-ink-muted hover:bg-panel hover:text-ink-secondary'
                     }`
