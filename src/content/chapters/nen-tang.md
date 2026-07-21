@@ -2,7 +2,7 @@
 
 ### Java Virtual Machine
 
-The Java Virtual Machine is an abstract computing machine. Like a real computing machine, it has an instruction set and manipulates various memory areas at run time. It is reasonably common to implement a programming language using a virtual machine; the best-known virtual machine may be the P-Code machine of UCSD Pascal. See Wiki for a detailed exposition.
+The Java Virtual Machine is an abstract computing machine. Like a real computing machine, it has an instruction set and manipulates various memory areas at run time. It is reasonably common to implement a programming language using a virtual machine; the best-known virtual machine may be the P-Code machine of UCSD Pascal. [See Wiki for a detailed exposition.](https://en.wikipedia.org/wiki/Java_virtual_machine)
 
 ![Java Virtual Machine](/images/nen-tang/1.jpg "Overview of a Java virtual machine (JVM) architecture based on The Java Virtual Machine Specification Java SE 7 Edition")
 
@@ -54,9 +54,9 @@ char type='A';
 
 Following are the reference types in Java.
 
-- array
-- class object
-- interface
+- Array
+- Class Object
+- Interface
 
 ```java
 int[] ar;
@@ -72,11 +72,11 @@ ar[0]=1; ar[1]=2; ar[2]=3;
 
 The scope of a declaration is the portion of a program over which that declaration is visible. Scopes include:
 
-- function scope - visible to the source code within the function
-- class scope - visible to the member functions of the class
-- block scope - visible to the code block
-- global scope - visible to the entire program
-- file scope - visible to the source code within the file
+- Function scope - visible to the source code within the function
+- Class scope - visible to the member functions of the class
+- Block scope - visible to the code block
+- Global scope - visible to the entire program
+- File scope - visible to the source code within the file
 
 The scope of a non-global declaration begins at the declaration and ends at the closing brace for that declaration. A non-global declaration is called a local declaration.
 
@@ -118,27 +118,31 @@ We have created a multidimensional array named m, it holds 8 elements. The varia
 
 ![Operators](/images/nen-tang/14.jpg "Bảng toán tử trong Java theo thứ tự ưu tiên giảm dần")
 
+![Bitwise Operators Demo](/images/nen-tang/15.png "Ví dụ chạy thực tế các toán tử bitwise (dịch bit, AND, OR, XOR) và instanceof trên NetBeans")
+
+![Bitwise Operators Concept](/images/nen-tang/16.png "Cách biểu diễn nhị phân và cơ chế hoạt động của toán tử dịch bit (<<, >>, >>>) cùng toán tử bitwise (AND, OR, XOR)")
+
 ### Logic constructs
 
 The statements inside your source files are generally executed from top to bottom, in the order that they appear. Control flow statements, however, break up the flow of execution by employing decision making, looping, and branching, enabling your program to conditionally execute particular blocks of code. This section describes the decision-making statements (if-then, if-then-else, switch), the looping statements (for, while, do-while), and the branching statements (break, continue, return) supported by the Java programming language.
 
-- if statement [for detail]
-- switch statement [for detail]
-- while, do, for statements [for detail]
+- [If statement](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/if.html) [for detail]
+- [Switch statement](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/switch.html) [for detail]
+- [While, do, for statements](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/while.html) [for detail]
 
 ### Summary
 
-- a declaration associates an identifier with a type
-- a definition attaches meaning to an identifier and is an executable statement
-- the scope of a declaration is that part of the program throughout which the declaration is visible
-- the types of the Java are primitive types and reference types
+- A declaration associates an identifier with a type
+- A definition attaches meaning to an identifier and is an executable statement
+- The scope of a declaration is that part of the program throughout which the declaration is visible
+- The types of the Java are primitive types and reference types
 
 ### Course Slide
 
-- Learning the Java Language.pdf
+- [Learning the Java Language.pdf](https://pro192web.netlify.app/resource/Learning%20the%20Java%20Language.pdf)
 
 ### Reading
 
-- Download & Install JDK & NetBeans 8.pdf
-- Get Start.pdf
-- Numbers and Strings.pdf
+- [Download & Install JDK & NetBeans 8.pdf](https://pro192web.netlify.app/resource/Download%20&%20Install%20JDK%20&%20NetBeans%208.pdf)
+- [Get Start.pdf](https://pro192web.netlify.app/resource/Get%20start.pdf)
+- [Numbers and Strings.pdf](https://pro192web.netlify.app/resource/Numbers%20and%20Strings.pdf)
