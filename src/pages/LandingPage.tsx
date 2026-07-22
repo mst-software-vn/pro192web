@@ -35,7 +35,7 @@ export function LandingPage() {
           className="border-hairline pointer-events-none absolute inset-0 opacity-[0.4] [background-image:linear-gradient(var(--hairline)_1px,transparent_1px),linear-gradient(90deg,var(--hairline)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(circle_at_30%_0%,black,transparent_70%)]"
         />
 
-        <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
+        <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
           <div>
             <RevealOnScroll>
               <p className="text-ink-muted mb-4 text-sm font-medium tracking-widest uppercase">
@@ -104,7 +104,7 @@ export function LandingPage() {
             <h2 className="text-ink text-2xl font-semibold tracking-tight">Vì sao học tại đây?</h2>
           </RevealOnScroll>
 
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 title: 'Song ngữ Việt – Anh',
@@ -169,7 +169,7 @@ export function LandingPage() {
             </p>
           </RevealOnScroll>
 
-          <ol className="bg-hairline border-hairline mt-10 grid gap-px overflow-hidden rounded-lg border sm:grid-cols-2">
+          <ol className="bg-hairline border-hairline mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-lg border sm:grid-cols-2">
             {chapters.map((chapter, index) => (
               <li key={chapter.slug} className="bg-canvas">
                 <RevealOnScroll delay={(index % 2) * 80}>
@@ -200,7 +200,7 @@ export function LandingPage() {
       </section>
 
       <footer className="border-hairline border-t px-6 py-16">
-        <div className="mx-auto grid max-w-5xl gap-10 sm:grid-cols-3">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-10 sm:grid-cols-3">
           <div>
             <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-8 dark:hidden" />
             <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-8 dark:block" />
