@@ -32,7 +32,7 @@ export function LandingPage() {
         />
         <div
           aria-hidden
-          className="border-hairline pointer-events-none absolute inset-0 opacity-[0.4] [background-image:linear-gradient(var(--hairline)_1px,transparent_1px),linear-gradient(90deg,var(--hairline)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(circle_at_30%_0%,black,transparent_70%)]"
+          className="border-hairline pointer-events-none absolute inset-0 opacity-[0.4] bg-[linear-gradient(var(--hairline)_1px,transparent_1px),linear-gradient(90deg,var(--hairline)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(circle_at_30%_0%,black,transparent_70%)]"
         />
 
         <div className="relative mx-auto grid max-w-6xl grid-cols-1 gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
