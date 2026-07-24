@@ -9,9 +9,11 @@ import '../styles/landing.css'
 // Font dùng --font-sans hệ thống sẵn có (không thêm Google Fonts Inter — skill
 // minimalist-ui cấm rõ), chapter card/CTA trỏ về route /docs/<slug thật> thay vì
 // /chapters/<slug> hư cấu trong bản thiết kế gốc (xem src/data/chapters.ts).
+// Luôn dark mode (2026-07-25, theo yêu cầu) — gắn cứng class "dark" ở đây thay vì
+// đọc useTheme(), độc lập với theme sáng/tối người dùng chọn cho khu vực Docs.
 export function LandingPage() {
   return (
-    <div className="landing-page relative min-h-svh overflow-x-clip">
+    <div className="landing-page dark relative min-h-svh overflow-x-clip">
       <div className="landing-grid-bg pointer-events-none absolute inset-0" />
 
       <div className="relative">

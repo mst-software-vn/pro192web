@@ -57,8 +57,7 @@ export function SiteFooter() {
         <div className="grid grid-cols-1 gap-10 border-b border-(--landing-foot-border) pb-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
             <div className="mb-4 flex items-center">
-              <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
-              <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+              <img src="/images/logo.png" alt="PRO192 Docs" className="h-9" />
             </div>
             <p className="mb-1 text-sm font-semibold text-ink-body">Java Object-Oriented Programming</p>
             <p className="mb-5 max-w-70 text-[13px] leading-relaxed text-ink-faint">
