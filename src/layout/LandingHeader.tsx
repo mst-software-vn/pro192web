@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { DocsNavDropdown } from '../components/DocsNavDropdown'
+import { GithubStarButton } from '../components/GithubStarButton'
 import { SearchField } from '../components/SearchField'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { firstChapterSlug } from '../content/chapters'
@@ -43,6 +44,7 @@ export function LandingHeader() {
           </div>
 
           <div className="ml-auto flex shrink-0 items-center gap-2">
+            <GithubStarButton />
             <ThemeToggle />
             <Link
               to={`/docs/${firstChapterSlug}`}
