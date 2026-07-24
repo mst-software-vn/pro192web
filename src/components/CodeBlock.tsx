@@ -21,7 +21,7 @@ export function CodeBlock({ code, language }: CodeBlockProps) {
   }
 
   return (
-    <div className="group/code relative my-6 overflow-hidden rounded-lg border border-neutral-800 bg-[#1e1e1e]">
+    <div className="group/code relative my-6 overflow-hidden rounded-lg border border-neutral-800 bg-[#1e1e1e] break-inside-avoid">
       <div className="flex h-9 items-center justify-between border-b border-neutral-800 px-4">
         {language ? (
           <span className="font-mono text-xs tracking-wide text-neutral-500 uppercase">

@@ -15,6 +15,9 @@ const DocsPage = lazy(() => import('../pages/DocsPage').then((m) => ({ default: 
 const SyllabusPage = lazy(() =>
   import('../pages/SyllabusPage').then((m) => ({ default: m.SyllabusPage })),
 )
+const PrintChapterPage = lazy(() =>
+  import('../pages/PrintChapterPage').then((m) => ({ default: m.PrintChapterPage })),
+)
 
 function RouteFallback() {
   return <div className="bg-canvas min-h-svh" />
@@ -34,6 +37,7 @@ export function AppRouter() {
             <Route path="/syllabus-pro192-spring2021" element={<DocsLayout />}>
               <Route index element={<SyllabusPage />} />
             </Route>
+            <Route path="/print/docs/:slug" element={<PrintChapterPage />} />
           </Routes>
         </Suspense>
       </LanguageProvider>

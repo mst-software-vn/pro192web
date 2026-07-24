@@ -37,7 +37,7 @@ function Figure({ src, alt, title }: { src?: string; alt?: string; title?: strin
   }
 
   return (
-    <figure className="my-6">
+    <figure className="my-6 break-inside-avoid">
       <img
         src={src}
         alt={alt ?? ''}
@@ -68,7 +68,7 @@ function makeHeading(depth: 2 | 3 | 4) {
   return function Heading({ children }: { children?: ReactNode }) {
     const id = slugify(flattenToText(children))
     return (
-      <Tag id={id} className={`scroll-mt-24 ${styles[depth]}`}>
+      <Tag id={id} className={`scroll-mt-24 break-after-avoid ${styles[depth]}`}>
         {children}
       </Tag>
     )
