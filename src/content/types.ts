@@ -29,3 +29,24 @@ export interface ChapterGroup {
   name: string
   items: Chapter[]
 }
+
+export interface QuizOption {
+  /** 'a' | 'b' | 'c' | 'd'... — stable id used for grading, independent of display order */
+  id: string
+  /** Tiếng Việt — bắt buộc */
+  text: string
+  /** Bản dịch tiếng Anh — tuỳ chọn, fallback về `text` khi thiếu */
+  textEn?: string
+}
+
+export interface QuizQuestion {
+  id: string
+  /** Tiếng Việt — bắt buộc (ngược với Chapter.body: quiz được soạn mới bằng tiếng Việt) */
+  question: string
+  questionEn?: string
+  options: QuizOption[]
+  /** 1 phần tử = single-choice (radio), nhiều hơn 1 = multi-choice (checkbox) */
+  correctOptionIds: string[]
+  explanation: string
+  explanationEn?: string
+}
