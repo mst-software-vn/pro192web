@@ -65,7 +65,7 @@ export function DocsPage() {
                 {isEn ? 'Download all course materials' : 'Tải toàn bộ tài liệu khoá học'}
               </p>
               <p className="text-ink-muted mt-1 text-sm">
-                {isEn ? '11 chapters · PDF · offline-ready' : '11 chương · PDF · đọc offline'}
+                {isEn ? '12 chapters · PDF · offline-ready' : '12 chương · PDF · đọc offline'}
               </p>
             </div>
           </div>

@@ -46,7 +46,7 @@ export function DocsFooter() {
                   to={`/docs/${firstChapterSlug}`}
                   className="text-ink-muted hover:text-ink text-sm transition-colors"
                 >
-                  {isEn ? 'View all 11 chapters' : 'Xem tất cả 11 chương'}
+                  {isEn ? 'View all 12 chapters' : 'Xem tất cả 12 chương'}
                 </Link>
               </li>
             </ul>

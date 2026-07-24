@@ -52,7 +52,7 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
           <span className="text-ink text-xs font-semibold">{isEn ? 'Download PDF' : 'Tải PDF'}</span>
         </div>
         <p className="text-ink-faint text-[11px] leading-snug">
-          {isEn ? '11 chapters · full set' : '11 chương · trọn bộ'}
+          {isEn ? '12 chapters · full set' : '12 chương · trọn bộ'}
         </p>
         <a
           href="/downloads/pro192-course-pdfs.zip"
