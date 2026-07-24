@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { Navigate, useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
 import { QuizSection } from '../components/quiz/QuizSection'
-import { getChapter } from '../content/chapters'
+import { chapters, getChapter } from '../content/chapters'
 import { LEGACY_SLUG_REDIRECTS } from '../content/legacy-slugs'
 import { useLanguage } from '../hooks/use-language'
 
@@ -65,7 +65,9 @@ export function DocsPage() {
                 {isEn ? 'Download all course materials' : 'Tải toàn bộ tài liệu khoá học'}
               </p>
               <p className="text-ink-muted mt-1 text-sm">
-                {isEn ? '12 chapters · PDF · offline-ready' : '12 chương · PDF · đọc offline'}
+                {isEn
+                  ? `${chapters.length} chapters · PDF · offline-ready`
+                  : `${chapters.length} chương · PDF · đọc offline`}
               </p>
             </div>
           </div>

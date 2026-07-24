@@ -1,3 +1,4 @@
+import { chapters } from '../content/chapters'
 import type { HeadingItem } from '../lib/markdown'
 import { useLanguage } from '../hooks/use-language'
 
@@ -52,7 +53,7 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
           <span className="text-ink text-xs font-semibold">{isEn ? 'Download PDF' : 'Tải PDF'}</span>
         </div>
         <p className="text-ink-faint text-[11px] leading-snug">
-          {isEn ? '12 chapters · full set' : '12 chương · trọn bộ'}
+          {isEn ? `${chapters.length} chapters · full set` : `${chapters.length} chương · trọn bộ`}
         </p>
         <a
           href="/downloads/pro192-course-pdfs.zip"

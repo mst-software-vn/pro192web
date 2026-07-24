@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { firstChapterSlug } from '../content/chapters'
+import { chapters, firstChapterSlug } from '../content/chapters'
 import { useLanguage } from '../hooks/use-language'
 
 const DOCS_LINKS = [
@@ -46,7 +46,7 @@ export function DocsFooter() {
                   to={`/docs/${firstChapterSlug}`}
                   className="text-ink-muted hover:text-ink text-sm transition-colors"
                 >
-                  {isEn ? 'View all 12 chapters' : 'Xem tất cả 12 chương'}
+                  {isEn ? `View all ${chapters.length} chapters` : `Xem tất cả ${chapters.length} chương`}
                 </Link>
               </li>
             </ul>
