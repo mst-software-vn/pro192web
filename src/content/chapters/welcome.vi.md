@@ -44,4 +44,4 @@ Nếu bạn photocopy một cuốn sách giáo khoa mà không có sự cho phé
 
 PRF192
 
-Để biết thêm thông tin, xem [syllabus](https://flm.fpt.edu.vn/gui/tool/AllPrequisiteSubject?educationLevel=fptu).
+Để biết thêm thông tin, xem [syllabus](https://flm.fpt.edu.vn/).
