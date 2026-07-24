@@ -131,6 +131,15 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     group: 'Nâng cao',
     status: 'published',
   },
+  {
+    slug: 'pe-exam-guidelines',
+    title: 'Lưu ý khi thi PE',
+    description: 'Checklist và lưu ý quan trọng trước, trong và sau kỳ thi thực hành (PE) môn PRO192.',
+    titleEn: 'PE Exam Guidelines',
+    descriptionEn: 'Checklist and important notes before, during, and after the PRO192 Practical Exam (PE).',
+    group: 'Kỳ thi PE',
+    status: 'published',
+  },
 ]
 
 // Tên nhóm hiển thị tiếng Anh — `group` vẫn dùng tiếng Việt làm key duy nhất
@@ -141,6 +150,7 @@ const GROUP_LABELS_EN: Record<string, string> = {
   'Lập trình hướng đối tượng': 'Object-Oriented Programming',
   'Cấu trúc dữ liệu': 'Data Structures',
   'Nâng cao': 'Advanced Topics',
+  'Kỳ thi PE': 'PE Exam',
 }
 
 export function groupLabel(name: string, language: 'vi' | 'en'): string {

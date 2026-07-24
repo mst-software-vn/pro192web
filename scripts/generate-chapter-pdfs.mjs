@@ -26,6 +26,7 @@ const CHAPTER_SLUGS = [
   'dynamic-memory',
   'exception-handling',
   'file-io',
+  'pe-exam-guidelines',
 ]
 
 async function waitForImages(page) {
