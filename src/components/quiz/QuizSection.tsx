@@ -5,7 +5,7 @@ import { useQuizProgress } from '../../hooks/use-quiz-progress'
 import { pickQuestions } from '../../lib/quiz'
 import { QuizQuestion } from './QuizQuestion'
 
-type Phase = 'idle' | 'active' | 'result'
+type Phase = 'active' | 'result'
 
 interface AnswerRecord {
   selectedIds: string[]
@@ -16,11 +16,13 @@ interface QuizSectionProps {
   slug: string
 }
 
+// Không còn màn "idle" chờ bấm Start — quiz hiển thị câu hỏi đầu tiên ngay khi vào trang
+// (2026-07-25, theo yêu cầu). "Làm lại" cũng quay thẳng về active, không qua idle nữa.
 export function QuizSection({ slug }: QuizSectionProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'
   const pool = useMemo(() => getQuizPool(slug), [slug])
-  const { progress, recordProgress } = useQuizProgress(slug)
+  const { recordProgress } = useQuizProgress(slug)
 
   const [round, setRound] = useState(0)
   const questions = useMemo(() => {
@@ -28,17 +30,11 @@ export function QuizSection({ slug }: QuizSectionProps) {
     void round
     return pickQuestions(pool)
   }, [pool, round])
-  const [phase, setPhase] = useState<Phase>('idle')
+  const [phase, setPhase] = useState<Phase>('active')
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState<AnswerRecord[]>([])
 
   if (pool.length === 0) return null
-
-  function handleStart() {
-    setPhase('active')
-    setIndex(0)
-    setAnswers([])
-  }
 
   function handleAnswered(record: AnswerRecord) {
     setAnswers((prev) => [...prev, record])
@@ -57,7 +53,9 @@ export function QuizSection({ slug }: QuizSectionProps) {
 
   function handleRetry() {
     setRound((value) => value + 1)
-    setPhase('idle')
+    setPhase('active')
+    setIndex(0)
+    setAnswers([])
   }
 
   const score = answers.filter((a) => a.correct).length
@@ -67,30 +65,6 @@ export function QuizSection({ slug }: QuizSectionProps) {
       <h2 className="text-ink mb-4 text-2xl font-semibold tracking-tight">
         {isEn ? 'Test your understanding' : 'Kiểm tra kiến thức'}
       </h2>
-
-      {phase === 'idle' ? (
-        <div className="border-hairline bg-panel rounded-lg border p-6">
-          <p className="text-ink-muted mb-4 text-sm">
-            {isEn
-              ? "5 questions picked at random from this chapter's question bank."
-              : '5 câu hỏi được chọn ngẫu nhiên từ kho câu hỏi của chương này.'}
-          </p>
-          {progress ? (
-            <span className="bg-well text-ink-faint mb-4 inline-block rounded-full px-2.5 py-1 text-xs">
-              {isEn ? `Last time: ${progress.score}/${progress.total}` : `Lần trước: ${progress.score}/${progress.total}`}
-            </span>
-          ) : null}
-          <div>
-            <button
-              type="button"
-              onClick={handleStart}
-              className="bg-accent hover:bg-accent-emphasis rounded-md px-6 py-3 text-sm font-medium text-white transition-colors active:scale-[0.98]"
-            >
-              {isEn ? 'Start quiz' : 'Bắt đầu làm quiz'}
-            </button>
-          </div>
-        </div>
-      ) : null}
 
       {phase === 'active' ? (
         <QuizQuestion
