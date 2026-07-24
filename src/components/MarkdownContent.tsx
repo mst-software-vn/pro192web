@@ -141,7 +141,7 @@ const components: Components = {
   strong: ({ children }) => <strong className="text-ink-secondary font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
   blockquote: ({ children }) => {
-    // Ghi chú "super() phải là dòng đầu constructor" (ke-thua.md) dùng tông vàng nhạt
+    // Ghi chú "super() phải là dòng đầu constructor" (inheritance.md) dùng tông vàng nhạt
     // (notice/warning) thay vì xanh mặc định — chỉ riêng đoạn này theo yêu cầu.
     const isNoticeStyle = flattenToText(children).includes('most distant super class first')
     const className = isNoticeStyle

@@ -3,9 +3,9 @@ import { firstChapterSlug } from '../content/chapters'
 import { useLanguage } from '../hooks/use-language'
 
 const DOCS_LINKS = [
-  { labelVi: 'Chào mừng', labelEn: 'Welcome', to: '/docs/chao-mung' },
-  { labelVi: 'Nền tảng', labelEn: 'Foundations', to: '/docs/nen-tang' },
-  { labelVi: 'Đóng gói', labelEn: 'Encapsulation', to: '/docs/dong-goi' },
+  { labelVi: 'Chào mừng', labelEn: 'Welcome', to: '/docs/welcome' },
+  { labelVi: 'Nền tảng', labelEn: 'Foundations', to: '/docs/foundations' },
+  { labelVi: 'Đóng gói', labelEn: 'Encapsulation', to: '/docs/encapsulation' },
 ]
 
 const COURSE_LINKS = [

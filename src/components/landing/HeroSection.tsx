@@ -1,5 +1,6 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom'
+import { firstChapterSlug } from '../../content/chapters'
 import { CodeBlock } from './CodeBlock'
 
 function FptBadgeIcon() {
@@ -44,7 +45,7 @@ export function HeroSection() {
 
         <div className="flex flex-wrap items-center gap-4">
           <Link
-            to="/docs/chao-mung"
+            to={`/docs/${firstChapterSlug}`}
             className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.25 text-[15px] font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-accent-emphasis"
           >
             Bắt đầu học <span className="text-[17px]">→</span>
