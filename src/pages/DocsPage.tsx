@@ -50,6 +50,35 @@ export function DocsPage() {
         </p>
       </header>
 
+      {chapter.slug === 'welcome' ? (
+        <div className="border-accent-on-surface/20 bg-accent-on-surface/8 mb-8 flex flex-col items-start gap-4 rounded-xl border px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-4">
+            <div className="relative h-10 w-11 shrink-0">
+              <div className="border-hairline-strong bg-canvas absolute top-1 left-0 h-9.5 w-7.5 rotate-[-8deg] rounded-[4px] border" />
+              <div className="border-hairline-strong bg-canvas absolute top-0.5 left-1.75 h-9.5 w-7.5 rotate-[4deg] rounded-[4px] border" />
+              <div className="bg-accent border-accent absolute top-0 left-3.5 flex h-9.5 w-7.5 items-end justify-center rounded-[4px] border pb-1">
+                <span className="text-[6px] font-bold tracking-wide text-white">PDF</span>
+              </div>
+            </div>
+            <div>
+              <p className="text-ink text-sm font-semibold">
+                {isEn ? 'Download all course materials' : 'Tải toàn bộ tài liệu khoá học'}
+              </p>
+              <p className="text-ink-muted mt-1 text-sm">
+                {isEn ? '11 chapters · PDF · offline-ready' : '11 chương · PDF · đọc offline'}
+              </p>
+            </div>
+          </div>
+          <a
+            href="/downloads/pro192-course-pdfs.zip"
+            download
+            className="bg-accent hover:bg-accent-emphasis inline-flex shrink-0 items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors"
+          >
+            {isEn ? 'Download' : 'Tải xuống'}
+          </a>
+        </div>
+      ) : null}
+
       {isFallback ? (
         <p className="text-ink-faint mb-6 text-sm italic">
           Bản dịch tiếng Việt đang được cập nhật — hiển thị bản gốc tiếng Anh.
@@ -67,24 +96,6 @@ export function DocsPage() {
           </p>
         </div>
       )}
-
-      {chapter.slug === 'welcome' ? (
-        <div className="border-hairline-strong bg-panel mt-10 flex flex-col items-start gap-4 rounded-lg border px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-ink text-sm font-semibold">
-              {isEn ? 'Download all course materials' : 'Tải toàn bộ tài liệu khoá học'}
-            </p>
-            <p className="text-ink-muted mt-1 text-sm">{isEn ? '11 chapters · PDF' : '11 chương · PDF'}</p>
-          </div>
-          <a
-            href="/downloads/pro192-course-pdfs.zip"
-            download
-            className="bg-accent hover:bg-accent-emphasis inline-flex shrink-0 items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors"
-          >
-            {isEn ? 'Download PDF' : 'Tải PDF'}
-          </a>
-        </div>
-      ) : null}
 
       <QuizSection key={chapter.slug} slug={chapter.slug} />
     </article>
