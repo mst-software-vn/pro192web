@@ -23,11 +23,11 @@ export const questions: QuizQuestion[] = [
     questionEn: 'If a field or method has no access modifier (default/package-private), where can it be accessed from?',
     options: [
       { id: 'a', text: 'Chỉ trong chính class đó', textEn: 'Only within that class itself' },
-      { id: 'b', text: 'Trong cùng package', textEn: 'From anywhere in the same package' },
-      { id: 'c', text: 'Ở bất kỳ đâu trong chương trình', textEn: 'From anywhere in the program' },
+      { id: 'b', text: 'Ở bất kỳ đâu trong chương trình', textEn: 'From anywhere in the program' },
+      { id: 'c', text: 'Trong cùng package', textEn: 'From anywhere in the same package' },
       { id: 'd', text: 'Chỉ từ class con (subclass)', textEn: 'Only from a subclass' },
     ],
-    correctOptionIds: ['b'],
+    correctOptionIds: ['c'],
     explanation:
       'default (không ghi modifier) nghĩa là truy cập được trong cùng package — rộng hơn private, nhưng hẹp hơn protected/public.',
     explanationEn:
@@ -38,11 +38,11 @@ export const questions: QuizQuestion[] = [
     question: 'Trình biên dịch Java tự động thêm constructor mặc định (không tham số) khi nào?',
     options: [
       { id: 'a', text: 'Luôn luôn, bất kể class có khai báo constructor hay không' },
-      { id: 'b', text: 'Chỉ khi class không khai báo BẤT KỲ constructor nào' },
-      { id: 'c', text: 'Chỉ khi class có khai báo constructor có tham số' },
-      { id: 'd', text: 'Không bao giờ, phải luôn tự viết' },
+      { id: 'b', text: 'Chỉ khi class có khai báo constructor có tham số' },
+      { id: 'c', text: 'Không bao giờ, phải luôn tự viết' },
+      { id: 'd', text: 'Chỉ khi class không khai báo BẤT KỲ constructor nào' },
     ],
-    correctOptionIds: ['b'],
+    correctOptionIds: ['d'],
     explanation:
       'Nếu class đã khai báo ít nhất 1 constructor (kể cả có tham số), trình biên dịch sẽ KHÔNG tự thêm constructor mặc định nữa.',
   },
@@ -67,27 +67,27 @@ export const questions: QuizQuestion[] = [
     question: 'Chọn TẤT CẢ phát biểu đúng về access modifier trong Java (câu này có thể có nhiều đáp án đúng):',
     questionEn: 'Select ALL correct statements about Java access modifiers (this question may have more than one correct answer):',
     options: [
-      { id: 'a', text: 'private chỉ truy cập được trong chính class đó', textEn: 'private is only accessible within that class itself' },
-      { id: 'b', text: 'public truy cập được ở bất kỳ đâu', textEn: 'public is accessible from anywhere' },
-      { id: 'c', text: 'protected chỉ truy cập được trong cùng file', textEn: 'protected is only accessible within the same file' },
-      { id: 'd', text: 'default truy cập được từ mọi package', textEn: 'default is accessible from every package' },
+      { id: 'a', text: 'protected chỉ truy cập được trong cùng file', textEn: 'protected is only accessible within the same file' },
+      { id: 'b', text: 'private chỉ truy cập được trong chính class đó', textEn: 'private is only accessible within that class itself' },
+      { id: 'c', text: 'default truy cập được từ mọi package', textEn: 'default is accessible from every package' },
+      { id: 'd', text: 'public truy cập được ở bất kỳ đâu', textEn: 'public is accessible from anywhere' },
     ],
-    correctOptionIds: ['a', 'b'],
+    correctOptionIds: ['b', 'd'],
     explanation:
-      'private giới hạn trong class, public không giới hạn — hai phát biểu này đúng. protected thực ra truy cập được trong cùng package cộng với từ subclass ở package khác (không phải "chỉ cùng file"), và default chỉ truy cập được trong CÙNG package (không phải "mọi package") — nên (c) và (d) sai.',
+      'private giới hạn trong class, public không giới hạn — hai phát biểu này đúng. protected thực ra truy cập được trong cùng package cộng với từ subclass ở package khác (không phải "chỉ cùng file"), và default chỉ truy cập được trong CÙNG package (không phải "mọi package") — nên (a) và (c) sai.',
     explanationEn:
-      'private is limited to the class, public has no limit — both true. protected is actually accessible within the same package plus from subclasses in other packages (not "only the same file"), and default is only accessible within the SAME package (not "every package") — so (c) and (d) are false.',
+      'private is limited to the class, public has no limit — both true. protected is actually accessible within the same package plus from subclasses in other packages (not "only the same file"), and default is only accessible within the SAME package (not "every package") — so (a) and (c) are false.',
   },
   {
     id: 'dong-goi-6',
     question: 'Package trong Java dùng để làm gì?',
     options: [
-      { id: 'a', text: 'Tăng tốc độ chạy chương trình' },
-      { id: 'b', text: 'Gom nhóm các class/interface liên quan lại với nhau theo namespace' },
+      { id: 'a', text: 'Gom nhóm các class/interface liên quan lại với nhau theo namespace' },
+      { id: 'b', text: 'Tăng tốc độ chạy chương trình' },
       { id: 'c', text: 'Bắt buộc phải có ít nhất 1 constructor' },
       { id: 'd', text: 'Thay thế hoàn toàn cho access modifier' },
     ],
-    correctOptionIds: ['b'],
+    correctOptionIds: ['a'],
     explanation:
       'Package là một namespace tổ chức các class/interface liên quan, giúp quản lý mã nguồn lớn dễ dàng hơn — tương tự khái niệm thư mục trên máy tính.',
   },
