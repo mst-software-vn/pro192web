@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'polymorphism-1',
+    question: 'Nạp chồng (overloading) trong Java được hiểu là gì?',
+    questionEn: 'What does overloading mean in Java?',
+    options: [
+      { id: 'a', text: 'Một class có nhiều phương thức cùng tên nhưng khác tham số', textEn: 'A class has multiple methods with the same name but different parameters' },
+      { id: 'b', text: 'Lớp con định nghĩa lại một phương thức đã có ở lớp cha với cùng chữ ký', textEn: 'A subclass redefines a superclass method with the exact same signature' },
+      { id: 'c', text: 'Một class chỉ được có đúng 1 constructor duy nhất', textEn: 'A class may only have exactly one constructor' },
+      { id: 'd', text: 'Việc gọi một phương thức tĩnh từ một đối tượng', textEn: 'Calling a static method through an object instance' },
+    ],
+    correctOptionIds: ['a'],
+    explanation: 'Overloading cho phép một class có nhiều phương thức cùng tên nhưng khác kiểu hoặc số lượng tham số — trình biên dịch chọn đúng phiên bản dựa trên đối số truyền vào.',
+    explanationEn: 'Overloading allows a class to have multiple methods with the same name but different parameter types or counts — the compiler selects the right one based on the arguments provided.',
+  },
+  {
+    id: 'polymorphism-2',
+    question: 'Ghi đè (overriding) phương thức yêu cầu điều gì giữa lớp con và lớp cha?',
+    questionEn: 'What does method overriding require between a subclass and its superclass?',
+    options: [
+      { id: 'a', text: 'Tên phương thức khác nhau nhưng tham số giống nhau', textEn: 'Different method names but the same parameters' },
+      { id: 'b', text: 'Cùng tên, cùng chữ ký (số lượng/kiểu tham số) và cùng kiểu trả về như ở lớp cha', textEn: 'Same name, same signature (parameter count/types), and same return type as in the superclass' },
+      { id: 'c', text: 'Lớp con phải khai báo phương thức là private', textEn: 'The subclass must declare the method as private' },
+      { id: 'd', text: 'Không cần liên quan gì tới lớp cha', textEn: 'It has no relation to the superclass at all' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Overriding là khi lớp con cung cấp cài đặt riêng cho một phương thức đã có ở lớp cha, với cùng tên, cùng chữ ký (số lượng và kiểu tham số) và cùng kiểu trả về.',
+    explanationEn: 'Overriding allows a subclass to provide a specific implementation of a method already defined in its superclass — with the same name, the same signature, and the same return type.',
+  },
+  {
+    id: 'polymorphism-3',
+    question: 'Java sử dụng loại liên kết (binding) nào cho các phương thức bị ghi đè (overridden)?',
+    questionEn: 'What kind of binding does Java use for overridden methods?',
+    options: [
+      { id: 'a', text: 'Liên kết tĩnh (static binding) lúc biên dịch', textEn: 'Static binding at compile time' },
+      { id: 'b', text: 'Liên kết động (dynamic binding) lúc chạy chương trình', textEn: 'Dynamic binding at runtime' },
+      { id: 'c', text: 'Không có bất kỳ liên kết nào', textEn: 'No binding at all' },
+      { id: 'd', text: 'Liên kết ngẫu nhiên mỗi lần chạy', textEn: 'A random binding each run' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Java dùng dynamic binding (runtime) cho các phương thức bị ghi đè (overridden), còn các phương thức nạp chồng (overloaded) được quyết định bằng static binding (compile time).',
+    explanationEn: 'Java uses dynamic binding (at runtime) for overridden methods, and static binding (at compile time) for overloaded methods.',
+  },
+  {
+    id: 'polymorphism-4',
+    question: 'Lớp trừu tượng (abstract class) trong Java có đặc điểm gì?',
+    questionEn: 'What characterizes an abstract class in Java?',
+    options: [
+      { id: 'a', text: 'Không thể có bất kỳ phương thức trừu tượng nào', textEn: 'It cannot have any abstract methods' },
+      { id: 'b', text: 'Có thể chứa phương thức trừu tượng mà lớp con bắt buộc phải cài đặt', textEn: 'It may contain abstract methods that subclasses must implement' },
+      { id: 'c', text: 'Không được phép có bất kỳ constructor nào', textEn: 'It is not allowed to have any constructor' },
+      { id: 'd', text: 'Không thể được kế thừa bởi lớp khác', textEn: 'It cannot be extended by another class' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Abstract class có thể chứa các abstract method (chưa có phần thân) — mọi lớp con kế thừa từ nó bắt buộc phải cài đặt đầy đủ các phương thức trừu tượng này.',
+    explanationEn: 'An abstract class may contain abstract methods (no implementation) — every subclass extending it must implement all of those abstract methods.',
+  },
+  {
+    id: 'polymorphism-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng về interface trong Java:',
+    questionEn: 'Select ALL correct statements about interfaces in Java:',
+    options: [
+      { id: 'a', text: 'Interface định nghĩa chữ ký phương thức mà lớp cài đặt (implement) phải cung cấp', textEn: 'An interface defines method signatures that implementing classes must provide' },
+      { id: 'b', text: 'Một class chỉ được implements đúng 1 interface duy nhất', textEn: 'A class may implement only exactly one interface' },
+      { id: 'c', text: 'Interface cho phép mô phỏng đa kế thừa kiểu dữ liệu (multiple inheritance of type)', textEn: 'Interfaces enable multiple inheritance of type' },
+      { id: 'd', text: 'Interface giúp tạo ra hành vi đa hình (polymorphic behavior)', textEn: 'Interfaces enable polymorphic behavior' },
+    ],
+    correctOptionIds: ['a', 'c', 'd'],
+    explanation: 'Interface định nghĩa chữ ký phương thức, cho phép đa kế thừa kiểu (một class có thể implements nhiều interface cùng lúc) và tạo ra hành vi đa hình — nên (b) sai.',
+    explanationEn: 'An interface defines method signatures, enables multiple inheritance of type (a class can implement several interfaces at once), and enables polymorphic behavior — so (b) is false.',
+  },
+  {
+    id: 'polymorphism-6',
+    question: 'Annotation nào dùng để đánh dấu rõ ràng một phương thức đang ghi đè phương thức của lớp cha?',
+    questionEn: 'Which annotation explicitly marks a method as overriding a superclass method?',
+    options: [
+      { id: 'a', text: '@Overload', textEn: '@Overload' },
+      { id: 'b', text: '@Override', textEn: '@Override' },
+      { id: 'c', text: '@Abstract', textEn: '@Abstract' },
+      { id: 'd', text: '@Inherit', textEn: '@Inherit' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: '@Override là annotation dùng để chỉ rõ phương thức đang ghi đè một phương thức của lớp cha — nếu chữ ký không khớp, trình biên dịch sẽ báo lỗi ngay lập tức.',
+    explanationEn: '@Override marks that a method is intended to override a superclass method — if the signature does not actually match, the compiler reports an error immediately.',
+  },
+]
