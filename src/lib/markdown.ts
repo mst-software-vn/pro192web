@@ -30,3 +30,14 @@ export function extractHeadings(markdown: string): HeadingItem[] {
 
   return headings
 }
+
+// Đếm số khối code (```...```) và số ảnh (![alt](src)) trong 1 chương — dùng cho số
+// liệu thống kê ở Landing, tính động từ nội dung thật thay vì hardcode.
+export function countCodeBlocks(markdown: string): number {
+  const fenceCount = (markdown.match(/^```/gm) ?? []).length
+  return Math.floor(fenceCount / 2)
+}
+
+export function countImages(markdown: string): number {
+  return (markdown.match(/!\[[^\]]*\]\([^)]+\)/g) ?? []).length
+}

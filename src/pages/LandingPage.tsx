@@ -3,6 +3,7 @@ import { ChapterGrid } from '../components/landing/ChapterGrid'
 import { HeroSection } from '../components/landing/HeroSection'
 import { LandingNav } from '../components/landing/LandingNav'
 import { SiteFooter } from '../components/landing/SiteFooter'
+import { StatsSection } from '../components/landing/StatsSection'
 import '../styles/landing.css'
 
 // Landing Page — chuyển đổi từ docs/design-references/PRO192-Landing.dc.html.
@@ -23,6 +24,7 @@ export function LandingPage() {
         </header>
 
         <HeroSection />
+        <StatsSection />
         <ChapterGrid />
       </div>
 

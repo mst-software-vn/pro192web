@@ -12,3 +12,9 @@ const modules = import.meta.glob(['./*.ts', '!./index.ts', '!./*.test.ts'], { ea
 export function getQuizPool(slug: string): QuizQuestion[] {
   return modules[`./${slug}.ts`]?.questions ?? []
 }
+
+// Tổng số câu hỏi trên toàn bộ kho — dùng cho số liệu thống kê ở Landing, tính động
+// thay vì hardcode để không bị lệch mỗi khi thêm/bớt câu hỏi hay thêm chương mới.
+export function getTotalQuizQuestionCount(): number {
+  return Object.values(modules).reduce((sum, module) => sum + module.questions.length, 0)
+}
