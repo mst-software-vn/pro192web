@@ -10,12 +10,31 @@ import { MobileNav } from './MobileNav'
 import { Sidebar } from './Sidebar'
 import { TableOfContents } from './TableOfContents'
 
+function ChevronIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-3 w-3 shrink-0 rotate-180"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  )
+}
+
 // Bố cục docs 3 cột kiểu Laravel: sidebar trái · cột đọc giữa · mục lục phải.
 // Sidebar cố định + TOC chỉ hiện ở desktop; mobile dùng drawer từ DocsHeader.
 export function DocsLayout() {
   const { slug } = useParams()
   const location = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
+  // Ẩn nguyên cột phải (TOC + thẻ tải PDF) khi bấm toggle, để cột nội dung giữa (flex-1)
+  // tự giãn ra chiếm hết chỗ trống — không phải chỉ ẩn mỗi danh sách heading bên trong.
+  const [tocCollapsed, setTocCollapsed] = useState(false)
 
   // Chuyển trang thì cuộn lên đầu ngay lập tức (React Router không tự reset scroll
   // như trình duyệt vẫn làm) — TRỪ khi URL có #hash (vd từ search modal nhảy tới 1
@@ -32,6 +51,7 @@ export function DocsLayout() {
   }, [location.pathname, location.hash])
 
   const { language } = useLanguage()
+  const isEn = language === 'en'
   const chapter = slug ? getChapter(slug) : undefined
   const activeBody = language === 'vi' ? (chapter?.bodyVi ?? chapter?.body) : chapter?.body
   const headings = activeBody ? extractHeadings(activeBody) : []
@@ -53,10 +73,27 @@ export function DocsLayout() {
           <Outlet />
         </main>
 
-        <aside className="hidden w-56 shrink-0 py-10 xl:block">
-          <TableOfContents headings={headings} activeId={activeHeadingId} />
-        </aside>
+        {headings.length > 0 && !tocCollapsed ? (
+          <aside className="hidden w-56 shrink-0 py-10 xl:block">
+            <TableOfContents
+              headings={headings}
+              activeId={activeHeadingId}
+              onCollapse={() => setTocCollapsed(true)}
+            />
+          </aside>
+        ) : null}
       </div>
+
+      {headings.length > 0 && tocCollapsed ? (
+        <button
+          type="button"
+          onClick={() => setTocCollapsed(false)}
+          aria-label={isEn ? 'Show sidebar' : 'Hiện cột bên phải'}
+          className="border-hairline-strong bg-canvas text-ink-muted hover:border-accent hover:text-ink fixed top-28 right-6 z-20 hidden h-7 w-7 items-center justify-center rounded-full border shadow-sm transition-colors xl:flex"
+        >
+          <ChevronIcon />
+        </button>
+      ) : null}
 
       <DocsFooter />
     </div>

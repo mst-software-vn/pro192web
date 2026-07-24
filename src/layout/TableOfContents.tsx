@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { chapters } from '../content/chapters'
 import type { HeadingItem } from '../lib/markdown'
 import { useLanguage } from '../hooks/use-language'
@@ -6,6 +5,7 @@ import { useLanguage } from '../hooks/use-language'
 interface TableOfContentsProps {
   headings: HeadingItem[]
   activeId: string | null
+  onCollapse: () => void
 }
 
 function ListIcon() {
@@ -29,7 +29,7 @@ function ListIcon() {
   )
 }
 
-function ChevronIcon({ collapsed }: { collapsed: boolean }) {
+function ChevronIcon({ pointLeft }: { pointLeft: boolean }) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -38,17 +38,19 @@ function ChevronIcon({ collapsed }: { collapsed: boolean }) {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`h-3 w-3 shrink-0 transition-transform duration-200 ${collapsed ? '' : 'rotate-90'}`}
+      className={`h-3 w-3 shrink-0 transition-transform duration-200 ${pointLeft ? 'rotate-180' : ''}`}
     >
       <path d="m9 18 6-6-6-6" />
     </svg>
   )
 }
 
-export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
+// Toggle ở đây chỉ ẨN chính panel này (state thật nằm ở DocsLayout, xem onCollapse) — khi
+// thu gọn, cả cột này biến mất hoàn toàn để cột nội dung giữa giãn ra hết cỡ, không phải
+// chỉ ẩn mỗi danh sách heading bên trong như thiết kế trước đó.
+export function TableOfContents({ headings, activeId, onCollapse }: TableOfContentsProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'
-  const [collapsed, setCollapsed] = useState(false)
 
   return (
     <div className="sticky top-24 flex max-h-[calc(100vh-6rem)] flex-col gap-12 overflow-y-auto">
@@ -57,20 +59,11 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
           <div className="mb-3 flex items-center gap-2">
             <button
               type="button"
-              onClick={() => setCollapsed((value) => !value)}
-              aria-expanded={!collapsed}
-              aria-label={
-                collapsed
-                  ? isEn
-                    ? 'Expand table of contents'
-                    : 'Mở rộng mục lục'
-                  : isEn
-                    ? 'Collapse table of contents'
-                    : 'Thu gọn mục lục'
-              }
+              onClick={onCollapse}
+              aria-label={isEn ? 'Hide sidebar' : 'Ẩn cột bên phải'}
               className="border-hairline-strong text-ink-muted hover:border-accent hover:text-ink flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-full border transition-colors"
             >
-              <ChevronIcon collapsed={collapsed} />
+              <ChevronIcon pointLeft={false} />
             </button>
             <p className="text-ink-faint flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
               <ListIcon />
@@ -78,24 +71,22 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
             </p>
           </div>
 
-          {collapsed ? null : (
-            <ul className="border-hairline space-y-2.5 border-l pl-4">
-              {headings.map((heading) => {
-                const isActive = heading.id === activeId
-                return (
-                  <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
-                    <a
-                      href={`#${heading.id}`}
-                      className={`text-[13px] leading-5 transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
-                        }`}
-                    >
-                      {heading.text}
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          )}
+          <ul className="border-hairline space-y-2.5 border-l pl-4">
+            {headings.map((heading) => {
+              const isActive = heading.id === activeId
+              return (
+                <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
+                  <a
+                    href={`#${heading.id}`}
+                    className={`text-[13px] leading-5 transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
+                      }`}
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
         </nav>
       ) : null}
 
