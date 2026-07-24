@@ -26,7 +26,7 @@ export function StatsSection() {
   const stats = buildStats()
 
   return (
-    <section className="mx-auto max-w-310 px-6 py-10 sm:px-10 sm:py-14">
+    <section className="mx-auto max-w-310 px-6 py-14 sm:px-10 sm:py-20">
       <p className="mb-8 text-center text-[11px] font-bold tracking-[0.12em] text-accent-dark uppercase">
         Trusted by students learning Java OOP
       </p>

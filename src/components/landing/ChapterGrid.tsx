@@ -20,7 +20,7 @@ const cardVariants: Variants = {
 
 export function ChapterGrid() {
   return (
-    <section id="chapters" className="mx-auto max-w-310 px-6 py-5 sm:px-10 sm:pb-22">
+    <section id="chapters" className="mx-auto max-w-310 px-6 pt-10 pb-16 sm:px-10 sm:pt-16 sm:pb-24">
       <div className="mb-6.5 flex items-baseline justify-between">
         <h2 className="text-[15px] font-semibold tracking-[0.04em] text-ink-faint uppercase">
           Course chapters

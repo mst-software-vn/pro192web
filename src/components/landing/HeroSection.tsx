@@ -20,7 +20,7 @@ export function HeroSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
-      className="relative isolate mx-auto grid max-w-310 grid-cols-1 items-center gap-8 px-6 py-9 sm:px-10 sm:py-13 lg:grid-cols-[1.05fr_1.15fr] lg:gap-14 lg:py-20"
+      className="relative isolate mx-auto grid max-w-310 grid-cols-1 items-center gap-8 px-6 py-9 sm:px-10 sm:py-16 lg:grid-cols-[1.05fr_1.15fr] lg:gap-14 lg:py-24"
     >
       <div className="landing-hero-glow pointer-events-none absolute inset-0 -z-10" />
 
