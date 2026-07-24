@@ -11,7 +11,7 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
   const isEn = language === 'en'
 
   return (
-    <div className="sticky top-24 flex max-h-[calc(100vh-6rem)] flex-col gap-8 overflow-y-auto">
+    <div className="sticky top-24 flex max-h-[calc(100vh-6rem)] flex-col gap-12 overflow-y-auto">
       {headings.length > 0 ? (
         <nav>
           <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">
@@ -24,9 +24,8 @@ export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
                 <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
                   <a
                     href={`#${heading.id}`}
-                    className={`text-[13px] leading-5 transition-colors ${
-                      isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
-                    }`}
+                    className={`text-[13px] leading-5 transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
+                      }`}
                   >
                     {heading.text}
                   </a>
