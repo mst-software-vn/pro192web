@@ -1,12 +1,14 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
 import { QuizSection } from '../components/quiz/QuizSection'
 import { getChapter } from '../content/chapters'
+import { LEGACY_SLUG_REDIRECTS } from '../content/legacy-slugs'
 import { useLanguage } from '../hooks/use-language'
 
 export function DocsPage() {
   const { slug } = useParams()
+  const legacyRedirect = slug ? LEGACY_SLUG_REDIRECTS[slug] : undefined
   const chapter = slug ? getChapter(slug) : undefined
   const { language } = useLanguage()
   const isEn = language === 'en'
@@ -15,6 +17,10 @@ export function DocsPage() {
     const title = chapter ? (isEn ? chapter.titleEn : chapter.title) : isEn ? 'Page not found' : 'Không tìm thấy trang'
     document.title = `${title} · PRO192`
   }, [chapter, isEn])
+
+  if (legacyRedirect) {
+    return <Navigate to={`/docs/${legacyRedirect}`} replace />
+  }
 
   if (!chapter) {
     return (
