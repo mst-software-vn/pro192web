@@ -126,8 +126,13 @@ describe('buildSearchIndex', () => {
 
     expect(index).toHaveLength(3)
     expect(index[0]).toMatchObject({ type: 'chapter', slug: 'test-chapter', chapterTitle: 'Chương thử' })
-    expect(index[1]).toMatchObject({ type: 'heading', slug: 'test-chapter', headingText: 'Tiêu đề một', headingId: 'tieu-de-mot' })
-    expect(index[2]).toMatchObject({ type: 'heading', slug: 'test-chapter', headingText: 'Tiêu đề hai', headingId: 'tieu-de-hai' })
+    // headingId comes from the existing, unmodified src/lib/slugify.ts — its NFD-based
+    // stripping does not special-case "đ" (unlike this task's own stripDiacritics), so
+    // "đ" is silently dropped rather than converted to "d". This is pre-existing,
+    // sitewide behavior (shared with every rendered heading anchor) — match it exactly,
+    // do not "fix" slugify.ts as part of this task.
+    expect(index[1]).toMatchObject({ type: 'heading', slug: 'test-chapter', headingText: 'Tiêu đề một', headingId: 'tieu-e-mot' })
+    expect(index[2]).toMatchObject({ type: 'heading', slug: 'test-chapter', headingText: 'Tiêu đề hai', headingId: 'tieu-e-hai' })
   })
 
   it('uses the english body and title when language is en', () => {
