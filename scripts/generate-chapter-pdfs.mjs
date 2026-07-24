@@ -21,6 +21,7 @@ const CHAPTER_SLUGS = [
   'encapsulation',
   'inheritance',
   'polymorphism',
+  'abstraction',
   'array-of-objects',
   'collections',
   'dynamic-memory',

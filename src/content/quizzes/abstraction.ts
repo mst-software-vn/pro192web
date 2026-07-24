@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'abstraction-1',
+    question: 'Abstraction (tính trừu tượng) chủ yếu trả lời câu hỏi nào?',
+    questionEn: 'Which question does abstraction primarily answer?',
+    options: [
+      { id: 'a', text: 'Bạn có được đụng trực tiếp vào dữ liệu của tôi không?', textEn: 'Can you touch my data directly?' },
+      { id: 'b', text: 'Bạn có cần biết cái này hoạt động như thế nào không?', textEn: 'Do you need to know how this works?' },
+      { id: 'c', text: 'Lớp con có được ghi đè phương thức này không?', textEn: 'Can a subclass override this method?' },
+      { id: 'd', text: 'Biến này có thể null hay không?', textEn: 'Can this variable be null?' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Abstraction ẩn đi độ phức tạp trong cách hiện thực, chỉ để lộ ra những gì một object có thể làm — trả lời "bạn có cần biết cái này hoạt động ra sao không?". Câu hỏi về việc "đụng trực tiếp vào dữ liệu" thuộc về encapsulation.',
+    explanationEn: 'Abstraction hides implementation complexity, exposing only what an object can do — it answers "do you need to know how this works?". The question about "touching data directly" belongs to encapsulation.',
+  },
+  {
+    id: 'abstraction-2',
+    question: 'Abstract class trong Java có được phép có constructor không?',
+    questionEn: 'Is an abstract class in Java allowed to have a constructor?',
+    options: [
+      { id: 'a', text: 'Không, vì không thể khởi tạo abstract class bằng new', textEn: 'No, because an abstract class cannot be instantiated with new' },
+      { id: 'b', text: 'Có, và constructor đó chạy khi lớp con được khởi tạo, thông qua super()', textEn: 'Yes, and it runs when a subclass is instantiated, via super()' },
+      { id: 'c', text: 'Có, nhưng chỉ được phép có constructor không tham số', textEn: 'Yes, but only a no-argument constructor is allowed' },
+      { id: 'd', text: 'Chỉ interface mới được phép có constructor', textEn: 'Only interfaces are allowed to have a constructor' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Abstract class hoàn toàn có thể có constructor — dù không thể gọi new trực tiếp lên nó, constructor này vẫn chạy mỗi khi một lớp con được khởi tạo, thông qua lời gọi super() tường minh hoặc ngầm định.',
+    explanationEn: 'Abstract classes can absolutely have constructors — even though you can never call new directly on one, the constructor still runs whenever a subclass is instantiated, via an explicit or implicit super() call.',
+  },
+  {
+    id: 'abstraction-3',
+    question: 'Điều gì xảy ra nếu một lớp con không hiện thực đầy đủ tất cả abstract method kế thừa từ abstract class?',
+    questionEn: 'What happens if a subclass does not implement all the abstract methods it inherits from an abstract class?',
+    options: [
+      { id: 'a', text: 'Chương trình biên dịch bình thường, các method còn thiếu tự trả về null', textEn: 'It compiles fine, and the missing methods simply return null' },
+      { id: 'b', text: 'Lớp con cũng phải được khai báo là abstract, nếu không sẽ lỗi biên dịch', textEn: 'The subclass must also be declared abstract, or it is a compile error' },
+      { id: 'c', text: 'Java sẽ tự sinh hiện thực mặc định cho method còn thiếu', textEn: 'Java automatically generates a default implementation for the missing method' },
+      { id: 'd', text: 'Chỉ bị cảnh báo (warning), chương trình vẫn chạy được', textEn: 'It is only a warning, and the program still runs' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Một lớp con kế thừa abstract class phải hiện thực toàn bộ abstract method mà nó kế thừa; nếu không, bản thân lớp con đó cũng phải được khai báo abstract, nếu không trình biên dịch sẽ báo lỗi.',
+    explanationEn: 'A subclass extending an abstract class must implement every abstract method it inherits; otherwise, the subclass itself must also be declared abstract, or the compiler reports an error.',
+  },
+  {
+    id: 'abstraction-4',
+    question: 'Default method trong interface (từ Java 8) tồn tại chủ yếu để làm gì?',
+    questionEn: 'What is the main purpose of default methods in interfaces (since Java 8)?',
+    options: [
+      { id: 'a', text: 'Để interface có thể thêm method mới mà không làm vỡ các class đã hiện thực nó trước đó', textEn: 'To let an interface add new methods without breaking classes that already implement it' },
+      { id: 'b', text: 'Để thay thế hoàn toàn abstract class', textEn: 'To completely replace abstract classes' },
+      { id: 'c', text: 'Để cho phép interface có instance field riêng', textEn: 'To let interfaces have their own instance fields' },
+      { id: 'd', text: 'Để bắt buộc mọi class hiện thực phải override lại nó', textEn: 'To force every implementing class to override it' },
+    ],
+    correctOptionIds: ['a'],
+    explanation: 'Default method cho phép interface tiến hoá theo thời gian — thêm method mới vào interface mà không làm vỡ các class đã hiện thực nó từ trước, vì chúng tự động có sẵn hiện thực mặc định.',
+    explanationEn: 'Default methods let an interface evolve over time — a new method can be added to an interface without breaking existing implementers, since they automatically get a sensible default implementation.',
+  },
+  {
+    id: 'abstraction-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng khi so sánh abstract class và interface trong Java:',
+    questionEn: 'Select ALL correct statements comparing abstract classes and interfaces in Java:',
+    options: [
+      { id: 'a', text: 'Một class chỉ có thể extends 1 abstract class, nhưng có thể implements nhiều interface', textEn: 'A class can extend only one abstract class, but can implement multiple interfaces' },
+      { id: 'b', text: 'Abstract class có thể có instance field (state riêng theo từng object), interface thì không', textEn: 'An abstract class can have instance fields (per-object state), an interface cannot' },
+      { id: 'c', text: 'Interface không bao giờ có thể chứa bất kỳ method nào có thân hàm', textEn: 'An interface can never contain any method with a body' },
+      { id: 'd', text: 'Abstract class mô tả quan hệ "is-a", interface mô tả năng lực "can-do"', textEn: 'Abstract classes model an "is-a" relationship, interfaces model a "can-do" capability' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'Một class chỉ extends được 1 abstract class nhưng implements được nhiều interface; abstract class có thể có instance field còn interface thì không; abstract class mô tả "is-a" còn interface mô tả "can-do" — nên (c) sai vì từ Java 8, interface có thể có default/static method với thân hàm thật sự.',
+    explanationEn: 'A class can extend only one abstract class but implement multiple interfaces; abstract classes can have instance fields while interfaces cannot; abstract classes model "is-a" while interfaces model "can-do" — so (c) is false, since Java 8 interfaces can have default/static methods with real bodies.',
+  },
+  {
+    id: 'abstraction-6',
+    question: 'Một field được khai báo trực tiếp trong interface (không có hiện thực) sẽ ngầm định mang các modifier nào?',
+    questionEn: 'A field declared directly in an interface implicitly carries which modifiers?',
+    options: [
+      { id: 'a', text: 'private final', textEn: 'private final' },
+      { id: 'b', text: 'protected static', textEn: 'protected static' },
+      { id: 'c', text: 'public static final', textEn: 'public static final' },
+      { id: 'd', text: 'Không có modifier nào cả', textEn: 'No modifiers at all' },
+    ],
+    correctOptionIds: ['c'],
+    explanation: 'Field khai báo trong interface luôn ngầm định là public static final — tức là một hằng số dùng chung, không phải state riêng theo từng instance.',
+    explanationEn: 'A field declared in an interface is always implicitly public static final — a shared constant, not per-instance state.',
+  },
+]

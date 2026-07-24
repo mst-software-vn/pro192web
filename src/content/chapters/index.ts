@@ -87,6 +87,15 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
+    slug: 'abstraction',
+    title: 'Trừu tượng',
+    description: 'Abstract class, interface, default/static method và cách chọn giữa hai cơ chế trừu tượng trong Java.',
+    titleEn: 'Abstraction',
+    descriptionEn: 'Abstract classes, interfaces, default/static methods, and choosing between the two abstraction mechanisms in Java.',
+    group: 'Lập trình hướng đối tượng',
+    status: 'published',
+  },
+  {
     slug: 'array-of-objects',
     title: 'Mảng đối tượng',
     description: 'Khai báo, khởi tạo và thao tác trên mảng đối tượng trong Java.',
