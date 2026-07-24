@@ -90,7 +90,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/25 px-4 pt-24"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/25 px-4 pt-16"
       onClick={onClose}
     >
       <div
@@ -139,9 +139,8 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
               type="button"
               onMouseEnter={() => setHighlighted(rowIndex)}
               onClick={() => activate(row)}
-              className={`flex w-full items-start gap-2.5 px-4 py-2.5 text-left transition-colors ${
-                highlighted === rowIndex ? 'bg-accent/10' : 'hover:bg-panel'
-              }`}
+              className={`flex w-full items-start gap-2.5 px-4 py-2.5 text-left transition-colors ${highlighted === rowIndex ? 'bg-accent/10' : 'hover:bg-panel'
+                }`}
             >
               <span className="text-ink-faint mt-0.5 font-mono text-sm">#</span>
               <span className="min-w-0 flex-1">
