@@ -1,12 +1,17 @@
 import { useLanguage } from '../hooks/use-language'
 
-// Thanh tìm kiếm kiểu Laravel Docs — hiện tại chỉ là UI, chưa gắn logic tìm kiếm thật.
-export function SearchField() {
+interface SearchFieldProps {
+  onClick?: () => void
+}
+
+// Thanh tìm kiếm — bấm vào (hoặc ⌘K/Ctrl+K) sẽ mở SearchModal, xem DocsHeader.tsx.
+export function SearchField({ onClick }: SearchFieldProps) {
   const { language } = useLanguage()
 
   return (
     <button
       type="button"
+      onClick={onClick}
       className="max-w-xl border-hairline bg-panel/60 text-ink-faint hover:border-hairline-strong flex w-full items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors"
     >
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" className="h-4 w-4 shrink-0">

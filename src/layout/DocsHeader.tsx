@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { LanguageSelector } from '../components/LanguageSelector'
 import { SearchField } from '../components/SearchField'
+import { SearchModal } from '../components/search/SearchModal'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { useLanguage } from '../hooks/use-language'
+import { useSearchShortcut } from '../hooks/use-search-shortcut'
 
 interface DocsHeaderProps {
   onOpenMenu: () => void
@@ -10,6 +13,9 @@ interface DocsHeaderProps {
 
 export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
   const { language } = useLanguage()
+  const [searchOpen, setSearchOpen] = useState(false)
+
+  useSearchShortcut(() => setSearchOpen(true))
 
   return (
     <header className="border-hairline bg-canvas/95 sticky top-0 z-30 border-b backdrop-blur">
@@ -34,7 +40,7 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
         </div>
 
         <div className="hidden min-w-0 flex-1 md:block lg:px-3">
-          <SearchField />
+          <SearchField onClick={() => setSearchOpen(true)} />
         </div>
 
         <div className="flex shrink-0 items-center justify-end gap-2 xl:w-56">
@@ -42,6 +48,8 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           <ThemeToggle />
         </div>
       </div>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   )
 }
