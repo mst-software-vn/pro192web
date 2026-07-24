@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'exception-handling-1',
+    question: 'Một exception trong Java là gì?',
+    questionEn: 'What is an exception in Java?',
+    options: [
+      { id: 'a', text: 'Một cú pháp comment đặc biệt', textEn: 'A special comment syntax' },
+      { id: 'b', text: 'Một sự kiện xảy ra lúc chạy chương trình làm gián đoạn luồng thực thi bình thường', textEn: 'An event that occurs during execution and disrupts the normal flow of instructions' },
+      { id: 'c', text: 'Một loại vòng lặp vô hạn', textEn: 'A type of infinite loop' },
+      { id: 'd', text: 'Một kiểu dữ liệu nguyên thuỷ mới', textEn: 'A new primitive data type' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Một exception là một sự kiện xảy ra trong lúc chương trình chạy, làm gián đoạn luồng thực thi bình thường của các câu lệnh.',
+    explanationEn: 'An exception is an event that occurs during program execution and disrupts the normal flow of the program\'s instructions.',
+  },
+  {
+    id: 'exception-handling-2',
+    question: 'Checked exception khác unchecked exception ở điểm nào?',
+    questionEn: 'How does a checked exception differ from an unchecked exception?',
+    options: [
+      { id: 'a', text: 'Checked exception bắt buộc phải xử lý (try-catch hoặc throws) ngay lúc biên dịch, unchecked thì không', textEn: 'Checked exceptions must be handled (try-catch or throws) at compile time; unchecked exceptions are not required to be' },
+      { id: 'b', text: 'Unchecked exception luôn nghiêm trọng hơn checked exception', textEn: 'Unchecked exceptions are always more severe than checked ones' },
+      { id: 'c', text: 'Checked exception chỉ xảy ra lúc chạy chương trình, không thể phát hiện lúc biên dịch', textEn: 'Checked exceptions only occur at runtime and cannot be detected at compile time' },
+      { id: 'd', text: 'Không có sự khác biệt nào giữa hai loại này', textEn: 'There is no difference between the two' },
+    ],
+    correctOptionIds: ['a'],
+    explanation: 'Checked exception được kiểm tra ngay lúc biên dịch — bắt buộc phải xử lý bằng try-catch hoặc khai báo throws. Unchecked exception (runtime exception) không bị bắt buộc như vậy.',
+    explanationEn: 'Checked exceptions are checked at compile time — you must handle them via try-catch or a throws declaration. Unchecked (runtime) exceptions have no such requirement.',
+  },
+  {
+    id: 'exception-handling-3',
+    question: 'Khối lệnh nào LUÔN được thực thi sau try-catch, bất kể có exception xảy ra hay không?',
+    questionEn: 'Which block always executes after try-catch, regardless of whether an exception occurred?',
+    options: [
+      { id: 'a', text: 'catch', textEn: 'catch' },
+      { id: 'b', text: 'finally', textEn: 'finally' },
+      { id: 'c', text: 'throw', textEn: 'throw' },
+      { id: 'd', text: 'throws', textEn: 'throws' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Khối finally luôn được thực thi sau try...catch bất kể kết quả, thường dùng để dọn dẹp tài nguyên như đóng file hoặc đóng kết nối.',
+    explanationEn: 'The finally block always executes after try...catch regardless of the outcome, commonly used to clean up resources such as closing files or connections.',
+  },
+  {
+    id: 'exception-handling-4',
+    question: 'Từ khoá nào dùng để đẩy (propagate) một exception ra khỏi phương thức hiện tại cho nơi gọi xử lý?',
+    questionEn: 'Which keyword propagates an exception out of the current method for the caller to handle?',
+    options: [
+      { id: 'a', text: 'catch', textEn: 'catch' },
+      { id: 'b', text: 'throws (trong chữ ký phương thức)', textEn: 'throws (in the method signature)' },
+      { id: 'c', text: 'finally', textEn: 'finally' },
+      { id: 'd', text: 'try', textEn: 'try' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Nếu một phương thức không muốn tự xử lý exception, nó có thể khai báo throws trong chữ ký phương thức để đẩy trách nhiệm xử lý cho phương thức gọi nó.',
+    explanationEn: 'If a method does not want to handle an exception itself, it can declare throws in its signature to push the responsibility of handling it to the calling method.',
+  },
+  {
+    id: 'exception-handling-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng về try-catch trong Java:',
+    questionEn: 'Select ALL correct statements about try-catch in Java:',
+    options: [
+      { id: 'a', text: 'Một khối try có thể có nhiều khối catch tương ứng với các loại exception khác nhau', textEn: 'A single try block can have multiple catch blocks for different exception types' },
+      { id: 'b', text: 'Một try/catch có thể được lồng bên trong try hoặc catch của một try khác', textEn: 'A try statement may be nested inside the try or catch block of another try statement' },
+      { id: 'c', text: 'Khối finally là bắt buộc phải có trong mọi try-catch', textEn: 'A finally block is mandatory in every try-catch' },
+      { id: 'd', text: 'Lập trình viên có thể tự định nghĩa lớp exception riêng (custom exception)', textEn: 'Programmers can define their own custom exception classes' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'Có thể có nhiều catch cho một try, có thể lồng try-catch, và có thể tự định nghĩa exception riêng. finally là TUỲ CHỌN (optional), không bắt buộc — nên (c) sai.',
+    explanationEn: 'A try can have multiple catch blocks, try-catch can be nested, and custom exception classes are allowed. The finally block is optional, not mandatory — so (c) is false.',
+  },
+  {
+    id: 'exception-handling-6',
+    question: 'Tất cả các lớp exception trong Java đều kế thừa (trực tiếp hoặc gián tiếp) từ lớp nào?',
+    questionEn: 'All exception classes in Java descend (directly or indirectly) from which class?',
+    options: [
+      { id: 'a', text: 'java.lang.Object', textEn: 'java.lang.Object' },
+      { id: 'b', text: 'java.lang.Throwable', textEn: 'java.lang.Throwable' },
+      { id: 'c', text: 'Chỉ java.lang.Exception', textEn: 'Only java.lang.Exception' },
+      { id: 'd', text: 'Chỉ java.lang.Error', textEn: 'Only java.lang.Error' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Mọi loại exception trong Java đều là con cháu của java.lang.Throwable — lớp gốc đại diện cho mọi điều kiện có thể "ném" (throw) được.',
+    explanationEn: 'All exception types in Java descend from java.lang.Throwable — the root class representing anything that can be thrown.',
+  },
+]
