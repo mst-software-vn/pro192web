@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'array-of-objects-1',
+    question: 'Khi dùng mảng để lưu các đối tượng thuộc nhiều lớp con khác nhau trong cùng một hệ thừa kế, kiểu tĩnh (static type) của mảng nên là gì?',
+    questionEn: 'When an array stores objects from different subclasses of the same hierarchy, what should the array\'s static type be?',
+    options: [
+      { id: 'a', text: 'Kiểu của lớp con cụ thể đầu tiên được thêm vào', textEn: 'The type of whichever specific subclass is added first' },
+      { id: 'b', text: 'Kiểu của lớp cha (superclass) chung của các lớp con đó', textEn: 'The common superclass type shared by those subclasses' },
+      { id: 'c', text: 'Luôn phải là Object[], không thể dùng lớp cha cụ thể', textEn: 'It must always be Object[], never a specific superclass' },
+      { id: 'd', text: 'Không cần khai báo kiểu gì cả', textEn: 'No type declaration is needed at all' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Mảng nên khai báo kiểu tĩnh là lớp cha chung (superclass) — mỗi phần tử trỏ tới đối tượng có kiểu động (dynamic type) khác nhau nhưng đều cùng kiểu tĩnh là lớp cha đó.',
+    explanationEn: 'The array should be declared with the common superclass as its static type — each element points to an object of a different dynamic type, but all share that same static type.',
+  },
+  {
+    id: 'array-of-objects-2',
+    question: 'Trong ví dụ ItemList, biến numOfItem dùng để làm gì?',
+    questionEn: 'In the ItemList example, what is the numOfItem variable used for?',
+    options: [
+      { id: 'a', text: 'Lưu kích thước tối đa của mảng', textEn: 'Store the array\'s maximum capacity' },
+      { id: 'b', text: 'Lưu số lượng phần tử hiện đã được thêm vào danh sách', textEn: 'Track how many items have actually been added to the list' },
+      { id: 'c', text: 'Lưu chỉ số của phần tử cuối cùng bị xoá', textEn: 'Store the index of the last removed item' },
+      { id: 'd', text: 'Lưu tổng giá trị của tất cả các item', textEn: 'Store the total value of all items' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'numOfItem đếm số lượng item thực sự đã được thêm vào mảng list — khác với MAX, là kích thước tối đa cố định của mảng.',
+    explanationEn: 'numOfItem counts how many items have actually been added to the list array — distinct from MAX, the array\'s fixed maximum capacity.',
+  },
+  {
+    id: 'array-of-objects-3',
+    question: 'Khi xoá một phần tử tại vị trí index trong phương thức removeItem, thao tác nào cần thực hiện?',
+    questionEn: 'When removing an item at a given index in removeItem, what operation is required?',
+    options: [
+      { id: 'a', text: 'Đặt phần tử đó thành null và dừng lại', textEn: 'Just set that element to null and stop' },
+      { id: 'b', text: 'Dịch chuyển các phần tử phía sau lên một vị trí rồi giảm numOfItem đi 1', textEn: 'Shift subsequent elements left by one position, then decrement numOfItem by 1' },
+      { id: 'c', text: 'Xoá toàn bộ mảng và tạo mảng mới', textEn: 'Delete the entire array and create a new one' },
+      { id: 'd', text: 'Tăng kích thước mảng lên gấp đôi', textEn: 'Double the array\'s size' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'removeItem dịch các phần tử phía sau vị trí bị xoá lên một vị trí (shift), sau đó giảm numOfItem đi 1 — phần tử ở vị trí cuối trở thành rác và được Java giải phóng.',
+    explanationEn: 'removeItem shifts elements after the removed position left by one, then decrements numOfItem by 1 — the item at the old last position becomes garbage and is deallocated by Java.',
+  },
+  {
+    id: 'array-of-objects-4',
+    question: 'Thuật toán sắp xếp nào được dùng trong phương thức sortItems của ví dụ ItemList?',
+    questionEn: 'Which sorting algorithm does the ItemList example\'s sortItems method use?',
+    options: [
+      { id: 'a', text: 'Quick sort', textEn: 'Quick sort' },
+      { id: 'b', text: 'Merge sort', textEn: 'Merge sort' },
+      { id: 'c', text: 'Bubble sort', textEn: 'Bubble sort' },
+      { id: 'd', text: 'Insertion sort', textEn: 'Insertion sort' },
+    ],
+    correctOptionIds: ['c'],
+    explanation: 'sortItems trong ví dụ dùng thuật toán bubble sort để sắp xếp các item theo thứ tự tăng dần dựa trên giá trị (value).',
+    explanationEn: 'sortItems in the example implements the bubble sorting algorithm, sorting items in ascending order based on their value.',
+  },
+  {
+    id: 'array-of-objects-5',
+    question: 'Chọn TẤT CẢ thao tác cơ bản mà một mảng đối tượng (kiểu ItemList) hỗ trợ theo nội dung bài học:',
+    questionEn: 'Select ALL basic operations an object array (like ItemList) supports, per the lesson:',
+    options: [
+      { id: 'a', text: 'In ra tất cả các phần tử (display all)', textEn: 'Print all the array elements (display all)' },
+      { id: 'b', text: 'Thêm một đối tượng tại vị trí cho trước', textEn: 'Add an object at the given index' },
+      { id: 'c', text: 'Tự động mã hoá dữ liệu (encrypt)', textEn: 'Automatically encrypt data' },
+      { id: 'd', text: 'Tìm kiếm một đối tượng theo chỉ số hoặc theo giá trị', textEn: 'Search for an object using the given index or value' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'Các thao tác cơ bản trên mảng đối tượng gồm: in tất cả phần tử, thêm, xoá, cập nhật, và tìm kiếm. Mã hoá dữ liệu không nằm trong các thao tác cơ bản này.',
+    explanationEn: 'The basic operations on an object array are: printing all elements, adding, deleting, updating, and searching. Data encryption is not one of these basic operations.',
+  },
+  {
+    id: 'array-of-objects-6',
+    question: 'Phương thức findItemIndex trong ví dụ trả về giá trị nào nếu không tìm thấy phần tử phù hợp?',
+    questionEn: 'What does the findItemIndex method return when no matching item is found?',
+    options: [
+      { id: 'a', text: '0', textEn: '0' },
+      { id: 'b', text: 'null', textEn: 'null' },
+      { id: 'c', text: '-1', textEn: '-1' },
+      { id: 'd', text: 'Ném ra exception ngay lập tức', textEn: 'It throws an exception immediately' },
+    ],
+    correctOptionIds: ['c'],
+    explanation: 'findItemIndex trả về -1 khi không tìm thấy phần tử phù hợp trong danh sách — quy ước phổ biến khi tìm kiếm theo chỉ số.',
+    explanationEn: 'findItemIndex returns -1 when no matching item is found in the list — a common convention for index-based search methods.',
+  },
+]
