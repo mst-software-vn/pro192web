@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'inheritance-1',
+    question: 'Quan hệ "is-a" trong lập trình hướng đối tượng được thể hiện bằng từ khoá nào trong Java?',
+    questionEn: 'Which Java keyword expresses the "is-a" relationship?',
+    options: [
+      { id: 'a', text: 'implements', textEn: 'implements' },
+      { id: 'b', text: 'extends', textEn: 'extends' },
+      { id: 'c', text: 'super', textEn: 'super' },
+      { id: 'd', text: 'instanceof', textEn: 'instanceof' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: '"extends" thể hiện quan hệ kế thừa (is-a) giữa lớp con và lớp cha — ví dụ Vase extends Item nghĩa là "Vase is-a Item".',
+    explanationEn: '"extends" expresses the is-a inheritance relationship between a subclass and its superclass — e.g. Vase extends Item means "a Vase is-a Item".',
+  },
+  {
+    id: 'inheritance-2',
+    question: 'Khi lớp con gọi super() trong constructor, quy tắc bắt buộc là gì?',
+    questionEn: 'What is the mandatory rule when a subclass calls super() in its constructor?',
+    options: [
+      { id: 'a', text: 'super() có thể đặt bất kỳ đâu trong constructor', textEn: 'super() may appear anywhere in the constructor' },
+      { id: 'b', text: 'super() phải là dòng lệnh đầu tiên trong constructor của lớp con', textEn: 'super() must be the first line of the subclass constructor' },
+      { id: 'c', text: 'super() chỉ được gọi trong phương thức main', textEn: 'super() can only be called from the main method' },
+      { id: 'd', text: 'super() không được phép dùng trong constructor có tham số', textEn: 'super() is not allowed in a parameterized constructor' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Lời gọi super() (nếu có) phải là dòng đầu tiên trong constructor lớp con, đảm bảo đối tượng luôn được khởi tạo từ lớp cha xa nhất trước.',
+    explanationEn: 'A super() call, if present, must be the first line of the subclass constructor — this ensures objects are constructed starting from the most distant superclass first.',
+  },
+  {
+    id: 'inheritance-3',
+    question: 'Nếu constructor của lớp con KHÔNG gọi tường minh super(...), trình biên dịch Java sẽ làm gì?',
+    questionEn: 'If a subclass constructor does not explicitly call super(...), what does the Java compiler do?',
+    options: [
+      { id: 'a', text: 'Luôn báo lỗi biên dịch ngay lập tức', textEn: 'Always throws an immediate compile error' },
+      { id: 'b', text: 'Tự động chèn một lời gọi super() không tham số tới lớp cha', textEn: 'Automatically inserts a no-argument super() call to the superclass' },
+      { id: 'c', text: 'Bỏ qua hoàn toàn constructor của lớp cha', textEn: 'Completely skips the superclass constructor' },
+      { id: 'd', text: 'Tự tạo ra một lớp cha mới rỗng', textEn: 'Creates a brand-new empty superclass' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Nếu constructor không tường minh gọi constructor lớp cha, Java tự động chèn lời gọi super() không tham số. Nếu lớp cha không có constructor không tham số, sẽ xảy ra lỗi biên dịch.',
+    explanationEn: 'If a constructor does not explicitly invoke a superclass constructor, Java automatically inserts a call to the no-argument constructor of the superclass — a compile-time error occurs if the superclass has no such constructor.',
+  },
+  {
+    id: 'inheritance-4',
+    question: 'Chọn TẤT CẢ phát biểu đúng về access modifier trong ngữ cảnh kế thừa:',
+    questionEn: 'Select ALL correct statements about access modifiers in the context of inheritance:',
+    options: [
+      { id: 'a', text: 'private: chỉ truy cập được trong chính class đó, không được đảm bảo có ở lớp con', textEn: 'private: only accessible within that class itself, not guaranteed available in a subclass' },
+      { id: 'b', text: 'protected: truy cập được trong class đó và các lớp kế thừa từ nó', textEn: 'protected: accessible within that class and any class extended from it' },
+      { id: 'c', text: 'public: chỉ truy cập được trong cùng package', textEn: 'public: only accessible within the same package' },
+      { id: 'd', text: 'Trong Java, lớp Object là lớp cha mặc định của mọi lớp', textEn: 'In Java, the Object class is the default parent of every class' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'private giới hạn trong class, protected mở rộng cho lớp kế thừa, và Object là lớp cha ngầm định của mọi class trong Java. public truy cập được ở MỌI nơi, không chỉ trong package — nên (c) sai.',
+    explanationEn: 'private is limited to the class, protected extends to inheriting classes, and Object is the implicit parent of every Java class. public is accessible everywhere, not just within a package — so (c) is false.',
+  },
+  {
+    id: 'inheritance-5',
+    question: 'Toán tử nào dùng để kiểm tra một biến tham chiếu có đang trỏ tới đối tượng của một lớp cụ thể hay không?',
+    questionEn: 'Which operator checks whether a reference variable currently points to an object of a specific class?',
+    options: [
+      { id: 'a', text: 'typeof', textEn: 'typeof' },
+      { id: 'b', text: 'is', textEn: 'is' },
+      { id: 'c', text: 'instanceof', textEn: 'instanceof' },
+      { id: 'd', text: 'casting', textEn: 'casting' },
+    ],
+    correctOptionIds: ['c'],
+    explanation: 'instanceof kiểm tra xem một biến tham chiếu có đang trỏ tới đối tượng thuộc một class cụ thể (hoặc lớp con của nó) hay không, trả về true hoặc false.',
+    explanationEn: 'instanceof checks whether a reference variable is currently pointing to an object of a specific class (or one of its subclasses), returning true or false.',
+  },
+  {
+    id: 'inheritance-6',
+    question: 'Điều gì xảy ra khi ép kiểu (cast) một tham chiếu sang một lớp mà đối tượng thực tế KHÔNG thuộc lớp đó?',
+    questionEn: 'What happens when you cast a reference to a class the actual object does NOT belong to?',
+    options: [
+      { id: 'a', text: 'Chương trình tự động chuyển đổi dữ liệu tương thích', textEn: 'The program automatically converts compatible data' },
+      { id: 'b', text: 'Ném ra lỗi ClassCastException lúc chạy chương trình', textEn: 'A ClassCastException is thrown at runtime' },
+      { id: 'c', text: 'Trả về null mà không báo lỗi', textEn: 'It silently returns null with no error' },
+      { id: 'd', text: 'Trình biên dịch phát hiện và không cho biên dịch chương trình', textEn: 'The compiler detects it and refuses to compile the program' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Nếu cố ép kiểu một đối tượng sang một lớp mà nó không thực sự là instance, chương trình sẽ ném lỗi ClassCastException lúc runtime — trình biên dịch không thể phát hiện lỗi này trước.',
+    explanationEn: 'If code attempts to cast an object to a class of which it is not an actual instance, a ClassCastException error is thrown at runtime — the compiler cannot catch this in advance.',
+  },
+]
