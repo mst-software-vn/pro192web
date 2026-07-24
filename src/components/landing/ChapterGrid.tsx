@@ -46,11 +46,11 @@ export function ChapterGrid() {
                 {String(chapter.id).padStart(2, '0')}
               </span>
               <span className="relative mt-1.5 block text-[18px] font-bold">{chapter.name}</span>
-              <span className="absolute bottom-4.5 left-5 inline-flex items-center rounded-full bg-(--landing-accent)/12 px-2.5 py-1 text-[11px] font-semibold tracking-[0.03em] text-[#60a5fa]">
+              <span className="absolute bottom-4.5 left-5 inline-flex items-center rounded-full bg-(--landing-accent)/12 px-2.5 py-1 text-[11px] font-semibold tracking-[0.03em] text-accent-dark">
                 {chapter.tag}
               </span>
 
-              <span className="absolute inset-0 flex translate-y-full items-end bg-[#080b14]/85 p-5 opacity-0 backdrop-blur-sm transition-[transform,opacity] duration-250 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:translate-y-0 group-hover:opacity-100">
+              <span className="absolute inset-0 flex translate-y-full items-end bg-[#080b14]/85 p-5 opacity-0 backdrop-blur-sm transition-[transform,opacity] duration-250 ease-in-out group-hover:translate-y-0 group-hover:opacity-100">
                 <span className="text-[13px] leading-[1.55] text-[#cbd5e1] text-pretty">{chapter.description}</span>
               </span>
             </Link>
