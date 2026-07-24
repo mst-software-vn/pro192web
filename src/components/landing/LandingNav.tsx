@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useSearchShortcut } from '../../hooks/use-search-shortcut'
 import { SearchModal } from '../search/SearchModal'
+import { ChaptersMegaMenu } from './ChaptersMegaMenu'
 
 const GITHUB_URL = 'https://github.com/mst-software-vn/pro192web'
 
@@ -55,26 +56,23 @@ export function LandingNav() {
   return (
     <div className="border-b border-(--landing-header-border) bg-(--landing-header-bg) backdrop-blur-md">
       <div className="mx-auto max-w-310 px-6 sm:px-10">
-        <nav className="flex h-17 items-center justify-between">
+        <nav className="flex h-17 items-center gap-8">
           <Link to="/" className="flex shrink-0 items-center">
             <img src="/images/logo.png" alt="PRO192 Docs" className="h-9" />
           </Link>
 
-          <div className="flex items-center gap-5.5">
-            <div className="hidden items-center gap-5.5 text-sm text-ink-muted md:flex">
-              <a href="#chapters" className="transition-colors hover:text-ink">
-                Chapters
-              </a>
-              <Link to="/docs" className="transition-colors hover:text-ink">
-                Docs
-              </Link>
-              <span className="cursor-default opacity-60">Blog</span>
-            </div>
+          <div className="hidden items-center gap-6 md:flex">
+            <ChaptersMegaMenu />
+            <Link to="/docs" className="text-sm text-ink-muted transition-colors hover:text-ink">
+              Docs
+            </Link>
+          </div>
 
+          <div className="flex flex-1 items-center justify-end gap-3">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="hidden w-42 items-center gap-2 rounded-md border border-hairline-strong bg-(--landing-search-bg) px-3 py-2 text-[13.5px] text-ink-faint transition-colors hover:border-accent lg:flex"
+              className="hidden w-72 items-center gap-2 rounded-md border border-hairline-strong bg-(--landing-search-bg) px-3 py-2 text-[13.5px] text-ink-faint transition-colors hover:border-accent lg:flex"
             >
               <SearchIcon />
               <span className="flex-1 text-left">Search...</span>
@@ -83,26 +81,24 @@ export function LandingNav() {
               </kbd>
             </button>
 
-            <div className="flex items-center gap-1.5">
-              <a
-                href={GITHUB_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub repository"
-                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-(--landing-card) hover:text-ink"
-              >
-                <GithubIcon />
-              </a>
+            <a
+              href={GITHUB_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub repository"
+              className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-(--landing-card) hover:text-ink"
+            >
+              <GithubIcon />
+            </a>
 
-              <button
-                type="button"
-                onClick={() => setMobileOpen((value) => !value)}
-                aria-label="Menu"
-                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted md:hidden"
-              >
-                <MenuIcon />
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => setMobileOpen((value) => !value)}
+              aria-label="Menu"
+              className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted md:hidden"
+            >
+              <MenuIcon />
+            </button>
           </div>
         </nav>
 
@@ -122,7 +118,6 @@ export function LandingNav() {
             >
               Docs
             </Link>
-            <span className="px-1.5 py-2.5 text-[15px] text-ink-muted opacity-60">Blog</span>
           </div>
         ) : null}
       </div>
