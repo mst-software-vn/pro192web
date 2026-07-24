@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  ::selection { background: rgba(59,130,246,0.3); }
+  .theme-root {
+    --text: #f0f0f0;
+    --muted: #a1a1aa;
+    --dim: #71717a;
+    --faint: #52525b;
+    --border-strong: #27272a;
+    --card: rgba(255,255,255,0.03);
+    --card-hover: rgba(59,130,246,0.06);
+    --nav-icon: #a1a1aa;
+    --search-bg: rgba(255,255,255,0.02);
+    --panel-shadow: 0 30px 70px -20px rgba(0,0,0,0.7);
+    --chap-num: #1e3a5f;
+    --header-bg: rgba(8,11,20,0.92);
+    --header-border: rgba(255,255,255,0.06);
+    --foot-bg: #050709;
+    --foot-border: rgba(255,255,255,0.06);
+    --foot-link: #9ca3af;
+    --foot-link-hover: #f9fafb;
+    color: var(--text);
+    background:
+      radial-gradient(800px circle at 50% -6%, rgba(99,102,241,0.05), transparent 60%),
+      radial-gradient(ellipse 85% 55% at 84% -8%, rgba(59,130,246,0.12), transparent 60%),
+      radial-gradient(ellipse 60% 50% at 6% 108%, rgba(99,102,241,0.08), transparent 60%),
+      #080b14;
+  }
+  .theme-root[data-theme="light"] {
+    --text: #0f172a;
+    --muted: #334155;
+    --dim: #64748b;
+    --faint: #94a3b8;
+    --border-strong: #cdd9ee;
+    --card: rgba(255,255,255,0.7);
+    --card-hover: rgba(255,255,255,0.9);
+    --nav-icon: #475569;
+    --search-bg: rgba(255,255,255,0.8);
+    --panel-shadow: 0 24px 60px -24px rgba(30,58,95,0.25);
+    --chap-num: rgba(59,130,246,0.15);
+    --header-bg: rgba(240,244,255,0.92);
+    --header-border: rgba(59,130,246,0.15);
+    --foot-bg: #f8faff;
+    --foot-border: rgba(59,130,246,0.12);
+    --foot-link: #64748b;
+    --foot-link-hover: #0f172a;
+    color: var(--text);
+    background:
+      radial-gradient(600px circle at 92% 0%, rgba(59,130,246,0.08), transparent 65%),
+      linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 40%, #f5f3ff 100%);
+  }
+  .grid-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 70% at 60% 0%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 75% 70% at 60% 0%, #000 0%, transparent 75%);
+  }
+  .theme-root[data-theme="light"] .grid-bg { display: none; }
+
+  .chap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .chap-card {
+    position: relative; overflow: hidden; min-height: 140px; padding: 20px;
+    border: 1px solid rgba(59,130,246,0.15); border-radius: 14px; background: var(--card);
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .chap-card:hover { border-color: rgba(59,130,246,0.6); box-shadow: 0 0 0 1px rgba(59,130,246,0.4), 0 8px 32px rgba(59,130,246,0.15); }
+  .chap-topline { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #3b82f6, #6366f1); opacity: 0; transition: opacity 0.2s; }
+  .chap-card:hover .chap-topline { opacity: 1; }
+  .chap-num { position: absolute; top: 10px; right: 18px; font-size: 48px; font-weight: 800; line-height: 1; color: var(--chap-num); font-family: 'Inter', sans-serif; transition: opacity 0.2s; pointer-events: none; }
+  .chap-card:hover .chap-num { opacity: 0.3; }
+  .chap-name { position: relative; margin-top: 6px; font-size: 18px; font-weight: 700; color: var(--text); }
+  .chap-cat { position: absolute; bottom: 18px; left: 20px; display: inline-flex; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: 0.03em; padding: 4px 10px; border-radius: 100px; background: rgba(59,130,246,0.12); color: #60a5fa; }
+  .chap-overlay {
+    position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 20px;
+    background: rgba(8,11,20,0.85); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+    transform: translateY(100%); opacity: 0; transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), opacity 0.25s;
+  }
+  .chap-card:hover .chap-overlay { transform: translateY(0); opacity: 1; }
+  .chap-overlay p { margin: 0; font-size: 13px; line-height: 1.55; color: #cbd5e1; text-wrap: pretty; }
+
+  .foot-link { color: var(--foot-link); text-decoration: none; transition: color 0.15s; font-size: 14px; display: block; }
+  .foot-link:hover { color: var(--foot-link-hover); }
+  .foot-head { text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: #6b7280; font-weight: 600; margin: 0 0 14px; }
+
+  .announce-short { display: none; }
+
+  @media (min-width: 768px) { .hamburger { display: none !important; } .mobile-menu { display: none !important; } }
+  @media (min-width: 768px) and (max-width: 1024px) { .foot-cols { grid-template-columns: 1fr 1fr !important; } .hero-grid { grid-template-columns: 1.22fr 1fr !important; } .chap-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+  @media (max-width: 767px) {
+    .chap-grid { grid-template-columns: 1fr !important; }
+    .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    .hero-pad { padding: 36px 0 52px !important; }
+    .h1-resp { font-size: 40px !important; }
+    .nav-links, .nav-search { display: none !important; }
+    .hamburger { display: flex !important; }
+    .announce-full { display: none !important; }
+    .announce-short { display: inline !important; }
+    .code-scroll { max-height: 300px !important; overflow: auto !important; }
+    .foot-cols { grid-template-columns: 1fr !important; }
+    .foot-bottom { flex-direction: column !important; gap: 14px !important; text-align: center !important; }
+  }
+</style>
+</helmet>
+<div class="theme-root" data-theme="{{ resolvedTheme }}" style="position: relative; min-height: 100vh; font-family: 'Inter', system-ui, sans-serif; overflow-x: clip; transition: background 0.25s, color 0.25s;">
+
+  <div class="grid-bg"></div>
+
+  <div style="position: relative;">
+
+    <header style="position: sticky; top: 0; z-index: 50;">
+      <div style="display: {{ announceDisplay }}; align-items: center; justify-content: center; gap: 14px; padding: 9px 48px 9px 16px; background: linear-gradient(90deg, #1e3a5f, #1e40af); color: #dbeafe; font-size: 13px; position: relative; text-align: center;">
+        <span class="announce-full">🚀 PRO192 is proudly developed by <strong style="font-weight: 600; color: #fff;">MST Software</strong> · <a href="https://www.facebook.com/mstsoftware.vn" target="_blank" rel="noopener" style="color: #bfdbfe; font-weight: 600; text-decoration: underline; text-underline-offset: 2px;">Learn more about MST →</a></span>
+        <span class="announce-short">🚀 PRO192 by MST Software · <a href="https://www.facebook.com/mstsoftware.vn" target="_blank" rel="noopener" style="color: #bfdbfe; font-weight: 600; text-decoration: underline;">Learn more →</a></span>
+        <button onClick="{{ dismiss }}" aria-label="Dismiss" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #bfdbfe; font-size: 18px; line-height: 1; cursor: pointer; padding: 4px 8px; border-radius: 6px;" style-hover="background: rgba(255,255,255,0.12); color: #fff;">×</button>
+      </div>
+
+      <div style="background: var(--header-bg); -webkit-backdrop-filter: blur(12px) saturate(180%); backdrop-filter: blur(12px) saturate(180%); border-bottom: 1px solid var(--header-border);">
+        <div style="max-width: 1240px; margin: 0 auto; padding: 0 40px;">
+          <nav style="display: flex; align-items: center; justify-content: space-between; height: 68px;">
+            <div style="display: flex; align-items: center; gap: 11px;">
+              <div style="width: 30px; height: 30px; border-radius: 7px; background: #3b82f6; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: #fff; box-shadow: 0 0 20px rgba(59,130,246,0.45);">P</div>
+              <span style="font-weight: 700; font-size: 16px; letter-spacing: -0.01em;">PRO192</span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 22px;">
+              <div class="nav-links" style="display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--muted);">
+                <span style="cursor: pointer;" style-hover="color: var(--text);">Chapters</span>
+                <span style="cursor: pointer;" style-hover="color: var(--text);">Docs</span>
+                <span style="cursor: pointer;" style-hover="color: var(--text);">Blog</span>
+              </div>
+
+              <button class="nav-search" onClick="{{ noop }}" style="display: flex; align-items: center; gap: 9px; width: 168px; padding: 8px 12px; border: 1px solid var(--border-strong); border-radius: 9px; background: var(--search-bg); color: var(--dim); font-family: 'Inter', sans-serif; font-size: 13.5px; cursor: pointer; transition: border-color 0.15s;" style-hover="border-color: #3b82f6;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                <span style="flex: 1; text-align: left;">Search...</span>
+                <kbd style="font-family: ui-monospace, monospace; font-size: 11px; padding: 2px 6px; border: 1px solid var(--border-strong); border-radius: 5px; color: var(--dim);">⌘K</kbd>
+              </button>
+
+              <div style="display: flex; align-items: center; gap: 6px;">
+                <a href="https://github.com/mst-software-vn/pro192web" target="_blank" rel="noopener" aria-label="GitHub repository" style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; color: var(--nav-icon); text-decoration: none; transition: color 0.15s, background 0.15s;" style-hover="color: var(--text); background: var(--card);">
+                  <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                </a>
+
+                <button onClick="{{ cycleTheme }}" aria-label="Toggle theme" title="{{ themeTitle }}" style="position: relative; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: var(--card); border: 1px solid var(--border-strong); color: var(--nav-icon); cursor: pointer; transition: color 0.15s, border-color 0.15s;" style-hover="color: var(--text);">
+                  <svg style="display: {{ tmLight }};" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+                  <svg style="display: {{ tmDark }};" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+                  <svg style="display: {{ tmSystem }};" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
+                </button>
+
+                <button class="hamburger" onClick="{{ toggleMobile }}" aria-label="Menu" style="display: none; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 8px; background: var(--card); border: 1px solid var(--border-strong); color: var(--nav-icon); cursor: pointer;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"></path></svg>
+                </button>
+              </div>
+            </div>
+          </nav>
+
+          <div class="mobile-menu" style="display: {{ mobileDisplay }}; flex-direction: column; gap: 4px; padding: 8px 0 16px; border-top: 1px solid var(--header-border);">
+            <span onClick="{{ closeMobile }}" style="padding: 11px 6px; font-size: 15px; color: var(--muted); cursor: pointer;">Chapters</span>
+            <span onClick="{{ closeMobile }}" style="padding: 11px 6px; font-size: 15px; color: var(--muted); cursor: pointer;">Docs</span>
+            <span onClick="{{ closeMobile }}" style="padding: 11px 6px; font-size: 15px; color: var(--muted); cursor: pointer;">Blog</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 40px;">
+
+      <section class="hero-grid hero-pad" style="display: grid; grid-template-columns: 1.05fr 1.15fr; gap: 56px; align-items: center; padding: 68px 0 80px;">
+
+        <div>
+          <div style="display: inline-flex; align-items: center; gap: 9px; padding: 6px 13px; border: 1px solid rgba(59,130,246,0.35); border-radius: 100px; background: rgba(59,130,246,0.08); font-size: 12.5px; font-weight: 500; color: #93c5fd; font-family: ui-monospace, 'SF Mono', Menlo, monospace; margin-bottom: 14px;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; box-shadow: 0 0 8px #3b82f6;"></span>
+            PRO192 · Java OOP
+          </div>
+
+          <div style="display: inline-flex; align-items: center; gap: 9px; padding: 6px 12px; border: 1px solid rgba(243,112,34,0.3); background: rgba(243,112,34,0.06); border-radius: 8px; margin-bottom: 26px; margin-left: 8px;">
+            <svg width="26" height="26" viewBox="0 0 40 40"><circle cx="20" cy="20" r="19" fill="#F37022"></circle><text x="20" y="27" font-size="20" font-weight="800" fill="#fff" text-anchor="middle" font-family="Inter, sans-serif">f</text></svg>
+            <div style="display: flex; flex-direction: column; line-height: 1.2;">
+              <span style="font-size: 12.5px; font-weight: 700; color: #F37022;">FPT University</span>
+              <span style="font-size: 10.5px; color: var(--dim);">Dành cho sinh viên Đại học FPT</span>
+            </div>
+          </div>
+
+          <h1 class="h1-resp" style="font-size: 60px; line-height: 1.04; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 22px; text-wrap: balance;">
+            Master<br>Object-Oriented<br>Programming
+          </h1>
+
+          <p style="font-size: 17.5px; line-height: 1.6; color: var(--muted); max-width: 440px; margin: 0 0 36px;">
+            A focused, hands-on Java course for FPT University students. Learn OOP the way real engineers write it.
+          </p>
+
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <a href="#chapters" style="display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; background: #2563eb; color: #fff; font-weight: 600; font-size: 15px; border-radius: 9px; text-decoration: none; box-shadow: 0 0 20px rgba(37,99,235,0.4); transition: background 0.15s, box-shadow 0.15s;" style-hover="background: #1d4ed8; box-shadow: 0 0 20px rgba(37,99,235,0.4);">
+              Bắt đầu học <span style="font-size: 17px;">→</span>
+            </a>
+            <a href="#chapters" style="display: inline-flex; align-items: center; padding: 13px 22px; border: 1px solid var(--border-strong); color: var(--text); font-weight: 500; font-size: 15px; border-radius: 9px; text-decoration: none; transition: border-color 0.15s;" style-hover="border-color: var(--dim);">
+              View chapters
+            </a>
+          </div>
+        </div>
+
+        <div style="border: 1px solid rgba(255,255,255,0.08); border-top: 1px solid rgba(59,130,246,0.3); border-radius: 14px; background: #0d1117; box-shadow: var(--panel-shadow), 0 0 0 1px rgba(59,130,246,0.06); overflow: hidden;">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1px solid #1e293b; background: #111827;">
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3f3f46;"></span>
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3f3f46;"></span>
+            <span style="width: 11px; height: 11px; border-radius: 50%; background: #3f3f46;"></span>
+            <span style="margin-left: 10px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; color: #64748b;">{{ activeFile }}</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b; background: #111827; padding: 0 6px;">
+            <div style="display: flex; min-width: 0; overflow: hidden;">
+              <button onClick="{{ setTab0 }}" style="padding: 12px 11px; background: none; border: none; border-bottom: 2px solid {{ b0border }}; color: {{ b0color }}; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;">Encapsulation</button>
+              <button onClick="{{ setTab1 }}" style="padding: 12px 11px; background: none; border: none; border-bottom: 2px solid {{ b1border }}; color: {{ b1color }}; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;">Inheritance</button>
+              <button onClick="{{ setTab2 }}" style="padding: 12px 11px; background: none; border: none; border-bottom: 2px solid {{ b2border }}; color: {{ b2color }}; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap;">Polymorphism</button>
+            </div>
+            <button onClick="{{ copyCode }}" style="flex-shrink: 0; display: flex; align-items: center; gap: 6px; margin: 6px 2px 6px 4px; padding: 6px 10px; background: rgba(255,255,255,0.04); border: 1px solid #1e293b; border-radius: 7px; color: {{ copyColor }}; font-family: 'Inter', sans-serif; font-size: 12.5px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.15s;" style-hover="background: rgba(255,255,255,0.08);">
+              <svg style="display: {{ copyIcon }};" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg style="display: {{ doneIcon }};" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+              {{ copyLabel }}
+            </button>
+          </div>
+
+          <div class="code-scroll" style="padding: 22px 20px 24px; font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace; font-size: 13.5px; line-height: 1.85; min-height: 360px;">
+
+            <div style="display: {{ d0 }}; flex-direction: column;">
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">1</span><span style="white-space: pre; color: #c9d1d9;"><span style="color:#f97316;">public</span> <span style="color:#a78bfa;">class</span> <span style="color:#ffa657;">BankAccount</span> {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">2</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">private</span> <span style="color:#34d399;">double</span> balance;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">3</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">4</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">public</span> <span style="color:#d2a8ff;">BankAccount</span>(<span style="color:#34d399;">double</span> initial) {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">5</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#60a5fa;">this</span>.balance = initial;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">6</span><span style="white-space: pre; color: #c9d1d9;">  }</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">7</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">8</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">public void</span> <span style="color:#d2a8ff;">deposit</span>(<span style="color:#34d399;">double</span> amount) {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">9</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#60a5fa;">this</span>.balance += amount;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">10</span><span style="white-space: pre; color: #c9d1d9;">  }</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">11</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">12</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">public</span> <span style="color:#34d399;">double</span> <span style="color:#d2a8ff;">getBalance</span>() {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">13</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#60a5fa;">return</span> balance;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">14</span><span style="white-space: pre; color: #c9d1d9;">  }</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">15</span><span style="white-space: pre; color: #c9d1d9;">}</span></div>
+            </div>
+
+            <div style="display: {{ d1 }}; flex-direction: column;">
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">1</span><span style="white-space: pre; color: #c9d1d9;"><span style="color:#f97316;">public</span> <span style="color:#a78bfa;">class</span> <span style="color:#ffa657;">SavingsAccount</span> <span style="color:#a78bfa;">extends</span> <span style="color:#ffa657;">BankAccount</span> {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">2</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">private</span> <span style="color:#34d399;">double</span> interestRate;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">3</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">4</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">public</span> <span style="color:#d2a8ff;">SavingsAccount</span>(<span style="color:#34d399;">double</span> balance, <span style="color:#34d399;">double</span> rate) {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">5</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#60a5fa;">super</span>(balance);</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">6</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#60a5fa;">this</span>.interestRate = rate;</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">7</span><span style="white-space: pre; color: #c9d1d9;">  }</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">8</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">9</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#f97316;">public void</span> <span style="color:#d2a8ff;">applyInterest</span>() {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">10</span><span style="white-space: pre; color: #c9d1d9;">    <span style="color:#d2a8ff;">deposit</span>(<span style="color:#d2a8ff;">getBalance</span>() * interestRate);</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">11</span><span style="white-space: pre; color: #c9d1d9;">  }</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">12</span><span style="white-space: pre; color: #c9d1d9;">}</span></div>
+            </div>
+
+            <div style="display: {{ d2 }}; flex-direction: column;">
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">1</span><span style="white-space: pre; color: #c9d1d9;"><span style="color:#ffa657;">Animal</span>[] animals = {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">2</span><span style="white-space: pre; color: #c9d1d9;">  <span style="color:#a78bfa;">new</span> <span style="color:#d2a8ff;">Dog</span>(), <span style="color:#a78bfa;">new</span> <span style="color:#d2a8ff;">Cat</span>(), <span style="color:#a78bfa;">new</span> <span style="color:#d2a8ff;">Bird</span>()</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">3</span><span style="white-space: pre; color: #c9d1d9;">};</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">4</span><span style="white-space: pre;"> </span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">5</span><span style="white-space: pre; color: #c9d1d9;"><span style="color:#a78bfa;">for</span> (<span style="color:#ffa657;">Animal</span> a : animals) {</span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">6</span><span style="white-space: pre; color: #c9d1d9;">  a.<span style="color:#d2a8ff;">makeSound</span>(); <span style="color:#8b949e;">// each behaves differently</span></span></div>
+              <div style="display: flex; gap: 20px;"><span style="color: #475569; width: 18px; text-align: right; user-select: none;">7</span><span style="white-space: pre; color: #c9d1d9;">}</span></div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="chapters" style="padding: 20px 0 88px;">
+        <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 26px;">
+          <h2 style="font-size: 15px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--dim); margin: 0;">Course chapters</h2>
+          <span style="font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 13px; color: var(--faint);">11 chapters</span>
+        </div>
+        <div class="chap-grid">
+          <sc-for list="{{ chapters }}" as="ch" hint-placeholder-count="11">
+            <div class="chap-card">
+              <div class="chap-topline"></div>
+              <div class="chap-num">{{ ch.num }}</div>
+              <div class="chap-name">{{ ch.name }}</div>
+              <div class="chap-cat">{{ ch.cat }}</div>
+              <div class="chap-overlay"><p>{{ ch.desc }}</p></div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+    </div>
+
+    <footer style="background: var(--foot-bg); border-top: 1px solid rgba(255,255,255,0.04);">
+      <div style="max-width: 1240px; margin: 0 auto; padding: 56px 40px 32px;">
+        <div class="foot-cols" style="display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--foot-border);">
+
+          <div>
+            <div style="display: flex; align-items: center; gap: 11px; margin-bottom: 16px;">
+              <div style="width: 30px; height: 30px; border-radius: 7px; background: #2563eb; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: #fff;">P</div>
+              <span style="font-weight: 800; font-size: 20px; letter-spacing: -0.02em; color: var(--text);">PRO192</span>
+            </div>
+            <p style="margin: 0 0 4px; font-size: 14px; font-weight: 600; color: var(--muted);">Java Object-Oriented Programming</p>
+            <p style="margin: 0 0 20px; font-size: 13px; line-height: 1.55; color: var(--dim); max-width: 280px;">A free learning platform for FPT University students.</p>
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <a href="https://www.facebook.com/mstsoftware.vn" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border: 1px solid var(--foot-border); border-radius: 100px; font-size: 12.5px; font-weight: 600; color: var(--foot-link); text-decoration: none; transition: color 0.15s, border-color 0.15s;" style-hover="color: var(--foot-link-hover); border-color: #3b82f6;">MST Software</a>
+              <a href="https://github.com/mst-software-vn/pro192web" target="_blank" rel="noopener" aria-label="GitHub" class="foot-link" style="display: inline-flex; width: auto;">
+                <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <p class="foot-head">Chương học</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="#chapters" class="foot-link">Welcome</a>
+              <a href="#chapters" class="foot-link">Introduction</a>
+              <a href="#chapters" class="foot-link">Foundations</a>
+              <a href="#chapters" class="foot-link">Encapsulation</a>
+              <a href="#chapters" class="foot-link">Inheritance</a>
+              <a href="#chapters" class="foot-link">Polymorphism</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="foot-head">Nâng cao</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="#chapters" class="foot-link">Array of Objects</a>
+              <a href="#chapters" class="foot-link">Collections</a>
+              <a href="#chapters" class="foot-link">Dynamic Memory</a>
+              <a href="#chapters" class="foot-link">Exception Handling</a>
+              <a href="#chapters" class="foot-link">File I/O</a>
+            </div>
+          </div>
+
+          <div>
+            <p class="foot-head">Tài nguyên</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <a href="#" class="foot-link">Docs</a>
+              <a href="#" class="foot-link">Blog</a>
+              <a href="https://github.com/mst-software-vn/pro192web" target="_blank" rel="noopener" class="foot-link">GitHub Repository</a>
+              <a href="https://www.facebook.com/mstsoftware.vn" target="_blank" rel="noopener" class="foot-link">MST Software</a>
+              <a href="#" class="foot-link">FPT University</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot-bottom" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 24px; font-size: 13px; color: #6b7280;">
+          <span>© 2025 MST Software · All rights reserved.</span>
+          <span>Built with ❤️ for FPT University students</span>
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <a href="https://github.com/mst-software-vn/pro192web" target="_blank" rel="noopener" aria-label="GitHub" class="foot-link" style="display: inline-flex;">
+              <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            </a>
+            <a href="https://www.facebook.com/mstsoftware.vn" target="_blank" rel="noopener" aria-label="Facebook" class="foot-link" style="display: inline-flex;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1240,&quot;height&quot;:1120}}">
+class Component extends DCLogic {
+  state = { tab: 0, mode: "dark", dismissed: false, copied: false, sysDark: true, mobileOpen: false };
+
+  componentDidMount() {
+    this.mq = window.matchMedia("(prefers-color-scheme: dark)");
+    this.setState({ sysDark: this.mq.matches });
+    this._onMq = (e) => this.setState({ sysDark: e.matches });
+    this.mq.addEventListener("change", this._onMq);
+  }
+  componentWillUnmount() {
+    if (this.mq) this.mq.removeEventListener("change", this._onMq);
+    if (this._t) clearTimeout(this._t);
+  }
+
+  renderVals() {
+    const enc = `public class BankAccount {
+  private double balance;
+
+  public BankAccount(double initial) {
+    this.balance = initial;
+  }
+
+  public void deposit(double amount) {
+    this.balance += amount;
+  }
+
+  public double getBalance() {
+    return balance;
+  }
+}`;
+    const inh = `public class SavingsAccount extends BankAccount {
+  private double interestRate;
+
+  public SavingsAccount(double balance, double rate) {
+    super(balance);
+    this.interestRate = rate;
+  }
+
+  public void applyInterest() {
+    deposit(getBalance() * interestRate);
+  }
+}`;
+    const poly = `Animal[] animals = {
+  new Dog(), new Cat(), new Bird()
+};
+
+for (Animal a : animals) {
+  a.makeSound(); // each behaves differently
+}`;
+    const code = [enc, inh, poly];
+    const t = this.state.tab;
+    const { mode, sysDark, copied, mobileOpen } = this.state;
+    const resolved = mode === "system" ? (sysDark ? "dark" : "light") : mode;
+    const active = "#e6edf3", idle = "#64748b", accent = "#3b82f6", clear = "transparent";
+    const files = ["BankAccount.java", "SavingsAccount.java", "Polymorphism.java"];
+
+    return {
+      activeFile: files[t],
+      resolvedTheme: resolved,
+      themeTitle: "Theme: " + mode.charAt(0).toUpperCase() + mode.slice(1),
+      tmLight: mode === "light" ? "block" : "none",
+      tmDark: mode === "dark" ? "block" : "none",
+      tmSystem: mode === "system" ? "block" : "none",
+      cycleTheme: () => this.setState((s) => ({
+        mode: s.mode === "light" ? "dark" : s.mode === "dark" ? "system" : "light",
+      })),
+      noop: () => {},
+      toggleMobile: () => this.setState((s) => ({ mobileOpen: !s.mobileOpen })),
+      closeMobile: () => this.setState({ mobileOpen: false }),
+      mobileDisplay: mobileOpen ? "flex" : "none",
+      dismiss: () => this.setState({ dismissed: true }),
+      announceDisplay: this.state.dismissed ? "none" : "flex",
+      setTab0: () => this.setState({ tab: 0 }),
+      setTab1: () => this.setState({ tab: 1 }),
+      setTab2: () => this.setState({ tab: 2 }),
+      d0: t === 0 ? "flex" : "none",
+      d1: t === 1 ? "flex" : "none",
+      d2: t === 2 ? "flex" : "none",
+      b0color: t === 0 ? active : idle, b0border: t === 0 ? accent : clear,
+      b1color: t === 1 ? active : idle, b1border: t === 1 ? accent : clear,
+      b2color: t === 2 ? active : idle, b2border: t === 2 ? accent : clear,
+      copyCode: async () => {
+        try { await navigator.clipboard.writeText(code[this.state.tab]); }
+        catch (e) {
+          const ta = document.createElement("textarea");
+          ta.value = code[this.state.tab];
+          document.body.appendChild(ta); ta.select();
+          try { document.execCommand("copy"); } catch (_) {}
+          document.body.removeChild(ta);
+        }
+        this.setState({ copied: true });
+        if (this._t) clearTimeout(this._t);
+        this._t = setTimeout(() => this.setState({ copied: false }), 2000);
+      },
+      copyLabel: copied ? "Copied!" : "Copy",
+      copyColor: copied ? "#22c55e" : "#94a3b8",
+      copyIcon: copied ? "none" : "block",
+      doneIcon: copied ? "block" : "none",
+      chapters: [
+        { num: "01", name: "Welcome", cat: "Giới thiệu", desc: "Tổng quan môn PRO192: chuẩn đầu ra, chính sách học thuật, và môn tiên quyết PRF192. Nơi bắt đầu hành trình OOP của bạn." },
+        { num: "02", name: "Introduction", cat: "OOP Concepts", desc: "Tại sao cần OOP? Khái niệm object, class, encapsulation, inheritance, polymorphism — nền tảng của mọi hệ thống phần mềm lớn." },
+        { num: "03", name: "Foundations", cat: "Java Core", desc: "Java Virtual Machine, bytecode, kiểu dữ liệu nguyên thuỷ, mảng, phạm vi biến và cấu trúc điều khiển cơ bản." },
+        { num: "04", name: "Encapsulation", cat: "Encapsulation", desc: "Thiết kế class từ thực tế: constructor, getter/setter, từ khoá this, package và 4 mức truy cập private/public/protected/default." },
+        { num: "05", name: "Inheritance", cat: "Inheritance", desc: "Quan hệ is-a, extends, super(), override cơ bản, static type/dynamic type, instanceof và ép kiểu an toàn." },
+        { num: "06", name: "Polymorphism", cat: "Polymorphism", desc: "Overloading, overriding, @Override, static vs dynamic binding, abstract class, interface — nền tảng thiết kế linh hoạt." },
+        { num: "07", name: "Array of Objects", cat: "Data Structures", desc: "Quản lý danh sách đối tượng bằng mảng tham chiếu: thêm, tìm, sửa, xoá, lọc, sắp xếp và serialization." },
+        { num: "08", name: "Collections", cat: "Collections", desc: "ArrayList, TreeSet, HashMap — Java Collections Framework: chọn đúng cấu trúc dữ liệu cho từng bài toán." },
+        { num: "09", name: "Dynamic Memory", cat: "Memory", desc: "Stack, heap tĩnh và heap động: cách Java cấp phát bộ nhớ, Garbage Collector và vòng đời của đối tượng." },
+        { num: "10", name: "Exception Handling", cat: "Exception", desc: "try-catch-finally, checked vs unchecked exception, throws, lồng nhau, và tự định nghĩa exception riêng." },
+        { num: "11", name: "File I/O", cat: "File I/O", desc: "I/O Stream, Scanner, BufferedReader, FileReader: đọc dữ liệu từ bàn phím và file văn bản, xử lý IOException." },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

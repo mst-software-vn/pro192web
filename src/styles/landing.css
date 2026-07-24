@@ -1,0 +1,92 @@
+/* Token màu riêng cho LandingPage — bảng màu tối/glow xanh tách biệt khỏi
+   --ink/--canvas dùng chung cho khu vực Docs. Giá trị lấy từ
+   docs/design-references/PRO192-Landing.dc.html, chỉ những màu lặp lại nhiều lần
+   mới được đưa vào đây; theme sáng/tối đổi qua class .dark (giống quy ước
+   chung của site) thay vì data-theme để dùng chung cơ chế useTheme() sẵn có. */
+:root {
+  --landing-accent: #2563eb;
+  --landing-accent-strong: #1d4ed8;
+  --landing-accent-glow: rgba(37, 99, 235, 0.4);
+  --landing-card-border: rgba(59, 130, 246, 0.15);
+  --landing-card-border-hover: rgba(59, 130, 246, 0.6);
+  --landing-card: rgba(255, 255, 255, 0.7);
+  --landing-search-bg: rgba(255, 255, 255, 0.8);
+  --landing-panel: #0d1117;
+  --landing-panel-header: #111827;
+  --landing-panel-border: #1e293b;
+  --landing-panel-shadow: 0 24px 60px -24px rgba(30, 58, 95, 0.25);
+  --landing-chap-num: rgba(59, 130, 246, 0.15);
+  --landing-header-bg: rgba(240, 244, 255, 0.92);
+  --landing-header-border: rgba(59, 130, 246, 0.15);
+  --landing-foot-bg: #f8faff;
+  --landing-foot-border: rgba(59, 130, 246, 0.12);
+  --landing-foot-link: #64748b;
+  --landing-foot-link-hover: #0f172a;
+  --landing-text: #0f172a;
+  --landing-muted: #334155;
+  --landing-dim: #64748b;
+  --landing-faint: #94a3b8;
+  --landing-border-strong: #cdd9ee;
+  --landing-bg-image:
+    radial-gradient(600px circle at 92% 0%, rgba(59, 130, 246, 0.08), transparent 65%),
+    linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 40%, #f5f3ff 100%);
+
+  /* Màu token cho code viewer trong HeroSection — giữ nguyên bảng màu cố định
+     (không đổi theo theme), vì code panel luôn nền tối như quyết định cũ ở
+     CodeBlock.tsx dùng chung cho Docs. */
+  --landing-code-keyword: #f97316;
+  --landing-code-control: #a78bfa;
+  --landing-code-class: #ffa657;
+  --landing-code-fn: #d2a8ff;
+  --landing-code-ref: #60a5fa;
+  --landing-code-type: #34d399;
+  --landing-code-comment: #8b949e;
+  --landing-code-fg: #c9d1d9;
+}
+
+.dark {
+  --landing-accent: #3b82f6;
+  --landing-accent-strong: #2563eb;
+  --landing-card-border: rgba(59, 130, 246, 0.15);
+  --landing-card-border-hover: rgba(59, 130, 246, 0.6);
+  --landing-card: rgba(255, 255, 255, 0.03);
+  --landing-search-bg: rgba(255, 255, 255, 0.02);
+  --landing-panel-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.7);
+  --landing-chap-num: #1e3a5f;
+  --landing-header-bg: rgba(8, 11, 20, 0.92);
+  --landing-header-border: rgba(255, 255, 255, 0.06);
+  --landing-foot-bg: #050709;
+  --landing-foot-border: rgba(255, 255, 255, 0.06);
+  --landing-foot-link: #9ca3af;
+  --landing-foot-link-hover: #f9fafb;
+  --landing-text: #f0f0f0;
+  --landing-muted: #a1a1aa;
+  --landing-dim: #71717a;
+  --landing-faint: #52525b;
+  --landing-border-strong: #27272a;
+  --landing-bg-image:
+    radial-gradient(800px circle at 50% -6%, rgba(99, 102, 241, 0.05), transparent 60%),
+    radial-gradient(ellipse 85% 55% at 84% -8%, rgba(59, 130, 246, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 6% 108%, rgba(99, 102, 241, 0.08), transparent 60%),
+    #080b14;
+}
+
+.landing-page {
+  color: var(--landing-text);
+  background: var(--landing-bg-image);
+}
+
+/* Lưới chấm mờ trang trí phía sau hero — chỉ hiện ở dark mode như bản gốc
+   (ở light mode nền đã là gradient sáng, thêm lưới sẽ rối mắt). */
+.landing-grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 75% 70% at 60% 0%, #000 0%, transparent 75%);
+  display: none;
+}
+
+.dark .landing-grid-bg {
+  display: block;
+}
