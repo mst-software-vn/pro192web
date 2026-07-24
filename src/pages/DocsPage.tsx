@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
+import { QuizSection } from '../components/quiz/QuizSection'
 import { getChapter } from '../content/chapters'
 import { useLanguage } from '../hooks/use-language'
 
@@ -60,6 +61,8 @@ export function DocsPage() {
           </p>
         </div>
       )}
+
+      <QuizSection slug={chapter.slug} />
     </article>
   )
 }
