@@ -3,6 +3,7 @@ import { Outlet, useLocation, useParams } from 'react-router-dom'
 import { getChapter } from '../content/chapters'
 import { useActiveHeading } from '../hooks/use-active-heading'
 import { useLanguage } from '../hooks/use-language'
+import { useTocCollapsed } from '../hooks/use-toc-collapsed'
 import { extractHeadings } from '../lib/markdown'
 import { DocsFooter } from './DocsFooter'
 import { DocsHeader } from './DocsHeader'
@@ -38,7 +39,8 @@ export function DocsLayout() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
   // Ẩn nguyên cột phải (TOC + thẻ tải PDF) khi bấm toggle, để cột nội dung giữa (flex-1)
   // tự giãn ra chiếm hết chỗ trống — không phải chỉ ẩn mỗi danh sách heading bên trong.
-  const [tocCollapsed, setTocCollapsed] = useState(false)
+  // Lưu localStorage để giữ nguyên lựa chọn qua các lần điều hướng/tải lại trang.
+  const { collapsed: tocCollapsed, setCollapsed: setTocCollapsed } = useTocCollapsed()
 
   // Chuyển trang thì cuộn lên đầu ngay lập tức (React Router không tự reset scroll
   // như trình duyệt vẫn làm) — TRỪ khi URL có #hash (vd từ search modal nhảy tới 1
