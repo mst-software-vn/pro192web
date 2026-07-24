@@ -28,3 +28,10 @@ dist-ssr
 
 # Cấu hình Claude Code riêng từng máy
 .claude/settings.local.json
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
