@@ -62,7 +62,7 @@ export function DocsPage() {
         </div>
       )}
 
-      <QuizSection slug={chapter.slug} />
+      <QuizSection key={chapter.slug} slug={chapter.slug} />
     </article>
   )
 }

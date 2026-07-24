@@ -24,6 +24,7 @@ export function QuizSection({ slug }: QuizSectionProps) {
 
   const [round, setRound] = useState(0)
   const questions = useMemo(() => {
+    // round chỉ dùng để ép useMemo tính lại khi bấm "Làm lại", giá trị không cần đọc
     void round
     return pickQuestions(pool)
   }, [pool, round])
