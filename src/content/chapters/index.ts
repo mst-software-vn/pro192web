@@ -38,7 +38,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
   },
   {
     slug: 'introduction-course',
-    title: 'Introduction Course',
+    title: 'Giới thiệu khoá học',
     description:
       'Giới thiệu về cấu trúc khóa học, mục tiêu và các khái niệm nền tảng của lập trình hướng đối tượng với Java.',
     titleEn: 'Introduction Course',
