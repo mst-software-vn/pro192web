@@ -1,14 +1,16 @@
 import type { Chapter } from '../content/types'
-import { extractHeadings } from './markdown'
+import { extractHeadings, type HeadingItem } from './markdown'
 
 export interface SearchEntry {
-  type: 'chapter' | 'heading'
+  type: 'chapter' | 'heading' | 'content'
   slug: string
   chapterTitle: string
   chapterTitleNormalized: string
   headingText?: string
   headingTextNormalized?: string
   headingId?: string
+  contentText?: string
+  contentTextNormalized?: string
 }
 
 // Bỏ dấu tiếng Việt để so khớp không phân biệt có/không gõ dấu (vd "gia tri" khớp
@@ -21,6 +23,63 @@ export function stripDiacritics(text: string): string {
     .replace(/đ/g, 'd')
     .replace(/Đ/g, 'D')
     .toLowerCase()
+}
+
+interface ContentBlock {
+  text: string
+  headingId?: string
+  headingText?: string
+}
+
+// Bỏ marker markdown (heading/list/blockquote/emphasis/link/ảnh) để còn lại văn bản
+// thuần phục vụ so khớp full-text — không cần AST đầy đủ vì nội dung chương luôn
+// theo quy ước mỗi đoạn/bullet nằm trên một dòng (xem src/content/chapters/*.md).
+function stripInlineMarkdown(line: string): string {
+  return line
+    .replace(/^>+\s?/, '')
+    .replace(/^[-*+]\s+/, '')
+    .replace(/^\d+\.\s+/, '')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[`*_#]/g, '')
+    .trim()
+}
+
+const HEADING_LINE = /^(#{1,6})\s+(.+)$/
+const FENCE_LINE = /^```/
+
+// Gắn mỗi đoạn văn/bullet (kể cả heading H4 trở xuống, vốn không có trong TOC) với
+// heading H2/H3 gần nhất phía trước để biết điều hướng tới anchor nào khi bấm kết quả.
+function extractContentBlocks(markdown: string, headings: HeadingItem[]): ContentBlock[] {
+  const lines = markdown.split('\n')
+  const blocks: ContentBlock[] = []
+  let headingPointer = 0
+  let currentHeading: HeadingItem | undefined
+  let inCodeBlock = false
+
+  lines.forEach((rawLine, lineIndex) => {
+    while (headingPointer < headings.length && headings[headingPointer].line <= lineIndex) {
+      currentHeading = headings[headingPointer]
+      headingPointer++
+    }
+
+    const trimmed = rawLine.trim()
+    if (FENCE_LINE.test(trimmed)) {
+      inCodeBlock = !inCodeBlock
+      return
+    }
+    if (inCodeBlock || trimmed === '') return
+
+    const headingMatch = HEADING_LINE.exec(trimmed)
+    if (headingMatch && headingMatch[1].length <= 3) return // đã có entry riêng loại 'heading'
+
+    const text = stripInlineMarkdown(trimmed)
+    if (!text) return
+
+    blocks.push({ text, headingId: currentHeading?.id, headingText: currentHeading?.text })
+  })
+
+  return blocks
 }
 
 export function buildSearchIndex(chapters: Chapter[], language: 'vi' | 'en'): SearchEntry[] {
@@ -38,7 +97,8 @@ export function buildSearchIndex(chapters: Chapter[], language: 'vi' | 'en'): Se
     const body = language === 'en' ? chapter.body : (chapter.bodyVi ?? chapter.body)
     if (!body) continue
 
-    for (const heading of extractHeadings(body)) {
+    const headings = extractHeadings(body)
+    for (const heading of headings) {
       entries.push({
         type: 'heading',
         slug: chapter.slug,
@@ -47,6 +107,19 @@ export function buildSearchIndex(chapters: Chapter[], language: 'vi' | 'en'): Se
         headingText: heading.text,
         headingTextNormalized: stripDiacritics(heading.text),
         headingId: heading.id,
+      })
+    }
+
+    for (const block of extractContentBlocks(body, headings)) {
+      entries.push({
+        type: 'content',
+        slug: chapter.slug,
+        chapterTitle,
+        chapterTitleNormalized: stripDiacritics(chapterTitle),
+        headingText: block.headingText,
+        headingId: block.headingId,
+        contentText: block.text,
+        contentTextNormalized: stripDiacritics(block.text),
       })
     }
   }

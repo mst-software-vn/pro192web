@@ -4,6 +4,7 @@ export interface HeadingItem {
   id: string
   text: string
   depth: 2 | 3
+  line: number
 }
 
 // Chỉ lấy H2/H3 cho mục lục "On this page" — H4 trở xuống quá chi tiết để liệt kê.
@@ -11,10 +12,11 @@ export interface HeadingItem {
 export function extractHeadings(markdown: string): HeadingItem[] {
   const seen = new Map<string, number>()
   const headings: HeadingItem[] = []
+  const lines = markdown.split('\n')
 
-  for (const rawLine of markdown.split('\n')) {
+  lines.forEach((rawLine, line) => {
     const match = /^(#{2,3})\s+(.+)$/.exec(rawLine.trim())
-    if (!match) continue
+    if (!match) return
 
     const depth = match[1].length as 2 | 3
     const text = match[2].replace(/[`*_]/g, '').trim()
@@ -23,8 +25,8 @@ export function extractHeadings(markdown: string): HeadingItem[] {
     seen.set(baseId, occurrence + 1)
     const id = occurrence > 0 ? `${baseId}-${occurrence}` : baseId
 
-    headings.push({ id, text, depth })
-  }
+    headings.push({ id, text, depth, line })
+  })
 
   return headings
 }

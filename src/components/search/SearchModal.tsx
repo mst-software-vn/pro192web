@@ -13,6 +13,7 @@ interface SearchModalProps {
 }
 
 const MAX_RESULTS = 8
+const SNIPPET_MAX_LENGTH = 120
 
 function toResultRow(entry: SearchEntry): RecentSearchEntry {
   if (entry.type === 'heading') {
@@ -21,6 +22,15 @@ function toResultRow(entry: SearchEntry): RecentSearchEntry {
       headingId: entry.headingId,
       title: entry.headingText ?? entry.chapterTitle,
       breadcrumb: `${entry.chapterTitle} › ${entry.headingText}`,
+    }
+  }
+  if (entry.type === 'content') {
+    const text = entry.contentText ?? entry.chapterTitle
+    return {
+      slug: entry.slug,
+      headingId: entry.headingId,
+      title: text.length > SNIPPET_MAX_LENGTH ? `${text.slice(0, SNIPPET_MAX_LENGTH)}…` : text,
+      breadcrumb: entry.headingText ? `${entry.chapterTitle} › ${entry.headingText}` : entry.chapterTitle,
     }
   }
   return { slug: entry.slug, title: entry.chapterTitle, breadcrumb: entry.chapterTitle }
@@ -38,7 +48,11 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
   const fuse = useMemo(() => {
     const index = buildSearchIndex(chapters, language)
     return new Fuse(index, {
-      keys: ['chapterTitleNormalized', 'headingTextNormalized'],
+      keys: [
+        { name: 'chapterTitleNormalized', weight: 0.4 },
+        { name: 'headingTextNormalized', weight: 0.35 },
+        { name: 'contentTextNormalized', weight: 0.25 },
+      ],
       threshold: 0.35,
       ignoreLocation: true,
       minMatchCharLength: 2,
@@ -135,7 +149,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
 
           {rows.map((row, rowIndex) => (
             <button
-              key={`${row.slug}-${row.headingId ?? 'chapter'}`}
+              key={`${rowIndex}-${row.slug}-${row.headingId ?? 'chapter'}`}
               type="button"
               onMouseEnter={() => setHighlighted(rowIndex)}
               onClick={() => activate(row)}
