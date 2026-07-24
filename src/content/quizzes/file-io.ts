@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'file-io-1',
+    question: 'Ba luồng chuẩn (Standard Streams) mà nền tảng Java hỗ trợ để tương tác qua dòng lệnh là gì?',
+    questionEn: 'What are the three Standard Streams the Java platform supports for command-line interaction?',
+    options: [
+      { id: 'a', text: 'System.read, System.write, System.log', textEn: 'System.read, System.write, System.log' },
+      { id: 'b', text: 'System.in, System.out, System.err', textEn: 'System.in, System.out, System.err' },
+      { id: 'c', text: 'Console.read, Console.write, Console.error', textEn: 'Console.read, Console.write, Console.error' },
+      { id: 'd', text: 'Input, Output, Error', textEn: 'Input, Output, Error' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Java hỗ trợ 3 luồng chuẩn: System.in (nhập chuẩn), System.out (xuất chuẩn) và System.err (lỗi chuẩn) — các đối tượng này được định nghĩa sẵn, không cần mở.',
+    explanationEn: 'Java supports three Standard Streams: System.in (standard input), System.out (standard output), and System.err (standard error) — these objects are defined automatically and do not need to be opened.',
+  },
+  {
+    id: 'file-io-2',
+    question: 'Vì sao Standard Output và Standard Error lại được tách thành hai luồng khác nhau?',
+    questionEn: 'Why are Standard Output and Standard Error kept as two separate streams?',
+    options: [
+      { id: 'a', text: 'Vì chúng chạy trên hai luồng CPU khác nhau', textEn: 'Because they run on different CPU threads' },
+      { id: 'b', text: 'Để người dùng có thể chuyển hướng output thường ra file mà vẫn đọc được thông báo lỗi', textEn: 'So the user can redirect regular output to a file while still reading error messages' },
+      { id: 'c', text: 'Vì Standard Error chạy nhanh hơn Standard Output', textEn: 'Because Standard Error runs faster than Standard Output' },
+      { id: 'd', text: 'Không có lý do đặc biệt, chỉ là quy ước đặt tên', textEn: 'No particular reason, just a naming convention' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Việc tách System.out và System.err cho phép người dùng chuyển hướng (redirect) luồng output thông thường ra file, trong khi vẫn có thể đọc được các thông báo lỗi trực tiếp.',
+    explanationEn: 'Having separate output and error streams allows the user to divert regular output to a file and still be able to read error messages.',
+  },
+  {
+    id: 'file-io-3',
+    question: 'Phương thức nào của lớp Scanner dùng để đọc một giá trị kiểu chuỗi (String) từ người dùng?',
+    questionEn: 'Which Scanner method reads a String value from the user?',
+    options: [
+      { id: 'a', text: 'nextInt()', textEn: 'nextInt()' },
+      { id: 'b', text: 'nextLine()', textEn: 'nextLine()' },
+      { id: 'c', text: 'nextDouble()', textEn: 'nextDouble()' },
+      { id: 'd', text: 'nextBoolean()', textEn: 'nextBoolean()' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'nextLine() đọc một giá trị kiểu String từ input của người dùng — khác với các phương thức next<Type>() vốn đọc kiểu dữ liệu nguyên thuỷ tương ứng.',
+    explanationEn: 'nextLine() reads a String value from the user, unlike the various next<Type>() methods which read the corresponding primitive type.',
+  },
+  {
+    id: 'file-io-4',
+    question: 'Để đọc dữ liệu từ một file văn bản theo từng dòng trong Java, tổ hợp lớp nào thường được dùng?',
+    questionEn: 'Which class combination is commonly used to read a text file line by line in Java?',
+    options: [
+      { id: 'a', text: 'Scanner và System.out', textEn: 'Scanner and System.out' },
+      { id: 'b', text: 'BufferedReader và FileReader', textEn: 'BufferedReader and FileReader' },
+      { id: 'c', text: 'ArrayList và HashMap', textEn: 'ArrayList and HashMap' },
+      { id: 'd', text: 'Thread và Runnable', textEn: 'Thread and Runnable' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Kết hợp FileReader (mở kết nối tới file) và BufferedReader (đọc theo dòng hiệu quả hơn, có phương thức readLine()) là cách phổ biến để đọc file văn bản theo từng dòng.',
+    explanationEn: 'Combining FileReader (opens the connection to the file) with BufferedReader (reads more efficiently line by line via readLine()) is the common way to read a text file line by line.',
+  },
+  {
+    id: 'file-io-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng về I/O Stream trong Java:',
+    questionEn: 'Select ALL correct statements about I/O Streams in Java:',
+    options: [
+      { id: 'a', text: 'Một I/O Stream có thể đại diện cho nhiều loại nguồn/đích khác nhau như file, thiết bị, hay vùng nhớ', textEn: 'An I/O Stream can represent many different kinds of sources/destinations, such as files, devices, or memory arrays' },
+      { id: 'b', text: 'Stream chỉ hỗ trợ đọc/ghi số nguyên (int), không hỗ trợ kiểu khác', textEn: 'A stream only supports reading/writing integers, no other type' },
+      { id: 'c', text: 'Input stream dùng để đọc dữ liệu, output stream dùng để ghi dữ liệu', textEn: 'An input stream reads data, an output stream writes data' },
+      { id: 'd', text: 'Một số stream có thể chuyển đổi kiểu dữ liệu (type conversion) trong lúc xử lý', textEn: 'Some streams can perform type conversions while processing data' },
+    ],
+    correctOptionIds: ['a', 'c', 'd'],
+    explanation: 'Stream đại diện cho nhiều loại nguồn/đích, input dùng để đọc còn output dùng để ghi, và một số stream có khả năng chuyển đổi kiểu dữ liệu. Stream hỗ trợ nhiều loại dữ liệu (byte, ký tự, object...), không chỉ số nguyên — nên (b) sai.',
+    explanationEn: 'Streams represent many kinds of sources/destinations, input reads while output writes, and some streams perform type conversions. Streams support many data types (bytes, characters, objects...), not just integers — so (b) is false.',
+  },
+  {
+    id: 'file-io-6',
+    question: 'Khi đọc/ghi file trong Java, loại exception nào thường bắt buộc phải xử lý (catch hoặc throws)?',
+    questionEn: 'When reading/writing files in Java, which exception is typically mandatory to handle (catch or throws)?',
+    options: [
+      { id: 'a', text: 'NullPointerException', textEn: 'NullPointerException' },
+      { id: 'b', text: 'IOException', textEn: 'IOException' },
+      { id: 'c', text: 'ArithmeticException', textEn: 'ArithmeticException' },
+      { id: 'd', text: 'ArrayIndexOutOfBoundsException', textEn: 'ArrayIndexOutOfBoundsException' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Các thao tác đọc/ghi file thường ném ra IOException — đây là checked exception, bắt buộc phải xử lý bằng try-catch hoặc khai báo throws.',
+    explanationEn: 'File read/write operations commonly throw IOException — a checked exception that must be handled via try-catch or declared with throws.',
+  },
+]
