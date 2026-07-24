@@ -26,6 +26,10 @@ dist-ssr
 # Nội dung thô tạm (screenshot/text copy từ site gốc, chưa cấu trúc hoá)
 /_scratch/
 
+# Thư mục tạm khi chạy npm run generate:pdfs — script tự dọn khi chạy xong,
+# ignore để phòng trường hợp script crash giữa chừng để lại thư mục này.
+/tmp-chapter-pdfs/
+
 # Cấu hình Claude Code riêng từng máy
 .claude/settings.local.json
 
