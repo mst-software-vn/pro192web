@@ -22,7 +22,6 @@ React 19 + TypeScript 6 + Vite 8 · React Router DOM v7 (SPA client-side) · Tai
 - **LandingPage (redesign)**: đã chuyển hoàn toàn từ `docs/design-references/PRO192-Landing.dc.html` sang component thật ở `src/components/landing/` (`AnnouncementBar`, `LandingNav`, `HeroSection`, `CodeBlock` riêng cho hero — không phải `src/components/CodeBlock.tsx` dùng cho Docs, `ChapterGrid`, `SiteFooter`) + `src/pages/LandingPage.tsx` lắp ráp. Dữ liệu hiển thị 11 chương cho lưới này nằm ở `src/data/chapters.ts` (field `id/slug/name/tag/description`) — **khác** với `src/content/chapters/` (dữ liệu đầy đủ dùng cho `/docs`); `slug` ở 2 nơi khớp nhau theo thứ tự để card/CTA trỏ đúng route thật `/docs/<slug>`, nhưng đây là 2 nguồn dữ liệu riêng biệt, sửa 1 bên không tự động cập nhật bên kia.
 
 ### Điểm cần lưu ý / còn dang dở
-- `SearchField.tsx` mới chỉ là UI, chưa gắn logic tìm kiếm thật.
 - `.claude/rules/` hiện đang trống.
 - Chưa có `.codegraph/` — bỏ qua CodeGraph, dùng Read/Grep bình thường cho tới khi được index.
 - Skill thiết kế UI đang áp dụng: `.agents/skills/minimalist-ui/` (mono ấm, editorial, bento grid, pastel nhạt, cấm font Inter, cấm shadow đậm/glow) — cả Docs lẫn Landing đều dùng accent xanh và Landing còn có hiệu ứng glow/shadow màu, chưa theo đúng bảng màu/quy tắc này; đây là quyết định có chủ đích của user (xem file HTML tham chiếu ở `docs/design-references/`), không tự ý sửa lại theo skill nếu không được yêu cầu.
