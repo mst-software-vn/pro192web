@@ -13,7 +13,7 @@ export interface Chapter {
 export const chapters: Chapter[] = [
   {
     id: 1,
-    slug: 'chao-mung',
+    slug: 'welcome',
     name: 'Welcome',
     tag: 'Giới thiệu',
     description:
@@ -29,7 +29,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 3,
-    slug: 'nen-tang',
+    slug: 'foundations',
     name: 'Foundations',
     tag: 'Java Core',
     description:
@@ -37,7 +37,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 4,
-    slug: 'dong-goi',
+    slug: 'encapsulation',
     name: 'Encapsulation',
     tag: 'Encapsulation',
     description:
@@ -45,7 +45,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 5,
-    slug: 'ke-thua',
+    slug: 'inheritance',
     name: 'Inheritance',
     tag: 'Inheritance',
     description:
@@ -53,7 +53,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 6,
-    slug: 'da-hinh',
+    slug: 'polymorphism',
     name: 'Polymorphism',
     tag: 'Polymorphism',
     description:
@@ -61,7 +61,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 7,
-    slug: 'mang-doi-tuong',
+    slug: 'array-of-objects',
     name: 'Array of Objects',
     tag: 'Data Structures',
     description:
@@ -69,7 +69,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 8,
-    slug: 'bo-suu-tap',
+    slug: 'collections',
     name: 'Collections',
     tag: 'Collections',
     description:
@@ -77,7 +77,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 9,
-    slug: 'bo-nho-dong',
+    slug: 'dynamic-memory',
     name: 'Dynamic Memory',
     tag: 'Memory',
     description:
@@ -85,7 +85,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 10,
-    slug: 'xu-ly-ngoai-le',
+    slug: 'exception-handling',
     name: 'Exception Handling',
     tag: 'Exception',
     description:
@@ -93,7 +93,7 @@ export const chapters: Chapter[] = [
   },
   {
     id: 11,
-    slug: 'nhap-xuat-tep',
+    slug: 'file-io',
     name: 'File I/O',
     tag: 'File I/O',
     description:
