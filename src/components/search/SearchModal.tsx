@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js'
 import { useEffect, useMemo, useState, type KeyboardEvent } from 'react'
+import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 import { chapters } from '../../content/chapters'
 import { useLanguage } from '../../hooks/use-language'
@@ -87,9 +88,9 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
 
   if (!open) return null
 
-  return (
+  return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/50 px-4 pt-24"
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-24 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
@@ -97,7 +98,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
         aria-modal="true"
         onClick={(event) => event.stopPropagation()}
         onKeyDown={handleKeyDown}
-        className="border-hairline bg-canvas w-full max-w-xl overflow-hidden rounded-lg border shadow-[0_24px_60px_-24px_rgba(0,0,0,0.35)]"
+        className="border-hairline-strong bg-canvas w-full max-w-xl overflow-hidden rounded-2xl border shadow-[0_32px_80px_-20px_rgba(0,0,0,0.55)]"
       >
         <div className="border-hairline flex items-center gap-2.5 border-b px-4 py-3.5">
           <svg
@@ -156,6 +157,7 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
           <span>{isEn ? 'Esc Close' : 'Esc Đóng'}</span>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body,
   )
 }
