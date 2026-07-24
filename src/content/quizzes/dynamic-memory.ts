@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'dynamic-memory-1',
+    question: 'Trong Java, bộ nhớ cấp phát cho một object mới tạo bằng từ khoá `new` nằm ở đâu?',
+    questionEn: 'In Java, where is memory allocated for a new object created with the `new` keyword?',
+    options: [
+      { id: 'a', text: 'Stack', textEn: 'Stack' },
+      { id: 'b', text: 'Dynamic heap', textEn: 'Dynamic heap' },
+      { id: 'c', text: 'Static heap', textEn: 'Static heap' },
+      { id: 'd', text: 'Thanh ghi CPU (CPU register)', textEn: 'A CPU register' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Khi dùng "new" để tạo object, vùng nhớ được cấp phát trên dynamic heap — vùng chứa toàn bộ object và mảng của chương trình lúc chạy.',
+    explanationEn: 'Using "new" to create an object allocates memory on the dynamic heap — the runtime data area for all objects and arrays in the program.',
+  },
+  {
+    id: 'dynamic-memory-2',
+    question: 'Biến cục bộ (local variable) của một phương thức được lưu ở đâu?',
+    questionEn: 'Where are a method\'s local variables stored?',
+    options: [
+      { id: 'a', text: 'Dynamic heap', textEn: 'Dynamic heap' },
+      { id: 'b', text: 'Static heap', textEn: 'Static heap' },
+      { id: 'c', text: 'Stack', textEn: 'Stack' },
+      { id: 'd', text: 'Ổ đĩa cứng', textEn: 'The hard disk' },
+    ],
+    correctOptionIds: ['c'],
+    explanation: 'Dữ liệu cục bộ của phương thức (tham số, biến, giá trị trả về) được cấp phát trên stack và bị xoá ngay khi phương thức kết thúc.',
+    explanationEn: 'A method\'s local data (parameters, variables, return values) is allocated on the stack and discarded as soon as the method exits.',
+  },
+  {
+    id: 'dynamic-memory-3',
+    question: 'Ai/cái gì chịu trách nhiệm giải phóng bộ nhớ heap không còn dùng trong Java?',
+    questionEn: 'What is responsible for freeing unused heap memory in Java?',
+    options: [
+      { id: 'a', text: 'Lập trình viên phải tự gọi một hàm free()', textEn: 'The programmer must manually call a free() function' },
+      { id: 'b', text: 'Garbage Collector tự động', textEn: 'The Garbage Collector, automatically' },
+      { id: 'c', text: 'Hệ điều hành giải phóng ngay khi chương trình dừng', textEn: 'The operating system, only when the program stops' },
+      { id: 'd', text: 'JVM không bao giờ giải phóng bộ nhớ', textEn: 'The JVM never frees memory' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Java quản lý bộ nhớ tự động bằng Garbage Collector — lập trình viên không cần (và không thể) tự giải phóng bộ nhớ heap thủ công như trong C/C++.',
+    explanationEn: 'Java manages memory automatically via its Garbage Collector — programmers do not need to (and cannot) manually free heap memory the way they would in C/C++.',
+  },
+  {
+    id: 'dynamic-memory-4',
+    question: 'Gán một biến tham chiếu về null có tác dụng gì?',
+    questionEn: 'What is the effect of setting a reference variable to null?',
+    options: [
+      { id: 'a', text: 'Xoá ngay lập tức object khỏi bộ nhớ', textEn: 'It immediately deletes the object from memory' },
+      { id: 'b', text: 'Làm object đó đủ điều kiện để Garbage Collector thu gom', textEn: 'It makes that object eligible for garbage collection' },
+      { id: 'c', text: 'Gây ra lỗi biên dịch', textEn: 'It causes a compile error' },
+      { id: 'd', text: 'Không có tác dụng gì', textEn: 'It has no effect at all' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Gán tham chiếu về null khiến object không còn được trỏ tới bởi biến đó — nếu không còn tham chiếu nào khác, object trở nên đủ điều kiện (eligible) để bị Garbage Collector thu gom.',
+    explanationEn: 'Setting a reference to null means the object is no longer pointed to by that variable — if no other reference exists, the object becomes eligible for garbage collection.',
+  },
+  {
+    id: 'dynamic-memory-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng về Garbage Collector trong Java:',
+    questionEn: 'Select ALL correct statements about the Garbage Collector in Java:',
+    options: [
+      { id: 'a', text: 'Garbage Collector chỉ được JVM gọi, lập trình viên không thể chắc chắn kích hoạt ngay lập tức', textEn: 'The Garbage Collector is invoked only by the JVM; programmers cannot force it to run immediately' },
+      { id: 'b', text: 'Garbage Collector có độ ưu tiên thấp và thường chạy khi heap gần cạn', textEn: 'The Garbage Collector has low priority and typically runs when the heap is nearly exhausted' },
+      { id: 'c', text: 'Garbage Collector giải phóng vùng nhớ stack', textEn: 'The Garbage Collector frees stack memory' },
+      { id: 'd', text: 'Garbage Collector giúp lập trình viên không phải tự quản lý cấp phát/giải phóng bộ nhớ heap thủ công', textEn: 'The Garbage Collector frees programmers from manually managing heap allocation/deallocation' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'GC chỉ chạy khi JVM quyết định, có độ ưu tiên thấp, thường chạy khi heap gần cạn, và tự động hoá việc quản lý bộ nhớ heap. GC KHÔNG quản lý stack (stack tự giải phóng khi method kết thúc) — nên (c) sai.',
+    explanationEn: 'The GC only runs when the JVM decides to, has low priority, typically runs when the heap is nearly exhausted, and automates heap memory management. The GC does NOT manage the stack (the stack is freed automatically when a method exits) — so (c) is false.',
+  },
+  {
+    id: 'dynamic-memory-6',
+    question: 'Static heap trong Java dùng để lưu trữ gì?',
+    questionEn: 'What does the static heap in Java store?',
+    options: [
+      { id: 'a', text: 'Các biến cục bộ của phương thức đang chạy', textEn: 'Local variables of a currently running method' },
+      { id: 'b', text: 'Định nghĩa của các class khi được nạp (loaded) vào chương trình', textEn: 'Class definitions once loaded into the program' },
+      { id: 'c', text: 'Toàn bộ object được tạo bằng từ khoá new', textEn: 'Every object created with the new keyword' },
+      { id: 'd', text: 'Ngăn xếp lời gọi hàm (call stack)', textEn: 'The function call stack' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Static heap chứa các khai báo class khi lớp được nạp (loaded) — dùng cho các thành phần khai báo static như biến, phương thức, class và block tĩnh.',
+    explanationEn: 'The static heap holds class declarations when classes are loaded — used for static variables, methods, classes, and static blocks.',
+  },
+]
