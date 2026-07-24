@@ -1,0 +1,30 @@
+# Chặn commit message viết hoa và commit message có trailer co-author (kể cả của Claude Code).
+msg_file="$1"
+subject=$(sed -n '1p' "$msg_file")
+
+if [ -z "$subject" ]; then
+  echo "commit message rong, vui long them subject"
+  exit 1
+fi
+
+if [ ${#subject} -gt 100 ]; then
+  echo "commit message qua dai (toi da 100 ky tu): $subject"
+  exit 1
+fi
+
+if echo "$subject" | grep -q '[A-Z]'; then
+  echo "commit message khong duoc viet hoa: $subject"
+  exit 1
+fi
+
+if grep -qi 'co-authored-by' "$msg_file"; then
+  echo "commit message khong duoc gan co-author trailer"
+  exit 1
+fi
+
+if grep -qi 'generated with claude' "$msg_file"; then
+  echo "commit message khong duoc gan claude-generated trailer"
+  exit 1
+fi
+
+exit 0
