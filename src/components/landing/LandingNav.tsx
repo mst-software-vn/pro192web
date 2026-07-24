@@ -1,6 +1,8 @@
 import { useState, type ReactElement } from 'react'
 import { Link } from 'react-router-dom'
+import { useSearchShortcut } from '../../hooks/use-search-shortcut'
 import { useTheme, type ThemePreference } from '../../hooks/use-theme'
+import { SearchModal } from '../search/SearchModal'
 
 const GITHUB_URL = 'https://github.com/mst-software-vn/pro192web'
 
@@ -112,7 +114,10 @@ const NEXT_PREFERENCE: Record<ThemePreference, ThemePreference> = {
 export function LandingNav() {
   const { preference, setPreference } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [searchOpen, setSearchOpen] = useState(false)
   const ThemeIcon = THEME_ICON[preference]
+
+  useSearchShortcut(() => setSearchOpen(true))
 
   return (
     <div className="border-b border-(--landing-header-border) bg-(--landing-header-bg) backdrop-blur-md">
@@ -136,6 +141,7 @@ export function LandingNav() {
 
             <button
               type="button"
+              onClick={() => setSearchOpen(true)}
               className="hidden w-42 items-center gap-2 rounded-md border border-hairline-strong bg-(--landing-search-bg) px-3 py-2 text-[13.5px] text-ink-faint transition-colors hover:border-accent lg:flex"
             >
               <SearchIcon />
@@ -198,6 +204,8 @@ export function LandingNav() {
           </div>
         ) : null}
       </div>
+
+      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
     </div>
   )
 }
