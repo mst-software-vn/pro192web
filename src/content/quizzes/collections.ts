@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'collections-1',
+    question: 'Kiểu dữ liệu trừu tượng (Abstract Data Type - ADT) được định nghĩa dựa trên điều gì?',
+    questionEn: 'What is an Abstract Data Type (ADT) defined by?',
+    options: [
+      { id: 'a', text: 'Cách cài đặt vật lý bên trong (implementer view)', textEn: 'Its internal physical implementation (implementer view)' },
+      { id: 'b', text: 'Hành vi của nó từ góc nhìn người dùng (user\'s point of view)', textEn: 'Its behavior from the user\'s point of view' },
+      { id: 'c', text: 'Tốc độ xử lý của phần cứng', textEn: 'The processing speed of the hardware' },
+      { id: 'd', text: 'Ngôn ngữ lập trình cụ thể dùng để cài đặt', textEn: 'The specific programming language used to implement it' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'ADT là mô hình toán học cho một kiểu dữ liệu, định nghĩa dựa trên hành vi từ góc nhìn người dùng — trái ngược với cấu trúc dữ liệu (data structure), vốn là góc nhìn của người cài đặt (implementer view).',
+    explanationEn: 'An ADT is a mathematical model for a data type, defined by its behaviors from the user\'s point of view — in contrast to a data structure, which is a concrete representation from the implementer\'s view.',
+  },
+  {
+    id: 'collections-2',
+    question: 'ArrayList trong Java Collections Framework cho phép điều gì?',
+    questionEn: 'What does ArrayList in the Java Collections Framework allow?',
+    options: [
+      { id: 'a', text: 'Không cho phép phần tử trùng lặp', textEn: 'It does not allow duplicate elements' },
+      { id: 'b', text: 'Lưu trữ phần tử tuỳ ý và cho phép trùng lặp', textEn: 'Storing arbitrary elements, including duplicates' },
+      { id: 'c', text: 'Chỉ lưu được đúng một kiểu dữ liệu là String', textEn: 'Storing only String values' },
+      { id: 'd', text: 'Tự động sắp xếp phần tử theo thứ tự tăng dần', textEn: 'Automatically sorting elements in ascending order' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'ArrayList lưu các tham chiếu tới phần tử trong một mảng một chiều (array list), cho phép lưu trữ phần tử tuỳ ý và các phần tử có thể trùng lặp.',
+    explanationEn: 'ArrayList stores element references in a one-dimensional array, allowing arbitrary elements to be stored, including duplicates.',
+  },
+  {
+    id: 'collections-3',
+    question: 'TreeSet có đặc điểm gì khác biệt so với ArrayList?',
+    questionEn: 'What distinguishes TreeSet from ArrayList?',
+    options: [
+      { id: 'a', text: 'Cho phép phần tử trùng lặp giống ArrayList', textEn: 'It allows duplicates, same as ArrayList' },
+      { id: 'b', text: 'Không cho phép trùng lặp và luôn giữ thứ tự đã sắp xếp', textEn: 'It disallows duplicates and always keeps a sorted order' },
+      { id: 'c', text: 'Không hỗ trợ duyệt qua phần tử', textEn: 'It does not support traversal' },
+      { id: 'd', text: 'Không thể chứa đối tượng tự định nghĩa (user-defined objects)', textEn: 'It cannot hold user-defined objects' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'TreeSet lưu trữ các phần tử duy nhất (không trùng lặp) trong một cấu trúc cây tự cân bằng theo thứ tự đã sắp xếp — khác với ArrayList vốn cho phép trùng lặp và giữ nguyên thứ tự thêm vào.',
+    explanationEn: 'TreeSet stores distinct elements in a self-balancing sorted tree structure — unlike ArrayList, which allows duplicates and preserves insertion order.',
+  },
+  {
+    id: 'collections-4',
+    question: 'Để một lớp tự định nghĩa (user-defined class) có thể lưu trong TreeSet mà không lỗi biên dịch, lớp đó cần gì?',
+    questionEn: 'For a user-defined class to be stored in a TreeSet without a compile error, what must it have?',
+    options: [
+      { id: 'a', text: 'Không cần gì đặc biệt, TreeSet chấp nhận mọi đối tượng', textEn: 'Nothing special — TreeSet accepts any object' },
+      { id: 'b', text: 'Phải implement Comparable, hoặc cung cấp một Comparator', textEn: 'It must implement Comparable, or a Comparator must be provided' },
+      { id: 'c', text: 'Phải kế thừa từ lớp ArrayList', textEn: 'It must extend the ArrayList class' },
+      { id: 'd', text: 'Phải là kiểu dữ liệu nguyên thuỷ', textEn: 'It must be a primitive data type' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Nếu lớp không cài đặt Comparable (và không có Comparator được cung cấp), TreeSet không biết cách so sánh thứ tự các phần tử, dẫn tới lỗi biên dịch.',
+    explanationEn: 'If a class does not implement Comparable (and no Comparator is provided), TreeSet has no way to order its elements, causing a compile-time error.',
+  },
+  {
+    id: 'collections-5',
+    question: 'Chọn TẤT CẢ phát biểu đúng về HashMap trong Java:',
+    questionEn: 'Select ALL correct statements about HashMap in Java:',
+    options: [
+      { id: 'a', text: 'HashMap kiểm tra tính duy nhất của khoá dựa trên equals(), không phải toán tử ==', textEn: 'HashMap checks key uniqueness using equals(), not the == operator' },
+      { id: 'b', text: 'HashMap là cấu trúc khoá-giá trị (key-value), giống một từ điển', textEn: 'HashMap is a key-value structure, like a dictionary' },
+      { id: 'c', text: 'HashMap đảm bảo thứ tự chèn phần tử luôn được giữ nguyên', textEn: 'HashMap guarantees insertion order is always preserved' },
+      { id: 'd', text: 'HashMap dùng hash function để xác định vị trí lưu trữ, cho hiệu năng gần như hằng số cho get/put', textEn: 'HashMap uses a hash function to locate storage, giving near-constant-time get/put' },
+    ],
+    correctOptionIds: ['a', 'b', 'd'],
+    explanation: 'HashMap dùng equals() để so sánh khoá, hoạt động như một từ điển, và dùng hash function cho hiệu năng gần hằng số. HashMap KHÔNG đảm bảo giữ thứ tự chèn — nên (c) sai.',
+    explanationEn: 'HashMap uses equals() to compare keys, behaves like a dictionary, and uses a hash function for near-constant-time performance. HashMap does NOT guarantee insertion order is preserved — so (c) is false.',
+  },
+  {
+    id: 'collections-6',
+    question: 'Hai lớp hỗ trợ (supporting classes) nào trong java.util cung cấp các thao tác như sắp xếp, xáo trộn, sao chép trên collection và mảng?',
+    questionEn: 'Which two supporting classes in java.util provide operations like sorting, shuffling, and copying for collections and arrays?',
+    options: [
+      { id: 'a', text: 'java.util.List và java.util.Set', textEn: 'java.util.List and java.util.Set' },
+      { id: 'b', text: 'java.util.Collections và java.util.Arrays', textEn: 'java.util.Collections and java.util.Arrays' },
+      { id: 'c', text: 'java.util.Map và java.util.HashMap', textEn: 'java.util.Map and java.util.HashMap' },
+      { id: 'd', text: 'java.util.Iterator và java.util.Comparator', textEn: 'java.util.Iterator and java.util.Comparator' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'java.util.Collections thao tác trên các Collection, còn java.util.Arrays thao tác trên mảng — cả hai đều cung cấp các phương thức static tiện ích như sort, shuffle, copy.',
+    explanationEn: 'java.util.Collections operates on Collections, and java.util.Arrays operates on arrays — both provide convenient static utility methods like sort, shuffle, and copy.',
+  },
+]
