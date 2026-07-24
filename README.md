@@ -54,12 +54,13 @@ Bản triển khai mới nhất luôn có tại: **https://pro192web.chunhau-py-
 | 4 | Đóng gói | Encapsulation |
 | 5 | Kế thừa | Inheritance |
 | 6 | Đa hình | Polymorphism |
-| 7 | Mảng đối tượng | Array of Objects |
-| 8 | Bộ sưu tập | Collections |
-| 9 | Bộ nhớ động | Dynamic Memory |
-| 10 | Xử lý ngoại lệ | Exception Handling |
-| 11 | Nhập xuất tệp | File IO |
-| 12 | Lưu ý khi thi PE | PE Exam Guidelines |
+| 7 | Trừu tượng | Abstraction |
+| 8 | Mảng đối tượng | Array of Objects |
+| 9 | Bộ sưu tập | Collections |
+| 10 | Bộ nhớ động | Dynamic Memory |
+| 11 | Xử lý ngoại lệ | Exception Handling |
+| 12 | Nhập xuất tệp | File IO |
+| 13 | Lưu ý khi thi PE | PE Exam Guidelines |
 
 ## Tính năng
 
