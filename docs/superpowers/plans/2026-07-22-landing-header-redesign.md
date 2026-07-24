@@ -318,7 +318,7 @@ export function DocsNavDropdown() {
             className="fixed inset-0 z-40 cursor-default"
             onClick={() => setOpen(false)}
           />
-          <div className="border-hairline bg-canvas absolute top-full left-0 z-50 mt-2 grid w-[640px] max-w-[90vw] grid-cols-3 gap-x-8 gap-y-5 rounded-lg border p-6 shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+          <div className="border-hairline bg-canvas absolute top-full left-0 z-50 mt-2 grid w-160 max-w-[90vw] grid-cols-3 gap-x-8 gap-y-5 rounded-lg border p-6 shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
             {groups.map((group) => (
               <div key={group.name}>
                 <p className="text-ink-faint mb-2 text-xs font-semibold tracking-wider uppercase">
@@ -611,9 +611,7 @@ export function LandingPage() {
         />
         <div
           aria-hidden
-          className="border-hairline pointer-events-none absolute inset-0 opacity-[0.4] [background-image:linear-gradient(var(--hairline)_1px,transparent_1px),linear-gradient(90deg,var(--hairline)_1px,transparent_1px)] [background-size:40px_40px] [mask-image:radial-gradient(circle_at_30%_0%,black,transparent_70%)]"
-        />
-
+            className="border-hairline pointer-events-none absolute inset-0 opacity-[0.4] bg-[linear-gradient(var(--hairline)_1px,transparent_1px),linear-gradient(90deg,var(--hairline)_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(circle_at_30%_0%,black,transparent_70%)]"
         <div className="relative mx-auto grid max-w-6xl gap-12 px-6 py-24 lg:grid-cols-2 lg:items-center lg:py-32">
           <div>
             <RevealOnScroll>
