@@ -1,4 +1,4 @@
-// Dữ liệu hiển thị cho lưới 11 chương trên LandingPage — mô tả marketing ngắn,
+// Dữ liệu hiển thị cho lưới 13 chương trên LandingPage — mô tả marketing ngắn,
 // tách biệt khỏi src/content/chapters (dữ liệu đầy đủ, dùng cho trang /docs).
 // `slug` khớp 1-1 với slug thật trong src/content/chapters/index.ts theo đúng thứ tự
 // để card chương và CTA điều hướng tới đúng nội dung thật, không phải route ảo.
@@ -61,6 +61,14 @@ export const chapters: Chapter[] = [
   },
   {
     id: 7,
+    slug: 'abstraction',
+    name: 'Abstraction',
+    tag: 'Abstraction',
+    description:
+      'Abstract class, interface, default/static method (từ Java 8) và cách chọn đúng cơ chế trừu tượng cho từng bài toán thiết kế.',
+  },
+  {
+    id: 8,
     slug: 'array-of-objects',
     name: 'Array of Objects',
     tag: 'Data Structures',
@@ -68,7 +76,7 @@ export const chapters: Chapter[] = [
       'Quản lý danh sách đối tượng bằng mảng tham chiếu: thêm, tìm, sửa, xoá, lọc, sắp xếp và serialization.',
   },
   {
-    id: 8,
+    id: 9,
     slug: 'collections',
     name: 'Collections',
     tag: 'Collections',
@@ -76,7 +84,7 @@ export const chapters: Chapter[] = [
       'ArrayList, TreeSet, HashMap — Java Collections Framework: chọn đúng cấu trúc dữ liệu cho từng bài toán.',
   },
   {
-    id: 9,
+    id: 10,
     slug: 'dynamic-memory',
     name: 'Dynamic Memory',
     tag: 'Memory',
@@ -84,7 +92,7 @@ export const chapters: Chapter[] = [
       'Stack, heap tĩnh và heap động: cách Java cấp phát bộ nhớ, Garbage Collector và vòng đời của đối tượng.',
   },
   {
-    id: 10,
+    id: 11,
     slug: 'exception-handling',
     name: 'Exception Handling',
     tag: 'Exception',
@@ -92,11 +100,19 @@ export const chapters: Chapter[] = [
       'try-catch-finally, checked vs unchecked exception, throws, lồng nhau, và tự định nghĩa exception riêng.',
   },
   {
-    id: 11,
+    id: 12,
     slug: 'file-io',
     name: 'File I/O',
     tag: 'File I/O',
     description:
       'I/O Stream, Scanner, BufferedReader, FileReader: đọc dữ liệu từ bàn phím và file văn bản, xử lý IOException.',
+  },
+  {
+    id: 13,
+    slug: 'pe-exam-guidelines',
+    name: 'PE Exam Guidelines',
+    tag: 'Exam Prep',
+    description:
+      'Checklist thực chiến cho kỳ thi thực hành (PE): chuẩn bị máy và thư mục thi, đọc đề đúng cách, làm bài và nộp bài không sai sót.',
   },
 ]

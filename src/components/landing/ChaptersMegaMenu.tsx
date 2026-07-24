@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { chapters, groupChapters } from '../../content/chapters'
+import { chapters, groupChapters, groupLabel } from '../../content/chapters'
 
 function ChevronIcon() {
   return (
@@ -20,6 +20,8 @@ function ChevronIcon() {
 // Mega menu xổ xuống khi hover mục "Chapters" — liệt kê toàn bộ chương học thật của
 // pro192web (13 chương, kể cả Trừu tượng và Lưu ý khi thi PE), gom nhóm giống hệt
 // Sidebar bên /docs (dùng chung groupChapters()) thay vì chỉ cuộn tới #chapters.
+// Landing luôn hiển thị tiếng Anh mặc định (khác Docs có toggle ngôn ngữ) — dùng
+// groupLabel(name, 'en') + chapter.titleEn thay vì name/title tiếng Việt.
 export function ChaptersMegaMenu() {
   const groups = groupChapters()
 
@@ -39,7 +41,7 @@ export function ChaptersMegaMenu() {
             {groups.map((group) => (
               <div key={group.name}>
                 <p className="text-ink-faint mb-2.5 text-[11px] font-semibold tracking-wider uppercase">
-                  {group.name}
+                  {groupLabel(group.name, 'en')}
                 </p>
                 <div className="flex flex-col gap-0.5">
                   {group.items.map((chapter) => (
@@ -48,7 +50,7 @@ export function ChaptersMegaMenu() {
                       to={`/docs/${chapter.slug}`}
                       className="text-ink-muted hover:bg-well hover:text-ink -mx-2 rounded-md px-2 py-1.5 text-[13.5px] transition-colors"
                     >
-                      {chapter.title}
+                      {chapter.titleEn}
                     </Link>
                   ))}
                 </div>
@@ -57,9 +59,9 @@ export function ChaptersMegaMenu() {
           </div>
 
           <div className="border-hairline mt-5 flex items-center justify-between border-t pt-4">
-            <span className="text-ink-faint text-xs">{chapters.length} chương · song ngữ Việt/Anh</span>
+            <span className="text-ink-faint text-xs">{chapters.length} chapters · bilingual Vietnamese/English</span>
             <Link to="/docs" className="text-accent-dark flex items-center gap-1 text-xs font-semibold hover:underline">
-              Xem tất cả
+              View all
               <span aria-hidden>→</span>
             </Link>
           </div>

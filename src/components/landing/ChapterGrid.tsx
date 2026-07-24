@@ -25,7 +25,7 @@ export function ChapterGrid() {
         <h2 className="text-[15px] font-semibold tracking-[0.04em] text-ink-faint uppercase">
           Course chapters
         </h2>
-        <span className="font-mono text-[13px] text-ink-faint">11 chapters</span>
+        <span className="font-mono text-[13px] text-ink-faint">{chapters.length} chapters</span>
       </div>
 
       <motion.div
