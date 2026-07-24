@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/images/logo-transparent.png" alt="PRO192 Docs" width="120" />
+  <img src="public/images/logo-transparent.png" alt="PRO192 Docs" width="300" />
 
   # PRO192 — Tài liệu Lập trình Hướng đối tượng với Java
 
