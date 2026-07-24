@@ -2,7 +2,7 @@ import { createWriteStream } from 'node:fs'
 import { mkdir, rm } from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import archiver from 'archiver'
+import { ZipArchive } from 'archiver'
 import puppeteer from 'puppeteer'
 import { createServer } from 'vite'
 
@@ -60,6 +60,13 @@ async function main() {
   try {
     for (const [index, slug] of CHAPTER_SLUGS.entries()) {
       const page = await browser.newPage()
+      // Headless Chromium mặc định prefers-color-scheme: dark — script chống FOUC trong
+      // index.html đọc localStorage 'pro192-theme' (mặc định 'system') rồi theo system
+      // preference đó để bật .dark. Ép sẵn 'light' trước khi trang tải để PDF luôn sáng.
+      await page.evaluateOnNewDocument(() => {
+        localStorage.setItem('pro192-theme', 'light')
+      })
+      await page.emulateMediaFeatures([{ name: 'prefers-color-scheme', value: 'light' }])
       await page.goto(`${baseUrl}/print/docs/${slug}`, { waitUntil: 'networkidle0' })
       await waitForImages(page)
       await page.emulateMediaType('screen')
@@ -82,7 +89,7 @@ async function main() {
 
     await new Promise((resolve, reject) => {
       const output = createWriteStream(outputZip)
-      const archive = archiver('zip', { zlib: { level: 9 } })
+      const archive = new ZipArchive({ zlib: { level: 9 } })
       output.on('close', resolve)
       archive.on('error', reject)
       archive.pipe(output)
