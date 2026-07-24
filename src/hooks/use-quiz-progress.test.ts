@@ -29,19 +29,19 @@ beforeEach(() => {
 
 describe('quiz progress storage', () => {
   it('returns null when nothing is stored yet', () => {
-    expect(readQuizProgress('dong-goi')).toBeNull()
+    expect(readQuizProgress('encapsulation')).toBeNull()
   })
 
   it('round-trips a written progress record', () => {
-    writeQuizProgress('dong-goi', { score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
-    expect(readQuizProgress('dong-goi')).toEqual({ score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
+    writeQuizProgress('encapsulation', { score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
+    expect(readQuizProgress('encapsulation')).toEqual({ score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
   })
 
   it('keeps progress separate per chapter slug', () => {
-    writeQuizProgress('dong-goi', { score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
-    writeQuizProgress('ke-thua', { score: 2, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
-    expect(readQuizProgress('dong-goi')?.score).toBe(4)
-    expect(readQuizProgress('ke-thua')?.score).toBe(2)
+    writeQuizProgress('encapsulation', { score: 4, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
+    writeQuizProgress('inheritance', { score: 2, total: 5, completedAt: '2026-07-24T00:00:00.000Z' })
+    expect(readQuizProgress('encapsulation')?.score).toBe(4)
+    expect(readQuizProgress('inheritance')?.score).toBe(2)
   })
 
   it('returns null when the stored value is corrupted JSON', () => {
