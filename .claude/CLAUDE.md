@@ -4,7 +4,7 @@
 
 **Tầm nhìn:** Không chỉ là làm mới UI — mục tiêu dài hạn là biến thành một learning platform có thể mở rộng (tìm kiếm thật, có thể sau này có quiz/exercise...), không dừng ở nội dung tĩnh.
 
-**Nội dung:** 11 chương bám sát syllabus PRO192 chính thức: Chào mừng → Introduction Course → Nền tảng → Đóng gói → Kế thừa → Đa hình → Mảng đối tượng → Bộ sưu tập (Collections) → Bộ nhớ động → Xử lý ngoại lệ → Nhập xuất tệp (File IO). Song ngữ Việt (mặc định) / English.
+**Nội dung:** 11 chương bám sát syllabus PRO192 chính thức: Chào mừng → Introduction Course → Nền tảng → Đóng gói → Kế thừa → Đa hình → Mảng đối tượng → Bộ sưu tập (Collections) → Bộ nhớ động → Xử lý ngoại lệ → Nhập xuất tệp (File IO). Song ngữ Việt (mặc định) / English. Từ 2026-07-25 có thêm chương thứ 12 **"Lưu ý khi thi PE"** (`pe-exam-guidelines`) — nội dung bổ sung ngoài syllabus chính thức (checklist/kinh nghiệm thi thực hành PE), đặt riêng nhóm sidebar "Kỳ thi PE" ở cuối, KHÔNG xuất hiện trong lưới 11 chương marketing ở Landing (`src/data/chapters.ts` cố ý giữ nguyên 11, xem mục LandingPage bên dưới).
 
 ### Tech stack (đã khoá — không đổi nếu không được yêu cầu rõ)
 React 19 + TypeScript 6 + Vite 8 · React Router DOM v7 (SPA client-side) · Tailwind CSS v4 (CSS-first config, KHÔNG có `tailwind.config.js`) · Motion (Framer Motion v12) · react-markdown + remark-gfm · prism-react-renderer (Java syntax highlight) · Deploy Cloudflare Workers qua wrangler v4 · Lint bằng oxlint (KHÔNG dùng ESLint) · Husky pre-commit chạy oxlint · Vitest (unit test cho logic thuần, không test component) · Fuse.js (fuzzy search cho Docs)

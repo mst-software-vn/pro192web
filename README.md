@@ -59,6 +59,7 @@ Bản triển khai mới nhất luôn có tại: **https://pro192web.chunhau-py-
 | 9 | Bộ nhớ động | Dynamic Memory |
 | 10 | Xử lý ngoại lệ | Exception Handling |
 | 11 | Nhập xuất tệp | File IO |
+| 12 | Lưu ý khi thi PE | PE Exam Guidelines |
 
 ## Tính năng
 
