@@ -37,11 +37,13 @@
 }
 
 .dark {
-  --canvas: #0a0a0a;
-  --panel: #171717;
-  --well: #262626;
-  --hairline: #262626;
-  --hairline-strong: #404040;
+  /* Tông đen-xanh (navy) đồng bộ với LandingPage thay vì đen trung tính —
+     độ sáng của từng bước giữ nguyên như trước, chỉ đổi sắc (hue) sang navy. */
+  --canvas: #080b14;
+  --panel: #0f1520;
+  --well: #1a2233;
+  --hairline: #1a2233;
+  --hairline-strong: #2d3748;
   --ink: #ffffff;
   --ink-secondary: #e5e5e5;
   --ink-body: #d4d4d4;
