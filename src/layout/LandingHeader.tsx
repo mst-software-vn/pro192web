@@ -15,8 +15,6 @@ function MenuIcon() {
   )
 }
 
-// Header riêng cho Landing Page — KHÔNG dùng chung với DocsHeader (quyết định của user).
-// Cấu trúc: Logo | Tài liệu (mega-menu) · Giáo trình | Search | GitHub · Theme · CTA.
 export function LandingHeader() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -26,7 +24,7 @@ export function LandingHeader() {
         <div className="mx-auto flex h-20 max-w-6xl items-center gap-4 px-6">
           <Link to="/" className="flex shrink-0 items-center">
             <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
-            <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+            <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-9 dark:block" />
           </Link>
 
           <nav className="hidden shrink-0 items-center gap-1 lg:flex">

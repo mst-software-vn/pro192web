@@ -29,7 +29,7 @@ export function DocsHeader({ onOpenMenu }: DocsHeaderProps) {
           {/* Logo */}
           <Link to="/" className="flex shrink-0 items-center">
             <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
-            <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+            <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-9 dark:block" />
           </Link>
         </div>
 
