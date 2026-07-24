@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { chapters, firstChapterSlug } from '../content/chapters'
 import { useLanguage } from '../hooks/use-language'
+import { useSimulatedVisitorCount } from '../hooks/use-simulated-visitor-count'
 
 const DOCS_LINKS = [
   { labelVi: 'Chào mừng', labelEn: 'Welcome', to: '/docs/welcome' },
@@ -15,6 +16,7 @@ const FPT_SYLLABUS_URL = 'https://flm.fpt.edu.vn/gui/tool/AllPrequisiteSubject?e
 export function DocsFooter() {
   const { language } = useLanguage()
   const isEn = language === 'en'
+  const visitorCount = useSimulatedVisitorCount()
 
   return (
     <footer className="border-hairline border-t">
@@ -78,7 +80,18 @@ export function DocsFooter() {
           </div>
         </div>
 
-        <div className="border-hairline mt-12 flex flex-col gap-3 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-hairline mt-12 flex items-center justify-center gap-2 border-t pt-6 text-[13px] text-ink-faint">
+          <span className="relative flex h-2 w-2">
+            <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          </span>
+          <span>
+            <strong className="text-ink-body font-semibold">{visitorCount}</strong>{' '}
+            {isEn ? 'students online now' : 'sinh viên đang online'}
+          </span>
+        </div>
+
+        <div className="border-hairline mt-6 flex flex-col gap-3 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-ink-faint text-xs">
             {isEn
               ? '© 2026 MST Software · Java OOP (PRO192) documentation'

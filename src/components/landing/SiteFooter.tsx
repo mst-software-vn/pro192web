@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { chapters } from '../../data/chapters'
+import { useSimulatedVisitorCount } from '../../hooks/use-simulated-visitor-count'
 
 const GITHUB_URL = 'https://github.com/mst-software-vn/pro192web'
 const FACEBOOK_URL = 'https://www.facebook.com/mstsoftware.vn'
@@ -29,6 +30,7 @@ const footLinkClassName = 'block text-sm text-(--landing-foot-link) transition-c
 export function SiteFooter() {
   const basicChapters = chapters.slice(0, 6)
   const advancedChapters = chapters.slice(6)
+  const visitorCount = useSimulatedVisitorCount()
 
   return (
     <footer className="border-t border-white/4 bg-(--landing-foot-bg)">
@@ -103,6 +105,16 @@ export function SiteFooter() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="flex items-center justify-center gap-2 border-b border-(--landing-foot-border) py-4 text-[13px] text-(--landing-foot-link)">
+          <span className="relative flex h-2 w-2">
+            <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+          </span>
+          <span>
+            <strong className="text-ink-body font-semibold">{visitorCount}</strong> sinh viên đang online
+          </span>
         </div>
 
         <div className="flex flex-col items-center gap-3.5 pt-6 text-[13px] text-[#6b7280] sm:flex-row sm:justify-between">
