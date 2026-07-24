@@ -8,10 +8,9 @@ const DOCS_LINKS = [
   { labelVi: 'Đóng gói', labelEn: 'Encapsulation', to: '/docs/encapsulation' },
 ]
 
-const COURSE_LINKS = [
-  { labelVi: 'Trang chủ', labelEn: 'Home', to: '/' },
-  { labelVi: 'Đề cương môn học', labelEn: 'Syllabus', to: '/syllabus-pro192-spring2021' },
-]
+const COURSE_LINKS = [{ labelVi: 'Trang chủ', labelEn: 'Home', to: '/' }]
+
+const FPT_SYLLABUS_URL = 'https://flm.fpt.edu.vn/gui/tool/AllPrequisiteSubject?educationLevel=fptu'
 
 export function DocsFooter() {
   const { language } = useLanguage()
@@ -65,6 +64,16 @@ export function DocsFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <a
+                  href={FPT_SYLLABUS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ink-muted hover:text-ink text-sm transition-colors"
+                >
+                  {isEn ? 'Syllabus (FPT)' : 'Đề cương môn học (FPT)'}
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -44,4 +44,4 @@ If you photocopy a textbook without the copyright holder's permission, you viola
 
 PRF192
 
-For further information, see the [syllabus](/syllabus-pro192-spring2021).
+For further information, see the [syllabus](https://flm.fpt.edu.vn/gui/tool/AllPrequisiteSubject?educationLevel=fptu).

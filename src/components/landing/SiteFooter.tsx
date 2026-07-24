@@ -3,6 +3,7 @@ import { chapters } from '../../data/chapters'
 
 const GITHUB_URL = 'https://github.com/mst-software-vn/pro192web'
 const FACEBOOK_URL = 'https://www.facebook.com/mstsoftware.vn'
+const FPT_SYLLABUS_URL = 'https://flm.fpt.edu.vn/gui/tool/AllPrequisiteSubject?educationLevel=fptu'
 
 function GithubIcon({ size = 19 }: { size?: number }) {
   return (
@@ -91,9 +92,9 @@ export function SiteFooter() {
               <Link to="/docs" className={footLinkClassName}>
                 Docs
               </Link>
-              <Link to="/syllabus-pro192-spring2021" className={footLinkClassName}>
+              <a href={FPT_SYLLABUS_URL} target="_blank" rel="noopener noreferrer" className={footLinkClassName}>
                 Giáo trình
-              </Link>
+              </a>
               <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className={footLinkClassName}>
                 GitHub Repository
               </a>
