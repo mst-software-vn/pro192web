@@ -24,7 +24,7 @@ export function DocsPage() {
 
   if (!chapter) {
     return (
-      <div className="mx-auto max-w-[760px]">
+      <div className="max-w-[760px]">
         <h1 className="text-ink text-3xl font-semibold tracking-tight">
           {isEn ? 'Page not found' : 'Không tìm thấy trang'}
         </h1>
@@ -40,7 +40,7 @@ export function DocsPage() {
   const isFallback = wantsVi && !chapter.bodyVi && Boolean(chapter.body)
 
   return (
-    <article className="mx-auto max-w-[760px]">
+    <article className="max-w-[760px]">
       <header className="border-hairline mb-8 border-b pb-8">
         <h1 className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">
           {isEn ? chapter.titleEn : chapter.title}
