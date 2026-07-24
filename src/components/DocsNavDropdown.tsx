@@ -37,7 +37,7 @@ export function DocsNavDropdown() {
             className="fixed inset-0 z-40 cursor-default"
             onClick={() => setOpen(false)}
           />
-          <div className="border-hairline bg-canvas absolute top-full left-0 z-50 mt-2 grid w-[640px] max-w-[90vw] grid-cols-3 gap-x-8 gap-y-5 rounded-lg border p-6 shadow-[0_16px_40px_rgba(0,0,0,0.12)]">
+          <div className="border-hairline bg-canvas absolute top-full left-0 z-50 mt-2 grid w-[640px] max-w-[90vw] grid-cols-3 gap-x-8 gap-y-5 rounded-lg border p-6 shadow-[0_16px_40px_rgba(0,0,0,0.04)]">
             {groups.map((group) => (
               <div key={group.name}>
                 <p className="text-ink-faint mb-2 text-xs font-semibold tracking-wider uppercase">
