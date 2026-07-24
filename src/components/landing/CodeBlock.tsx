@@ -20,8 +20,8 @@ const TOKEN_CLASS: Record<TokenKind, string> = {
   comment: 'text-(--landing-code-comment)',
 }
 
-// 3 đoạn code minh hoạ Encapsulation/Inheritance/Polymorphism — tô màu thủ công theo
-// đúng token của bản thiết kế gốc (không dùng prism-react-renderer ở đây vì theme có sẵn
+// 4 đoạn code minh hoạ Encapsulation/Inheritance/Polymorphism/Abstraction — tô màu thủ công
+// theo đúng token của bản thiết kế gốc (không dùng prism-react-renderer ở đây vì theme có sẵn
 // không khớp chính xác từng màu; nội dung tĩnh, không cần tokenizer động).
 const TABS: readonly CodeTab[] = [
   {
@@ -108,6 +108,34 @@ const TABS: readonly CodeTab[] = [
       [[' ']],
       [['for', 'control'], [' ('], ['Animal', 'class'], [' a : animals) {']],
       [['  a.'], ['makeSound', 'fn'], ['(); '], ['// each behaves differently', 'comment']],
+      [['}']],
+    ],
+  },
+  {
+    file: 'Animal.java',
+    label: 'Abstraction',
+    lines: [
+      [
+        ['public', 'keyword'],
+        [' '],
+        ['abstract', 'keyword'],
+        [' '],
+        ['class', 'control'],
+        [' '],
+        ['Animal', 'class'],
+        [' {'],
+      ],
+      [['  '], ['protected', 'keyword'], [' '], ['String', 'type'], [' name;']],
+      [[' ']],
+      [['  '], ['public', 'keyword'], [' '], ['Animal', 'fn'], ['('], ['String', 'type'], [' name) {']],
+      [['    '], ['this', 'ref'], ['.name = name;']],
+      [['  }']],
+      [[' ']],
+      [['  '], ['public abstract void', 'keyword'], [' '], ['makeSound', 'fn'], ['();']],
+      [[' ']],
+      [['  '], ['public void', 'keyword'], [' '], ['sleep', 'fn'], ['() {']],
+      [['    '], ['System', 'class'], ['.out.println(name + " is sleeping");']],
+      [['  }']],
       [['}']],
     ],
   },
