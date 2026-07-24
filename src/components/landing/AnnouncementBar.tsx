@@ -18,7 +18,7 @@ export function AnnouncementBar() {
           transition={{ duration: 0.2, ease: 'easeInOut' }}
           className="overflow-hidden bg-[linear-gradient(90deg,#1e3a5f,#1e40af)]"
         >
-          <div className="relative px-12 py-2.5 text-center text-[13px] text-[#dbeafe]">
+          <div className="relative px-12 py-3 text-center text-[13px] text-[#dbeafe]">
             <span className="hidden sm:inline">
               PRO192 is proudly developed by <strong className="font-semibold text-white">MST Software</strong> ·{' '}
               <a
