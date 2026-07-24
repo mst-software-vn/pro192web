@@ -15,7 +15,7 @@ export function Sidebar({ onNavigate }: SidebarProps) {
     <nav className="space-y-7">
       {groups.map((group) => (
         <div key={group.name}>
-          <p className="text-ink-faint mb-2 px-3 text-xs font-semibold tracking-wider uppercase">
+          <p className="text-ink mb-2 px-3 text-xs font-semibold tracking-wider uppercase">
             {groupLabel(group.name, language)}
           </p>
           <ul className="space-y-0.5">
