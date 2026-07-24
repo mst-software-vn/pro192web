@@ -17,6 +17,25 @@ function GithubIcon({ size = 19 }: { size?: number }) {
   )
 }
 
+function UsersIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-3.5 w-3.5 shrink-0 text-green-500"
+    >
+      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
 function FacebookIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -107,19 +126,13 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-2 border-b border-(--landing-foot-border) py-4 text-[13px] text-(--landing-foot-link)">
-          <span className="relative flex h-2 w-2">
-            <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-          </span>
-          <span>
-            <strong className="text-ink-body font-semibold">{visitorCount}</strong> sinh viên đang online
-          </span>
-        </div>
-
         <div className="flex flex-col items-center gap-3.5 pt-6 text-[13px] text-[#6b7280] sm:flex-row sm:justify-between">
           <span>© 2026 MST Software · All rights reserved.</span>
           <span>Built for FPT University students</span>
+          <span className="flex items-center gap-1.5">
+            <UsersIcon />
+            <strong className="text-ink-body font-semibold">{visitorCount}</strong> online
+          </span>
           <div className="flex items-center gap-3.5">
             <a
               href={GITHUB_URL}

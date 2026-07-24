@@ -3,6 +3,25 @@ import { chapters, firstChapterSlug } from '../content/chapters'
 import { useLanguage } from '../hooks/use-language'
 import { useSimulatedVisitorCount } from '../hooks/use-simulated-visitor-count'
 
+function UsersIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="h-3.5 w-3.5 shrink-0 text-green-500"
+    >
+      <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </svg>
+  )
+}
+
 const DOCS_LINKS = [
   { labelVi: 'Chào mừng', labelEn: 'Welcome', to: '/docs/welcome' },
   { labelVi: 'Nền tảng', labelEn: 'Foundations', to: '/docs/foundations' },
@@ -23,7 +42,10 @@ export function DocsFooter() {
       <div className="mx-auto max-w-360 px-4 py-14 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
           <div>
-            <span className="text-ink text-[15px] font-semibold tracking-tight">PRO192 · Java Edition</span>
+            <div className="flex items-center">
+              <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
+              <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+            </div>
             <p className="text-ink-muted mt-3 max-w-xs text-sm leading-relaxed">
               {isEn
                 ? 'Documentation for learning Object-Oriented Programming with Java, organized from the PRO192 curriculum — developed by MST Software.'
@@ -80,18 +102,7 @@ export function DocsFooter() {
           </div>
         </div>
 
-        <div className="border-hairline mt-12 flex items-center justify-center gap-2 border-t pt-6 text-[13px] text-ink-faint">
-          <span className="relative flex h-2 w-2">
-            <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-          </span>
-          <span>
-            <strong className="text-ink-body font-semibold">{visitorCount}</strong>{' '}
-            {isEn ? 'students online now' : 'sinh viên đang online'}
-          </span>
-        </div>
-
-        <div className="border-hairline mt-6 flex flex-col gap-3 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="border-hairline mt-12 flex flex-col gap-3 border-t pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-ink-faint text-xs">
             {isEn
               ? '© 2026 MST Software · Java OOP (PRO192) documentation'
@@ -101,6 +112,11 @@ export function DocsFooter() {
             {isEn
               ? 'Built for students learning Object-Oriented Programming'
               : 'Xây dựng cho sinh viên học Lập trình Hướng đối tượng'}
+          </p>
+          <p className="text-ink-faint flex items-center gap-1.5 text-xs">
+            <UsersIcon />
+            <strong className="text-ink-body font-semibold">{visitorCount}</strong>
+            {isEn ? 'online now' : 'đang online'}
           </p>
         </div>
       </div>
