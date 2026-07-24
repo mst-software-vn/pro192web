@@ -22,16 +22,18 @@ export function HeroSection() {
       className="relative mx-auto grid max-w-310 grid-cols-1 items-center gap-8 px-6 py-9 sm:px-10 sm:py-13 lg:grid-cols-[1.05fr_1.15fr] lg:gap-14 lg:py-20"
     >
       <div>
-        <div className="mb-3.5 inline-flex items-center gap-2.5 rounded-full border border-(--landing-accent)/35 bg-(--landing-accent)/8 px-3.5 py-1.5 font-mono text-[12.5px] font-medium text-[#93c5fd]">
-          <span className="h-1.5 w-1.5 rounded-full bg-(--landing-accent) shadow-[0_0_8px_#3b82f6]" />
-          PRO192 · Java OOP
-        </div>
+        <div className="mb-6.5 flex flex-col items-start gap-3">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-(--landing-accent)/35 bg-(--landing-accent)/8 px-3.5 py-1.5 font-mono text-[12.5px] font-medium text-[#93c5fd]">
+            <span className="h-1.5 w-1.5 rounded-full bg-(--landing-accent) shadow-[0_0_8px_#3b82f6]" />
+            PRO192 · Java OOP
+          </div>
 
-        <div className="mb-6.5 ml-2 inline-flex items-center gap-2.5 rounded-lg border border-[#F37022]/30 bg-[#F37022]/6 px-3 py-1.5">
-          <FptBadgeIcon />
-          <div className="flex flex-col leading-tight">
-            <span className="text-[12.5px] font-bold text-[#F37022]">FPT University</span>
-            <span className="text-[10.5px] text-(--landing-dim)">Dành cho sinh viên Đại học FPT</span>
+          <div className="inline-flex items-center gap-2.5 rounded-lg border border-[#F37022]/30 bg-[#F37022]/6 px-3 py-1.5">
+            <FptBadgeIcon />
+            <div className="flex flex-col leading-tight">
+              <span className="text-[12.5px] font-bold text-[#F37022]">FPT University</span>
+              <span className="text-[10.5px] text-(--landing-dim)">Dành cho sinh viên Đại học FPT</span>
+            </div>
           </div>
         </div>
 
