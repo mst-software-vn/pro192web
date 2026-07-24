@@ -30,9 +30,7 @@
 
   /* Nền gradient + glow của toàn trang — bản sắc riêng của Landing, KHÔNG áp
      dụng cho Docs (Docs chỉ đồng bộ tông màu nền phẳng qua --canvas). */
-  --landing-bg-image:
-    radial-gradient(700px circle at 92% 0%, rgba(59, 130, 246, 0.16), transparent 65%),
-    linear-gradient(135deg, #e7edff 0%, #dbe7fd 40%, #ece8ff 100%);
+  --landing-bg-image: linear-gradient(135deg, #e7edff 0%, #dbe7fd 40%, #ece8ff 100%);
 
   /* Màu token cho code viewer trong HeroSection — cố định, không đổi theo theme. */
   --landing-code-keyword: #f97316;
@@ -57,8 +55,6 @@
   --landing-foot-link: #9ca3af;
   --landing-foot-link-hover: #f9fafb;
   --landing-bg-image:
-    radial-gradient(800px circle at 50% -6%, rgba(99, 102, 241, 0.12), transparent 60%),
-    radial-gradient(ellipse 85% 55% at 84% -8%, rgba(59, 130, 246, 0.24), transparent 60%),
     radial-gradient(ellipse 60% 50% at 6% 108%, rgba(99, 102, 241, 0.18), transparent 60%),
     #080b14;
 }
@@ -82,4 +78,16 @@
 
 .dark .landing-grid-bg {
   display: block;
+}
+
+/* Quầng sáng xanh accent của Hero — đặt ngay giữa cột tiêu đề và cột code (không
+   phải theo % của toàn trang, vì trang có thể dài ngắn khác nhau tuỳ nội dung bên
+   dưới) bằng cách gắn trực tiếp vào HeroSection (position: relative) thay vì
+   .landing-page. */
+.landing-hero-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.22), transparent 68%);
+}
+
+.dark .landing-hero-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.35), transparent 68%);
 }
