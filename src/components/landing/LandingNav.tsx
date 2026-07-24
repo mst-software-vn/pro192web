@@ -58,7 +58,7 @@ export function LandingNav() {
       <div className="mx-auto max-w-310 px-6 sm:px-10">
         <nav className="flex h-17 items-center gap-8">
           <Link to="/" className="flex shrink-0 items-center">
-            <img src="/images/logo.png" alt="PRO192 Docs" className="h-9" />
+            <img src="/images/logo.png" alt="PRO192 Docs" className="h-11" />
           </Link>
 
           <div className="hidden items-center gap-6 md:flex">

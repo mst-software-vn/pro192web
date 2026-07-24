@@ -43,8 +43,8 @@ export function DocsFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr]">
           <div>
             <div className="flex items-center">
-              <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
-              <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+              <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-11 dark:hidden" />
+              <img src="/images/logo.png" alt="PRO192 Docs" className="hidden h-11 dark:block" />
             </div>
             <p className="text-ink-muted mt-3 max-w-xs text-sm leading-relaxed">
               {isEn
