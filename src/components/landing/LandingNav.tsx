@@ -118,19 +118,17 @@ export function LandingNav() {
     <div className="border-b border-(--landing-header-border) bg-(--landing-header-bg) backdrop-blur-md">
       <div className="mx-auto max-w-310 px-6 sm:px-10">
         <nav className="flex h-17 items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-7.5 w-7.5 items-center justify-center rounded-md bg-(--landing-accent-strong) text-[15px] font-extrabold text-white shadow-[0_0_20px_rgba(59,130,246,0.45)]">
-              P
-            </div>
-            <span className="text-[16px] font-bold tracking-tight">PRO192</span>
-          </div>
+          <Link to="/" className="flex shrink-0 items-center">
+            <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
+            <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-9 dark:block" />
+          </Link>
 
           <div className="flex items-center gap-5.5">
-            <div className="hidden items-center gap-5.5 text-sm text-(--landing-muted) md:flex">
-              <a href="#chapters" className="transition-colors hover:text-(--landing-text)">
+            <div className="hidden items-center gap-5.5 text-sm text-ink-muted md:flex">
+              <a href="#chapters" className="transition-colors hover:text-ink">
                 Chapters
               </a>
-              <Link to="/docs" className="transition-colors hover:text-(--landing-text)">
+              <Link to="/docs" className="transition-colors hover:text-ink">
                 Docs
               </Link>
               <span className="cursor-default opacity-60">Blog</span>
@@ -138,11 +136,11 @@ export function LandingNav() {
 
             <button
               type="button"
-              className="hidden w-42 items-center gap-2 rounded-md border border-(--landing-border-strong) bg-(--landing-search-bg) px-3 py-2 text-[13.5px] text-(--landing-dim) transition-colors hover:border-(--landing-accent) lg:flex"
+              className="hidden w-42 items-center gap-2 rounded-md border border-hairline-strong bg-(--landing-search-bg) px-3 py-2 text-[13.5px] text-ink-faint transition-colors hover:border-accent lg:flex"
             >
               <SearchIcon />
               <span className="flex-1 text-left">Search...</span>
-              <kbd className="rounded border border-(--landing-border-strong) px-1.5 py-0.5 font-mono text-[11px] text-(--landing-dim)">
+              <kbd className="rounded border border-hairline-strong px-1.5 py-0.5 font-mono text-[11px] text-ink-faint">
                 ⌘K
               </kbd>
             </button>
@@ -153,7 +151,7 @@ export function LandingNav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub repository"
-                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg text-(--landing-muted) transition-colors hover:bg-(--landing-card) hover:text-(--landing-text)"
+                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-(--landing-card) hover:text-ink"
               >
                 <GithubIcon />
               </a>
@@ -163,7 +161,7 @@ export function LandingNav() {
                 onClick={() => setPreference(NEXT_PREFERENCE[preference])}
                 aria-label="Toggle theme"
                 title={`Theme: ${preference}`}
-                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-(--landing-border-strong) bg-(--landing-card) text-(--landing-muted) transition-colors hover:text-(--landing-text)"
+                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted transition-colors hover:text-ink"
               >
                 <ThemeIcon />
               </button>
@@ -172,7 +170,7 @@ export function LandingNav() {
                 type="button"
                 onClick={() => setMobileOpen((value) => !value)}
                 aria-label="Menu"
-                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-(--landing-border-strong) bg-(--landing-card) text-(--landing-muted) md:hidden"
+                className="flex h-8.5 w-8.5 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted md:hidden"
               >
                 <MenuIcon />
               </button>
@@ -185,18 +183,18 @@ export function LandingNav() {
             <a
               href="#chapters"
               onClick={() => setMobileOpen(false)}
-              className="px-1.5 py-2.5 text-[15px] text-(--landing-muted)"
+              className="px-1.5 py-2.5 text-[15px] text-ink-muted"
             >
               Chapters
             </a>
             <Link
               to="/docs"
               onClick={() => setMobileOpen(false)}
-              className="px-1.5 py-2.5 text-[15px] text-(--landing-muted)"
+              className="px-1.5 py-2.5 text-[15px] text-ink-muted"
             >
               Docs
             </Link>
-            <span className="px-1.5 py-2.5 text-[15px] text-(--landing-muted) opacity-60">Blog</span>
+            <span className="px-1.5 py-2.5 text-[15px] text-ink-muted opacity-60">Blog</span>
           </div>
         ) : null}
       </div>

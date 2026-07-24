@@ -34,14 +34,12 @@ export function SiteFooter() {
       <div className="mx-auto max-w-310 px-6 pt-14 pb-8 sm:px-10">
         <div className="grid grid-cols-1 gap-10 border-b border-(--landing-foot-border) pb-10 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr]">
           <div>
-            <div className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-7.5 w-7.5 items-center justify-center rounded-md bg-(--landing-accent-strong) text-[15px] font-extrabold text-white">
-                P
-              </div>
-              <span className="text-[20px] font-extrabold tracking-tight">PRO192</span>
+            <div className="mb-4 flex items-center">
+              <img src="/images/logo-transparent.png" alt="PRO192 Docs" className="h-9 dark:hidden" />
+              <img src="/images/logo.jpg" alt="PRO192 Docs" className="hidden h-9 dark:block" />
             </div>
-            <p className="mb-1 text-sm font-semibold text-(--landing-muted)">Java Object-Oriented Programming</p>
-            <p className="mb-5 max-w-70 text-[13px] leading-relaxed text-(--landing-dim)">
+            <p className="mb-1 text-sm font-semibold text-ink-body">Java Object-Oriented Programming</p>
+            <p className="mb-5 max-w-70 text-[13px] leading-relaxed text-ink-faint">
               A free learning platform for FPT University students.
             </p>
             <div className="flex items-center gap-3">
@@ -49,7 +47,7 @@ export function SiteFooter() {
                 href={FACEBOOK_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.75 rounded-full border border-(--landing-foot-border) px-3 py-1.5 text-[12.5px] font-semibold text-(--landing-foot-link) transition-colors hover:border-(--landing-accent) hover:text-(--landing-foot-link-hover)"
+                className="inline-flex items-center gap-1.75 rounded-full border border-(--landing-foot-border) px-3 py-1.5 text-[12.5px] font-semibold text-(--landing-foot-link) transition-colors hover:border-accent hover:text-(--landing-foot-link-hover)"
               >
                 MST Software
               </a>

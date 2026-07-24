@@ -26,7 +26,7 @@ export function HeroSection() {
           <FptBadgeIcon />
           <div className="flex flex-col leading-tight">
             <span className="text-[12.5px] font-bold text-[#F37022]">FPT University</span>
-            <span className="text-[10.5px] text-(--landing-dim)">Dành cho sinh viên Đại học FPT</span>
+            <span className="text-[10.5px] text-ink-faint">Dành cho sinh viên Đại học FPT</span>
           </div>
         </div>
 
@@ -38,20 +38,20 @@ export function HeroSection() {
           Programming
         </h1>
 
-        <p className="mb-9 max-w-110 text-[17.5px] leading-relaxed text-(--landing-muted)">
+        <p className="mb-9 max-w-110 text-[17.5px] leading-relaxed text-ink-body">
           A focused, hands-on Java course for FPT University students. Learn OOP the way real engineers write it.
         </p>
 
         <div className="flex flex-wrap items-center gap-4">
           <Link
             to="/docs/chao-mung"
-            className="inline-flex items-center gap-2 rounded-lg bg-(--landing-accent-strong) px-6 py-3.25 text-[15px] font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-accent-emphasis"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3.25 text-[15px] font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-colors hover:bg-accent-emphasis"
           >
             Bắt đầu học <span className="text-[17px]">→</span>
           </Link>
           <a
             href="#chapters"
-            className="inline-flex items-center rounded-lg border border-(--landing-border-strong) px-5.5 py-3.25 text-[15px] font-medium transition-colors hover:border-(--landing-dim)"
+            className="inline-flex items-center rounded-lg border border-hairline-strong px-5.5 py-3.25 text-[15px] font-medium transition-colors hover:border-ink-faint"
           >
             View chapters
           </a>
