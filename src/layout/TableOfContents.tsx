@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { chapters } from '../content/chapters'
 import type { HeadingItem } from '../lib/markdown'
 import { useLanguage } from '../hooks/use-language'
@@ -7,33 +8,94 @@ interface TableOfContentsProps {
   activeId: string | null
 }
 
+function ListIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 18 18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="h-3.5 w-3.5 shrink-0"
+    >
+      <path d="M2.75 14.25H15.25" />
+      <path d="M2.75 3.75H15.25" />
+      <path d="M2.75 9H8.25" />
+    </svg>
+  )
+}
+
+function ChevronIcon({ collapsed }: { collapsed: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={`h-3 w-3 shrink-0 transition-transform duration-200 ${collapsed ? '' : 'rotate-90'}`}
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+  )
+}
+
 export function TableOfContents({ headings, activeId }: TableOfContentsProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'
+  const [collapsed, setCollapsed] = useState(false)
 
   return (
     <div className="sticky top-24 flex max-h-[calc(100vh-6rem)] flex-col gap-12 overflow-y-auto">
       {headings.length > 0 ? (
         <nav>
-          <p className="text-ink-faint mb-3 text-xs font-semibold tracking-wider uppercase">
-            {isEn ? 'On this page' : 'Trên trang này'}
-          </p>
-          <ul className="border-hairline space-y-2.5 border-l pl-4">
-            {headings.map((heading) => {
-              const isActive = heading.id === activeId
-              return (
-                <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
-                  <a
-                    href={`#${heading.id}`}
-                    className={`text-[13px] leading-5 transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
-                      }`}
-                  >
-                    {heading.text}
-                  </a>
-                </li>
-              )
-            })}
-          </ul>
+          <div className="mb-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setCollapsed((value) => !value)}
+              aria-expanded={!collapsed}
+              aria-label={
+                collapsed
+                  ? isEn
+                    ? 'Expand table of contents'
+                    : 'Mở rộng mục lục'
+                  : isEn
+                    ? 'Collapse table of contents'
+                    : 'Thu gọn mục lục'
+              }
+              className="border-hairline-strong text-ink-muted hover:border-accent hover:text-ink flex h-5.5 w-5.5 shrink-0 items-center justify-center rounded-full border transition-colors"
+            >
+              <ChevronIcon collapsed={collapsed} />
+            </button>
+            <p className="text-ink-faint flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase">
+              <ListIcon />
+              {isEn ? 'On this page' : 'Trên trang này'}
+            </p>
+          </div>
+
+          {collapsed ? null : (
+            <ul className="border-hairline space-y-2.5 border-l pl-4">
+              {headings.map((heading) => {
+                const isActive = heading.id === activeId
+                return (
+                  <li key={heading.id} className={heading.depth === 3 ? 'pl-3' : undefined}>
+                    <a
+                      href={`#${heading.id}`}
+                      className={`text-[13px] leading-5 transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-faint hover:text-ink-muted'
+                        }`}
+                    >
+                      {heading.text}
+                    </a>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </nav>
       ) : null}
 
