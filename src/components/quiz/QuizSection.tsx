@@ -23,7 +23,10 @@ export function QuizSection({ slug }: QuizSectionProps) {
   const { progress, recordProgress } = useQuizProgress(slug)
 
   const [round, setRound] = useState(0)
-  const questions = useMemo(() => pickQuestions(pool), [pool, round])
+  const questions = useMemo(() => {
+    void round
+    return pickQuestions(pool)
+  }, [pool, round])
   const [phase, setPhase] = useState<Phase>('idle')
   const [index, setIndex] = useState(0)
   const [answers, setAnswers] = useState<AnswerRecord[]>([])
