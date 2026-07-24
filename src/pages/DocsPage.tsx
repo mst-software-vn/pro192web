@@ -68,6 +68,24 @@ export function DocsPage() {
         </div>
       )}
 
+      {chapter.slug === 'welcome' ? (
+        <div className="border-hairline-strong bg-panel mt-10 flex flex-col items-start gap-4 rounded-lg border px-6 py-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-ink text-sm font-semibold">
+              {isEn ? 'Download all course materials' : 'Tải toàn bộ tài liệu khoá học'}
+            </p>
+            <p className="text-ink-muted mt-1 text-sm">{isEn ? '11 chapters · PDF' : '11 chương · PDF'}</p>
+          </div>
+          <a
+            href="/downloads/pro192-course-pdfs.zip"
+            download
+            className="bg-accent hover:bg-accent-emphasis inline-flex shrink-0 items-center gap-2 rounded-md px-4 py-2 text-sm font-medium text-white transition-colors"
+          >
+            {isEn ? 'Download PDF' : 'Tải PDF'}
+          </a>
+        </div>
+      ) : null}
+
       <QuizSection key={chapter.slug} slug={chapter.slug} />
     </article>
   )
