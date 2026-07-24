@@ -1,0 +1,88 @@
+import type { QuizQuestion } from '../types'
+
+export const questions: QuizQuestion[] = [
+  {
+    id: 'foundations-1',
+    question: 'Trình biên dịch Java chuyển mã nguồn thành gì để chạy được trên nhiều nền tảng?',
+    questionEn: 'What does the Java compiler produce so a program can run across platforms?',
+    options: [
+      { id: 'a', text: 'Mã máy (machine code) trực tiếp', textEn: 'Native machine code directly' },
+      { id: 'b', text: 'Bytecode', textEn: 'Bytecode' },
+      { id: 'c', text: 'Mã Assembly', textEn: 'Assembly code' },
+      { id: 'd', text: 'File thực thi .exe', textEn: 'An .exe executable file' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Trình biên dịch Java không tạo ra executable code trực tiếp mà tạo ra bytecode — tập lệnh tối ưu để Java Virtual Machine (JVM) thực thi, nhờ đó Java đạt được tính độc lập nền tảng.',
+    explanationEn: 'The Java compiler does not produce executable code directly — it produces bytecode, an optimized instruction set run by the JVM, which is how Java achieves platform independence.',
+  },
+  {
+    id: 'foundations-2',
+    question: 'Java thuộc loại ngôn ngữ nào xét về kiểu dữ liệu?',
+    questionEn: 'What kind of typed language is Java?',
+    options: [
+      { id: 'a', text: 'Ngôn ngữ không kiểu (untyped)', textEn: 'An untyped language' },
+      { id: 'b', text: 'Ngôn ngữ định kiểu mạnh (strongly typed)', textEn: 'A strongly typed language' },
+      { id: 'c', text: 'Ngôn ngữ định kiểu động hoàn toàn, không cần khai báo kiểu', textEn: 'A fully dynamically typed language requiring no type declarations' },
+      { id: 'd', text: 'Ngôn ngữ không hỗ trợ kiểu dữ liệu nguyên thuỷ', textEn: 'A language without primitive data types' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Java là ngôn ngữ định kiểu mạnh (strongly typed) — mỗi biến phải được khai báo với một kiểu dữ liệu cụ thể.',
+    explanationEn: 'Java is a strongly typed language — every variable must be declared with a specific data type.',
+  },
+  {
+    id: 'foundations-3',
+    question: 'Kiểu nào sau đây KHÔNG phải là kiểu tham chiếu (reference type) trong Java?',
+    questionEn: 'Which of the following is NOT a reference type in Java?',
+    options: [
+      { id: 'a', text: 'array', textEn: 'array' },
+      { id: 'b', text: 'class object', textEn: 'class object' },
+      { id: 'c', text: 'interface', textEn: 'interface' },
+      { id: 'd', text: 'int', textEn: 'int' },
+    ],
+    correctOptionIds: ['d'],
+    explanation: 'int là kiểu dữ liệu nguyên thuỷ (primitive type). array, class object và interface đều là các kiểu tham chiếu (reference types) trong Java.',
+    explanationEn: '"int" is a primitive type. Array, class object, and interface are all reference types in Java.',
+  },
+  {
+    id: 'foundations-4',
+    question: 'Phạm vi (scope) của một khai báo cục bộ (local declaration) bắt đầu và kết thúc ở đâu?',
+    questionEn: 'Where does the scope of a local declaration begin and end?',
+    options: [
+      { id: 'a', text: 'Bắt đầu từ đầu file và kết thúc ở cuối file', textEn: 'From the top of the file to the bottom of the file' },
+      { id: 'b', text: 'Bắt đầu từ chỗ khai báo và kết thúc ở dấu ngoặc đóng của khối chứa nó', textEn: 'From the point of declaration to the closing brace of the block containing it' },
+      { id: 'c', text: 'Chỉ tồn tại trong đúng 1 dòng code', textEn: 'Only within the single line it is written on' },
+      { id: 'd', text: 'Không bao giờ kết thúc, tồn tại suốt vòng đời chương trình', textEn: 'Never ends — it lives for the entire program lifetime' },
+    ],
+    correctOptionIds: ['b'],
+    explanation: 'Phạm vi của một khai báo không toàn cục (non-global) bắt đầu tại điểm khai báo và kết thúc ở dấu ngoặc đóng của khối (block) chứa khai báo đó.',
+    explanationEn: 'The scope of a non-global declaration begins at the declaration and ends at the closing brace of the block containing that declaration.',
+  },
+  {
+    id: 'foundations-5',
+    question: 'Chọn TẤT CẢ câu lệnh thuộc nhóm "looping statements" (câu lệnh lặp) trong Java:',
+    questionEn: 'Select ALL statements that belong to Java\'s "looping statements":',
+    options: [
+      { id: 'a', text: 'for', textEn: 'for' },
+      { id: 'b', text: 'if-then', textEn: 'if-then' },
+      { id: 'c', text: 'while', textEn: 'while' },
+      { id: 'd', text: 'do-while', textEn: 'do-while' },
+    ],
+    correctOptionIds: ['a', 'c', 'd'],
+    explanation: 'for, while và do-while là các câu lệnh lặp (looping). if-then thuộc nhóm câu lệnh rẽ nhánh (decision-making), không phải lặp.',
+    explanationEn: 'for, while, and do-while are looping statements. if-then is a decision-making statement, not a loop.',
+  },
+  {
+    id: 'foundations-6',
+    question: 'Mảng (array) trong Java có đặc điểm gì về kích thước?',
+    questionEn: 'What is true about the size of an array in Java?',
+    options: [
+      { id: 'a', text: 'Kích thước được xác định ngay khi mảng được tạo và cố định từ đó', textEn: 'The length is established when the array is created, and stays fixed' },
+      { id: 'b', text: 'Kích thước luôn tự động tăng khi thêm phần tử', textEn: 'The length automatically grows when elements are added' },
+      { id: 'c', text: 'Mảng trong Java không có kích thước cố định', textEn: 'Java arrays never have a fixed size' },
+      { id: 'd', text: 'Kích thước chỉ xác định lúc biên dịch, không thể tạo động lúc chạy', textEn: 'The length can only be fixed at compile time, never created dynamically at runtime' },
+    ],
+    correctOptionIds: ['a'],
+    explanation: 'Một mảng là container object chứa số lượng phần tử cố định cùng kiểu dữ liệu — độ dài của mảng được xác lập ngay khi mảng được tạo (created), không đổi sau đó.',
+    explanationEn: 'An array is a container object that holds a fixed number of values of a single type — its length is established when the array is created and does not change afterward.',
+  },
+]
