@@ -21,7 +21,7 @@ Circumstances of this type are called exception conditions in Java and are repre
 
 Consider the code that cause an exception:
 
-![exception code example](/images/xu-ly-ngoai-le/1.jpg "Ví dụ code gây ra ArithmeticException")
+![exception code example](/images/exception-handling/1.jpg "Ví dụ code gây ra ArithmeticException")
 
 At the row 4, the method main causes one error and this method creates an exception object, its type is `ArithmeticException`. And then JVM will throw it to the method main. Because the method main we do nothing to control this error, the output looks like this.
 
@@ -35,7 +35,7 @@ Checked exceptions are the exceptions that are checked at compile time. You must
 
 For example:
 
-![checked exception example](/images/xu-ly-ngoai-le/2.jpg "Ví dụ checked exception với FileReader()")
+![checked exception example](/images/exception-handling/2.jpg "Ví dụ checked exception với FileReader()")
 
 In the above example, the method `FileReader()` is throwing an exception to here. So, you must use try-catch mechanism or throws mechanism to handle.
 
@@ -45,7 +45,7 @@ An unchecked exception is an exception that occurs at the time of execution. The
 
 For example:
 
-![unchecked exception example](/images/xu-ly-ngoai-le/3.jpg "Ví dụ unchecked exception với truy cập mảng ngoài phạm vi")
+![unchecked exception example](/images/exception-handling/3.jpg "Ví dụ unchecked exception với truy cập mảng ngoài phạm vi")
 
 If you have declared an array of size 5 in your program, and trying to call the 6th element of the array then 
 
@@ -59,7 +59,7 @@ We can use try-catch mechanism or throws mechanism to handle to avoid this error
 
 Consider the flow and syntax:
 
-![try-catch syntax](/images/xu-ly-ngoai-le/4.jpg "Sơ đồ luồng và cú pháp try-catch-finally")
+![try-catch syntax](/images/exception-handling/4.jpg "Sơ đồ luồng và cú pháp try-catch-finally")
 
 The try statement allows you to define a block of code to be tested for errors while it is being executed.
 
@@ -71,7 +71,7 @@ The finally statement lets you execute code, after try...catch, regardless of th
 
 In the example DemoException2, we will edit
 
-![DemoException2 example](/images/xu-ly-ngoai-le/5.jpg "Ví dụ DemoException2 dùng try-catch")
+![DemoException2 example](/images/exception-handling/5.jpg "Ví dụ DemoException2 dùng try-catch")
 
 When the program runs to the row 14, if the file name "computer.txt" does not exist then an exception object is created (its type is `FileNotFoundException`) by the method main and JVM will throw the object to catch block, the variable e is used to store the address of the object. In the catch block, you can use the variable e to get error information.
 
@@ -84,7 +84,7 @@ try-catch is finished
 
 In the example ExceptionDemo_1, we will edit
 
-![ExceptionDemo_1 example](/images/xu-ly-ngoai-le/6.jpg "Ví dụ ExceptionDemo_1 dùng try-catch")
+![ExceptionDemo_1 example](/images/exception-handling/6.jpg "Ví dụ ExceptionDemo_1 dùng try-catch")
 
 When you try to get 6th elements, an exception object is created (its type is `ArrayIndexOutOfBoundsException`). JVM will throws the object to catch block.
 
@@ -99,7 +99,7 @@ try-catch is finished
 
 In the example DemoException2, the error occurs in the main, to fix a checked exception we use throws keyword. We will edit:
 
-![throws mechanism example](/images/xu-ly-ngoai-le/7.jpg "Ví dụ dùng throws để xử lý checked exception")
+![throws mechanism example](/images/exception-handling/7.jpg "Ví dụ dùng throws để xử lý checked exception")
 
 The output will be: `something are wrong` if the file name "computer.txt" does not exist.
 
@@ -107,15 +107,15 @@ The output will be: `something are wrong` if the file name "computer.txt" does n
 
 The code below to print out "age is 20 or older" if age is below 20 or input a text.
 
-![age example code](/images/xu-ly-ngoai-le/8.jpg "Ví dụ code kiểm tra age với exception")
+![age example code](/images/exception-handling/8.jpg "Ví dụ code kiểm tra age với exception")
 
 When the code runs to the row 20, if you input a text "hello" then this method will create an exception object and JVM will throw it to the catch block to handle. The output will be:
 
-![output for hello input](/images/xu-ly-ngoai-le/9.jpg "Kết quả khi nhập chuỗi \"hello\"")
+![output for hello input](/images/exception-handling/9.jpg "Kết quả khi nhập chuỗi \"hello\"")
 
 If you input 18 then the statement `throw new Exception()` will create an exception object. This object will be thrown to the catch block. The output will be:
 
-![output for 18 input](/images/xu-ly-ngoai-le/10.jpg "Kết quả khi nhập 18")
+![output for 18 input](/images/exception-handling/10.jpg "Kết quả khi nhập 18")
 
 ### Summary
 

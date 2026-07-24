@@ -21,7 +21,7 @@ Những trường hợp thuộc loại này được gọi là exception conditi
 
 Xem xét đoạn code gây ra một exception:
 
-![exception code example](/images/xu-ly-ngoai-le/1.jpg "Ví dụ code gây ra ArithmeticException")
+![exception code example](/images/exception-handling/1.jpg "Ví dụ code gây ra ArithmeticException")
 
 Tại dòng 4, method main gây ra một lỗi và method này tạo ra một exception object, có type là `ArithmeticException`. Sau đó JVM sẽ throw nó đến method main. Vì method main không làm gì để kiểm soát lỗi này, output sẽ trông như thế này.
 
@@ -35,7 +35,7 @@ Checked exception là các exception được kiểm tra tại compile time. B�
 
 Ví dụ:
 
-![checked exception example](/images/xu-ly-ngoai-le/2.jpg "Ví dụ checked exception với FileReader()")
+![checked exception example](/images/exception-handling/2.jpg "Ví dụ checked exception với FileReader()")
 
 Trong ví dụ trên, method `FileReader()` đang throw một exception đến đây. Vì vậy, bạn bắt buộc phải sử dụng cơ chế try-catch hoặc cơ chế throws để xử lý.
 
@@ -45,7 +45,7 @@ Một unchecked exception là một exception xảy ra tại thời điểm th�
 
 Ví dụ:
 
-![unchecked exception example](/images/xu-ly-ngoai-le/3.jpg "Ví dụ unchecked exception với truy cập mảng ngoài phạm vi")
+![unchecked exception example](/images/exception-handling/3.jpg "Ví dụ unchecked exception với truy cập mảng ngoài phạm vi")
 
 Nếu bạn đã khai báo một array có kích thước 5 trong chương trình của mình, và cố gắng gọi phần tử thứ 6 của array đó thì
 
@@ -59,7 +59,7 @@ Chúng ta có thể sử dụng cơ chế try-catch hoặc cơ chế throws đ�
 
 Xem xét luồng (flow) và cú pháp (syntax):
 
-![try-catch syntax](/images/xu-ly-ngoai-le/4.jpg "Sơ đồ luồng và cú pháp try-catch-finally")
+![try-catch syntax](/images/exception-handling/4.jpg "Sơ đồ luồng và cú pháp try-catch-finally")
 
 Statement try cho phép bạn định nghĩa một block code sẽ được kiểm tra lỗi trong khi nó đang được thực thi.
 
@@ -71,7 +71,7 @@ Statement finally cho phép bạn thực thi code, sau try...catch, bất kể k
 
 Trong ví dụ DemoException2, chúng ta sẽ chỉnh sửa
 
-![DemoException2 example](/images/xu-ly-ngoai-le/5.jpg "Ví dụ DemoException2 dùng try-catch")
+![DemoException2 example](/images/exception-handling/5.jpg "Ví dụ DemoException2 dùng try-catch")
 
 Khi chương trình chạy đến dòng 14, nếu file tên "computer.txt" không tồn tại thì một exception object sẽ được tạo ra (có type là `FileNotFoundException`) bởi method main và JVM sẽ throw object đó đến block catch, variable e được sử dụng để lưu địa chỉ của object đó. Trong block catch, bạn có thể sử dụng variable e để lấy thông tin lỗi.
 
@@ -84,7 +84,7 @@ try-catch is finished
 
 Trong ví dụ ExceptionDemo_1, chúng ta sẽ chỉnh sửa
 
-![ExceptionDemo_1 example](/images/xu-ly-ngoai-le/6.jpg "Ví dụ ExceptionDemo_1 dùng try-catch")
+![ExceptionDemo_1 example](/images/exception-handling/6.jpg "Ví dụ ExceptionDemo_1 dùng try-catch")
 
 Khi bạn cố gắng lấy phần tử thứ 6, một exception object sẽ được tạo ra (có type là `ArrayIndexOutOfBoundsException`). JVM sẽ throw object đó đến block catch.
 
@@ -99,7 +99,7 @@ try-catch is finished
 
 Trong ví dụ DemoException2, lỗi xảy ra trong main, để fix một checked exception chúng ta sử dụng keyword throws. Chúng ta sẽ chỉnh sửa:
 
-![throws mechanism example](/images/xu-ly-ngoai-le/7.jpg "Ví dụ dùng throws để xử lý checked exception")
+![throws mechanism example](/images/exception-handling/7.jpg "Ví dụ dùng throws để xử lý checked exception")
 
 Output sẽ là: `something are wrong` nếu file tên "computer.txt" không tồn tại.
 
@@ -107,15 +107,15 @@ Output sẽ là: `something are wrong` nếu file tên "computer.txt" không t�
 
 Đoạn code dưới đây in ra "age is 20 or older" nếu age nhỏ hơn 20 hoặc nhập vào một đoạn text.
 
-![age example code](/images/xu-ly-ngoai-le/8.jpg "Ví dụ code kiểm tra age với exception")
+![age example code](/images/exception-handling/8.jpg "Ví dụ code kiểm tra age với exception")
 
 Khi code chạy đến dòng 20, nếu bạn nhập một đoạn text "hello" thì method này sẽ tạo ra một exception object và JVM sẽ throw nó đến block catch để xử lý. Output sẽ là:
 
-![output for hello input](/images/xu-ly-ngoai-le/9.jpg "Kết quả khi nhập chuỗi \"hello\"")
+![output for hello input](/images/exception-handling/9.jpg "Kết quả khi nhập chuỗi \"hello\"")
 
 Nếu bạn nhập 18 thì statement `throw new Exception()` sẽ tạo ra một exception object. Object này sẽ được throw đến block catch. Output sẽ là:
 
-![output for 18 input](/images/xu-ly-ngoai-le/10.jpg "Kết quả khi nhập 18")
+![output for 18 input](/images/exception-handling/10.jpg "Kết quả khi nhập 18")
 
 ### Summary
 

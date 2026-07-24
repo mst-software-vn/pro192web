@@ -2,7 +2,7 @@ import type { QuizQuestion } from '../types'
 
 export const questions: QuizQuestion[] = [
   {
-    id: 'dong-goi-1',
+    id: 'encapsulation-1',
     question: 'Đóng gói (encapsulation) trong Java chủ yếu nhằm mục đích gì?',
     questionEn: 'What is the primary purpose of encapsulation in Java?',
     options: [
@@ -18,7 +18,7 @@ export const questions: QuizQuestion[] = [
       'Encapsulation keeps a class\'s fields and logic private, exposing access only through public methods — clients never need to know the internal implementation details.',
   },
   {
-    id: 'dong-goi-2',
+    id: 'encapsulation-2',
     question: 'Nếu một thuộc tính/phương thức không có access modifier nào (default), nó có thể được truy cập từ đâu?',
     questionEn: 'If a field or method has no access modifier (default/package-private), where can it be accessed from?',
     options: [
@@ -34,7 +34,7 @@ export const questions: QuizQuestion[] = [
       'Default (no modifier) access means visible anywhere in the same package — wider than private, narrower than protected/public.',
   },
   {
-    id: 'dong-goi-3',
+    id: 'encapsulation-3',
     question: 'Trình biên dịch Java tự động thêm constructor mặc định (không tham số) khi nào?',
     options: [
       { id: 'a', text: 'Luôn luôn, bất kể class có khai báo constructor hay không' },
@@ -47,7 +47,7 @@ export const questions: QuizQuestion[] = [
       'Nếu class đã khai báo ít nhất 1 constructor (kể cả có tham số), trình biên dịch sẽ KHÔNG tự thêm constructor mặc định nữa.',
   },
   {
-    id: 'dong-goi-4',
+    id: 'encapsulation-4',
     question: 'Từ khoá `this` trong một phương thức thành viên dùng để làm gì?',
     questionEn: 'What does the `this` keyword refer to inside an instance method?',
     options: [
@@ -63,7 +63,7 @@ export const questions: QuizQuestion[] = [
       '`this` holds the address of the current object — commonly used to disambiguate a parameter/local variable from a field of the same name.',
   },
   {
-    id: 'dong-goi-5',
+    id: 'encapsulation-5',
     question: 'Chọn TẤT CẢ phát biểu đúng về access modifier trong Java (câu này có thể có nhiều đáp án đúng):',
     questionEn: 'Select ALL correct statements about Java access modifiers (this question may have more than one correct answer):',
     options: [
@@ -79,7 +79,7 @@ export const questions: QuizQuestion[] = [
       'private is limited to the class, public has no limit — both true. protected is actually accessible within the same package plus from subclasses in other packages (not "only the same file"), and default is only accessible within the SAME package (not "every package") — so (a) and (c) are false.',
   },
   {
-    id: 'dong-goi-6',
+    id: 'encapsulation-6',
     question: 'Package trong Java dùng để làm gì?',
     options: [
       { id: 'a', text: 'Gom nhóm các class/interface liên quan lại với nhau theo namespace' },

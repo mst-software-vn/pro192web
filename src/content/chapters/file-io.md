@@ -35,7 +35,7 @@ To get user input, we can also use the Scanner class [(Scanning)](https://docs.o
 
 ### Example
 
-![Example](/images/nhap-xuat-tep/1.png "Ví dụ đọc dữ liệu từ người dùng bằng Scanner")
+![Example](/images/file-io/1.png "Ví dụ đọc dữ liệu từ người dùng bằng Scanner")
 
 In the above example, we need to import the library class Scanner from the package java.util.Scanner. To use this class at the row 10, we declare the variable sc and create an object from this class. Why do we need this? Do not worry, when you go to the topic class and object, you will be explained that why you do this.
 

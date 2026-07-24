@@ -4,7 +4,7 @@
 
 Java Virtual Machine là một abstract computing machine. Giống như một máy tính thật, nó có một instruction set và thao tác trên nhiều memory area khác nhau tại run time. Việc hiện thực một programming language bằng cách sử dụng một virtual machine là khá phổ biến; virtual machine nổi tiếng nhất có lẽ là P-Code machine của UCSD Pascal. [Xem Wiki để biết chi tiết.](https://en.wikipedia.org/wiki/Java_virtual_machine)
 
-![Java Virtual Machine](/images/nen-tang/1.jpg "Overview of a Java virtual machine (JVM) architecture based on The Java Virtual Machine Specification Java SE 7 Edition")
+![Java Virtual Machine](/images/foundations/1.jpg "Overview of a Java virtual machine (JVM) architecture based on The Java Virtual Machine Specification Java SE 7 Edition")
 
 ### Platform Independence
 
@@ -19,21 +19,21 @@ Các bước:
 3. Viết code
 4. Compile/Chạy chương trình
 
-![First Java Program](/images/nen-tang/2.jpg "Bước 1 - Tạo project mới")
+![First Java Program](/images/foundations/2.jpg "Bước 1 - Tạo project mới")
 
-![Step 2](/images/nen-tang/3.jpg "Bước 2 - Thêm class Java")
+![Step 2](/images/foundations/3.jpg "Bước 2 - Thêm class Java")
 
-![Step 2.2](/images/nen-tang/4.jpg "Bước 2.2 - Viết code")
+![Step 2.2](/images/foundations/4.jpg "Bước 2.2 - Viết code")
 
-![Step 3](/images/nen-tang/5.jpg "Bước 3 - Biên dịch chương trình")
+![Step 3](/images/foundations/5.jpg "Bước 3 - Biên dịch chương trình")
 
-![Step 4](/images/nen-tang/6.jpg "Bước 4 - Chạy chương trình")
+![Step 4](/images/foundations/6.jpg "Bước 4 - Chạy chương trình")
 
 ### Keywords and Identifiers
 
 Keywords: Hầu hết tất cả đều tương tự như trong ngôn ngữ C.
 
-![Keywords](/images/nen-tang/7.jpg "Danh sách từ khoá trong Java")
+![Keywords](/images/foundations/7.jpg "Danh sách từ khoá trong Java")
 
 ### Data Types
 
@@ -48,7 +48,7 @@ int RollID;
 char type='A';
 ```
 
-![Primary Data Types](/images/nen-tang/8.jpg "Các kiểu dữ liệu nguyên thuỷ (primary data types)")
+![Primary Data Types](/images/foundations/8.jpg "Các kiểu dữ liệu nguyên thuỷ (primary data types)")
 
 #### Reference Type
 
@@ -64,9 +64,9 @@ ar= new int[3];
 ar[0]=1; ar[1]=2; ar[2]=3;
 ```
 
-![Reference Data Types](/images/nen-tang/9.jpg "Các kiểu dữ liệu tham chiếu (reference data types)")
+![Reference Data Types](/images/foundations/9.jpg "Các kiểu dữ liệu tham chiếu (reference data types)")
 
-![Array](/images/nen-tang/10.jpg "Minh hoạ mảng trong bộ nhớ")
+![Array](/images/foundations/10.jpg "Minh hoạ mảng trong bộ nhớ")
 
 ### Scope
 
@@ -84,7 +84,7 @@ Scope của một non-global declaration bắt đầu tại declaration đó và
 
 Một array là một container object chứa một số lượng cố định các giá trị thuộc cùng một type. Độ dài (length) của array được thiết lập khi array được tạo ra. Mỗi item trong array được gọi là một element, và mỗi element được truy cập thông qua chỉ số (numerical index) của nó.
 
-![One Dimensional Array](/images/nen-tang/11.jpg "Minh hoạ mảng một chiều")
+![One Dimensional Array](/images/foundations/11.jpg "Minh hoạ mảng một chiều")
 
 ```java
 int[] ar;  // for detail click here
@@ -110,17 +110,17 @@ public static void main(String[] args) {
 
 Đây là một sơ đồ bộ nhớ mẫu (sample memory map) của đoạn code trên
 
-![2D Array Memory Map](/images/nen-tang/13.jpg "Sơ đồ bộ nhớ của mảng hai chiều")
+![2D Array Memory Map](/images/foundations/13.jpg "Sơ đồ bộ nhớ của mảng hai chiều")
 
 Chúng ta đã tạo ra một multidimensional array tên là m, nó chứa 8 element. Variable m đang lưu giá trị: 8000 chính là địa chỉ của một array. m có thể được xem như một array chứa các array một chiều (array of one-dimensional array). Trong ví dụ trên, statement: m[1]=replacement để gán 1000 cho m tại index 1. Bây giờ, m có thể chứa 12 element. output: 1,2,3,4,5,6,7,8,9,10,2001,2002
 
 ### Operators
 
-![Operators](/images/nen-tang/14.jpg "Bảng toán tử trong Java theo thứ tự ưu tiên giảm dần")
+![Operators](/images/foundations/14.jpg "Bảng toán tử trong Java theo thứ tự ưu tiên giảm dần")
 
-![Bitwise Operators Demo](/images/nen-tang/15.png "Ví dụ chạy thực tế các toán tử bitwise (dịch bit, AND, OR, XOR) và instanceof trên NetBeans")
+![Bitwise Operators Demo](/images/foundations/15.png "Ví dụ chạy thực tế các toán tử bitwise (dịch bit, AND, OR, XOR) và instanceof trên NetBeans")
 
-![Bitwise Operators Concept](/images/nen-tang/16.png "Cách biểu diễn nhị phân và cơ chế hoạt động của toán tử dịch bit (<<, >>, >>>) cùng toán tử bitwise (AND, OR, XOR)")
+![Bitwise Operators Concept](/images/foundations/16.png "Cách biểu diễn nhị phân và cơ chế hoạt động của toán tử dịch bit (<<, >>, >>>) cùng toán tử bitwise (AND, OR, XOR)")
 
 ### Logic constructs
 

@@ -33,7 +33,7 @@ public class Tester {
 
 4. Scanner object trên heap vẫn còn tồn tại và trở thành garbage.
 
-![Java memory layout](/images/bo-nho-dong/2.png "Sơ đồ bộ nhớ: static heap, stack và dynamic heap khi chạy Tester")
+![Java memory layout](/images/dynamic-memory/2.png "Sơ đồ bộ nhớ: static heap, stack và dynamic heap khi chạy Tester")
 
 ### Dynamic Allocation
 
@@ -52,7 +52,7 @@ public static void main(String[] args) {
 
 - Tại [2], new sẽ allocate bộ nhớ trên heap cho chuỗi "hello" và trả về địa chỉ của nó cho s.
 
-![Dynamic allocation](/images/bo-nho-dong/3.png "Sơ đồ minh hoạ cấp phát động cho mảng a và chuỗi s trên heap")
+![Dynamic allocation](/images/dynamic-memory/3.png "Sơ đồ minh hoạ cấp phát động cho mảng a và chuỗi s trên heap")
 
 Để cho một reference trỏ đến không nơi nào cả, sử dụng null:
 

@@ -8,11 +8,11 @@ Object-oriented languages implement reusability of coding structure through inhe
 
 For example, the staffing structures in traditional human resource management, with a CEO at the top of the structure, deputies and senior managers beneath that, followed by team leaders and workers. Such structures are useful in making the day to day operations of an organisation manageable. In a retail shop, products are organised and managed in thematic grouping such as hard goods, perishable foods and so on. Such groupings form an integral part of the stock control and checkout management operations. We often use tree diagrams and organograms to capture and visualise these relationships. For example, for the retail shop example:
 
-![Inheritance Example 1](/images/ke-thua/1.jpg "Sơ đồ phân cấp ví dụ cửa hàng bán lẻ")
+![Inheritance Example 1](/images/inheritance/1.jpg "Sơ đồ phân cấp ví dụ cửa hàng bán lẻ")
 
 In the context of OO design, we are interested in hierarchies that represent the progressive design of a set of classes. The root of our design is a relatively abstract entity, and we build upon that entity to produce progressively more concrete entities. Considering our previous example closer up
 
-![Inheritance Example 2](/images/ke-thua/2.jpg "Sơ đồ phân cấp chi tiết hơn của ví dụ cửa hàng")
+![Inheritance Example 2](/images/inheritance/2.jpg "Sơ đồ phân cấp chi tiết hơn của ví dụ cửa hàng")
 
 We note that the entity of an Item is relatively abstract in the sense that we could not go into a shop and purchase one. If we said to a member of staff that we "wish to purchase an item", we would expect the response "which item?". We can purchase specific, or concrete entities, but not those that are relatively abstract in their conceptualisation. But that does not mean that the higher-level entities have no value. They just serve as base definitions onto which we can build more concrete entities. We say that that the higher-level entities are "parent", "base" or "super" classes, and the lower-level ones built from them are "child", "derived" or "sub" classes.
 
@@ -22,7 +22,7 @@ The key idea here is the "is-a" relationship. Looking at our shop example, we se
 
 Not every real-world hierarchy as we might construe it is suited to this kind of super and sub class analysis. Consider the human resources example referred to earlier. The CEO is the head of the organisation, but does not make much sense as a base class. A senior manager is not also the CEO. A team member is not also a senior manager. So instead of the classic staffing organogram that you might be used to seeing, a more appropriate OO relationship might look something like this:
 
-![Inheritance Example 3](/images/ke-thua/3.jpg "Sơ đồ quan hệ OO phù hợp thay cho sơ đồ tổ chức nhân sự cổ điển")
+![Inheritance Example 3](/images/inheritance/3.jpg "Sơ đồ quan hệ OO phù hợp thay cho sơ đồ tổ chức nhân sự cổ điển")
 
 Such an OO compatible hierarchical relationship is an example of the key OO concept of "polymorphism".
 
@@ -34,11 +34,11 @@ In OO design terms we need to consider what attributes and methods a set of clas
 
 We will use an example to help us understand how this works. Consider a shop that sells antiques items, namely vases, statues and paintings. For now we shall consider just some appropriate attributes for our initial OO analysis:
 
-![Inheritance Example 4](/images/ke-thua/4.jpg "Các thuộc tính ban đầu của Vase, Statue, Painting")
+![Inheritance Example 4](/images/inheritance/4.jpg "Các thuộc tính ban đầu của Vase, Statue, Painting")
 
 We will make three classes for each of the things that our shop sells. We can see that the classes have some attributes in common, and some that are unique to each class. But we can also see that in reality all three classes are examples of "items" — things that the shop sells. So we can factorise our design with an Item superclass, and then make our three specific classes a sub class of that super class. This is beneficial as it reduces un-necessary code duplication (as well as being a better model of a real-world problem). The super and sub class relationship is represented by an arrow pointing from the sub class towards its super class:
 
-![Inheritance Example 5](/images/ke-thua/5.jpg "Sơ đồ quan hệ super class Item và các sub class Vase, Statue, Painting")
+![Inheritance Example 5](/images/inheritance/5.jpg "Sơ đồ quan hệ super class Item và các sub class Vase, Statue, Painting")
 
 To implement the "is-a" relationship of the above class diagram, we use the keyword `extends`
 
@@ -105,7 +105,7 @@ public class Painting extends Item
 }
 ```
 
-![AntiqueShop Example](/images/ke-thua/6.jpg "Sơ đồ minh hoạ AntiqueShop với Item, Vase, Statue, Painting")
+![AntiqueShop Example](/images/inheritance/6.jpg "Sơ đồ minh hoạ AntiqueShop với Item, Vase, Statue, Painting")
 
 The Vase class has a total of four attributes. Two of these are unique to it, and two are "inherited" from its superclass. Similarly, the Painting class has six attributes, four unique to it, and two inherited from its superclass. So a super, base or parent class contains a basic set of attributes that are intended to form a part of the implementation of sub classes that are built from it. The sub classes have their own attributes that make them unique, and they inherit attributes from their superclass.
 
@@ -309,7 +309,7 @@ discounting ... and taking ...
 
 ### Hidden methods: Re-implementing a static method implemented in super class
 
-![Hidden Method](/images/ke-thua/7.jpg "Minh hoạ hidden method - re-implement static method từ super class")
+![Hidden Method](/images/inheritance/7.jpg "Minh hoạ hidden method - re-implement static method từ super class")
 
 #### Using instanceof operator
 
@@ -331,7 +331,7 @@ public class AntiqueShop
 
 In the above code, we create three objects v1, s1, p1 and initialize values by the constructor with parameters. And then, a reference variable tmp that has the type to be the Item superclass. It is storing the address of object v1. See the figure below:
 
-![Inheritance Example 6](/images/ke-thua/8.jpg "Sơ đồ minh hoạ biến tmp kiểu Item trỏ tới đối tượng Vase v1")
+![Inheritance Example 6](/images/inheritance/8.jpg "Sơ đồ minh hoạ biến tmp kiểu Item trỏ tới đối tượng Vase v1")
 
 **dynamic type**: A reference variable that has the type of the superclass can store the address of the object of sub class. It is called to be dynamic type, the type that is has at runtime.
 

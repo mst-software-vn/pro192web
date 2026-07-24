@@ -29,7 +29,7 @@ Một định nghĩa formal của class bao gồm hai thành phần chính: Fiel
 3. **Tìm các động từ (verbs)**, methods hoặc behaviors thường được mô tả bởi động từ.
 4. **Tìm mối quan hệ (relationship)** giữa các class. TIPS: *Nếu đề bài của bạn có hai danh từ chính, chúng thường có mối quan hệ với nhau.*
 
-![Encapsulation example 1](/images/dong-goi/1.jpg "Phân tích danh từ chính, danh từ phụ và động từ trong đề bài Car")
+![Encapsulation example 1](/images/encapsulation/1.jpg "Phân tích danh từ chính, danh từ phụ và động từ trong đề bài Car")
 
 Chúng ta sử dụng Unified Modeling Language (UML) để mô tả cấu trúc class. UML cung cấp cơ chế để biểu diễn các thành viên của class, như attribute và method, cùng với các thông tin bổ sung.
 
@@ -37,7 +37,7 @@ Chúng ta sử dụng Unified Modeling Language (UML) để mô tả cấu trúc
 
 Một UML class diagram được sử dụng để biểu diễn class Car
 
-![Encapsulation example 2](/images/dong-goi/2.jpg "UML class diagram của lớp Car với 3 ngăn: class name, fields, methods")
+![Encapsulation example 2](/images/encapsulation/2.jpg "UML class diagram của lớp Car với 3 ngăn: class name, fields, methods")
 
 #### Cách vẽ cấu trúc class?
 
@@ -101,9 +101,9 @@ public class Car {
 }
 ```
 
-![Demo Car Class](/images/dong-goi/3.jpg "Demo chạy chương trình Car Class")
+![Demo Car Class](/images/encapsulation/3.jpg "Demo chạy chương trình Car Class")
 
-![Output Car Class](/images/dong-goi/4.jpg "Kết quả xuất ra console của Car Class")
+![Output Car Class](/images/encapsulation/4.jpg "Kết quả xuất ra console của Car Class")
 
 ### Constructor
 
@@ -119,19 +119,19 @@ Default constructor lấy tên của nó theo tên của chính class đó. Prot
 
 Overloading constructor của một class giúp bổ sung thêm các tuỳ chọn giao tiếp cho client code. Client code có thể chọn tập argument phù hợp nhất tại thời điểm creation-time.
 
-![Encapsulation8](/images/dong-goi/5.jpg "Minh hoạ đối tượng c3 gọi constructor có tham số")
+![Encapsulation8](/images/encapsulation/5.jpg "Minh hoạ đối tượng c3 gọi constructor có tham số")
 
 Method này được gọi là constructor with parameters.
 
-![Encapsulation9](/images/dong-goi/6.jpg "Đối tượng c3 được khởi tạo với các giá trị {\"red\", 100, true, true}")
+![Encapsulation9](/images/encapsulation/6.jpg "Đối tượng c3 được khởi tạo với các giá trị {\"red\", 100, true, true}")
 
 Trong đoạn code trên, object thứ ba c3 được tạo ra và c3 gọi constructor with parameters. Tất cả field của c3 được gán là `{"red", 100, true, true}`.
 
-![Encapsulation10](/images/dong-goi/7.jpg "Trạng thái các trường của đối tượng c3 sau khi khởi tạo")
+![Encapsulation10](/images/encapsulation/7.jpg "Trạng thái các trường của đối tượng c3 sau khi khởi tạo")
 
 Vì c3 gọi `pressAcceleratorButton()`, state của c3 được in ra.
 
-![Encapsulation11](/images/dong-goi/8.jpg "Kết quả in ra khi c3 gọi pressAcceleratorButton()")
+![Encapsulation11](/images/encapsulation/8.jpg "Kết quả in ra khi c3 gọi pressAcceleratorButton()")
 
 > **Lưu ý:** Nếu class definition có prototype cho một constructor có tham số nhưng không có prototype cho constructor không tham số (no-argument default constructor), thì compiler SẼ KHÔNG chèn thêm một empty-body, no-argument default constructor. Compiler chỉ chèn empty-body, no-argument default constructor nếu class definition không khai báo BẤT KỲ constructor nào.
 
@@ -149,7 +149,7 @@ Keyword `this` trả về địa chỉ của current object. Tức là, this lư
 
 **Scope của this:** This được tạo ra và sử dụng chỉ khi member method được gọi. Sau khi member method kết thúc, this sẽ bị discard.
 
-![Encapsulation12](/images/dong-goi/9.jpg "Con trỏ this trỏ đến địa chỉ 4000 của đối tượng c3")
+![Encapsulation12](/images/encapsulation/9.jpg "Con trỏ this trỏ đến địa chỉ 4000 của đối tượng c3")
 
 Khi vào constructor with parameters, con trỏ this được Java tạo ra và nó lưu giữ địa chỉ của object (4000). c3 và this đang trỏ đến cùng current object. Sử dụng this ở đây để phân biệt local variable và instance variable/field. Sau khi gán giá trị của các input parameter cho instance variable của c3, this sẽ bị discard.
 
@@ -161,23 +161,23 @@ Member function là các function có declaration nằm bên trong class definit
 
 Tại thời điểm này, class Car chứa các member function như sau:
 
-![Encapsulation13](/images/dong-goi/10.jpg "Danh sách các member function trong lớp Car")
+![Encapsulation13](/images/encapsulation/10.jpg "Danh sách các member function trong lớp Car")
 
 Sau khi một object được tạo ra và được gán các giá trị mặc định (default values). Bây giờ, nếu bạn muốn set một instance variable thành giá trị khác. Ví dụ, chỉ thay đổi instance variable colour của c3 thành `'black'`. Giải pháp cho trường hợp này là gì?
 
 Không sao, chúng ta sẽ thêm một method `setColour()` vào thiết kế class Car. Code như sau:
 
-![Encapsulation14](/images/dong-goi/11.jpg "Thêm phương thức setColour() vào lớp Car")
+![Encapsulation14](/images/encapsulation/11.jpg "Thêm phương thức setColour() vào lớp Car")
 
 Đoạn code main:
 
-![Encapsulation15](/images/dong-goi/12.jpg "Gọi c3.setColour(\"black\") trong hàm main")
+![Encapsulation15](/images/encapsulation/12.jpg "Gọi c3.setColour(\"black\") trong hàm main")
 
 Con trỏ c3 gọi `setColour("black")`. Do đó, tại thời điểm này `this.Colour=...` được sử dụng để truy cập instance variable của c3.
 
 Tương tự ý tưởng trên, nếu bạn muốn lấy giá trị của một instance variable, bạn nên thêm một method `getColour()`
 
-![Encapsulation16](/images/dong-goi/13.jpg "Thêm phương thức getColour() vào lớp Car")
+![Encapsulation16](/images/encapsulation/13.jpg "Thêm phương thức getColour() vào lớp Car")
 
 Bạn cũng có thể thêm các getter/setter khác. Code hoàn chỉnh:
 
@@ -265,7 +265,7 @@ Vì phần mềm viết bằng ngôn ngữ lập trình Java có thể được 
 
 Package statement (ví dụ, `package mypkg;`) phải là dòng đầu tiên trong source file. Chỉ có thể có một package statement trong mỗi source file, và nó áp dụng cho tất cả các type trong file đó.
 
-![Package Example](/images/dong-goi/14.jpg "Ví dụ package mypkg với lớp PkgDemo trong NetBeans")
+![Package Example](/images/encapsulation/14.jpg "Ví dụ package mypkg với lớp PkgDemo trong NetBeans")
 
 [Đọc thêm](https://docs.oracle.com/javase/tutorial/java/package/createpkgs.html)
 
@@ -280,11 +280,11 @@ Package statement (ví dụ, `package mypkg;`) phải là dòng đầu tiên tro
 
 Các keyword này được gọi là access modifier
 
-![Encapsulation20](/images/dong-goi/15.jpg "Bảng ký hiệu các access modifier trong UML")
+![Encapsulation20](/images/encapsulation/15.jpg "Bảng ký hiệu các access modifier trong UML")
 
 Hãy cùng hiểu về access modifier trong Java qua một bảng đơn giản.
 
-![Encapsulation21](/images/dong-goi/16.jpg "Bảng so sánh phạm vi truy cập của private, default, protected, public")
+![Encapsulation21](/images/encapsulation/16.jpg "Bảng so sánh phạm vi truy cập của private, default, protected, public")
 
 ### Private
 

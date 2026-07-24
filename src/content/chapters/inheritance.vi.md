@@ -8,11 +8,11 @@ Các ngôn ngữ hướng đối tượng hiện thực khả năng tái sử d�
 
 Ví dụ, cấu trúc nhân sự truyền thống trong quản lý nguồn nhân lực, với CEO ở đỉnh cấu trúc, phía dưới là các deputy và senior manager, tiếp theo là team leader và worker. Những cấu trúc như vậy giúp việc vận hành hàng ngày của một tổ chức trở nên dễ quản lý. Trong một cửa hàng bán lẻ, sản phẩm được tổ chức và quản lý theo nhóm chủ đề như hard goods, perishable foods, v.v. Những nhóm này là một phần không thể thiếu trong việc kiểm soát tồn kho và quản lý thanh toán. Chúng ta thường dùng tree diagram và organogram để nắm bắt và visualize các mối quan hệ này. Ví dụ, với ví dụ cửa hàng bán lẻ:
 
-![Inheritance Example 1](/images/ke-thua/1.jpg "Sơ đồ phân cấp ví dụ cửa hàng bán lẻ")
+![Inheritance Example 1](/images/inheritance/1.jpg "Sơ đồ phân cấp ví dụ cửa hàng bán lẻ")
 
 Trong bối cảnh OO design, chúng ta quan tâm đến các hierarchy đại diện cho thiết kế mang tính tiến triển (progressive) của một tập hợp class. Gốc của thiết kế là một entity tương đối abstract, và chúng ta xây dựng dựa trên entity đó để tạo ra các entity ngày càng concrete hơn. Xem xét kỹ hơn ví dụ trước
 
-![Inheritance Example 2](/images/ke-thua/2.jpg "Sơ đồ phân cấp chi tiết hơn của ví dụ cửa hàng")
+![Inheritance Example 2](/images/inheritance/2.jpg "Sơ đồ phân cấp chi tiết hơn của ví dụ cửa hàng")
 
 Chúng ta nhận thấy entity Item tương đối abstract theo nghĩa là chúng ta không thể vào một cửa hàng và mua một "item". Nếu chúng ta nói với nhân viên rằng "muốn mua một item", chúng ta sẽ nhận được câu trả lời "item nào?". Chúng ta có thể mua các entity cụ thể, hay concrete, nhưng không phải những entity tương đối abstract trong khái niệm hoá của chúng. Nhưng điều đó không có nghĩa là các entity ở level cao hơn không có giá trị. Chúng chỉ đóng vai trò là các base definition để chúng ta xây dựng các entity concrete hơn. Chúng ta nói rằng các entity ở level cao hơn là các class "parent", "base" hoặc "super", và các entity ở level thấp hơn được xây dựng từ chúng là các class "child", "derived" hoặc "sub".
 
@@ -22,7 +22,7 @@ Chúng ta nhận thấy entity Item tương đối abstract theo nghĩa là chú
 
 Không phải mọi hierarchy trong thế giới thực mà chúng ta hình dung đều phù hợp với kiểu phân tích super và sub class này. Xét lại ví dụ nhân sự đã đề cập trước đó. CEO là người đứng đầu tổ chức, nhưng lại không hợp lý khi làm base class. Một senior manager không đồng thời là CEO. Một team member không đồng thời là senior manager. Vì vậy, thay vì organogram nhân sự cổ điển mà bạn có thể đã quen thuộc, một quan hệ OO phù hợp hơn có thể trông như sau:
 
-![Inheritance Example 3](/images/ke-thua/3.jpg "Sơ đồ quan hệ OO phù hợp thay cho sơ đồ tổ chức nhân sự cổ điển")
+![Inheritance Example 3](/images/inheritance/3.jpg "Sơ đồ quan hệ OO phù hợp thay cho sơ đồ tổ chức nhân sự cổ điển")
 
 Một quan hệ phân cấp tương thích với OO như vậy là một ví dụ của khái niệm OO quan trọng là "polymorphism".
 
@@ -34,11 +34,11 @@ Về mặt OO design, chúng ta cần xem xét những attribute và method nào
 
 Chúng ta sẽ dùng một ví dụ để hiểu cách thức hoạt động này. Xét một cửa hàng bán đồ cổ, cụ thể là vase, statue và painting. Bây giờ chúng ta sẽ xem xét một số attribute phù hợp cho phân tích OO ban đầu:
 
-![Inheritance Example 4](/images/ke-thua/4.jpg "Các thuộc tính ban đầu của Vase, Statue, Painting")
+![Inheritance Example 4](/images/inheritance/4.jpg "Các thuộc tính ban đầu của Vase, Statue, Painting")
 
 Chúng ta sẽ tạo ba class cho từng loại sản phẩm mà cửa hàng bán. Chúng ta có thể thấy các class có một số attribute chung, và một số attribute riêng biệt cho từng class. Nhưng chúng ta cũng thấy rằng trên thực tế cả ba class đều là ví dụ của "item" — những thứ mà cửa hàng bán. Vì vậy chúng ta có thể factorise thiết kế với một Item superclass, sau đó biến ba class cụ thể thành sub class của superclass đó. Điều này có lợi vì giảm việc trùng lặp code không cần thiết (đồng thời mô hình hoá vấn đề thực tế tốt hơn). Quan hệ super và sub class được biểu diễn bằng một mũi tên chỉ từ sub class về phía super class:
 
-![Inheritance Example 5](/images/ke-thua/5.jpg "Sơ đồ quan hệ super class Item và các sub class Vase, Statue, Painting")
+![Inheritance Example 5](/images/inheritance/5.jpg "Sơ đồ quan hệ super class Item và các sub class Vase, Statue, Painting")
 
 Để hiện thực quan hệ "is-a" của class diagram trên, chúng ta dùng keyword `extends`
 
@@ -105,7 +105,7 @@ public class Painting extends Item
 }
 ```
 
-![AntiqueShop Example](/images/ke-thua/6.jpg "Sơ đồ minh hoạ AntiqueShop với Item, Vase, Statue, Painting")
+![AntiqueShop Example](/images/inheritance/6.jpg "Sơ đồ minh hoạ AntiqueShop với Item, Vase, Statue, Painting")
 
 Class Vase có tổng cộng bốn attribute. Hai trong số đó là riêng của nó, và hai được "kế thừa" (inherited) từ superclass. Tương tự, class Painting có sáu attribute, bốn riêng và hai được kế thừa từ superclass. Vì vậy, một super, base hoặc parent class chứa một tập attribute cơ bản, dự định trở thành một phần trong việc hiện thực các sub class được xây dựng từ nó. Các sub class có attribute riêng khiến chúng trở nên độc nhất, và chúng kế thừa attribute từ superclass.
 
@@ -309,7 +309,7 @@ discounting ... and taking ...
 
 ### Hidden methods: Re-implement lại static method đã được implement trong super class
 
-![Hidden Method](/images/ke-thua/7.jpg "Minh hoạ hidden method - re-implement static method từ super class")
+![Hidden Method](/images/inheritance/7.jpg "Minh hoạ hidden method - re-implement static method từ super class")
 
 #### Sử dụng instanceof operator
 
@@ -331,7 +331,7 @@ public class AntiqueShop
 
 Trong code trên, chúng ta tạo ba object v1, s1, p1 và khởi tạo giá trị bằng constructor with parameters. Sau đó, một reference variable tmp có type là Item superclass. Nó lưu địa chỉ của object v1. Xem hình bên dưới:
 
-![Inheritance Example 6](/images/ke-thua/8.jpg "Sơ đồ minh hoạ biến tmp kiểu Item trỏ tới đối tượng Vase v1")
+![Inheritance Example 6](/images/inheritance/8.jpg "Sơ đồ minh hoạ biến tmp kiểu Item trỏ tới đối tượng Vase v1")
 
 **dynamic type**: Một reference variable có type của superclass có thể lưu địa chỉ của object thuộc sub class. Đây gọi là dynamic type, tức là type mà nó có tại runtime.
 

@@ -35,7 +35,7 @@ Các object này được định nghĩa tự động và không cần phải m�
 
 ### Example
 
-![Example](/images/nhap-xuat-tep/1.png "Ví dụ đọc dữ liệu từ người dùng bằng Scanner")
+![Example](/images/file-io/1.png "Ví dụ đọc dữ liệu từ người dùng bằng Scanner")
 
 Trong ví dụ trên, chúng ta cần import library class Scanner từ package java.util.Scanner. Để sử dụng class này ở dòng 10, chúng ta khai báo variable sc và tạo một object từ class này. Tại sao chúng ta cần điều này? Đừng lo, khi bạn đến với topic class and object, bạn sẽ được giải thích tại sao phải làm như vậy.
 

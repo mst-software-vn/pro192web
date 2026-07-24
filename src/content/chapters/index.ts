@@ -28,7 +28,7 @@ function bodyViFor(slug: string): string | undefined {
 // status 'draft' cho các chương chưa có nội dung .md — sẽ chuyển 'published' khi có tài liệu.
 const chapterMeta: Omit<Chapter, 'body'>[] = [
   {
-    slug: 'chao-mung',
+    slug: 'welcome',
     title: 'Chào mừng',
     description: 'Giới thiệu về khóa học PRO192, mục tiêu và kết quả học tập.',
     titleEn: 'Welcome',
@@ -48,7 +48,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'nen-tang',
+    slug: 'foundations',
     title: 'Nền tảng',
     description:
       'Kiến thức cơ bản về Java: JVM, nền tảng, kiểu dữ liệu, biến, mảng, toán tử và cấu trúc logic.',
@@ -59,7 +59,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'dong-goi',
+    slug: 'encapsulation',
     title: 'Đóng gói',
     description:
       'Đóng gói, lớp, đối tượng, hàm tạo, hàm thành viên và các bộ điều khiển truy cập trong Java.',
@@ -69,7 +69,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'ke-thua',
+    slug: 'inheritance',
     title: 'Kế thừa',
     description: 'Kế thừa lớp, từ khóa extends, super và tái sử dụng mã nguồn trong Java.',
     titleEn: 'Inheritance',
@@ -78,7 +78,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'da-hinh',
+    slug: 'polymorphism',
     title: 'Đa hình',
     description: 'Đa hình, nạp chồng, ghi đè phương thức và liên kết động trong Java.',
     titleEn: 'Polymorphism',
@@ -87,7 +87,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'mang-doi-tuong',
+    slug: 'array-of-objects',
     title: 'Mảng đối tượng',
     description: 'Khai báo, khởi tạo và thao tác trên mảng đối tượng trong Java.',
     titleEn: 'Array of Objects',
@@ -96,7 +96,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'bo-suu-tap',
+    slug: 'collections',
     title: 'Bộ sưu tập',
     description: 'Các kiểu dữ liệu trừu tượng trong Java Collections: List, Set, Map.',
     titleEn: 'Collections',
@@ -105,7 +105,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'bo-nho-dong',
+    slug: 'dynamic-memory',
     title: 'Bộ nhớ động',
     description: 'Cấp phát bộ nhớ động và quản lý vòng đời đối tượng trong Java.',
     titleEn: 'Dynamic Memory',
@@ -114,7 +114,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'xu-ly-ngoai-le',
+    slug: 'exception-handling',
     title: 'Xử lý ngoại lệ',
     description: 'Cơ chế xử lý ngoại lệ (Exception handling) trong Java: try, catch, finally, throw.',
     titleEn: 'Exception Handling',
@@ -123,7 +123,7 @@ const chapterMeta: Omit<Chapter, 'body'>[] = [
     status: 'published',
   },
   {
-    slug: 'nhap-xuat-tep',
+    slug: 'file-io',
     title: 'Nhập xuất tệp',
     description: 'Đọc và ghi dữ liệu từ/đến tệp bằng Java I/O streams.',
     titleEn: 'Input & Output',

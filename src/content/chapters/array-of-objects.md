@@ -90,7 +90,7 @@ public class antiqueShop {
 
 To explore the instruction that is highlighted, consider the figure below:
 
-![Empty Array of Objects](/images/mang-doi-tuong/1.jpg "Trạng thái ban đầu: mảng list rỗng, toàn bộ phần tử là null")
+![Empty Array of Objects](/images/array-of-objects/1.jpg "Trạng thái ban đầu: mảng list rỗng, toàn bộ phần tử là null")
 
 After starting, the `obj` variable points to address 1000, this block contains the reference variable `list` that is pointing to address 2000. It is an array of pointers. All elements are initiated to `null`.
 
@@ -136,7 +136,7 @@ If the choice is 1, steps are performed:
 - Add this address to the array at an index that is `numOfItem`.
 - Increase the `numOfItem` by 1.
 
-![Adding the First Item](/images/mang-doi-tuong/2.jpg "Sau khi thêm đối tượng Vase đầu tiên vào mảng (tmp trỏ tới địa chỉ 300)")
+![Adding the First Item](/images/array-of-objects/2.jpg "Sau khi thêm đối tượng Vase đầu tiên vào mảng (tmp trỏ tới địa chỉ 300)")
 
 We add more some methods to the `ItemList` class:
 
@@ -285,7 +285,7 @@ public class antiqueShop {
 
 To explore what is doing, we look at the figure:
 
-![Removing an Item](/images/mang-doi-tuong/3.jpg "Sau khi xoá phần tử tại index 1, các phần tử phía sau dịch trái")
+![Removing an Item](/images/array-of-objects/3.jpg "Sau khi xoá phần tử tại index 1, các phần tử phía sau dịch trái")
 
 The `findItemIndex` method finds the item within the list and returns the position of the first occurrence in the list. For example, if you wish to get the position of the item which value is 100 then the method returns 0.
 
@@ -331,9 +331,9 @@ Streams support many different kinds of data, including simple bytes, primitive 
 
 No matter how they work internally, all streams present the same simple model to programs that use them: a stream is a sequence of data. A program uses an input stream to read data from a source, one item at a time, and uses an output stream to write data to a destination, one item at a time.
 
-![Input Stream Diagram](/images/mang-doi-tuong/4.jpg "Luồng dữ liệu đi vào chương trình (Data Source → Stream → Program)")
+![Input Stream Diagram](/images/array-of-objects/4.jpg "Luồng dữ liệu đi vào chương trình (Data Source → Stream → Program)")
 
-![Output Stream Diagram](/images/mang-doi-tuong/5.jpg "Luồng dữ liệu đi ra từ chương trình (Program → Stream → Data Source)")
+![Output Stream Diagram](/images/array-of-objects/5.jpg "Luồng dữ liệu đi ra từ chương trình (Program → Stream → Data Source)")
 
 [Introduction to the java.io package](https://docs.oracle.com/javase/7/docs/api/java/io/package-summary.html)
 
@@ -346,17 +346,17 @@ No matter how they work internally, all streams present the same simple model to
 
 In the following program, the user will give a pathname, the program will show information about this pathname in the file system.
 
-![FileDemo — showFolder method](/images/mang-doi-tuong/6.jpg "Phương thức showFolder hiển thị thông tin thư mục")
+![FileDemo — showFolder method](/images/array-of-objects/6.jpg "Phương thức showFolder hiển thị thông tin thư mục")
 
-![FileDemo — showFile method](/images/mang-doi-tuong/7.jpg "Phương thức showFile hiển thị thông tin tệp tin thường")
+![FileDemo — showFile method](/images/array-of-objects/7.jpg "Phương thức showFile hiển thị thông tin tệp tin thường")
 
-![FileDemo — showChildren method](/images/mang-doi-tuong/8.jpg "Phương thức showChildren hiển thị các thư mục con và tệp tin bên trong")
+![FileDemo — showChildren method](/images/array-of-objects/8.jpg "Phương thức showChildren hiển thị các thư mục con và tệp tin bên trong")
 
-![FileDemo — main method](/images/mang-doi-tuong/9.jpg "Phương thức main để kiểm thử chương trình FileDemo")
+![FileDemo — main method](/images/array-of-objects/9.jpg "Phương thức main để kiểm thử chương trình FileDemo")
 
 Result in 3 cases:
 
-![FileDemo Result](/images/mang-doi-tuong/10.jpg "Kết quả chạy chương trình với 3 trường hợp: đường dẫn không tồn tại, là tệp tin, là thư mục")
+![FileDemo Result](/images/array-of-objects/10.jpg "Kết quả chạy chương trình với 3 trường hợp: đường dẫn không tồn tại, là tệp tin, là thư mục")
 
 ### Accessing ASCII Text Files
 
@@ -364,9 +364,9 @@ When a text file is used, the file designer will decide text organization (data 
 
 The following pictures depict ways we can use to access a text file:
 
-![Reading a Text File Model](/images/mang-doi-tuong/11.jpg "Mô hình các lớp dùng để đọc dữ liệu từ tệp văn bản")
+![Reading a Text File Model](/images/array-of-objects/11.jpg "Mô hình các lớp dùng để đọc dữ liệu từ tệp văn bản")
 
-![Writing a Text File Model](/images/mang-doi-tuong/12.jpg "Mô hình các lớp dùng để ghi dữ liệu ra tệp văn bản")
+![Writing a Text File Model](/images/array-of-objects/12.jpg "Mô hình các lớp dùng để ghi dữ liệu ra tệp văn bản")
 
 ### Build a Complete Program
 
@@ -410,19 +410,19 @@ Class design:
 
 Software structure and menu:
 
-![Product Manager — Project Structure and Menu](/images/mang-doi-tuong/13.jpg "Cấu trúc thư mục dự án và menu chương trình quản lý sản phẩm")
+![Product Manager — Project Structure and Menu](/images/array-of-objects/13.jpg "Cấu trúc thư mục dự án và menu chương trình quản lý sản phẩm")
 
 > **Note:** A class that uses classes in a package should be outside of the package. The `ProductManager` class is put outside of the `products` package.
 
-![Products.txt and ProductManager.bat](/images/mang-doi-tuong/14.jpg "Nội dung tệp Products.txt (dữ liệu ban đầu) và tệp thực thi ProductManager.bat")
+![Products.txt and ProductManager.bat](/images/array-of-objects/14.jpg "Nội dung tệp Products.txt (dữ liệu ban đầu) và tệp thực thi ProductManager.bat")
 
 **Implementations**
 
 The `Inputter` class is the tool for inputting data based on the program's constraints.
 
-![Inputter class — normalize method](/images/mang-doi-tuong/15.jpg "Lớp Inputter: phương thức normalize chuẩn hoá chuỗi nhập vào")
+![Inputter class — normalize method](/images/array-of-objects/15.jpg "Lớp Inputter: phương thức normalize chuẩn hoá chuỗi nhập vào")
 
-![Inputter class — getNonBlankStr method](/images/mang-doi-tuong/16.jpg "Lớp Inputter: phương thức getNonBlankStr lấy chuỗi không rỗng")
+![Inputter class — getNonBlankStr method](/images/array-of-objects/16.jpg "Lớp Inputter: phương thức getNonBlankStr lấy chuỗi không rỗng")
 
 **Regular Expression**
 
@@ -439,9 +439,9 @@ In the `String` class, we can use the `boolean matches(String regEx)` method to 
 
 [For more details](https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/util/regex/Pattern.html)
 
-![Inputter class — getPatternStr method](/images/mang-doi-tuong/17.jpg "Lớp Inputter: phương thức getPatternStr kiểm tra chuỗi theo Regular Expression")
+![Inputter class — getPatternStr method](/images/array-of-objects/17.jpg "Lớp Inputter: phương thức getPatternStr kiểm tra chuỗi theo Regular Expression")
 
-![Inputter class — getIntGreater method](/images/mang-doi-tuong/18.jpg "Lớp Inputter: phương thức getIntGreater lấy số nguyên lớn hơn giá trị cho trước")
+![Inputter class — getIntGreater method](/images/array-of-objects/18.jpg "Lớp Inputter: phương thức getIntGreater lấy số nguyên lớn hơn giá trị cho trước")
 
 > **Exercise:** Upgrade the Product Manager program above. Add the following extra operations to this program:
 >
@@ -449,33 +449,33 @@ In the `String` class, we can use the `boolean matches(String regEx)` method to 
 > - Update name and price of a product based on its ID.
 > - Remove a product based on its ID.
 
-![Menu class](/images/mang-doi-tuong/19.jpg "Lớp Menu hiển thị các lựa chọn và nhận lựa chọn của người dùng")
+![Menu class](/images/array-of-objects/19.jpg "Lớp Menu hiển thị các lựa chọn và nhận lựa chọn của người dùng")
 
-![Product class — fields and constructor](/images/mang-doi-tuong/20.jpg "Lớp Product: thuộc tính và constructor")
+![Product class — fields and constructor](/images/array-of-objects/20.jpg "Lớp Product: thuộc tính và constructor")
 
-![Product class — comparator1](/images/mang-doi-tuong/21.jpg "Lớp Product: Comparator để sắp xếp theo giá giảm dần, ID tăng dần")
+![Product class — comparator1](/images/array-of-objects/21.jpg "Lớp Product: Comparator để sắp xếp theo giá giảm dần, ID tăng dần")
 
-![Product class — toString and getters/setters](/images/mang-doi-tuong/22.jpg "Lớp Product: phương thức toString, getter và setter")
+![Product class — toString and getters/setters](/images/array-of-objects/22.jpg "Lớp Product: phương thức toString, getter và setter")
 
-![ProductList class — imports and constructor](/images/mang-doi-tuong/23.jpg "Lớp ProductList kế thừa ArrayList<Product>: import và constructor")
+![ProductList class — imports and constructor](/images/array-of-objects/23.jpg "Lớp ProductList kế thừa ArrayList<Product>: import và constructor")
 
-![ProductList — loadFromFile method](/images/mang-doi-tuong/24.jpg "Phương thức loadFromFile đọc danh sách sản phẩm từ tệp văn bản")
+![ProductList — loadFromFile method](/images/array-of-objects/24.jpg "Phương thức loadFromFile đọc danh sách sản phẩm từ tệp văn bản")
 
-![ProductList — saveToFile method](/images/mang-doi-tuong/25.jpg "Phương thức saveToFile ghi danh sách sản phẩm ra tệp văn bản")
+![ProductList — saveToFile method](/images/array-of-objects/25.jpg "Phương thức saveToFile ghi danh sách sản phẩm ra tệp văn bản")
 
-![ProductList — search method](/images/mang-doi-tuong/26.jpg "Phương thức search tìm sản phẩm theo ID")
+![ProductList — search method](/images/array-of-objects/26.jpg "Phương thức search tìm sản phẩm theo ID")
 
-![ProductList — addProduct method](/images/mang-doi-tuong/27.jpg "Phương thức addProduct thêm sản phẩm mới vào danh sách")
+![ProductList — addProduct method](/images/array-of-objects/27.jpg "Phương thức addProduct thêm sản phẩm mới vào danh sách")
 
-![ProductList — searchProduct method](/images/mang-doi-tuong/28.jpg "Phương thức searchProduct tìm và hiển thị sản phẩm theo ID")
+![ProductList — searchProduct method](/images/array-of-objects/28.jpg "Phương thức searchProduct tìm và hiển thị sản phẩm theo ID")
 
-![ProductList — printByName method](/images/mang-doi-tuong/29.jpg "Phương thức printByName in các sản phẩm theo một phần tên")
+![ProductList — printByName method](/images/array-of-objects/29.jpg "Phương thức printByName in các sản phẩm theo một phần tên")
 
-![ProductList — printAll method](/images/mang-doi-tuong/30.jpg "Phương thức printAll sắp xếp và in toàn bộ danh sách sản phẩm")
+![ProductList — printAll method](/images/array-of-objects/30.jpg "Phương thức printAll sắp xếp và in toàn bộ danh sách sản phẩm")
 
-![ProductManager class — main setup](/images/mang-doi-tuong/31.jpg "Lớp ProductManager: khởi tạo menu và nạp dữ liệu ban đầu từ tệp")
+![ProductManager class — main setup](/images/array-of-objects/31.jpg "Lớp ProductManager: khởi tạo menu và nạp dữ liệu ban đầu từ tệp")
 
-![ProductManager class — main loop](/images/mang-doi-tuong/32.jpg "Lớp ProductManager: vòng lặp menu xử lý các lựa chọn của người dùng")
+![ProductManager class — main loop](/images/array-of-objects/32.jpg "Lớp ProductManager: vòng lặp menu xử lý các lựa chọn của người dùng")
 
 ### Accessing Object Files
 
@@ -505,11 +505,11 @@ Not all data of an object are serialized to a stream. `static` and `transient` f
 
 Model for reading objects from and writing objects to an object stream.
 
-![Object Serialization Model](/images/mang-doi-tuong/33.jpg "Mô hình serialization/de-serialization đối tượng qua ObjectInputStream/ObjectOutputStream")
+![Object Serialization Model](/images/array-of-objects/33.jpg "Mô hình serialization/de-serialization đối tượng qua ObjectInputStream/ObjectOutputStream")
 
 The following image helps us explore the structure of an object file in Java.
 
-![Object File Structure](/images/mang-doi-tuong/34.jpg "Cấu trúc tệp đối tượng: thông tin package, class và tên field được lưu ở đầu tệp")
+![Object File Structure](/images/array-of-objects/34.jpg "Cấu trúc tệp đối tượng: thông tin package, class và tên field được lưu ở đầu tệp")
 
 - Package and class information, including field names and field types (I: int), are put at the beginning of the file.
 - Fields are written to file in reverse order.
@@ -524,25 +524,25 @@ We are notified about properties when manipulating object files as below:
 
 Software structure of Book Managing Program:
 
-![Book Manager — Project Structure](/images/mang-doi-tuong/35.jpg "Cấu trúc dự án ObjectFileDemo quản lý sách")
+![Book Manager — Project Structure](/images/array-of-objects/35.jpg "Cấu trúc dự án ObjectFileDemo quản lý sách")
 
-![Book class](/images/mang-doi-tuong/36.jpg "Lớp Book implements Serializable")
+![Book class](/images/array-of-objects/36.jpg "Lớp Book implements Serializable")
 
-![BookList class — imports and constructor](/images/mang-doi-tuong/37.jpg "Lớp BookList kế thừa ArrayList<Book>: import và constructor")
+![BookList class — imports and constructor](/images/array-of-objects/37.jpg "Lớp BookList kế thừa ArrayList<Book>: import và constructor")
 
-![BookList — loadFromFile method](/images/mang-doi-tuong/38.jpg "Phương thức loadFromFile đọc danh sách sách từ tệp đối tượng")
+![BookList — loadFromFile method](/images/array-of-objects/38.jpg "Phương thức loadFromFile đọc danh sách sách từ tệp đối tượng")
 
-![BookList — saveToFile method](/images/mang-doi-tuong/39.jpg "Phương thức saveToFile ghi danh sách sách ra tệp đối tượng")
+![BookList — saveToFile method](/images/array-of-objects/39.jpg "Phương thức saveToFile ghi danh sách sách ra tệp đối tượng")
 
-![BookList — printList method](/images/mang-doi-tuong/40.jpg "Phương thức printList in danh sách sách")
+![BookList — printList method](/images/array-of-objects/40.jpg "Phương thức printList in danh sách sách")
 
-![BookManager class — main setup](/images/mang-doi-tuong/41.jpg "Lớp BookManager: khởi tạo danh sách và nạp dữ liệu từ tệp")
+![BookManager class — main setup](/images/array-of-objects/41.jpg "Lớp BookManager: khởi tạo danh sách và nạp dữ liệu từ tệp")
 
-![BookManager class — adding and saving books](/images/mang-doi-tuong/42.jpg "Lớp BookManager: thêm sách mới, lưu và nạp lại từ tệp")
+![BookManager class — adding and saving books](/images/array-of-objects/42.jpg "Lớp BookManager: thêm sách mới, lưu và nạp lại từ tệp")
 
 The result:
 
-![Book Manager Result](/images/mang-doi-tuong/43.jpg "Kết quả chạy chương trình quản lý sách và cấu trúc tệp books.dat sinh ra")
+![Book Manager Result](/images/array-of-objects/43.jpg "Kết quả chạy chương trình quản lý sách và cấu trúc tệp books.dat sinh ra")
 
 > **Exercise:** Develop the above demonstration program for managing books with the following specifications:
 >
