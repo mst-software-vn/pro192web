@@ -10,6 +10,10 @@ import { MobileNav } from './MobileNav'
 import { Sidebar } from './Sidebar'
 import { TableOfContents } from './TableOfContents'
 
+export interface DocsOutletContext {
+  tocCollapsed: boolean
+}
+
 function ChevronIcon() {
   return (
     <svg
@@ -70,7 +74,7 @@ export function DocsLayout() {
         </aside>
 
         <main className="min-w-0 flex-1 py-10">
-          <Outlet />
+          <Outlet context={{ tocCollapsed } satisfies DocsOutletContext} />
         </main>
 
         {headings.length > 0 && !tocCollapsed ? (

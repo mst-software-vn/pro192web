@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
-import { Navigate, useParams } from 'react-router-dom'
+import { Navigate, useOutletContext, useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
 import { QuizSection } from '../components/quiz/QuizSection'
 import { chapters, getChapter } from '../content/chapters'
 import { LEGACY_SLUG_REDIRECTS } from '../content/legacy-slugs'
 import { useLanguage } from '../hooks/use-language'
+import type { DocsOutletContext } from '../layout/DocsLayout'
 
 export function DocsPage() {
   const { slug } = useParams()
@@ -12,6 +13,7 @@ export function DocsPage() {
   const chapter = slug ? getChapter(slug) : undefined
   const { language } = useLanguage()
   const isEn = language === 'en'
+  const { tocCollapsed } = useOutletContext<DocsOutletContext>()
 
   useEffect(() => {
     const title = chapter ? (isEn ? chapter.titleEn : chapter.title) : isEn ? 'Page not found' : 'Không tìm thấy trang'
@@ -40,7 +42,7 @@ export function DocsPage() {
   const isFallback = wantsVi && !chapter.bodyVi && Boolean(chapter.body)
 
   return (
-    <article className="max-w-[760px]">
+    <article className={tocCollapsed ? 'max-w-none' : 'max-w-[760px]'}>
       <header className="border-hairline mb-8 border-b pb-8">
         <h1 className="text-ink text-3xl font-semibold tracking-tight sm:text-4xl">
           {isEn ? chapter.titleEn : chapter.title}
