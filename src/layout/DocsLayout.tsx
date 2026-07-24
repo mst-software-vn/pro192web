@@ -14,14 +14,22 @@ import { TableOfContents } from './TableOfContents'
 // Sidebar cố định + TOC chỉ hiện ở desktop; mobile dùng drawer từ DocsHeader.
 export function DocsLayout() {
   const { slug } = useParams()
-  const { pathname } = useLocation()
+  const location = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
-  // Chuyển trang (sang chương khác hoặc syllabus) thì cuộn lên đầu ngay lập tức —
-  // React Router không tự reset scroll khi điều hướng phía client như trình duyệt vẫn làm.
+  // Chuyển trang thì cuộn lên đầu ngay lập tức (React Router không tự reset scroll
+  // như trình duyệt vẫn làm) — TRỪ khi URL có #hash (vd từ search modal nhảy tới 1
+  // heading cụ thể), lúc đó cuộn tới đúng heading thay vì lên đầu trang.
   useEffect(() => {
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1))
+      if (target) {
+        target.scrollIntoView({ behavior: 'instant', block: 'start' })
+        return
+      }
+    }
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-  }, [pathname])
+  }, [location.pathname, location.hash])
 
   const { language } = useLanguage()
   const chapter = slug ? getChapter(slug) : undefined
