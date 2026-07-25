@@ -41,8 +41,9 @@ PRO192 Docs là bản viết lại toàn bộ trang tài liệu môn Lập trìn
 ## Demo
 
 Bản triển khai mới nhất luôn có tại: **https://pro192web.chunhau-py-015.workers.dev/**
-<img width="1512" height="859" alt="image" src="https://github.com/user-attachments/assets/d52a53d1-905c-406f-964e-0481db3d06d3" />
-<img width="1512" height="855" alt="image" src="https://github.com/user-attachments/assets/e209a234-d7f6-4a3f-a23c-868580eba67f" />
+
+<img width="1512" height="826" alt="image" src="https://github.com/user-attachments/assets/b81e9636-86f9-41f7-8b9d-aa29d8ccde3a" />
+<img width="1512" height="859" alt="image" src="https://github.com/user-attachments/assets/f2afa89c-16f1-46f3-b07d-02219bb4eec3" />
 
 ## Nội dung khoá học
 
