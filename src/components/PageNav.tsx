@@ -50,7 +50,7 @@ export function PageNav({ slug }: PageNavProps) {
   if (!prev && !next) return null
 
   return (
-    <div className="border-hairline mt-8 flex items-center justify-between gap-4 border-t pt-8">
+    <div className="border-hairline mt-8 flex items-center justify-between gap-4 pt-8">
       {prev ? (
         <Link to={`/docs/${prev.slug}`} className="text-ink-muted hover:text-ink flex items-center gap-1.5 text-sm transition-colors">
           <ChevronLeftIcon />

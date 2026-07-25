@@ -73,25 +73,24 @@ export function PageFeedback() {
 
   if (submitted) {
     return (
-      <div className="border-hairline mt-16 border-t pt-8">
+      <div className="border-hairline mt-16 pt-8">
         <p className="text-ink-muted text-sm">{isEn ? 'Thank you for your feedback!' : 'Cảm ơn phản hồi của bạn!'}</p>
       </div>
     )
   }
 
   return (
-    <div className="border-hairline mt-16 border-t pt-8">
+    <div className="border-hairline mt-16 pt-8">
       <div className="flex items-center justify-between gap-4">
         <p className="text-ink-body text-sm">{isEn ? 'Was this page helpful?' : 'Trang này có hữu ích không?'}</p>
         <div className="flex shrink-0 items-center gap-2">
           <button
             type="button"
             onClick={() => setRating('yes')}
-            className={`flex items-center gap-1.5 rounded-md border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-              rating === 'yes'
-                ? 'border-accent-on-surface text-accent-on-surface'
-                : 'border-hairline-strong text-ink-muted hover:text-ink hover:border-ink-faint'
-            }`}
+            className={`flex items-center gap-1.5 rounded-md border px-3.5 py-1.5 text-sm font-medium transition-colors ${rating === 'yes'
+              ? 'border-accent-on-surface text-accent-on-surface'
+              : 'border-hairline-strong text-ink-muted hover:text-ink hover:border-ink-faint'
+              }`}
           >
             <ThumbsUpIcon />
             {isEn ? 'Yes' : 'Có'}
@@ -99,11 +98,10 @@ export function PageFeedback() {
           <button
             type="button"
             onClick={() => setRating('no')}
-            className={`flex items-center gap-1.5 rounded-md border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-              rating === 'no'
-                ? 'border-accent-on-surface text-accent-on-surface'
-                : 'border-hairline-strong text-ink-muted hover:text-ink hover:border-ink-faint'
-            }`}
+            className={`flex items-center gap-1.5 rounded-md border px-3.5 py-1.5 text-sm font-medium transition-colors ${rating === 'no'
+              ? 'border-accent-on-surface text-accent-on-surface'
+              : 'border-hairline-strong text-ink-muted hover:text-ink hover:border-ink-faint'
+              }`}
           >
             <ThumbsDownIcon />
             {isEn ? 'No' : 'Không'}
