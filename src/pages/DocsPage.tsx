@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Navigate, useOutletContext, useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
+import { PageFeedback } from '../components/PageFeedback'
+import { PageNav } from '../components/PageNav'
 import { QuizSection } from '../components/quiz/QuizSection'
 import { chapters, getChapter } from '../content/chapters'
 import { LEGACY_SLUG_REDIRECTS } from '../content/legacy-slugs'
@@ -102,6 +104,9 @@ export function DocsPage() {
       )}
 
       <QuizSection key={chapter.slug} slug={chapter.slug} />
+
+      <PageFeedback key={`feedback-${chapter.slug}`} />
+      <PageNav slug={chapter.slug} />
     </article>
   )
 }
