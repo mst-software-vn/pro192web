@@ -158,7 +158,7 @@ export function LandingNav() {
                 aria-label="Toggle theme"
                 aria-expanded={themeOpen}
                 title={`Theme: ${preference}`}
-                className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted transition-colors hover:text-ink"
+                className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg text-ink-muted transition-colors hover:bg-(--landing-card) hover:text-ink"
               >
                 <ThemeIcon />
               </button>
