@@ -97,23 +97,18 @@ function MenuIcon() {
   )
 }
 
-const THEME_ICON: Record<ThemePreference, () => ReactElement> = {
-  light: SunIcon,
-  dark: MoonIcon,
-  system: SystemIcon,
-}
-
-const NEXT_PREFERENCE: Record<ThemePreference, ThemePreference> = {
-  light: 'dark',
-  dark: 'system',
-  system: 'light',
-}
+const THEME_OPTIONS: { value: ThemePreference; label: string; icon: () => ReactElement }[] = [
+  { value: 'light', label: 'Light', icon: SunIcon },
+  { value: 'dark', label: 'Dark', icon: MoonIcon },
+  { value: 'system', label: 'System', icon: SystemIcon },
+]
 
 export function LandingNav() {
   const { preference, setPreference } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
-  const ThemeIcon = THEME_ICON[preference]
+  const [themeOpen, setThemeOpen] = useState(false)
+  const ThemeIcon = THEME_OPTIONS.find((option) => option.value === preference)?.icon ?? SystemIcon
 
   useSearchShortcut(() => setSearchOpen(true))
 
@@ -156,15 +151,52 @@ export function LandingNav() {
               <GithubIcon />
             </a>
 
-            <button
-              type="button"
-              onClick={() => setPreference(NEXT_PREFERENCE[preference])}
-              aria-label="Toggle theme"
-              title={`Theme: ${preference}`}
-              className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted transition-colors hover:text-ink"
-            >
-              <ThemeIcon />
-            </button>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setThemeOpen((value) => !value)}
+                aria-label="Toggle theme"
+                aria-expanded={themeOpen}
+                title={`Theme: ${preference}`}
+                className="flex h-8.5 w-8.5 shrink-0 items-center justify-center rounded-lg border border-hairline-strong bg-(--landing-card) text-ink-muted transition-colors hover:text-ink"
+              >
+                <ThemeIcon />
+              </button>
+
+              {themeOpen ? (
+                <>
+                  <button
+                    type="button"
+                    aria-hidden
+                    tabIndex={-1}
+                    className="fixed inset-0 z-40 cursor-default"
+                    onClick={() => setThemeOpen(false)}
+                  />
+                  <div className="border-hairline-strong bg-canvas absolute top-full right-0 z-50 mt-2 w-36 overflow-hidden rounded-lg border py-1 shadow-[0_8px_24px_rgba(0,0,0,0.12)]">
+                    {THEME_OPTIONS.map((option) => {
+                      const Icon = option.icon
+                      const isActive = option.value === preference
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          onClick={() => {
+                            setPreference(option.value)
+                            setThemeOpen(false)
+                          }}
+                          className={`flex w-full items-center gap-2.5 px-3 py-1.5 text-[13px] transition-colors ${
+                            isActive ? 'text-accent-on-surface font-medium' : 'text-ink-muted hover:text-ink'
+                          }`}
+                        >
+                          <Icon />
+                          {option.label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </>
+              ) : null}
+            </div>
 
             <button
               type="button"
