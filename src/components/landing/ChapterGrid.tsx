@@ -45,7 +45,9 @@ export function ChapterGrid() {
               <span className="pointer-events-none absolute top-2.5 right-4.5 font-sans text-5xl leading-none font-extrabold text-(--landing-chap-num) transition-opacity duration-200 group-hover:opacity-30">
                 {String(chapter.id).padStart(2, '0')}
               </span>
-              <span className="relative mt-1.5 block text-[18px] font-bold">{chapter.name}</span>
+              <span className="relative z-10 mt-1.5 block text-[18px] font-bold transition-colors duration-200 group-hover:text-white">
+                {chapter.name}
+              </span>
               <span className="absolute bottom-4.5 left-5 inline-flex items-center rounded-full bg-accent/12 px-2.5 py-1 text-[11px] font-semibold tracking-[0.03em] text-accent-dark">
                 {chapter.tag}
               </span>
