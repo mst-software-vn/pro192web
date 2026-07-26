@@ -18,8 +18,6 @@ function readStoredPreference(): ThemePreference {
   return stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system'
 }
 
-// Quản lý preference sáng/tối/hệ thống cho khu vực Docs — lưu localStorage, và khi ở chế
-// độ 'system' thì tự cập nhật nếu người dùng đổi theme hệ điều hành trong lúc đang mở trang.
 export function useTheme() {
   const [preference, setPreference] = useState<ThemePreference>(readStoredPreference)
 

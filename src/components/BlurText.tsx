@@ -1,11 +1,6 @@
 import { motion, type Easing } from 'motion/react'
 import { useEffect, useMemo, useRef, useState, type Ref } from 'react'
 
-// Vendored & ported to TypeScript từ react-bits (BlurText, biến thể JS-TW) — giữ nguyên
-// logic animation gốc, chỉ thêm kiểu dữ liệu. Nguồn: reactbits.dev — MIT + Commons Clause
-// (dùng làm 1 phần của website được phép; không bán lại/redistribute component riêng lẻ).
-// https://github.com/DavidHDev/react-bits/blob/main/src/content/TextAnimations/BlurText/BlurText.jsx
-
 type AnimationSnapshot = Record<string, string | number>
 
 function buildKeyframes(
@@ -58,8 +53,6 @@ export function BlurText({
   const [inView, setInView] = useState(false)
   const ref = useRef<HTMLElement>(null)
 
-  // Tôn trọng prefers-reduced-motion (nhất quán với RevealOnScroll) — hiện chữ ngay,
-  // bỏ qua hiệu ứng mờ dần cho người dùng đã tắt hiệu ứng chuyển động ở hệ điều hành.
   useEffect(() => {
     if (!ref.current) return
 
@@ -106,8 +99,6 @@ export function BlurText({
 
   return (
     <Tag
-      // `ref` chỉ dùng để observe kích thước/vị trí (IntersectionObserver) — an toàn khi
-      // dùng chung cho mọi thẻ HTML, TypeScript không tự suy luận được với tag động.
       ref={ref as Ref<HTMLParagraphElement>}
       className={className}
       style={{ display: 'flex', flexWrap: 'wrap' }}

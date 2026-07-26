@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-// Hiệu ứng fade-in khi phần tử cuộn vào khung nhìn — dùng IntersectionObserver
-// (không nghe sự kiện scroll), tôn trọng prefers-reduced-motion, đúng theo minimalist-ui.
 export function useScrollReveal<T extends HTMLElement>() {
   const ref = useRef<T | null>(null)
   const [visible, setVisible] = useState(false)

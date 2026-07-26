@@ -31,20 +31,12 @@ function ChevronIcon() {
   )
 }
 
-// Bố cục docs 3 cột kiểu Laravel: sidebar trái · cột đọc giữa · mục lục phải.
-// Sidebar cố định + TOC chỉ hiện ở desktop; mobile dùng drawer từ DocsHeader.
 export function DocsLayout() {
   const { slug } = useParams()
   const location = useLocation()
   const [mobileNavOpen, setMobileNavOpen] = useState(false)
-  // Ẩn nguyên cột phải (TOC + thẻ tải PDF) khi bấm toggle, để cột nội dung giữa (flex-1)
-  // tự giãn ra chiếm hết chỗ trống — không phải chỉ ẩn mỗi danh sách heading bên trong.
-  // Lưu localStorage để giữ nguyên lựa chọn qua các lần điều hướng/tải lại trang.
   const { collapsed: tocCollapsed, setCollapsed: setTocCollapsed } = useTocCollapsed()
 
-  // Chuyển trang thì cuộn lên đầu ngay lập tức (React Router không tự reset scroll
-  // như trình duyệt vẫn làm) — TRỪ khi URL có #hash (vd từ search modal nhảy tới 1
-  // heading cụ thể), lúc đó cuộn tới đúng heading thay vì lên đầu trang.
   useEffect(() => {
     if (location.hash) {
       const target = document.getElementById(location.hash.slice(1))

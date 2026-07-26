@@ -7,8 +7,6 @@ interface Stat {
   label: string
 }
 
-// Số liệu tính động từ dữ liệu thật (chapters/quiz/markdown) thay vì hardcode — tránh
-// lặp lại lỗi số liệu bị lệch sau khi thêm chương/nội dung mới đã gặp trước đó ở footer.
 function buildStats(): Stat[] {
   const totalCodeBlocks = chapters.reduce((sum, chapter) => sum + countCodeBlocks(chapter.body ?? ''), 0)
   const totalImages = chapters.reduce((sum, chapter) => sum + countImages(chapter.body ?? ''), 0)
@@ -34,9 +32,8 @@ export function StatsSection() {
         {stats.map((stat, index) => (
           <div
             key={stat.label}
-            className={`min-w-27.5 flex-1 text-center ${
-              index < stats.length - 1 ? 'border-r border-hairline-strong last:border-r-0' : ''
-            }`}
+            className={`min-w-27.5 flex-1 text-center ${index < stats.length - 1 ? 'border-r border-hairline-strong last:border-r-0' : ''
+              }`}
           >
             <div className="text-ink text-[44px] leading-none font-extrabold tracking-tight tabular-nums">
               {stat.value}

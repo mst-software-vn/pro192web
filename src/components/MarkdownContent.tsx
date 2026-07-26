@@ -20,8 +20,6 @@ function flattenToText(node: ReactNode): string {
   return ''
 }
 
-// Ảnh gốc chưa được copy vào public/images/ — hiển thị khung placeholder có caption
-// thay vì icon ảnh vỡ; tự nâng cấp lên ảnh thật ngay khi file tồn tại đúng đường dẫn.
 function Figure({ src, alt, title }: { src?: string; alt?: string; title?: string }) {
   const [failed, setFailed] = useState(false)
   const caption = title ?? alt
@@ -49,10 +47,6 @@ function Figure({ src, alt, title }: { src?: string; alt?: string; title?: strin
   )
 }
 
-// Đặt tên tường minh (khác biệt "img") để so sánh identity chính xác trong `p` bên dưới —
-// react-markdown truyền element CHƯA render (type = hàm mapping này, chưa phải <Figure>)
-// làm children của <p>, vì React chỉ thực sự gọi hàm này ở bước render sau, không phải
-// lúc `p` nhận children. So type với Figure (thứ hàm này TRẢ VỀ) sẽ luôn sai.
 function ImageRenderer({ src, alt, title }: { src?: unknown; alt?: string; title?: string }) {
   return <Figure src={typeof src === 'string' ? src : undefined} alt={alt} title={title} />
 }
@@ -75,8 +69,6 @@ function makeHeading(depth: 2 | 3 | 4) {
   }
 }
 
-// Link "#" thuần (không có id neo) là kiểu tag/chủ đề trang trí từ site gốc — hiển thị
-// giống liên kết (accent xanh) nhưng bấm vào không điều hướng, không cuộn trang.
 function preventBareHashNavigation(event: MouseEvent<HTMLAnchorElement>) {
   event.preventDefault()
 }
@@ -87,8 +79,6 @@ const components: Components = {
   h3: makeHeading(3),
   h4: makeHeading(4),
   p: ({ children }) => {
-    // Markdown đặt ảnh riêng 1 dòng vẫn được bọc trong <p> — nhưng Figure render ra <figure>,
-    // mà <figure> không hợp lệ bên trong <p>. Bỏ wrapper <p> khi đoạn văn chỉ chứa 1 ảnh.
     const items = Array.isArray(children) ? children : [children]
     const meaningful = items.filter((child) => !(typeof child === 'string' && child.trim() === ''))
     if (meaningful.length === 1 && isValidElement(meaningful[0]) && meaningful[0].type === ImageRenderer) {
@@ -141,8 +131,6 @@ const components: Components = {
   strong: ({ children }) => <strong className="text-ink-secondary font-semibold">{children}</strong>,
   em: ({ children }) => <em className="italic">{children}</em>,
   blockquote: ({ children }) => {
-    // Ghi chú "super() phải là dòng đầu constructor" (inheritance.md) dùng tông vàng nhạt
-    // (notice/warning) thay vì xanh mặc định — chỉ riêng đoạn này theo yêu cầu.
     const isNoticeStyle = flattenToText(children).includes('most distant super class first')
     const className = isNoticeStyle
       ? 'bg-amber-100 dark:bg-amber-950/40 border-l-4 border-amber-400 dark:border-amber-500 text-amber-950 dark:text-amber-100 my-5 rounded-r-md px-4 py-3 text-[15px] leading-7 [&_p]:text-amber-950 dark:[&_p]:text-amber-100 [&_strong]:text-amber-950 dark:[&_strong]:text-amber-200 [&_code]:text-amber-950 [&_code]:bg-amber-300 dark:[&_code]:text-amber-100 dark:[&_code]:bg-amber-400/30 [&>p:last-child]:mb-0 [&>p]:mb-2'

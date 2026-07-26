@@ -22,8 +22,6 @@ export function writeQuizProgress(slug: string, progress: QuizProgress): void {
   localStorage.setItem(STORAGE_PREFIX + slug, JSON.stringify(progress))
 }
 
-// Lưu điểm lần làm quiz gần nhất theo từng chương — không có hạn dùng, không giới hạn
-// dung lượng đáng kể (11 chương x ~80 byte), tương tự cách site lưu theme/ngôn ngữ.
 export function useQuizProgress(slug: string) {
   const [progress, setProgress] = useState<QuizProgress | null>(() => readQuizProgress(slug))
 

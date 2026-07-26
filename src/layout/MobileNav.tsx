@@ -6,7 +6,6 @@ interface MobileNavProps {
   onClose: () => void
 }
 
-// Drawer trượt từ trái — chỉ hiển thị dưới breakpoint lg (thay thế sidebar cố định).
 export function MobileNav({ open, onClose }: MobileNavProps) {
   const { language } = useLanguage()
 
@@ -14,14 +13,12 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     <div className={`fixed inset-0 z-40 lg:hidden ${open ? '' : 'pointer-events-none'}`} aria-hidden={!open}>
       <div
         onClick={onClose}
-        className={`absolute inset-0 bg-black/60 transition-opacity duration-200 ${
-          open ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`absolute inset-0 bg-black/60 transition-opacity duration-200 ${open ? 'opacity-100' : 'opacity-0'
+          }`}
       />
       <div
-        className={`border-hairline bg-canvas absolute inset-y-0 left-0 w-72 max-w-[85vw] overflow-y-auto border-r px-5 py-6 transition-transform duration-200 ${
-          open ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`border-hairline bg-canvas absolute inset-y-0 left-0 w-72 max-w-[85vw] overflow-y-auto border-r px-5 py-6 transition-transform duration-200 ${open ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div className="mb-6 flex items-center justify-between">
           <span className="text-ink text-[15px] font-semibold tracking-tight">PRO192</span>

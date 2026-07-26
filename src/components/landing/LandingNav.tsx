@@ -43,10 +43,6 @@ function MenuIcon() {
   )
 }
 
-// Nav riêng cho bản thiết kế mới của LandingPage — không tái dùng src/layout/LandingHeader.tsx
-// (nằm ngoài phạm vi được sửa của task, và khác hẳn về ngôn ngữ hình ảnh: nav cũ theo
-// token --ink/--hairline chung site, nav này theo token --landing-* riêng cho trang này).
-// Landing luôn dark mode (2026-07-25) — không có nút chọn theme ở đây nữa.
 export function LandingNav() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)

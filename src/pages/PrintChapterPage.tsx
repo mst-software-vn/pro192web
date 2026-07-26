@@ -2,9 +2,6 @@ import { useParams } from 'react-router-dom'
 import { MarkdownContent } from '../components/MarkdownContent'
 import { getChapter } from '../content/chapters'
 
-// Route dùng riêng cho script tạo PDF (scripts/generate-chapter-pdfs.mjs) — không có
-// sidebar/TOC/header/quiz/search, luôn render tiếng Anh bất kể localStorage ngôn ngữ,
-// và không gọi useTheme() nên luôn render theo token sáng mặc định (phù hợp để in PDF).
 export function PrintChapterPage() {
   const { slug } = useParams()
   const chapter = slug ? getChapter(slug) : undefined

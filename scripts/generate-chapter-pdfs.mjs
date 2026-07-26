@@ -11,9 +11,6 @@ const rootDir = path.resolve(__dirname, '..')
 const tmpDir = path.join(rootDir, 'tmp-chapter-pdfs')
 const outputZip = path.join(rootDir, 'public/downloads/pro192-course-pdfs.zip')
 
-// Thứ tự & slug phải khớp src/content/chapters/index.ts — không import trực tiếp file đó
-// vì nó dùng import.meta.glob (chỉ chạy được trong pipeline build của Vite), còn script
-// này chạy như một Node script độc lập ngoài Vite.
 const CHAPTER_SLUGS = [
   'welcome',
   'introduction-course',
@@ -38,9 +35,9 @@ async function waitForImages(page) {
         img.complete
           ? Promise.resolve()
           : new Promise((resolve) => {
-              img.addEventListener('load', resolve, { once: true })
-              img.addEventListener('error', resolve, { once: true })
-            }),
+            img.addEventListener('load', resolve, { once: true })
+            img.addEventListener('error', resolve, { once: true })
+          }),
       ),
     )
   })
@@ -62,9 +59,6 @@ async function main() {
   try {
     for (const [index, slug] of CHAPTER_SLUGS.entries()) {
       const page = await browser.newPage()
-      // Headless Chromium mặc định prefers-color-scheme: dark — script chống FOUC trong
-      // index.html đọc localStorage 'pro192-theme' (mặc định 'system') rồi theo system
-      // preference đó để bật .dark. Ép sẵn 'light' trước khi trang tải để PDF luôn sáng.
       await page.evaluateOnNewDocument(() => {
         localStorage.setItem('pro192-theme', 'light')
       })

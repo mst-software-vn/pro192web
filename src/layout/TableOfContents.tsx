@@ -45,9 +45,6 @@ function ChevronIcon({ pointLeft }: { pointLeft: boolean }) {
   )
 }
 
-// Toggle ở đây chỉ ẨN chính panel này (state thật nằm ở DocsLayout, xem onCollapse) — khi
-// thu gọn, cả cột này biến mất hoàn toàn để cột nội dung giữa giãn ra hết cỡ, không phải
-// chỉ ẩn mỗi danh sách heading bên trong như thiết kế trước đó.
 export function TableOfContents({ headings, activeId, onCollapse }: TableOfContentsProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'

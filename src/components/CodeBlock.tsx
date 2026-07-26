@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
-// Side-effect: đăng ký grammar Java vào Prism (prism-react-renderer không bundle sẵn).
 import '../lib/register-prism-java'
 
 interface CodeBlockProps {
@@ -8,8 +7,6 @@ interface CodeBlockProps {
   language?: string
 }
 
-// Code Java luôn hiển thị nền tối, kể cả khi đặt trong ngữ cảnh sáng (landing) —
-// đảm bảo tính nhất quán thị giác cho mọi khối code trong toàn site.
 export function CodeBlock({ code, language }: CodeBlockProps) {
   const trimmedCode = code.replace(/\n$/, '')
   const [copied, setCopied] = useState(false)

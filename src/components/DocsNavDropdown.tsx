@@ -10,8 +10,6 @@ function ChevronDownIcon() {
   )
 }
 
-// Mega-menu "Tài liệu" cho LandingHeader — liệt kê chương theo nhóm, lấy trực tiếp từ
-// registry (groupChapters) để không tạo nguồn dữ liệu thứ hai so với Sidebar (Docs).
 export function DocsNavDropdown() {
   const [open, setOpen] = useState(false)
   const groups = groupChapters()

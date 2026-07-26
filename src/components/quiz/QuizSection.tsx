@@ -16,8 +16,6 @@ interface QuizSectionProps {
   slug: string
 }
 
-// Không còn màn "idle" chờ bấm Start — quiz hiển thị câu hỏi đầu tiên ngay khi vào trang
-// (2026-07-25, theo yêu cầu). "Làm lại" cũng quay thẳng về active, không qua idle nữa.
 export function QuizSection({ slug }: QuizSectionProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'
@@ -26,7 +24,6 @@ export function QuizSection({ slug }: QuizSectionProps) {
 
   const [round, setRound] = useState(0)
   const questions = useMemo(() => {
-    // round chỉ dùng để ép useMemo tính lại khi bấm "Làm lại", giá trị không cần đọc
     void round
     return pickQuestions(pool)
   }, [pool, round])

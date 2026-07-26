@@ -34,10 +34,8 @@ public abstract class Shape {
         this.name = name;
     }
 
-    // Abstract method — no body, every subclass must provide one
     public abstract double calculateArea();
 
-    // Concrete method — shared implementation, inherited as-is
     public void displayInfo() {
         System.out.printf("%s has an area of %.2f%n", name, calculateArea());
     }
@@ -45,7 +43,7 @@ public abstract class Shape {
 ```
 
 ```java
-Shape shape = new Shape("Generic"); // Compile error: Shape is abstract; cannot be instantiated
+Shape shape = new Shape("Generic"); 
 ```
 
 A subclass must implement every abstract method it inherits, or it must itself be declared `abstract`:
@@ -86,8 +84,8 @@ public class Rectangle extends Shape {
 Shape circle = new Circle(5);
 Shape rectangle = new Rectangle(4, 6);
 
-circle.displayInfo();     // Circle has an area of 78.54
-rectangle.displayInfo();  // Rectangle has an area of 24.00
+circle.displayInfo();    
+rectangle.displayInfo(); 
 ```
 
 Notice that `circle` and `rectangle` are declared as `Shape` references — this is polymorphism at work — but it's abstraction that makes it possible to write `displayInfo()` *once*, in the base class, without knowing which concrete shape it will run on.
@@ -115,7 +113,7 @@ public class Manager extends Employee {
     private double bonus;
 
     public Manager(String name, String id, double baseSalary, double bonus) {
-        super(name, id); // Runs Employee's constructor first
+        super(name, id);
         this.baseSalary = baseSalary;
         this.bonus = bonus;
     }
@@ -141,9 +139,9 @@ public abstract class Employee {
         this.id = id;
     }
 
-    public abstract double calculateSalary(); // Varies per employee type
+    public abstract double calculateSalary(); 
 
-    public void printPaySlip() { // Shared by every employee type
+    public void printPaySlip() {
         System.out.printf("Pay slip for %s (%s): $%.2f%n", name, id, calculateSalary());
     }
 }
@@ -182,7 +180,7 @@ Any field declared in an interface is implicitly `public static final` — a con
 
 ```java
 public interface Config {
-    int MAX_RETRIES = 3; // implicitly public static final
+    int MAX_RETRIES = 3;
 }
 ```
 
@@ -228,12 +226,10 @@ Since Java 8, interfaces are no longer purely abstract — they can provide `def
 public interface Payable {
     double calculatePayment();
 
-    // Default method — implementing classes get this for free
     default void printPaymentSlip() {
         System.out.printf("Payment due: $%.2f%n", calculatePayment());
     }
 
-    // Static method — called as Payable.formatCurrency(...), not on an instance
     static String formatCurrency(double amount) {
         return String.format("$%,.2f", amount);
     }

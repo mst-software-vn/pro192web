@@ -17,11 +17,6 @@ function ChevronIcon() {
   )
 }
 
-// Mega menu xổ xuống khi hover mục "Chapters" — liệt kê toàn bộ chương học thật của
-// pro192web (13 chương, kể cả Trừu tượng và Lưu ý khi thi PE), gom nhóm giống hệt
-// Sidebar bên /docs (dùng chung groupChapters()) thay vì chỉ cuộn tới #chapters.
-// Landing luôn hiển thị tiếng Anh mặc định (khác Docs có toggle ngôn ngữ) — dùng
-// groupLabel(name, 'en') + chapter.titleEn thay vì name/title tiếng Việt.
 export function ChaptersMegaMenu() {
   const groups = groupChapters()
 

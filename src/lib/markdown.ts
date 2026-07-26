@@ -7,8 +7,6 @@ export interface HeadingItem {
   line: number
 }
 
-// Chỉ lấy H2/H3 cho mục lục "On this page" — H4 trở xuống quá chi tiết để liệt kê.
-// Id sinh ra ở đây phải khớp id do MarkdownContent gắn cho heading khi render.
 export function extractHeadings(markdown: string): HeadingItem[] {
   const seen = new Map<string, number>()
   const headings: HeadingItem[] = []
@@ -31,8 +29,6 @@ export function extractHeadings(markdown: string): HeadingItem[] {
   return headings
 }
 
-// Đếm số khối code (```...```) và số ảnh (![alt](src)) trong 1 chương — dùng cho số
-// liệu thống kê ở Landing, tính động từ nội dung thật thay vì hardcode.
 export function countCodeBlocks(markdown: string): number {
   const fenceCount = (markdown.match(/^```/gm) ?? []).length
   return Math.floor(fenceCount / 2)

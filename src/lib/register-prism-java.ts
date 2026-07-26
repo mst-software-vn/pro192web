@@ -1,22 +1,13 @@
 import { Prism } from 'prism-react-renderer'
 
-// prism-react-renderer v2 KHÔNG bundle sẵn ngôn ngữ Java (chỉ có c/cpp/kotlin/swift...),
-// nên mọi token trở thành 'plain' → code chỉ một màu. Ta đăng ký grammar Java chính thức
-// của PrismJS (MIT) vào chính đối tượng Prism mà prism-react-renderer export — Java kế thừa
-// từ 'clike' vốn đã có sẵn. Nguồn nguyên văn (không sửa logic):
-// https://github.com/PrismJS/prism/blob/master/components/prism-java.js
-
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const languages = Prism.languages as any
 
 if (!languages.java) {
   const keywords =
     /\b(?:abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|default|do|double|else|enum|exports|extends|final|finally|float|for|goto|if|implements|import|instanceof|int|interface|long|module|native|new|non-sealed|null|open|opens|package|permits|private|protected|provides|public|record(?!\s*[(){}[\]<>=%~.:,;?+\-*/&|^])|requires|return|sealed|short|static|strictfp|super|switch|synchronized|this|throw|throws|to|transient|transitive|try|uses|var|void|volatile|while|with|yield)\b/
 
-  // full package (optional) + parent classes (optional)
   const classNamePrefix = /(?:[a-z]\w*\s*\.\s*)*(?:[A-Z]\w*\s*\.\s*)*/.source
 
-  // based on the java naming conventions
   const className = {
     pattern: RegExp(/(^|[^\w.])/.source + classNamePrefix + /[A-Z](?:[\d_A-Z]*[a-z]\w*)?\b/.source),
     lookbehind: true,
@@ -42,8 +33,8 @@ if (!languages.java) {
       {
         pattern: RegExp(
           /(^|[^\w.])/.source +
-            classNamePrefix +
-            /[A-Z]\w*(?=\s+\w+\s*[;,=()]|\s*(?:\[[\s,]*\]\s*)?::\s*new\b)/.source,
+          classNamePrefix +
+          /[A-Z]\w*(?=\s+\w+\s*[;,=()]|\s*(?:\[[\s,]*\]\s*)?::\s*new\b)/.source,
         ),
         lookbehind: true,
         inside: className.inside,
@@ -51,8 +42,8 @@ if (!languages.java) {
       {
         pattern: RegExp(
           /(\b(?:class|enum|extends|implements|instanceof|interface|new|record|throws)\s+)/.source +
-            classNamePrefix +
-            /[A-Z]\w*\b/.source,
+          classNamePrefix +
+          /[A-Z]\w*\b/.source,
         ),
         lookbehind: true,
         inside: className.inside,

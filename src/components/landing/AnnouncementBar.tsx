@@ -3,8 +3,6 @@ import { useState } from 'react'
 
 const FACEBOOK_URL = 'https://www.facebook.com/mstsoftware.vn'
 
-// Thanh thông báo trên cùng, có thể đóng — trạng thái chỉ tồn tại trong phiên hiện tại
-// (không lưu localStorage), khớp hành vi bản thiết kế gốc.
 export function AnnouncementBar() {
   const [visible, setVisible] = useState(true)
 

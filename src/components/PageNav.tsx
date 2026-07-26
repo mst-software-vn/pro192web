@@ -38,8 +38,6 @@ interface PageNavProps {
   slug: string
 }
 
-// Điều hướng chương trước/sau — dựa theo đúng thứ tự khai báo trong
-// src/content/chapters/index.ts (khớp thứ tự hiển thị ở Sidebar).
 export function PageNav({ slug }: PageNavProps) {
   const { language } = useLanguage()
   const isEn = language === 'en'

@@ -4,7 +4,6 @@ interface SearchFieldProps {
   onClick?: () => void
 }
 
-// Thanh tìm kiếm — bấm vào (hoặc ⌘K/Ctrl+K) sẽ mở SearchModal, xem DocsHeader.tsx.
 export function SearchField({ onClick }: SearchFieldProps) {
   const { language } = useLanguage()
 

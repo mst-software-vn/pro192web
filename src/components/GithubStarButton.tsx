@@ -8,8 +8,6 @@ function GithubIcon() {
   )
 }
 
-// Chỉ hiển thị icon — không hiển thị số sao vì repo hiện còn ít sao, hiển thị ra sẽ
-// không đẹp. Nếu cần lại số sao thật (GitHub REST API, không cần token) thì thêm sau.
 export function GithubStarButton() {
   return (
     <a

@@ -20,9 +20,6 @@ const TOKEN_CLASS: Record<TokenKind, string> = {
   comment: 'text-(--landing-code-comment)',
 }
 
-// 4 đoạn code minh hoạ Encapsulation/Inheritance/Polymorphism/Abstraction — tô màu thủ công
-// theo đúng token của bản thiết kế gốc (không dùng prism-react-renderer ở đây vì theme có sẵn
-// không khớp chính xác từng màu; nội dung tĩnh, không cần tokenizer động).
 const TABS: readonly CodeTab[] = [
   {
     file: 'BankAccount.java',
@@ -174,11 +171,10 @@ export function CodeBlock() {
               key={item.file}
               type="button"
               onClick={() => setTab(index)}
-              className={`shrink-0 border-b-2 px-2.5 py-3 text-[12.5px] font-medium whitespace-nowrap transition-colors ${
-                index === tab
+              className={`shrink-0 border-b-2 px-2.5 py-3 text-[12.5px] font-medium whitespace-nowrap transition-colors ${index === tab
                   ? 'border-(--landing-code-ref) text-[#e6edf3]'
                   : 'border-transparent text-[#64748b] hover:text-[#94a3b8]'
-              }`}
+                }`}
             >
               {item.label}
             </button>
@@ -187,9 +183,8 @@ export function CodeBlock() {
         <button
           type="button"
           onClick={handleCopy}
-          className={`my-1.5 mr-0.5 ml-1 flex shrink-0 items-center gap-1.5 rounded-md border border-(--landing-panel-border) bg-white/4 px-2.5 py-1.5 text-[12.5px] font-medium whitespace-nowrap transition-colors hover:bg-white/8 ${
-            copied ? 'text-[#22c55e]' : 'text-[#94a3b8]'
-          }`}
+          className={`my-1.5 mr-0.5 ml-1 flex shrink-0 items-center gap-1.5 rounded-md border border-(--landing-panel-border) bg-white/4 px-2.5 py-1.5 text-[12.5px] font-medium whitespace-nowrap transition-colors hover:bg-white/8 ${copied ? 'text-[#22c55e]' : 'text-[#94a3b8]'
+            }`}
         >
           {copied ? (
             <svg

@@ -11,11 +11,6 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined)
 
-// Ngôn ngữ hiển thị nội dung Docs — dùng Context vì LanguageSelector (header) và
-// DocsPage/DocsLayout (nội dung + TOC) là các cây component tách biệt cần cùng đọc
-// 1 state, khác với theme (chỉ cần class CSS, không cần re-render nội dung).
-// Mặc định English cho người dùng lần đầu (2026-07-25, theo yêu cầu) — chỉ dùng lại
-// 'vi' khi người dùng đã tự chọn và lưu trước đó.
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>(() => {
     return localStorage.getItem(STORAGE_KEY) === 'vi' ? 'vi' : 'en'

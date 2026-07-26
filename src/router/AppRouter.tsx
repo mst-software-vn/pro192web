@@ -3,8 +3,6 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { firstChapterSlug } from '../content/chapters'
 import { LanguageProvider } from '../hooks/use-language'
 
-// Tách bundle theo route: LandingPage nhẹ (marketing), DocsLayout/DocsPage kéo theo
-// react-markdown + prism-react-renderer nên tải riêng, không làm nặng trang chủ.
 const LandingPage = lazy(() =>
   import('../pages/LandingPage').then((m) => ({ default: m.LandingPage })),
 )

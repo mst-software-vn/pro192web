@@ -1,7 +1,3 @@
-// Dữ liệu hiển thị cho lưới 13 chương trên LandingPage — mô tả marketing ngắn,
-// tách biệt khỏi src/content/chapters (dữ liệu đầy đủ, dùng cho trang /docs).
-// `slug` khớp 1-1 với slug thật trong src/content/chapters/index.ts theo đúng thứ tự
-// để card chương và CTA điều hướng tới đúng nội dung thật, không phải route ảo.
 export interface Chapter {
   id: number
   slug: string

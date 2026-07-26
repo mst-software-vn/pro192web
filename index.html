@@ -1,53 +1,48 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" href="/icons/favicon.png" />
-    <link rel="apple-touch-icon" href="/icons/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PRO192 — Java OOP | MST Software</title>
-    <meta
-      name="description"
-      content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples."
-    />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="PRO192 — Java OOP" />
-    <meta property="og:title" content="PRO192 — Java OOP | MST Software" />
-    <meta
-      property="og:description"
-      content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples."
-    />
-    <meta property="og:url" content="https://pro192web.chunhau-py-015.workers.dev/" />
-    <meta property="og:image" content="https://pro192web.chunhau-py-015.workers.dev/images/thumbnail.png" />
-    <meta property="og:image:width" content="2400" />
-    <meta property="og:image:height" content="1260" />
-    <meta property="og:locale" content="vi_VN" />
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="/icons/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRO192 — Java OOP | MST Software</title>
+  <meta name="description"
+    content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples." />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PRO192 — Java OOP | MST Software" />
-    <meta
-      name="twitter:description"
-      content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples."
-    />
-    <meta name="twitter:image" content="https://pro192web.chunhau-py-015.workers.dev/images/thumbnail.png" />
-    <script>
-      // Đặt class .dark ngay trước khi React mount — tránh nháy sáng/tối (FOUC) khi tải
-      // trang, phải khớp đúng logic với src/hooks/use-theme.ts.
-      (function () {
-        var stored = localStorage.getItem('pro192-theme');
-        var preference = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
-        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var isDark = preference === 'dark' || (preference === 'system' && systemDark);
-        if (isDark) document.documentElement.classList.add('dark');
-      })();
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="PRO192 — Java OOP" />
+  <meta property="og:title" content="PRO192 — Java OOP | MST Software" />
+  <meta property="og:description"
+    content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples." />
+  <meta property="og:url" content="https://pro192web.chunhau-py-015.workers.dev/" />
+  <meta property="og:image" content="https://pro192web.chunhau-py-015.workers.dev/images/thumbnail.png" />
+  <meta property="og:image:width" content="2400" />
+  <meta property="og:image:height" content="1260" />
+  <meta property="og:locale" content="vi_VN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PRO192 — Java OOP | MST Software" />
+  <meta name="twitter:description"
+    content="A free, bilingual Java OOP learning platform for FPT University's PRO192 course — chapters, quizzes, and real code examples." />
+  <meta name="twitter:image" content="https://pro192web.chunhau-py-015.workers.dev/images/thumbnail.png" />
+  <script>
+    (function () {
+      var stored = localStorage.getItem('pro192-theme');
+      var preference = stored === 'light' || stored === 'dark' || stored === 'system' ? stored : 'system';
+      var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = preference === 'dark' || (preference === 'system' && systemDark);
+      if (isDark) document.documentElement.classList.add('dark');
+    })();
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

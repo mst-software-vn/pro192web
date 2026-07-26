@@ -32,8 +32,6 @@ export function addRecentSearch(entry: RecentSearchEntry): RecentSearchEntry[] {
   return next
 }
 
-// Lưu tối đa 5 kết quả tìm kiếm đã bấm gần nhất — hiện trong modal khi ô tìm kiếm
-// đang trống, giống cách use-quiz-progress lưu điểm quiz lần gần nhất.
 export function useRecentSearches() {
   const [recent, setRecent] = useState<RecentSearchEntry[]>(() => readRecentSearches())
 

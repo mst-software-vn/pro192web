@@ -53,10 +53,6 @@ function ThumbsDownIcon() {
   )
 }
 
-// Widget feedback kiểu tài liệu quốc tế (Mintlify/GitBook...) — chỉ để giống UI cho
-// quen thuộc, KHÔNG gửi dữ liệu đi đâu cả (không có backend thu thập feedback nào),
-// "Submit" chỉ đổi UI state tại chỗ. Cố ý KHÔNG lưu localStorage theo đúng yêu cầu —
-// reload trang là quay lại trạng thái ban đầu, không nhớ đã từng trả lời.
 export function PageFeedback() {
   const { language } = useLanguage()
   const isEn = language === 'en'

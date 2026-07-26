@@ -13,9 +13,6 @@ export interface SearchEntry {
   contentTextNormalized?: string
 }
 
-// Bỏ dấu tiếng Việt để so khớp không phân biệt có/không gõ dấu (vd "gia tri" khớp
-// "giá trị"). NFD không tách được "đ"/"Đ" (không phải chữ cái + dấu kết hợp trong
-// Unicode) nên phải xử lý riêng.
 export function stripDiacritics(text: string): string {
   return text
     .normalize('NFD')
@@ -31,9 +28,6 @@ interface ContentBlock {
   headingText?: string
 }
 
-// Bỏ marker markdown (heading/list/blockquote/emphasis/link/ảnh) để còn lại văn bản
-// thuần phục vụ so khớp full-text — không cần AST đầy đủ vì nội dung chương luôn
-// theo quy ước mỗi đoạn/bullet nằm trên một dòng (xem src/content/chapters/*.md).
 function stripInlineMarkdown(line: string): string {
   return line
     .replace(/^>+\s?/, '')
@@ -48,8 +42,6 @@ function stripInlineMarkdown(line: string): string {
 const HEADING_LINE = /^(#{1,6})\s+(.+)$/
 const FENCE_LINE = /^```/
 
-// Gắn mỗi đoạn văn/bullet (kể cả heading H4 trở xuống, vốn không có trong TOC) với
-// heading H2/H3 gần nhất phía trước để biết điều hướng tới anchor nào khi bấm kết quả.
 function extractContentBlocks(markdown: string, headings: HeadingItem[]): ContentBlock[] {
   const lines = markdown.split('\n')
   const blocks: ContentBlock[] = []
@@ -71,7 +63,7 @@ function extractContentBlocks(markdown: string, headings: HeadingItem[]): Conten
     if (inCodeBlock || trimmed === '') return
 
     const headingMatch = HEADING_LINE.exec(trimmed)
-    if (headingMatch && headingMatch[1].length <= 3) return // đã có entry riêng loại 'heading'
+    if (headingMatch && headingMatch[1].length <= 3) return
 
     const text = stripInlineMarkdown(trimmed)
     if (!text) return

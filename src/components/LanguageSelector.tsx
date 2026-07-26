@@ -6,8 +6,6 @@ const LANGUAGES: { code: Language; short: string; label: string }[] = [
   { code: 'en', short: 'EN', label: 'English' },
 ]
 
-// Chọn ngôn ngữ hiển thị nội dung Docs — đổi body chương sang bản dịch tương ứng
-// (fallback tiếng Anh nếu chương chưa có bản dịch tiếng Việt).
 export function LanguageSelector() {
   const [open, setOpen] = useState(false)
   const { language, setLanguage } = useLanguage()
@@ -48,9 +46,8 @@ export function LanguageSelector() {
                     setLanguage(lang.code)
                     setOpen(false)
                   }}
-                  className={`flex w-full items-center px-3 py-1.5 text-[13px] transition-colors ${
-                    isActive ? 'text-accent-on-surface font-medium' : 'text-ink-body hover:bg-panel'
-                  }`}
+                  className={`flex w-full items-center px-3 py-1.5 text-[13px] transition-colors ${isActive ? 'text-accent-on-surface font-medium' : 'text-ink-body hover:bg-panel'
+                    }`}
                 >
                   {lang.label}
                 </button>
