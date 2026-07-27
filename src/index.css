@@ -23,11 +23,13 @@
    (bg-canvas, text-ink...) cho cả 2 theme thay vì rải dark: khắp nơi. CodeBlock KHÔNG
    dùng bộ này — code Java cố tình luôn nền tối theo quyết định ở Phase 2. */
 :root {
-  --canvas: #ffffff;
-  --panel: #f5f5f5;
-  --well: #e5e5e5;
-  --hairline: #e5e5e5;
-  --hairline-strong: #d4d4d4;
+  /* Nền sáng hơi ngả xanh (slate) thay vì trắng thuần — đồng bộ sắc navy của
+     dark mode thay vì đổi hue hẳn sang trắng-xám trung tính. */
+  --canvas: #f8fafc;
+  --panel: #f1f5f9;
+  --well: #e2e8f0;
+  --hairline: #e2e8f0;
+  --hairline-strong: #cbd5e1;
   --ink: #171717;
   --ink-secondary: #404040;
   --ink-body: #525252;
