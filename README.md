@@ -28,6 +28,7 @@
 - [Bắt đầu](#bắt-đầu)
 - [Cấu trúc dự án](#cấu-trúc-dự-án)
 - [Đóng góp nội dung](#đóng-góp-nội-dung)
+- [Tài liệu tham khảo](#tài-liệu-tham-khảo)
 - [Lộ trình phát triển](#lộ-trình-phát-triển)
 - [Giấy phép](#giấy-phép)
 - [English](#english)
@@ -130,6 +131,22 @@ docs/
 ## Đóng góp nội dung
 
 Mỗi chương là một cặp file Markdown trong `src/content/chapters/` (`<slug>.md` tiếng Anh, `<slug>.vi.md` bản dịch tiếng Việt tuỳ chọn), được khai báo metadata trong `src/content/chapters/index.ts`. Ảnh minh hoạ đặt trong `public/images/` và tham chiếu bằng đường dẫn tuyệt đối (`/images/...`). Nội dung ở `docs/content/` là bản scrape từ site cũ, chỉ dùng để đối chiếu khi biên soạn lại — không đại diện cho nội dung đang publish.
+
+## Tài liệu tham khảo
+
+Một số trang tài liệu (documentation site) được dùng làm nguồn tham khảo cho cách trình bày, điều hướng và trải nghiệm đọc của dự án này:
+
+| Trang | Ghi chú |
+|-------|---------|
+| [laravel.com](https://laravel.com) | Trang doc framework, sidebar phân nhóm chủ đề rõ ràng, nhiều ví dụ code song song giải thích |
+| [nodejs.org](https://nodejs.org) | Cấu trúc API reference chuẩn mực cho tài liệu kỹ thuật quy mô lớn |
+| [expressjs.com](https://expressjs.com) | Trình bày tối giản, tập trung vào guide và ví dụ ngắn gọn |
+| [docs.nestjs.com](https://docs.nestjs.com) | Doc framework TypeScript, phân nhóm module/chương rất mạch lạc — gần với cách tổ chức chương của dự án |
+| [remix.run](https://remix.run) | Doc framework React hiện đại, UI sạch, điều hướng mượt |
+| [code.claude.com](https://code.claude.com) | Doc sản phẩm AI, thiết kế tối giản, đọc dễ trên cả desktop lẫn mobile |
+| [vite.dev](https://vite.dev) | Doc của chính build tool đang dùng trong dự án, tham khảo cách trình bày getting-started |
+| [reactbits.dev](https://reactbits.dev) | Thư viện component/animation cho React, tham khảo hiệu ứng và cách demo trực quan từng component |
+| [modelcontextprotocol.io](https://modelcontextprotocol.io/docs/getting-started/intro) | Doc chuẩn giao thức, cấu trúc "getting started" rõ ràng, dễ theo dõi cho người mới |
 
 ## Lộ trình phát triển
 
